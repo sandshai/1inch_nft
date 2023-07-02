@@ -1,0 +1,49 @@
+.collections--wrapper {
+  display: grid;
+  gap: 1.5rem 0.5rem;
+  grid-auto-rows: minmax(0px, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  transition: all 0.5s ease-in-out;
+  width: 100%;
+  @include media-min-alt(360px) {
+    grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1rem), 1fr));
+  }
+  @include media-min-md {
+    gap: 2rem 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 1rem), 1fr));
+  }
+  @include media-min-lg {
+    grid-template-columns: repeat(auto-fill, minmax(calc(25% - 1rem), 1fr));
+  }
+  @include media-min-alt(1400px) {
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(calc(25% - 2rem), 1fr));
+  }
+}
+
+.grid-layout-3 {
+  @include media-min-xl {
+    grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1rem), 1fr)) !important;
+  }
+  @include media-min-alt(1400px) {
+    grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 2rem), 1fr)) !important;
+  }
+}
+
+.grid-layout-4 {
+  @include media-min-xl {
+    grid-template-columns: repeat(auto-fill, minmax(calc(25% - 1rem), 1fr)) !important;
+  }
+  @include media-min-alt(1400px) {
+    grid-template-columns: repeat(auto-fill, minmax(calc(25% - 2rem), 1fr)) !important;
+  }
+}
+
+.grid-layout-5 {
+  @include media-min-xl {
+    grid-template-columns: repeat(auto-fill, minmax(calc(20% - 1rem), 1fr)) !important;
+  }
+  @include media-min-alt(1400px) {
+    grid-template-columns: repeat(auto-fill, minmax(calc(20% - 2rem), 1fr)) !important;
+  }
+}

@@ -1,0 +1,87 @@
+<section class="trending-collection section">
+  <div class="container-fluid">
+    <div class="section-title__container row m-0">
+      <div class="col-6 p-0">
+        <div
+          class="l_section_header"
+        >
+          <div class="section-title">
+            <h6 class="text-themewhite title mb-0">Trending Collections</h6>
+          </div>
+          <div class="days_filter_md_button border-rounded-12">
+            <button
+              class="btn btn-trd border-0"
+              [class.active]="this.sortBy === this.sort['1day']"
+              (click)="this.sortByDay(this.sort['1day'], '1day')"
+            >
+              1D
+            </button>
+            <button
+              class="btn btn-trd border-0"
+              [class.active]="this.sortBy === this.sort['7day']"
+              (click)="this.sortByDay(this.sort['7day'], '7day')"
+            >
+              1W
+            </button>
+            <button
+              class="btn btn-trd border-0"
+              [class.active]="this.sortBy === this.sort['30day']"
+              (click)="this.sortByDay(this.sort['30day'], '30day')"
+            >
+              1M
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 p-0">
+        <div
+          class="r_section_header"
+        >
+          <div
+            class="dropdown order-2 chain-dropdown-wrapper order-md-1"
+          >
+            <button
+              class="btn btn-chain-type"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span>{{ this.selectedChain }}</span>
+              <app-svg-icons iconName="downIcon" class="icon" className="cursor-pointer"></app-svg-icons>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li *ngFor="let key of objectKeys(chains)">
+                <a
+                  class="dropdown-item cursor-pointer"
+                  (click)="changeChain(key, chains[key])"
+                  >{{ key }}</a
+                >
+              </li>
+            </ul>
+          </div>
+          <button class="btn btn-seemore order-1 order-md-2">
+            <span routerLink="collections/{{ this.selectedChain }}"
+              >See more</span
+            >
+            <app-svg-icons iconName="rightIcon" class="icon" className="cursor-pointer"></app-svg-icons>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row section-top" id="trend-collection__wrapper">
+      <div
+        class="col-md-6 col-xl-4 p-0 trend-collection__item"
+        routerLink="collection/{{ selectedChain }}/{{ collection.id }}"
+        *ngFor="let collection of trendingCollections; let i = index"
+      >
+        <app-card-small-x
+          [item]="collection"
+          [index]="i"
+          [sortedDay]="sortedDay"
+          [isLoad]="this.isLoading"
+        ></app-card-small-x>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,148 @@
+<div class="search-wrapper" id="search-wrapper">
+  <div class="search-input-wrapper">
+    <div class="header-search__icon">
+      <app-svg-icons
+        iconName="searchIcon"
+        className="deks-icon cursor-pointer"
+      ></app-svg-icons>
+      <app-svg-icons
+        (click)="removesearchhistory()"
+        iconName="backIcon"
+        className="mobile-icon cursor-pointer"
+      ></app-svg-icons>
+    </div>
+    <input
+      type="text"
+      name="search"
+      (focus)="
+        this.recentCollectionList?.length > 0 && opensearchhistory($event)
+      "
+      placeholder="Search items, collection or accounts"
+      class="form-control"
+      #box
+      (keyup)="getValue(box.value)"
+      autocomplete="off"
+      value="{{ this.collectionName }}"
+    />
+  </div>
+  <div id="search__history" class="search__history py-3">
+    <div
+      class="recent-search__history mb-3"
+      *ngIf="!this?.collectionName && this.recentCollectionList?.length > 0"
+    >
+      <p class="search__history_title" *ngIf="!this.hideContent">Recent</p>
+      <div class="search__item" *ngFor="let recent of recentCollectionList">
+        <div
+          class="d-flex align-items-center"
+          (click)="pageReload(recent?.chain, recent?.collectionId)"
+        >
+          <div class="item-detail d-flex align-items-center">
+            <div class="profile-img">
+              <img
+                src="{{ recent?.image }}"
+                class="img-fluid"
+                alt="nft image"
+              />
+            </div>
+            <div class="profile-detail ms-3">
+              <div class="profile-title d-flex align-items-center">
+                <h5 class="title mb-0 text-themewhite">
+                  {{ recent?.name }}
+                </h5>
+                <img
+                  src="../../../../assets/images/icons/verified.svg"
+                  alt="verified"
+                  class="img-fluid"
+                />
+              </div>
+              <p class="mb-0">{{ recent?.tokenCount }}</p>
+            </div>
+          </div>
+          <div class="bit-detail ms-auto">
+            <div class="d-flex align-items-center">
+              <span class="text-themewhite">{{ recent?.floorAskPrice }}</span>
+              <img
+                src="../../../../assets/images/icons/activity_diamond.svg"
+                alt="diamond image"
+                class="img-fluid"
+              />
+            </div>
+            <p class="mb-0">Floor price</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="recent-search__history mb-3 no-results"
+        *ngIf="this.recentCollectionList?.length === 0 && this.collectionName"
+      >
+        No Data Found
+      </div>
+    </div>
+
+    <div class="recent-search__history mb-3">
+      <!-- <p class="search__history_title">Recent</p> -->
+      <div *ngIf="!isLoading">
+        <div
+          class="recent-search__history mb-3"
+          *ngIf="this.searchResults?.length > 0"
+        >
+          <div class="search__item" *ngFor="let list of searchResults">
+            <div
+              class="d-flex align-items-center"
+              (click)="pageReload(list?.chain, list?.collectionId, list)"
+            >
+              <div class="item-detail d-flex align-items-center">
+                <div class="profile-img">
+                  <img
+                    src="{{ list?.image }}"
+                    class="img-fluid"
+                    alt="nft image"
+                  />
+                </div>
+                <div class="profile-detail ms-3">
+                  <div class="profile-title d-flex align-items-center">
+                    <h5 class="title mb-0 text-themewhite">
+                      {{ list?.name }}
+                    </h5>
+                    <img
+                      src="../../../../assets/images/icons/verified.svg"
+                      alt="verified"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <p class="mb-0">{{ list?.tokenCount }}</p>
+                </div>
+              </div>
+              <div class="bit-detail ms-auto">
+                <div class="d-flex align-items-center">
+                  <span class="text-themewhite">{{
+                    list?.floorAskPrice
+                      ? list?.floorAskPrice
+                      : list?.allTimeVolume.toFixed(2)
+                  }}</span>
+                  <img
+                    src="../../../../assets/images/icons/activity_diamond.svg"
+                    alt="diamond image"
+                    class="img-fluid"
+                  />
+                </div>
+                <p class="mb-0">Floor price</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loader" *ngIf="isLoading">
+        <div class="spinner"></div>
+      </div>
+      <div
+        class="recent-search__history mb-3"
+        *ngIf="
+          this.searchResults?.length === 0 && this.collectionName && !isLoading
+        "
+      >
+        No Data Found
+      </div>
+    </div>
+  </div>
+</div>

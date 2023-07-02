@@ -1,0 +1,28 @@
+<div class="i-profile-wrapper">
+  <div *ngIf="mdImage" class="i-profle position-relative">
+    <img
+      src="{{ itemDetail[0]?.token?.image }}"
+      class="img-fluid"
+      alt="profile"
+    />
+    <div class="icons-wrapper align-items-center position-absolute">
+      <div class="zoom icons">
+        <img
+          src="../../../../../assets/images/icons/zoom.svg"
+          class="img-fluid"
+          alt="icons"
+          (click)="priviewImage(itemDetail[0]?.token?.image)"
+        />
+      </div>
+      <div class="download icons" (click)="downloadImage(itemDetail[0]?.token?.image)">
+        <img
+          src="../../../../../assets/images/icons/deposit_withdraw.svg"
+          class="img-fluid"
+          alt="icons"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="line"></div>
+  <app-item-buy-details></app-item-buy-details>
+</div>

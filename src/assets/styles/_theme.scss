@@ -1,0 +1,9 @@
+// Light theme styles
+.light-theme {
+  @include theme-colors($bg-color-light, $text-color-light);
+}
+
+// Dark theme styles
+.dark-theme {
+  @include theme-colors($bg-color-dark, $text-color-dark);
+}

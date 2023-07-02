@@ -1,0 +1,54 @@
+<section class="utility-collections-section section">
+    <div class="container-fluid">
+        <div class="section-title__container d-flex justify-content-between align-items-center">
+            <div class="section-title">
+                <h6 class="text-themewhite title mb-0">Utility collections</h6>
+            </div>
+            <div
+            class="d-flex align-items-center"
+            >
+                <div class="chevron-btn-wrapper">
+                    <button id="u-prev" class="btn btn-chevron">
+                        <app-svg-icons iconName="leftIcon" className="cursor-pointer"></app-svg-icons>
+                    </button>
+                    <button id="u-next" class="btn btn-chevron">
+                        <app-svg-icons iconName="rightIcon" className="cursor-pointer"></app-svg-icons>
+                    </button>
+                </div>
+                <button class="btn btn-seemore ms-sm-2">
+                    <span>See more</span>
+                    <app-svg-icons iconName="rightIcon" class="icon" className="cursor-pointer"></app-svg-icons>
+                </button>
+            </div>
+        </div>
+        <div class="row section-top">
+            <div class="utility-collections__slider p-0 justify-content-between">
+                <swiper
+                [config]="config" class="p-1"
+                >
+                    <ng-template swiperSlide>
+                        <app-card-small imgUrl="banner-bg-image-2"></app-card-small>
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <app-card-small imgUrl="u_image-1"></app-card-small>
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <app-card-small imgUrl="u_image-2"></app-card-small>
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <app-card-small imgUrl="u_image-3"></app-card-small>
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <app-card-small imgUrl="banner-bg-image-2"></app-card-small>
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <app-card-small imgUrl="u_image-1"></app-card-small>
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <app-card-small imgUrl="u_image-2"></app-card-small>
+                    </ng-template>
+                </swiper>
+            </div>
+        </div>
+    </div>
+</section>

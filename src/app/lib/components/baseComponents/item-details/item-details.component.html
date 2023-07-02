@@ -1,0 +1,65 @@
+<div class="accordion-item bg-transparent">
+  <div class="accordion-header" id="details-graph">
+    <button
+      class="accordion-button"
+      [class.collapsed]="is_show === 'false' || is_show === undefined"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#details-graph-content"
+      aria-expanded="false"
+      aria-controls="details-graph-content"
+    >
+      <img
+        src="../../../assets/images/graph-icon/open_info.svg"
+        class="img-fluid me-2 imgs-1halfrem opened_icon"
+        alt="chart"
+      />
+      <img
+        src="../../../assets/images/graph-icon/not_open_info.svg"
+        class="img-fluid me-2 not_open_icon imgs-1halfrem"
+        alt="chart"
+      />
+      Details
+    </button>
+  </div>
+  <div
+    id="details-graph-content"
+    class="accordion-collapse collapse"
+    [class.show]="is_show === 'true'"
+    aria-labelledby="details-graph"
+  >
+    <div class="accordion-body p-0">
+      <div class="details-wrapper">
+        <div class="detail">
+          <p class="mb-0 d-label">Contract address</p>
+          <p class="mb-0 d-val text-blue">
+            {{ this.c_address }}
+          </p>
+        </div>
+        <div class="detail">
+          <p class="mb-0 d-label">Token ID</p>
+          <p class="mb-0 d-val text-blue">{{ this.token_id }}</p>
+        </div>
+        <div class="detail">
+          <p class="mb-0 d-label">Blockchain</p>
+          <p class="mb-0 d-val text-caps">{{ this.chain }}</p>
+        </div>
+        <div class="detail">
+          <p class="mb-0 d-label">Token standard</p>
+          <p class="mb-0 d-val">ERC721</p>
+        </div>
+        <div class="detail">
+          <div class="earning-details">
+            <p class="mb-0 d-label">Creator earnings</p>
+            <img
+              src="../../../../../assets/images/graph-icon/not_open_info.svg"
+              class="img-fluid"
+              alt="icon"
+            />
+          </div>
+          <p class="mb-0 d-val">10%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

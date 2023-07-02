@@ -1,0 +1,415 @@
+<section class="collection-page__wrapper" id="collection-page__wrapper">
+  <!-- ==== collection page profile wrapper ==== -->
+  <!-- {{setCollectionBannerImage}} -->
+  <div
+    class="collection-banner mb-5"
+    id="collection_banner"
+    [style.background-image]="'url(' + setCollectionBannerImage + ')'"
+  >
+    <div class="container-fluid">
+      <div class="row m-0">
+        <div class="col-lg-9 col-xl-8 p-0 mb-lg-0 pe-xl-2 pe-xxl-3">
+          <!-- == profile section == -->
+          <div class="collection-profile-information">
+            <div class="profile mb-4 mb-md-0">
+              <img
+                src="{{ collectionDetails[0]?.image }}"
+                alt="profile img"
+              />
+            </div>
+            <div class="content mb-5 mb-md-0">
+              <div class="row m-0 justify-content-between align-items-center">
+                <div class="col-md-9 p-0">
+                  <div class="content-title d-flex align-items-center">
+                    <h2 class="mb-0">{{ collectionDetails[0]?.name }}</h2>
+                    <app-svg-icons
+                      iconName="verifiedIcon"
+                      class="cursor-pointer"
+                    ></app-svg-icons>
+                  </div>
+                </div>
+                <div class="col-md-3 p-0">
+                  <div class="btn_groups_collection_details float-md-end">
+                    <button class="c-btn__small">
+                      <img
+                        src="../../../assets/images/icons/star.svg"
+                        class="img-fluid"
+                        alt="plus icon"
+                      />
+                    </button>
+                    <button class="c-btn__small">
+                      <img
+                        src="../../../assets/images/icons/share.svg"
+                        class="img-fluid"
+                        alt="share icon"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center c__acc_wrapper">
+                <p class="mb-0 c__acc-id">
+                  By <span>{{ this.formatChainAddress }}</span>
+                </p>
+                <app-svg-icons
+                  iconName="copyIcon"
+                  (click)="copyToClipboard(collectionDetails[0]?.id)"
+                  class="cursor-pointer copyIcon"
+                ></app-svg-icons>
+                <span class="tooltiptext copy-text">
+                  {{ isCopied ? "Copied" : "Copy" }}
+                </span>
+              </div>
+              <div class="d-sm-flex align-items-center mt-3">
+                <div
+                  class="social__links d-flex align-items-center mb-3 mb-sm-0"
+                >
+                  <div
+                    class="icon"
+                    *ngIf="this.collectionDetails[0]?.externalUrl"
+                    (click)="
+                      goToExternalPage(this.collectionDetails[0]?.externalUrl)
+                    "
+                  >
+                    <app-svg-icons
+                      iconName="doodlesIcon"
+                      className="cursor-pointer"
+                    ></app-svg-icons>
+                  </div>
+                  <div
+                    class="icon"
+                    *ngIf="this.collectionDetails[0]?.twitterUrl"
+                    (click)="
+                      goToExternalPage(this.collectionDetails[0]?.twitterUrl)
+                    "
+                  >
+                    <app-svg-icons
+                      iconName="twitterIcon"
+                      className="cursor-pointer"
+                    ></app-svg-icons>
+                  </div>
+                  <div
+                    class="icon"
+                    *ngIf="this.collectionDetails[0]?.discordUrl"
+                    (click)="
+                      goToSocialPage(this.collectionDetails[0]?.discordUrl)
+                    "
+                  >
+                    <app-svg-icons
+                      iconName="discardIconV2"
+                      className="cursor-pointer"
+                    ></app-svg-icons>
+                  </div>
+                  <div
+                    class="icon"
+                    (click)="goToAddressPage(collectionDetails[0]?.id)"
+                  >
+                    <app-svg-icons
+                      iconName="etherscanIcon"
+                      className="cursor-pointer"
+                    ></app-svg-icons>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="collection_desc mt-3"
+                *ngIf="collectionDetails[0]?.description"
+              >
+                <p class="mb-0" *ngIf="isExpanded">
+                  {{ collectionDetails[0]?.description | slice : 0 : 140 }}
+                  {{
+                    collectionDetails[0]?.description?.length > 140
+                      ? "..."
+                      : " "
+                  }}
+                  <span
+                    (click)="toggle()"
+                    class="d-inline cursor-pointer text-decoration-underline"
+                    *ngIf="collectionDetails[0]?.description?.length > 140"
+                  >
+                    {{ isExpanded ? "More" : "Less" }}
+                  </span>
+                </p>
+                <p class="mb-0" *ngIf="!isExpanded">
+                  {{ collectionDetails[0]?.description }}
+                  <span
+                    (click)="toggle()"
+                    class="d-inline cursor-pointer text-decoration-underline"
+                    *ngIf="collectionDetails[0]?.description?.length > 140"
+                  >
+                    {{ isExpanded ? "More" : "Less" }}
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="{{!is_analytics ? 'col-12' : 'col-lg-9 col-xl-8 p-0 mb-lg-0 pe-xl-2 pe-xxl-3'}}">
+          <app-section-end-line className="p-0"></app-section-end-line>
+        </div>
+
+        <div class="col-lg-9 col-xl-8 p-0 mb-lg-0 pe-xl-2 pe-xxl-3">
+          <!-- == details section == -->
+          <div class="overflow-wrapper">
+            <div class="collection-bit__details">
+              <div class="bit-details__card">
+                <span>Items</span>
+                <h6 class="d-flex align-items-center">
+                  {{ collectionDetails[0]?.tokenCount | numberShorten }}
+                </h6>
+              </div>
+              <div class="bit-details__card">
+                <span>Total Vol.</span>
+                <h6 class="d-flex align-items-center">
+                  {{ collectionDetails[0]?.volume?.allTime | numberShorten }}
+                  <img
+                    src="../../../assets/images/icons/activity_diamond.svg"
+                    class="img-fluid"
+                    alt="diamond"
+                  />
+                </h6>
+              </div>
+              <div class="bit-details__card">
+                <span>1D Vol.</span>
+                <h6 class="d-flex align-items-center">
+                  {{ collectionDetails[0]?.volume["1day"] | numberShorten }}
+                  <img
+                    src="../../../assets/images/icons/activity_diamond.svg"
+                    class="img-fluid"
+                    alt="diamond"
+                  />
+                </h6>
+                <span class="positive trade">+25.23%</span>
+              </div>
+              <div class="bit-details__card">
+                <span>Floor</span>
+                <h6 class="d-flex align-items-center">
+                  {{
+                    collectionDetails[0]?.floorAsk?.price?.amount?.decimal
+                      | numberShorten
+                  }}
+                  <img
+                    src="../../../assets/images/icons/activity_diamond.svg"
+                    class="img-fluid"
+                    alt="diamond"
+                  />
+                </h6>
+                <span class="negative trade">-25.23%</span>
+              </div>
+              <div class="bit-details__card">
+                <span>Holders</span>
+                <h6 class="d-flex align-items-center">
+                  {{ collectionDetails[0]?.ownerCount | numberShorten }}
+                </h6>
+              </div>
+              <div class="bit-details__card">
+                <span>Unique holders</span>
+                <h6 class="d-flex align-items-center">
+                  {{ this.uniqueHolders }} %
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="{{!is_analytics ? 'col-12' : 'col-lg-9 col-xl-8 p-0 mb-lg-0 pe-xl-2 pe-xxl-3'}}">
+          <app-section-end-line className="p-0"></app-section-end-line>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== collection page nft section ==== -->
+
+  <div class="collectionOfNfts">
+    <div class="collection-filter__wrapper">
+      <div class="container-fluid">
+        <div class="d-flex m-0">
+          <div class="grid__left-side {{ !is_analytics ? 'w-100' : '' }}" id="">
+            <div class="d-flex flex-column flex-md-row align-items-md-center">
+              <div class="d-flex wrapper_content me-md-3">
+                <button class="btn single-icon__btn" (click)="openFilterTab()">
+                  <app-svg-icons
+                    iconName="filterBarIcon"
+                    className="{{ is_filter ? 'active' : '' }}"
+                  ></app-svg-icons>
+                </button>
+                <div class="c-search__wrapper ms-3 d-flex align-items-center">
+                  <input
+                    type="text"
+                    numbersOnly
+                    name="c__search"
+                    id="c__search"
+                    placeholder="Search items"
+                    class="form-control c__search"
+                    [value]="inputValue || ''"
+                    #box
+                    (keyup)="getValue(box.value)"
+                    (keypress)="onlyNumbersAllowed($event)"
+                    autocomplete="off"
+                  />
+                  <img
+                    src="../../../assets/images/icons/search_icon.svg"
+                    class="img-fluid"
+                    alt="search"
+                  />
+                </div>
+              </div>
+              <span
+                class="result_span order-3 order-md-0 mt-3 mt-md-0 d-lg-block"
+                *ngIf="this.inputValue"
+                >{{ this.searchResult }} results</span
+              >
+              <div
+                class="d-flex align-items-center justify-content-end justify-content-md-start ms-md-auto mt-3 mt-md-0"
+              >
+                <button
+                  id="sweep-btn"
+                  (click)="opensweep()"
+                  class="btn single-icon__btn d-none d-lg-flex me-3"
+                >
+                  <app-svg-icons iconName="sweepIcon"></app-svg-icons>
+                </button>
+
+                <div class="btn-groups">
+                  <button
+                    type="button"
+                    class="btn rare_common_btn d-flex align-items-center"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span>{{ this.category }}</span>
+                    <img
+                      src="../../../assets/images/icons/down.svg"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </button>
+                  <ul class="dropdown-menu filter-dropdown dropdown-menu-end">
+                    <li *ngFor="let key of objectKeys(categories)">
+                      <button
+                        class="dropdown-item"
+                        type="button"
+                        (click)="sortByCategory(key, categories[key])"
+                      >
+                        {{ key }}
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
+                <app-button
+                  id="analytics_btn"
+                  className="d-none d-lg-flex align-items-center ms-3 btn-liteblue"
+                  *ngIf="!is_analytics"
+                  (click)="openAnalyticsTab()"
+                >
+                  <img
+                    src="../../../assets/images/icons/chart.svg"
+                    class="img-fluid imgs-1halfrem"
+                    alt="chart"
+                  />
+                  Analytics
+                </app-button>
+
+                <div
+                  class="collect-layout-filter__btn ms-3 btn-border-lite d-flex align-items-center"
+                >
+                  <div class="sort-icon cursor-pointer">
+                    <app-svg-image
+                      fourlayout="true"
+                      [class.activelayout]="
+                        this.active === this.layoutactive['4layout']
+                      "
+                      (click)="this.sortByDay(this.layoutactive['4layout'])"
+                    ></app-svg-image>
+                  </div>
+                  <div class="sort-icon cursor-pointer ms-2">
+                    <app-svg-image
+                      listlogout="true"
+                      [class.activelayout]="
+                        this.active === this.layoutactive['listlogout']
+                      "
+                      (click)="this.sortByDay(this.layoutactive['listlogout'])"
+                    ></app-svg-image>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="d-flex collections--wrapper__containter"
+              id="collections--wrapper__containter"
+            >
+              <app-collection-filter
+                *ngIf="is_filter"
+                (close_filter)="closeFilterFunc($event)"
+              ></app-collection-filter>
+              <div class="collection-grid-open pt-5" id="collection-grid-open">
+                <div
+                  class="seggestion_filer mb-4 d-flex flex-wrap"
+                  *ngIf="this.apiValues?.length > 0"
+                >
+                  <div
+                    class="suggestion_result d-flex align-items-center"
+                    *ngFor="let list of apiValues"
+                  >
+                    <p class="mb-0">
+                      {{ list?.keyData }} : <span>{{ list?.value }}</span>
+                    </p>
+                    <div class="icon">
+                      <img
+                        src="../../../assets/images/icons/close_icon.svg"
+                        class="img-fluid"
+                        alt="close"
+                        (click)="removeFilterList(list?.value)"
+                      />
+                    </div>
+                  </div>
+                  <!-- <div class="suggestion_result d-flex align-items-center">
+                    <p class="mb-0">Body : <span>Fat</span></p>
+                    <div class="icon">
+                      <img
+                        src="../../../assets/images/icons/close_icon.svg"
+                        class="img-fluid"
+                        alt="close"
+                      />
+                    </div>
+                  </div> -->
+                  <div
+                    class="clear_all d-flex align-items-center justify-content-center"
+                    *ngIf="this.apiValues?.length > 1"
+                  >
+                    <p class="mb-0" (click)="removeFilterListAll()">
+                      clear all
+                    </p>
+                  </div>
+                </div>
+                <app-list-view-collections
+                  *ngIf="this.active === this.layoutactive['listlogout']"
+                ></app-list-view-collections>
+                <app-grid-view-collection
+                  *ngIf="this.active === this.layoutactive['4layout']"
+                  className="{{ gridClassName }}"
+                  (messageEvent)="receiveMessage($event)"
+                ></app-grid-view-collection>
+              </div>
+            </div>
+          </div>
+          <div class="grid__right-side" *ngIf="is_analytics">
+            <app-collection-right-side-tab
+              class="analytics-container p-0"
+              id="analytics-container"
+              (is_close_tab)="closeAnalyticsTab($event)"
+            >
+            </app-collection-right-side-tab>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-sweep-and-analytics-mobile-tab
+  (open_analytics)="openAnalyticsTab($event)"
+  (closeSweep)="closeSweep()"
+></app-sweep-and-analytics-mobile-tab>

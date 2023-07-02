@@ -1,0 +1,314 @@
+<section class="collection-list-page">
+  <div class="overlay"></div>
+  <div class="container-fluid px-lg-5">
+    <div class="section-title">
+      <h6 class="title mb-0 active">Collections</h6>
+      <h6 class="title mb-0">Trending</h6>
+    </div>
+
+    <div class="filter-section mt-4">
+      <!-- <div class="left-side">
+        <button
+          class="btn btn-filter"
+          id="open-fliter"
+          (click)="openCollectionFilter()"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M4 7C4 6.44772 4.44772 6 5 6H19C19.5523 6 20 6.44772 20 7C20 7.55228 19.5523 8 19 8H5C4.44772 8 4 7.55228 4 7ZM6 12C6 11.4477 6.44772 11 7 11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H7C6.44772 13 6 12.5523 6 12ZM9 16C8.44772 16 8 16.4477 8 17C8 17.5523 8.44772 18 9 18H15C15.5523 18 16 17.5523 16 17C16 16.4477 15.5523 16 15 16H9Z"
+              fill="#6C86AD"
+            />
+          </svg>
+
+          <span class="d-none d-md-block">Filter collections</span>
+        </button>
+      </div> -->
+      <div class="right-side">
+        <div class="section-title___wrapper">
+          <button
+            type="button"
+            class="btn section-title__button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span>{{ this.selectedChain }}</span>
+            <img
+              src="../../../../../assets/images/icons/down.svg"
+              class="img-fluid"
+              alt="icon"
+            />
+          </button>
+          <ul class="dropdown-menu">
+            <li *ngFor="let key of objectKeys(chains)">
+              <button
+                class="dropdown-item"
+                type="button"
+                (click)="changeChain(key, chains[key])"
+              >
+                {{ key }}
+              </button>
+            </li>
+          </ul>
+        </div>
+        <app-filter-button
+          [sortBy]="this.sortBy"
+          (filterByValue)="this.sortByDay($event)"
+        ></app-filter-button>
+      </div>
+    </div>
+
+    <div class="c-list-wrapper" id="c-list-wrapper">
+      <app-collections-list-table-filter
+        *ngIf="is_filter"
+        (is_close_filter)="closeFilter($event)"
+      ></app-collections-list-table-filter>
+      <div
+        class="table-responsive my-4 collection-table-res"
+        *ngIf="!this.isLoading"
+      >
+        <table class="table table-borderless" id="c-table__list">
+          <thead>
+            <tr>
+              <th>Collection name</th>
+              <th>
+                <div class="heading">
+                  <span>Floor price</span>
+                  <img
+                    src="../../../assets/images/icons/c-sort-icon.svg"
+                    class="img-fluid"
+                    alt="icon"
+                  />
+                </div>
+              </th>
+              <th>
+                <div class="heading">
+                  <span>Volume</span>
+                  <img
+                    src="../../../assets/images/icons/c-sort-icon.svg"
+                    class="img-fluid"
+                    alt="icon"
+                  />
+                </div>
+              </th>
+              <th>
+                <div class="heading">
+                  <span>Sales</span>
+                  <img
+                    src="../../../assets/images/icons/c-sort-icon.svg"
+                    class="img-fluid"
+                    alt="icon"
+                  />
+                </div>
+              </th>
+              <th>
+                <div class="heading">
+                  <span>Owners</span>
+                  <img
+                    src="../../../assets/images/icons/c-sort-icon.svg"
+                    class="img-fluid"
+                    alt="icon"
+                  />
+                </div>
+              </th>
+              <th>
+                <div class="heading">
+                  <span>Items</span>
+                  <img
+                    src="../../../assets/images/icons/c-sort-icon.svg"
+                    class="img-fluid"
+                    alt="icon"
+                  />
+                </div>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let collection of trendingCollections; let i = index"
+              (click)="goToPage(collection.id)"
+            >
+              <td>
+                <div class="c-profile">
+                  <div class="profile-img">
+                    <img
+                      src="{{
+                        collection?.image ||
+                          '../../../assets/images/c__image.png'
+                      }}"
+                      src="../../../assets/images/c__image.png"
+                      class="img-fluid"
+                      alt="image"
+                    />
+                  </div>
+                  <div class="profile-details">
+                    <p class="mb-0">{{ collection?.name }}</p>
+                    <img
+                      *ngIf="
+                        collection?.openseaVerificationStatus === 'verified'
+                      "
+                      src="../../../assets/images/icons/verified.svg"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="c-val">
+                  <div class="icon">
+                    <span>
+                      {{
+                        collection?.floorAsk?.price?.amount?.decimal
+                          | numberShorten
+                      }}
+                    </span>
+                    <img
+                      src="{{ this._settings.baseUrl }}redirect/currency/{{
+                        this.currencyAddress
+                      }}/icon/v1"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </div>
+                  <div>
+                    <span
+                      *ngIf="
+                        (collection?.floorSaleChange[sortedDay] - 1) * 100 > 0
+                      "
+                      class="txt-success"
+                    >
+                      +{{
+                        (
+                          (collection?.floorSaleChange[sortedDay] - 1) *
+                          100
+                        ).toFixed(2)
+                      }}%
+                    </span>
+                    <span
+                      *ngIf="
+                        (collection?.floorSaleChange[sortedDay] - 1) * 100 < 0
+                      "
+                      class="txt-danger"
+                    >
+                      {{
+                        (
+                          (collection?.floorSaleChange[sortedDay] - 1) *
+                          100
+                        ).toFixed(2)
+                      }}%
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="c-val">
+                  <div class="icon">
+                    <span>{{
+                      collection?.volume[sortedDay] | numberShorten
+                    }}</span>
+                    <img
+                      src="{{ this._settings.baseUrl }}redirect/currency/{{
+                        this.currencyAddress
+                      }}/icon/v1"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </div>
+                  <div>
+                    <span
+                      *ngIf="
+                        (collection?.volumeChange[sortedDay] - 1) * 100 > 0
+                      "
+                      class="txt-success"
+                    >
+                      +{{
+                        (
+                          (collection?.volumeChange[sortedDay] - 1) *
+                          100
+                        ).toFixed(2)
+                      }}%
+                    </span>
+                    <span
+                      *ngIf="
+                        (collection?.volumeChange[sortedDay] - 1) * 100 < 0
+                      "
+                      class="txt-danger"
+                    >
+                      {{
+                        (
+                          (collection?.volumeChange[sortedDay] - 1) *
+                          100
+                        ).toFixed(2)
+                      }}%
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="c-val">
+                  <div class="icon">
+                    <span>3,759.35</span>
+                    <img
+                      src="{{ this._settings.baseUrl }}redirect/currency/{{
+                        this.currencyAddress
+                      }}/icon/v1"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </div>
+                  <div>
+                    <span class="txt-success">+25.23%</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="c-val">
+                  <span>11.4K</span>
+                  <div>
+                    <span class="txt-gray">57.45%</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="c-val">
+                  <span class="txt-gray">1.4/19.4K</span>
+                </div>
+              </td>
+              <td>
+                <div class="c-val add-watchlist">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M7.22295 2.06807C7.54085 1.42392 8.45938 1.42393 8.77729 2.06807L10.2062 4.96333L13.4013 5.4276C14.1122 5.5309 14.396 6.40448 13.8816 6.90587L11.5696 9.15952L12.1154 12.3417C12.2368 13.0497 11.4937 13.5896 10.8579 13.2553L8.00012 11.7529L5.14233 13.2553C4.50652 13.5896 3.76341 13.0497 3.88484 12.3417L4.43063 9.15952L2.11863 6.90587C1.60424 6.40447 1.88809 5.5309 2.59895 5.4276L5.79405 4.96333L7.22295 2.06807ZM8.00012 3.50608L6.88112 5.77342C6.75488 6.02921 6.51086 6.20651 6.22857 6.24752L3.72642 6.61111L5.537 8.37598C5.74126 8.57509 5.83447 8.86196 5.78625 9.1431L5.35883 11.6351L7.59682 10.4586C7.8493 10.3258 8.15093 10.3258 8.40341 10.4586L10.6414 11.6351L10.214 9.1431C10.1658 8.86196 10.259 8.57509 10.4632 8.37598L12.2738 6.61111L9.77166 6.24752C9.48938 6.20651 9.24536 6.02921 9.11912 5.77342L8.00012 3.50608Z"
+                      fill="#6C86AD"
+                    />
+                  </svg>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center" *ngIf="!this.isLoading">
+      <button class="btn btn-seemore" (click)="loadMore(true)">View All</button>
+    </div>
+  </div>
+</section>

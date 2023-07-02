@@ -1,0 +1,52 @@
+<div class="wallet-btn-wrapper">
+  <button
+    class="btn wallet-btn"
+    (click)="openwallet()"
+    *ngIf="!this.walletAddress"
+  >
+    <img
+      src="../../../../assets/images/icons/wallet.svg"
+      class="img-fluid"
+      alt="wallet"
+    />
+    <span>Connect wallet</span>
+  </button>
+  <!-- <button *ngIf="this.walletAddress" class="btn wallet-btn">
+    <span>{{ this.formatAddress }}</span>
+    <img
+      src="../../../../assets/images/icons/wallet.svg"
+      class="img-fluid"
+      alt="wallet"
+      (click)="clearWalletAddress()"
+    />
+  </button> -->
+  <!-- <div *ngIf="this.walletAddress" class="waller-state">
+    <div class="wallet-icon">
+      <img
+        src="../../../../assets/images/icons/wallet-state.svg"
+        class="img-fluid"
+        alt="wallet"
+      />
+    </div>
+    <span class="eth_value">0.9876 ETH</span>
+    <span class="acc_eth_id">Ox123...7888{{ this.formatAddress }}</span>
+  </div> -->
+  <div *ngIf="this.walletAddress" class="btn-group">
+    <button type="button" class="btn waller-state" data-bs-toggle="dropdown" aria-expanded="false">
+      <div class="wallet-icon">
+        <img
+          src="../../../../assets/images/icons/wallet-state.svg"
+          class="img-fluid"
+          alt="wallet"
+        />
+      </div>
+      <!-- <span class="eth_value">0.9876 ETH</span> -->
+      <span class="acc_eth_id">{{ this.formatAddress }}</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><button class="dropdown-item" (click)="clearWalletAddress()" type="button">Log Out</button></li>
+    </ul>
+  </div>
+</div>
+
+

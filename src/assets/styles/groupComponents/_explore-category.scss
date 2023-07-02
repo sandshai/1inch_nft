@@ -1,0 +1,16 @@
+.explore-categories__slider {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    @include media-min-lg {
+        gap: 2rem;
+    }
+    .w-lg-24 {
+        flex: 1 1 calc(50% - 1rem);
+        width: calc(50% - 1rem);
+        @include media-min-lg {
+            flex: 1 1 calc(25% - 2rem);
+            width: calc(25% - 2rem);
+        }
+    }
+}

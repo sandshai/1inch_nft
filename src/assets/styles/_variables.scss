@@ -1,0 +1,13 @@
+// Light theme colors
+$bg-color-light: #ffffff;
+$text-color-light: #000000;
+
+// Dark theme colors
+$bg-color-dark: #292929;
+$text-color-dark: #ffffff;
+
+// Theme mixin to apply colors based on the current theme
+@mixin theme-colors($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+}

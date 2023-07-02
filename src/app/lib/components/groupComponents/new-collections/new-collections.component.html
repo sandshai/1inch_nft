@@ -1,0 +1,62 @@
+<section class="new-collection-section section">
+  <div class="container-fluid">
+    <div
+      class="section-title__container d-flex justify-content-between align-items-center"
+    >
+      <div class="section-title">
+        <h6 class="text-themewhite title mb-0">New collections</h6>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="chevron-btn-wrapper">
+          <button id="prev" class="btn btn-chevron">
+              <app-svg-icons iconName="leftIcon" className="cursor-pointer"></app-svg-icons>
+          </button>
+          <button id="next" class="btn btn-chevron">
+              <app-svg-icons iconName="rightIcon" className="cursor-pointer"></app-svg-icons>
+          </button>
+        </div>
+        <button class="btn btn-seemore ms-sm-2">
+          <span>See more</span>
+          <app-svg-icons iconName="rightIcon" class="icon" className="cursor-pointer"></app-svg-icons>
+        </button>
+      </div>
+    </div>
+    <div class="row section-top">
+      <div class="new-collection__slider p-0 justify-content-between">
+        <swiper [config]="config" class="p-1">
+          <ng-template swiperSlide>
+            <app-card-badge
+              swiperSlide
+              badgeImageUrl="nc-badge-icon-1"
+              imageUrl="nc-img-1"
+            ></app-card-badge>
+          </ng-template>
+
+          <ng-template swiperSlide>
+            <app-card-badge
+              swiperSlide
+              badgeImageUrl="nc-badge-icon-2"
+              imageUrl="nc-img-2"
+            ></app-card-badge>
+          </ng-template>
+
+          <ng-template swiperSlide>
+            <app-card-badge
+              swiperSlide
+              badgeImageUrl="nc-badge-icon-1"
+              imageUrl="nc-img-3"
+            ></app-card-badge>
+          </ng-template>
+
+          <ng-template swiperSlide>
+            <app-card-badge
+              swiperSlide
+              badgeImageUrl="nc-badge-icon-3"
+              imageUrl="nc-img-4"
+            ></app-card-badge>
+          </ng-template>
+        </swiper>
+      </div>
+    </div>
+  </div>
+</section>

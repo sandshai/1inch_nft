@@ -1,0 +1,237 @@
+<div class="connect-wallet__wrapper" id="connect-wallet__wrapper">
+  <div class="wallet-inner__wrapper py-3 py-xl-4">
+    <div class="header-wallet mb-4 px-2 px-sm-3 px-xl-4">
+      <div class="d-flex border-clr justify-content-between align-items-center">
+        <h6 class="text-themewhite mb-0">Connect Wallet</h6>
+        <div class="close_icon" (click)="closewallet()">
+          <img
+            src="../../../../assets/images/icons/close_icon_white.svg"
+            alt="close-icon"
+            class="img-fluid cursor-pointer"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="wallet-body px-2 px-sm-3 px-xl-4">
+      <div class="wallet-content mb-4">
+        <div class="waller__items_title mb-3 d-flex align-items-center">
+          <div
+            class="rounded_number d-flex justify-content-center align-items-center"
+          >
+            <span>1</span>
+          </div>
+          <div
+            class="form-check wallet_title ms-2 ms-xl-3 d-flex align-items-center"
+          >
+            <input
+              class="form-check-input mt-0"
+              type="checkbox"
+              value=""
+              id="privacy-policy"
+              (change)="checkboxChanged($event)"
+            />
+            <label class="ms-2 form-check-label" for="privacy-policy">
+              I have read and accepted <a href="#">Terms of Service</a> and
+              <a href="#">Privacy Policy</a>
+            </label>
+          </div>
+        </div>
+        <div class="waller__items_title mb-3 d-flex align-items-center">
+          <div
+            class="rounded_number d-flex justify-content-center align-items-center"
+          >
+            <span>2</span>
+          </div>
+          <div class="wallet_title ms-2 ms-xl-3">
+            <h6 class="mb-0">Choose Network</h6>
+          </div>
+        </div>
+      </div>
+      <div class="choose__network mb-4">
+        <div class="waller__icons">
+          <div class="network active">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/nw-icon-1.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">Ethereum</p>
+          </div>
+          <div class="network">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/nw-icon-2.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">BNB Chain</p>
+          </div>
+          <div class="network">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/nw-icon-3.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">Polygon</p>
+          </div>
+          <!-- <div class="network">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/nw-icon-4.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">Optimism</p>
+          </div>
+          <div class="network">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/nw-icon-5.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">Arbitrum</p>
+          </div>
+          <div class="network">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/nw-icon-6.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">Gnosis Chain</p>
+          </div>
+          <div class="network">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/nw-icon-7.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">Avalanche</p>
+          </div>
+          <div class="network">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/nw-icon-8.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">Fantom</p>
+          </div>
+          <div class="network">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/nw-icon-9.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">Aurora</p>
+          </div>
+          <div class="network">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/nw-icon-10.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">Klaytn</p>
+          </div> -->
+        </div>
+      </div>
+      <div class="wallet-content mb-4">
+        <div class="waller__items_title mb-3 d-flex align-items-center">
+          <div
+            class="rounded_number d-flex justify-content-center align-items-center"
+          >
+            <span>3</span>
+          </div>
+          <div class="wallet_title ms-2 ms-xl-3">
+            <h6 class="mb-0">Choose Wallet</h6>
+          </div>
+        </div>
+      </div>
+      <div class="choose__network mb-4">
+        <div class="waller__icons">
+          <div class="network" (click)="invokeWallet()">
+            <div class="nw_icon">
+              <img
+                src="../../../../../assets/images/network_icon/wallet-icon-4.svg"
+                class="img-fluid"
+                alt="network icon"
+              />
+              <img
+                src="../../../../../assets/images/network_icon/selected.svg"
+                class="img-fluid selected_icon"
+                alt="selected"
+              />
+            </div>
+            <p class="mb-0 text-center">Wallet Connect</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

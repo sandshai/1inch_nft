@@ -1,0 +1,57 @@
+.nav-social-icons {
+  display: flex;
+  padding: 0.938rem 1.563rem;
+  @include media-min-xl {
+    display: none;
+  }
+  .social_icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-left: 0.938rem;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.menu-close-icon {
+  padding: 0.5rem;
+  margin-left: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #222836;
+  border-radius: 12px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  @include media-min-md {
+    margin-top: 1rem;
+  }
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    &:hover {
+      path {
+        fill-opacity: 1;
+      }
+    }
+  }
+}
+
+.social__links {
+  gap: 1.25rem;
+  svg {
+    width: 1rem !important;
+    height: 1rem !important;
+    &:hover {
+      path {
+        fill-opacity: 1 !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<div *ngIf="itemsCollections?.length > 0" class="mobile-list-view" id="mobile-list-view">
+    <div class="listOfCollectionCard card" *ngFor="let itemDetail of itemsCollections" (click)="goPage(itemDetail?.token?.tokenId)">
+        <!-- {{itemDetail | json}} -->
+        <div class="card-header">
+            <div class="card-image">
+                <img src="{{ itemDetail?.token?.image }}" class="img-fluid" alt="card image">
+            </div>
+            <div class="card-title_wrapper d-flex align-items-start">
+                <div class="card-title__details">
+                    <h6 class="mb-1">{{ itemDetail?.token?.name }}</h6>
+                    <span class="rarity"># {{ itemDetail?.token?.tokenId }}</span>
+                </div>
+                <div class="cart-btn">
+                    <img src="../../../../../assets/images/icons/cart-icon.svg" class="img-fluid" alt="cart">
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-0 py-2">
+            <div class="nft-details">
+                <div class="nft_detail">
+                    <p class="mb-0 title">Price</p>
+                    <div class="value">
+                        <p class="mb-0 value">{{
+                            itemDetail?.market?.floorAsk?.price?.amount?.decimal
+                        }}</p>
+                        <img src="../../../../../assets/images/icons/activity_diamond.svg" class="img-fluid" alt="diamond">
+                    </div>
+                </div>
+                <div class="nft_detail">
+                    <p class="mb-0 title">On</p>
+                    <div class="value">
+                        <img src="{{ itemDetail?.market?.floorAsk?.source?.icon }}" class="img-fluid on_img" alt="icon">
+                    </div>
+                </div>
+                <div class="nft_detail">
+                    <p class="mb-0 title">Listed</p>
+                    <div class="value">
+                        <p class="mb-0 value">2 D ago</p>
+                    </div>
+                </div>
+                <div class="nft_detail">
+                    <p class="mb-0 title">Seller</p>
+                    <div class="value">
+                        <p class="mb-0 value">{{
+                            formatAddress(itemDetail?.token?.owner)
+                          }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

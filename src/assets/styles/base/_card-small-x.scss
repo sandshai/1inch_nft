@@ -1,0 +1,171 @@
+.small-x-card {
+  border: none !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  @include media-min-lg {
+    padding: 0.5rem;
+    border-radius: 1.25rem;
+    &:hover {
+      background-color: var(---inch-background-color-04) !important;
+    }
+  }
+  @include media-min-xxl {
+    border-radius: 1.5rem;
+  }
+  .sm-card-image {
+    width: 5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+    @include media-min-md {
+      width: 8rem;
+    }
+    @include media-min-alt(1400px) {
+      width: 10rem;
+    }
+    small {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var(--1inch-tc-02);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .image-box {
+      position: relative;
+      z-index: 1;
+      &::before {
+        border-radius: 1rem;
+        content: "";
+        z-index: -2 !important;
+        position: absolute;
+        left: -1px;
+        right: -1px;
+        top: -1px;
+        bottom: -1px;
+        background: linear-gradient(178.39deg, #434343 0%, rgba(33, 33, 33, 0) 83.3%);
+        @include media-min-md {
+          border-radius: 1.25rem;
+        }
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        border-radius: 1rem;
+        background: var(--1inch-cbc-02);
+        @include media-min-md {
+          border-radius: 1.25rem;
+        }
+      }
+      img {
+        margin: auto 0;
+        width: 3.75rem !important;
+        height: 3.75rem !important;
+        border-radius: 1rem;
+        aspect-ratio: 1/1;
+        @include media-min-md {
+          border-radius: 1.25rem;
+          width: 5.5rem !important;
+          height: 5.5rem !important;
+        }
+        @include media-min-alt(1400px) {
+          width: 7.5rem !important;
+          height: 7.5rem !important;
+        }
+      }
+    }
+  }
+  .sm-card-body {
+    width: calc(100% - 5.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    @include media-min-md {
+      width: calc(100% - 8rem);
+    }
+    @include media-min-alt(1400px) {
+      width: calc(100% - 10rem);
+    }
+    .sm-card-title {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      .title {
+        font-size: 1rem;
+        line-height: 1.625rem;
+        font-weight: 500;
+        max-width: calc(100% - 1.3rem);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        @include media-min-sm {
+          font-size: 1.25rem;
+          line-height: 1.5rem;
+        }
+      }
+      svg {
+        width: 1rem !important;
+        height: 1rem !important;
+      }
+    }
+    .bit-detail-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      @include media-min-alt(1400px) {
+        gap: 0.5rem;
+      }
+      .bit-detail {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        span {
+          white-space: nowrap;
+          font-weight: 300;
+          font-size: 0.8125rem;
+          line-height: 1rem;
+          @include media-min-sm {
+            font-size: 1rem;
+            line-height: 1.625rem;
+          }
+          &.tc-1 {
+            color: var(--1inch-tc-02);
+          }
+          &.tc-2 {
+            font-weight: 500 !important;
+            color: var(--1inch-tc-01);
+          }
+        }
+        img {
+          width: 1rem !important;
+          height: 1rem !important;
+        }
+      }
+    }
+    span {
+      font-size: 0.813rem;
+      font-weight: 300;
+      line-height: 1;
+      @include media-min-sm {
+        font-size: 1rem;
+        line-height: 1.625rem;
+      }
+      &.positive {
+        color: $theme-clr-increment !important;
+      }
+      &.negative {
+        color: $theme-clr-decrement !important;
+      }
+    }
+  }
+}

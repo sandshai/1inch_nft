@@ -1,0 +1,78 @@
+<div class="position-relative img-border">
+  <div
+  class="card bg-transparent border-0 large-card"
+  routerLink="collection/ethereum/{{ bannerData[0]?.id }}"
+  >
+    <img
+      src="{{ bannerData[0]?.image }}"
+      class="img-fluid card-image"
+      alt="card image"
+    />
+
+    <div class="card-body bg-transparent overflow-hidden position-absolute">
+      <div class="row m-0">
+        <div class="col-xl-10 col-xxl-9 p-0">
+          <div class="card-title mb-2 d-flex align-items-center">
+            <h5 class="title mb-0">{{ bannerData[0]?.name }}</h5>
+            <img
+              src="../../../../assets/images/icons/verified.svg"
+              class="img-fluid"
+              alt="verified"
+            />
+          </div>
+          <p class="desc mb-1">
+            {{ bannerData[0]?.description }}
+          </p>
+          <div class="card-details d-flex align-items-center justify-content-between justify-content-sm-start">
+            <div class="detail d-flex flex-column flex-sm-row align-items-sm-center">
+              <div class="text-o order-2 order-sm-1">
+                <p class="mb-0 text-lite-white">
+                  {{ bannerData[0]?.tokenCount }}
+                </p>
+              </div>
+              <div class="text-o order-1 order-sm-2">
+                <p class="mb-0">Items</p>
+              </div>
+            </div>
+            <div class="detail d-flex flex-column flex-sm-row align-items-sm-center">
+              <div class="text-o">
+                <p class="mb-0">1D Vol.</p>
+              </div>
+              <div class="text-wi d-flex align-items-center">
+                <h6 class="mb-0">{{ bannerData[0]?.volume["1day"] | numberShorten }}</h6>
+                <img
+                  src="../../../../../assets/images/icons/activity_diamond.svg"
+                  class="img-fluid"
+                  alt="icon"
+                />
+              </div>
+            </div>
+            <div class="detail d-flex flex-column flex-sm-row align-items-sm-center">
+              <div class="text-o">
+                <p class="mb-0">Floor</p>
+              </div>
+              <div class="text-wi d-flex align-items-center">
+                <h6 class="mb-0">
+                  {{ bannerData[0]?.floorAsk?.price?.amount?.decimal | numberShorten }}
+                </h6>
+                <img
+                  src="../../../../../assets/images/icons/activity_diamond.svg"
+                  class="img-fluid"
+                  alt="icon"
+                />
+              </div>
+            </div>
+            <div class="detail d-flex flex-column flex-sm-row align-items-sm-center">
+              <div class="text-o">
+                <p class="mb-0">Owners</p>
+              </div>
+              <div class="text-wi d-flex align-items-center">
+                <h6 class="mb-0">224</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

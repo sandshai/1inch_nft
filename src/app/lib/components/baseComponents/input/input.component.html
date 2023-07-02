@@ -1,0 +1,13 @@
+<div class="form-group {{ g_class }}">
+  <label *ngIf="labelText" for="{{ i_id }}">{{ labelText }}</label>
+  <input
+    type="text"
+    class="form-control {{ i_class }}"
+    placeholder="{{ i_placeholder }}"
+    name="{{ i_name }}"
+    id="{{ i_id }}"
+    value="{{ this.currentValue }}"
+    #max
+    (keyup)="getValue(max.value)"
+  />
+</div>

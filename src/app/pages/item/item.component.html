@@ -1,0 +1,227 @@
+<section class="item-page__wrapper" id="item-page__wrapper">
+  <div class="item-page-banner mb-5">
+    <div class="container-fluid px-lg-5">
+      <div class="row m-0">
+        <div class="col-md-7 p-0 mb-md-0 pe-md-2 pe-xl-3">
+          <div class="i-details__wrapper position-relative">
+            <div class="item-details">
+              <div class="item-name d-flex align-items-center mb-4">
+                <img
+                  src="../../../assets/images/icons/left-arrow.svg"
+                  class="img-fluid arrow-img cursor-pointer"
+                  alt="icon"
+                  (click)="
+                    goToPreviousPage(this.collectionName, this.collectionId)
+                  "
+                />
+                <h6 class="mb-0">
+                  {{ itemDetails[0]?.token?.collection?.name }}
+                </h6>
+                <img
+                  src="../../../assets/images/icons/verified.svg"
+                  class="img-fluid verify-img"
+                  alt="icon"
+                />
+              </div>
+              <div class="collection_desc mt-3">
+                <p class="mb-0">{{ itemDetails[0]?.token?.description }}</p>
+              </div>
+              <div
+                class="d-flex mt-3 justify-content-between align-items-center"
+              >
+                <div class="i-social-icon d-flex align-items-center">
+                  <div class="icon cursor-pointer">
+                    <img
+                      src="../../../assets/images/collection-page-image/social-icons/Social_links_1.svg"
+                      class="img-fluid"
+                      alt="socia link"
+                    />
+                  </div>
+                  <div class="icon cursor-pointer">
+                    <img
+                      src="../../../assets/images/collection-page-image/social-icons/Social_links_4.svg"
+                      class="img-fluid"
+                      alt="socia link"
+                    />
+                  </div>
+                </div>
+                <div class="d-flex align-items-center i-social__share-link">
+                  <button class="btn btn-transparent">
+                    <img
+                      src="../../../assets/images/icons/star.svg"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </button>
+                  <button class="btn btn-transparent">
+                    <img
+                      src="../../../assets/images/icons/share.svg"
+                      class="img-fluid"
+                      alt="share icon"
+                    />
+                  </button>
+                  <button class="btn btn-transparent">
+                    <img
+                      src="../../../assets/images/icons/i-left.svg"
+                      class="img-fluid"
+                      alt="plus icon"
+                    />
+                  </button>
+                  <button class="btn btn-transparent">
+                    <img
+                      src="../../../assets/images/icons/i-right.svg"
+                      class="img-fluid"
+                      alt="share icon"
+                    />
+                  </button>
+                </div>
+              </div>
+              <div *ngIf="mobDeviceImage" class="Nft-image mt-4">
+                <img
+                  src="{{ itemDetails[0]?.token?.image }}"
+                  class="img-fluid w-100"
+                  alt="img"
+                />
+              </div>
+            </div>
+            <div class="i-sale__details">
+              <div class="i-details">
+                <div class="details-card">
+                  <div class="title">
+                    <p class="mb-0">Last sale</p>
+                  </div>
+                  <div class="value">
+                    <p class="mb-0">224</p>
+                    <img
+                      src="../../../assets/images/icons/activity_diamond.svg"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </div>
+                </div>
+                <div class="details-card">
+                  <div class="title">
+                    <p class="mb-0">Top bid</p>
+                  </div>
+                  <div class="value">
+                    <p class="mb-0">1.17</p>
+                    <img
+                      src="../../../assets/images/icons/activity_diamond.svg"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </div>
+                </div>
+                <div class="details-card">
+                  <div class="title">
+                    <p class="mb-0">Rarity</p>
+                  </div>
+                  <div class="value">
+                    <p class="mb-0">
+                      #{{ itemDetails[0]?.token?.rarityRank }}
+                      <img
+                        src="../../../assets/images/icons/activity_diamond.svg"
+                        class="img-fluid"
+                        alt="icon"
+                      />
+                    </p>
+                  </div>
+                </div>
+                <div class="details-card">
+                  <div class="title">
+                    <p class="mb-0">Collection floor</p>
+                  </div>
+                  <div class="value">
+                    <p class="mb-0">2.24K</p>
+                    <img
+                      src="../../../assets/images/icons/activity_diamond.svg"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </div>
+                </div>
+                <div class="details-card">
+                  <div class="title">
+                    <p class="mb-0">ID</p>
+                  </div>
+                  <div class="value">
+                    <p class="mb-0">{{ itemDetails[0]?.token?.tokenId }}</p>
+                    <img
+                      src="../../../assets/images/icons/activity_diamond.svg"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sc_ids d-flex align-items-center">
+              <div class="seller__id id_card d-flex align-items-center">
+                <div class="id-img">
+                  <img
+                    src="../../.../../../assets/images/graph-icon/profile-3.png"
+                    class="img-fluid w-100"
+                    alt="icon"
+                  />
+                </div>
+                <div class="id-content">
+                  <p class="mb-0 name">Seller</p>
+                  <span>0xA858…2Ef1</span>
+                </div>
+              </div>
+              <div class="creator__id id_card d-flex align-items-center">
+                <div class="id-img">
+                  <img
+                    src="../../.../../../assets/images/graph-icon/profile-4.png"
+                    class="img-fluid w-100"
+                    alt="icon"
+                  />
+                </div>
+                <div class="id-content">
+                  <p class="mb-0 name">Creator</p>
+                  <span>0xA858…2Ef1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid px-lg-5">
+    <div class="row m-0">
+      <div class="col-md-7 p-0 pe-md-2 pe-xl-3">
+        <div class="accordion" id="item-graphs">
+          <app-traits is_show="true"></app-traits>
+          <app-activity-graph
+            is_show="true"
+            [activity]="this.activityDetails"
+            (messageEvent)="receiveMessage($event)"
+            [dataAvailable]="this.hasData"
+            [pagination]="this.pagination"
+            (loadMoreEvent)="receiveLoadMoreStatus($event)"
+          ></app-activity-graph>
+          <app-item-details
+            is_show="true"
+            [c_address]="this.formatChainAddress"
+            [token_id]="tokenId"
+            [chain]="this.collectionName"
+          ></app-item-details>
+        </div>
+      </div>
+      <div class="col-md-5 p-0 ps-md-2 ps-xl-3">
+        <app-item-profile
+        (img_url)="previewFun($event)"
+        [mdImage]="this.mdDeviceImage"
+        [itemDetail]="this.itemDetails"
+        nftName="{{ itemDetails[0]?.token?.collection?.name }}"
+        ></app-item-profile>
+      </div>
+    </div>
+  </div>
+</section>
+<app-image-preview
+  *ngIf="is_preview"
+  [url]="imageUrl"
+  (is_close_preview_image)="closePreviewWarpper($event)"
+></app-image-preview>

@@ -1,0 +1,132 @@
+<div class="filter-wrapper mt-lg-5" id="c_filter-wrapper">
+  <div class="filter-header_wrapper d-lg-none p-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <h4>Filter</h4>
+      <div class="close_icon" (click)="closeFilter()">
+        <img
+          src="../../../../../assets/images/icons/close_icon.svg"
+          class="img-fluid"
+          alt="close"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="filter-inner__wrapper">
+    <div class="d-flex justify-content-between px-3 py-2">
+      <p class="mb-0">Buy now</p>
+      <app-taggle-switch t_id="buy_now"></app-taggle-switch>
+    </div>
+    <div class="d-flex justify-content-between px-3 mt-3 py-2">
+      <p class="mb-0">Buy Bit</p>
+      <app-taggle-switch t_id="bit_now"></app-taggle-switch>
+    </div>
+    <div class="accordion mt-2" id="filterAccordion">
+      <div class="accordion-item bg-transparent border-0">
+        <h2 class="accordion-header px-3" id="filter_2">
+          <button
+            class="accordion-button collapsed px-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#filter_Collapse_2"
+            aria-expanded="false"
+            aria-controls="filter_Collapse_2"
+          >
+            <div
+              class="d-flex justify-content-between w-100 align-items-center"
+            >
+              <p class="mb-0">Price range</p>
+            </div>
+          </button>
+        </h2>
+        <div
+          id="filter_Collapse_2"
+          class="accordion-collapse collapse"
+          aria-labelledby="filter_2"
+        >
+          <div class="accordion-body px-0">
+            <div class="range-inputs">
+              <div
+                class="price-range-input d-flex align-items-center justify-content-between"
+              >
+                <app-input
+                  class="w-input"
+                  g_class="filter-input"
+                  i_placeholder="Min"
+                  i_id="Min"
+                ></app-input>
+                <span class="text-center">to</span>
+                <app-input
+                  class="w-input"
+                  g_class="filter-input"
+                  i_placeholder="Max"
+                  i_id="Max"
+                ></app-input>
+              </div>
+              <div class="chain">
+                {{ this.collectionName === "ethereum" ? "Eth" : "Pol" }}
+              </div>
+              <app-button id="apply_btn" className="btn-apply" i_id="apply">
+                Apply
+              </app-button>
+              <app-button id="apply_btn" className="btn-reset" i_id="reset">
+                Reset
+              </app-button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="b_line"></div>
+      <div
+        class="accordion-item bg-transparent border-0"
+        *ngFor="let list of collectionList; let i = index"
+      >
+        <h2 class="accordion-header px-3" id="filter_1">
+          <button
+            class="accordion-button collapsed px-0"
+            type="button"
+            data-bs-toggle="collapse"
+            aria-expanded="false"
+            attr.data-bs-target="#filterCollapse{{ i }}"
+            attr.aria-controls="filterCollapse{{ i }}"
+          >
+            <div
+              class="d-flex justify-content-between w-100 align-items-center"
+            >
+              <p class="mb-0">{{ list.key }}</p>
+              <span class="me-2 d-none">{{ list?.count }}</span>
+            </div>
+          </button>
+        </h2>
+        <div
+          id="filterCollapse{{ i }}"
+          class="accordion-collapse collapse"
+          aria-labelledby="filter"
+        >
+          <div class="accordion-body px-0">
+            <div
+              class="fliter_checkbox_wrapper px-3"
+              *ngFor="let listData of list.values; let ind = index"
+            >
+              <app-checkbox
+                i_id="{{ i }}_input_id_{{ ind }}"
+                label="{{ listData.value }}"
+                currentKey="{{ list?.key }}"
+              >
+                {{ listData.value }}</app-checkbox
+              >
+              <span class="text-grayblue"> {{ listData.count }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="filter-footer_wrapper w-100 d-lg-none">
+    <div
+      class="d-flex align-items-center justify-content-center filter-inner-footer"
+    >
+      <button class="btn reset-btn">Reset</button>
+      <button class="btn filter-btn">Apply</button>
+    </div>
+  </div>
+</div>

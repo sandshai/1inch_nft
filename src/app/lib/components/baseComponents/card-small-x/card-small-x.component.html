@@ -1,0 +1,39 @@
+<div class="small-x-card">
+  <div class="sm-card-image">
+    <small>{{ index + 1 }}</small>
+    <div class="image-box">
+      <img
+      src="{{
+      item?.image ||
+        '../../../../assets/images/trending-collections/tdc-1.png'
+      }}"
+      class="img-fluid w-100"
+      alt="card image"
+      />
+    </div>
+  </div>
+  <div class="sm-card-body">
+    <div class="sm-card-title">
+      <h5 class="title mb-0 text-themewhite">{{ item?.name }}</h5>
+      <app-svg-icons *ngIf="item?.openseaVerificationStatus === 'verified'" iconName="verifiedIcon"></app-svg-icons>
+    </div>
+    <div class="bit-detail-wrapper">
+      <div class="bit-detail">
+        <span class="tc-1">{{sortByShortCut(sortedDay)}} Vol.</span>
+        <span class="tc-2">{{ item?.volume[sortedDay] | numberShorten }}</span>
+        <img src="{{ baseUrl }}redirect/currency/{{ currencyAddress }}/icon/v1" class="img-fluid" alt="icon">
+      </div>
+      <div class="bit-detail">
+        <span class="tc-1">Floor.</span>
+        <span class="tc-2">{{ item?.floorSale[sortedDay] | numberShorten }}</span>
+        <img src="{{ baseUrl }}redirect/currency/{{ currencyAddress }}/icon/v1" class="img-fluid" alt="icon">
+      </div>
+    </div>
+    <span *ngIf="(item?.volumeChange[sortedDay] - 1) * 100 > 0" class="positive"
+      >+{{ ((item?.volumeChange[sortedDay] - 1) * 100).toFixed(2) }}%</span
+    >
+    <span *ngIf="(item?.volumeChange[sortedDay] - 1) * 100 < 0" class="negative"
+      >{{ ((item?.volumeChange[sortedDay] - 1) * 100).toFixed(2) }}%</span
+    >
+  </div>
+</div>

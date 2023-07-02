@@ -1,0 +1,98 @@
+.large-card {
+  cursor: pointer;
+  border-radius: 1.5rem !important;
+  overflow: hidden;
+  @include media-min-lg {
+    height: 33.75rem !important;
+  }
+  .card-image {
+    border-radius: 1.5rem;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  .card-body {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(6, 7, 10, 0) 0%,
+      rgba(6, 7, 10, 0.517483) 24.48%,
+      #06070a 100%
+    );
+    .card-title {
+      gap: 0.3rem;
+      .title {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        color: $theme-clr-litewhite;
+        font-weight: 600;
+        max-width: calc(100% - 1.6rem);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        @include media-min-sm {
+          font-size: 2rem;
+          line-height: 2.063rem;
+        }
+      }
+      img {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+    }
+
+    .desc {
+      color: $theme-clr-gray;
+      font-weight: 300;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      @include line-break(2,ellipsis);
+      @include media-min-sm {
+        font-size: 1rem;
+        line-height: 1.625rem;
+      }
+    }
+    .card-details {
+        gap: 1rem;
+        .detail {
+          gap: 0.5rem;
+          .text-o {
+            p {
+              color: $theme-clr-grayblue;
+              font-size: 1rem;
+              font-weight: 300;
+              line-height: 1.625rem;
+              @include media-max-sm {
+                font-size: 0.8125rem;
+                line-height: 1rem;
+              }
+              &.text-lite-white {
+                @include media-max-sm {
+                  font-weight: 500 !important;
+                  color: $theme-clr-litewhite !important;
+                }
+              }
+            }
+          }
+          .text-wi {
+            gap: 0.2rem;
+            h6 {
+              font-weight: 500;
+              font-size: 1rem;
+              line-height: 1.625rem;
+              color: $theme-clr-litewhite;
+              @include media-max-sm {
+                font-size: 0.8125rem;
+                line-height: 1rem;
+              }
+            }
+            img {
+              width: 0.75rem !important;
+              height: 0.75rem !important;
+            }
+          }
+        }
+    }
+  }
+}

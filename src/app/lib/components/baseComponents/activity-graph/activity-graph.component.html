@@ -1,0 +1,207 @@
+<div class="accordion-item bg-transparent">
+  <div class="accordion-header" id="activity">
+    <button
+      class="accordion-button"
+      [class.collapsed]="is_show === 'false' || is_show === undefined"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#activity-content"
+      aria-expanded="false"
+      aria-controls="activity-content"
+    >
+      <img
+        src="../../../assets/images/graph-icon/activity_graph.svg"
+        class="img-fluid me-2 imgs-1halfrem opened_icon"
+        alt="chart"
+      />
+      <img
+        src="../../../assets/images/graph-icon/not_open_activity_graph.svg"
+        class="img-fluid me-2 not_open_icon imgs-1halfrem"
+        alt="chart"
+      />
+      Activity
+      <div class="badges d-none d-sm-flex">
+        <span class="badge">Last Sale: 0.051 ETH 12 days ago</span>
+      </div>
+    </button>
+  </div>
+  <div
+    id="activity-content"
+    class="accordion-collapse collapse"
+    [class.show]="is_show === 'true'"
+    aria-labelledby="activity"
+  >
+    <div class="accordion-body p-0">
+      <div class="section-title___wrapper">
+        <button
+          type="button"
+          class="btn section-title__button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span>{{ this.currentType ? this.currentType : "sale" }}</span>
+          <img
+            src="../../../../../assets/images/icons/down.svg"
+            class="img-fluid"
+            alt="icon"
+          />
+        </button>
+
+        <ul class="dropdown-menu">
+          <li *ngFor="let type of objectKeys(types)">
+            <button
+              class="dropdown-item"
+              type="button"
+              (click)="sendTypes(type)"
+            >
+              {{ type }}
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="activity-table mt-4">
+        <div class="table-responsive">
+          <table class="table table-hover table-borderless">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Price</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="activity?.length > 0">
+              <tr *ngFor="let activityDetails of activity">
+                {{
+                  formatFromAddress(activityDetails?.fromAddress)
+                }}
+                {{
+                  formatToChainAddress(activityDetails?.toAddress)
+                }}
+                {{
+                  getDaysAgo(activityDetails?.createdAt)
+                }}
+                {{
+                  getCurrentType(activityDetails?.type )
+                }}
+                <td>
+                  <div class="evnt_detail">
+                    <div class="icon">
+                      <img
+                        src="../../../../../assets/images/graph-icon/not_open_sales.svg"
+                        class="img-fluid"
+                        alt="icon"
+                      />
+                    </div>
+                    <p class="mb-0 {{setClassName}}">
+                      {{ activityDetails?.type }}
+                    </p>
+                  </div>
+                </td>
+                <td>
+                  <div class="price">
+                    <p class="mb-0 text-litewhite">
+                      {{ activityDetails?.price?.amount?.decimal }}
+                    </p>
+                    <img
+                      src="../../../../../assets/images/icons/diamond.svg"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </div>
+                </td>
+                <td>
+                  <div class="from">
+                    <img
+                      src="../../../../../assets/images/graph-icon/profile-1.png"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                    <p class="mb-0">
+                      {{ this.formatChainAddress }}
+                    </p>
+                  </div>
+                </td>
+                <td>
+                  <div class="to">
+                    <img
+                      src="../../../../../assets/images/graph-icon/profile-2.png"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                    <p class="mb-0">{{ this.formatToAddress }}</p>
+                  </div>
+                </td>
+                <td>
+                  <div class="time">
+                    <p class="mb-0 text-gray">{{ this.daysAgo }} days ago</p>
+                    <img
+                      src="../../../../../assets/images/icons/copy.svg"
+                      class="img-fluid"
+                      alt="icon"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div
+            class="d-flex justify-content-center"
+            *ngIf="this.pagination && activity?.length !== 0"
+          >
+            <button class="btn btn-viewmore my-2" (click)="loadMore(true)">
+              View More
+            </button>
+          </div>
+        </div>
+
+        <div class="activity-details-wrapper d-sm-none" *ngIf="activity?.length > 0">
+          <div class="activity-details" *ngFor="let activityDetails of activity">
+            {{
+              formatFromAddress(activityDetails?.fromAddress)
+            }}
+            {{
+              formatToChainAddress(activityDetails?.toAddress)
+            }}
+            {{
+              getDaysAgo(activityDetails?.createdAt)
+            }}
+              <div class="icon">
+                  <img src="../../../../../assets/images/graph-icon/not_open_sales.svg" class="img-fluid" alt="icon">
+              </div>
+              <div class="detail">
+                  <div class="title-wrapper">
+                      <p class="mb-0 {{setClassName}}">{{ activityDetails?.type }}</p>
+                      <div class="value">
+                          <p class="mb-0">{{ activityDetails?.price?.amount?.decimal }}</p>
+                          <img src="../../../../../assets/images/icons/activity_diamond.svg" class="img-fluid" alt="icon">
+                      </div>
+                  </div>
+                  <div class="other-details">
+                      <div class="time">
+                          <p class="mb-0">{{ this.daysAgo }} min ago</p>
+                          <img src="../../../../../assets/images/icons/copy.svg" class="img-fluid" alt="icon">
+                      </div>
+                      <p class="mb-0">From  {{ this.formatChainAddress }}</p>
+                      <p class="mb-0">To  {{ this.formatToAddress }}</p>
+                  </div>
+              </div>
+          </div>
+          <div
+          class="d-flex justify-content-center"
+            *ngIf="this.pagination && activity?.length !== 0"
+          >
+            <button class="btn btn-viewmore my-2" (click)="loadMore(true)">
+              View More
+            </button>
+          </div>
+        </div>
+        <div *ngIf="activity?.length === 0" class="no-data">
+          No Data Found
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

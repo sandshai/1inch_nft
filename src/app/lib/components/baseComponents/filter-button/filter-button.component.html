@@ -1,0 +1,47 @@
+<div class="c___filter-button border-rounded-12" *ngIf="mdDevice">
+    <button
+        class="btn btn-trd border-0"
+    >
+        1H
+    </button>
+    <button
+        class="btn btn-trd border-0"
+        [class.active]="this.sortBy === this.sort['1day']"
+        (click)="this.filterByDayFun(this.sort['1day'], '1day')"
+    >
+        1D
+    </button>
+    <button
+        class="btn btn-trd border-0"
+        [class.active]="this.sortBy === this.sort['7day']"
+        (click)="this.filterByDayFun(this.sort['7day'], '7day')"
+    >
+        1W
+    </button>
+    <button
+        class="btn btn-trd border-0"
+        [class.active]="this.sortBy === this.sort['30day']"
+        (click)="this.filterByDayFun(this.sort['30day'], '30day')"
+    >
+        1M
+    </button>
+    <button
+    class="btn btn-trd border-0"
+    >
+        All
+    </button>
+</div>
+
+<div class="c__btn-group" *ngIf="mobDevice">
+    <button type="button" class="btn btn-ftr" data-bs-toggle="dropdown" aria-expanded="false">
+      <span>All</span>
+      <img src="../../../../../assets/images/icons/down.svg" class="img-fluid" alt="icon">
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><button class="dropdown-item" type="button">1H</button></li>
+      <li><button class="dropdown-item" type="button">1D</button></li>
+      <li><button class="dropdown-item" type="button">1W</button></li>
+      <li><button class="dropdown-item" type="button">1M</button></li>
+      <li><button class="dropdown-item" type="button">All</button></li>
+    </ul>
+</div>

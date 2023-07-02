@@ -1,0 +1,55 @@
+.card-md {
+    min-height: 14rem;
+    background-size: cover !important;
+    background-position: center !important;
+    border-radius: 1.5rem !important;
+    &.bg-art {
+        background: url("../../images/explore-category/explore-category-img-1.svg");
+    }
+    &.bg-utility {
+        background: url("../../images/explore-category/explore-category-img-2.svg");
+    }
+    &.bg-gaming {
+        background: url("../../images/explore-category/explore-category-img-3.svg");
+    }
+    &.bg-membership {
+        background: url("../../images/explore-category/explore-category-img-4.svg");
+    }
+    &::before{
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        z-index: -2;
+        border-radius: 1.5rem;
+        background: linear-gradient(178.39deg, #434343 0%, rgba(33, 33, 33, 0) 83.3%);
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        border-radius: 1.5rem;
+        background: $card-overlay-black;
+    }
+    .card-img {
+        // &::before {
+        //     position: absolute;
+        //     content: '';
+        //     top: 0px;
+        //     right: 0px;
+        //     bottom: 0px;
+        //     left: 0px;
+        //     background: radial-gradient(40.06% 37.39% at 43.48% 26.48%, rgba(75, 52, 221, 0.4) 0%, rgba(89, 36, 121, 0) 100%)    
+        // }
+        // img {
+        //     width: 5.313rem;
+        // }
+    }
+  
+}

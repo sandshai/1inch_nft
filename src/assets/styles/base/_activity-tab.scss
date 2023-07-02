@@ -1,0 +1,80 @@
+.activity-tab__wrapper {
+    .activity-filter_container {
+        .btn-group {
+            button {
+                border-radius: 0.5rem;
+                font-size: 0.813rem;
+            }
+        }
+        .filter-button {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0.25rem;
+            background-color: #10141C !important;
+            box-shadow: 0px 0px 0.25rem rgba(0, 0, 0, 0.1), 0px 0.01rem 0.125rem rgba(0, 0, 0, 0.25);
+            border-radius: 0.75rem;
+            height: 2rem;
+            button {
+                height: 1.5rem;
+                padding: 0.313rem 0;
+                width: 1.8rem;
+                border: 0;
+                outline: 0;
+                display: inline-block;
+                font-size: 0.713rem;
+                line-height: 0.938rem;
+                text-transform: uppercase;
+                border-radius: 0.5rem;
+                color: $theme-clr-litewhite;
+                @include media-min-md {
+                    width: 2.25rem;
+                    font-size: 0.813rem;
+                }
+               
+                &.active,&:active {
+                background: #2B374A;
+                color: $theme-clr-litewhite;
+                }
+            }
+        }
+    }
+    .user__activities {
+        .activity-card {
+            .card-img {
+                width: 3.5rem;
+                height: 3.5rem;
+                margin-right: 1rem;
+                border-radius: 0.875rem;
+                img {
+                    border-radius: 0.875rem;
+                }
+            }
+            .card-details {
+                width: calc(100% - 4.5rem);
+                .text-gray {
+                    color: $theme-clr-grayblue !important;
+                }
+                .collection__id {
+                    img {
+                        width: 0.5rem !important;
+                        height: 0.75rem !important;
+                    }
+                    h6 {
+                        color: $theme-clr-litewhite;
+                    }
+                }
+               
+                .status {
+                    img {
+                        width: 0.75rem !important;
+                        height: 0.75rem !important;
+                    }
+                    .sold {
+                        color: #21C187 !important;
+                    }
+                }
+            }
+        }
+    }
+}

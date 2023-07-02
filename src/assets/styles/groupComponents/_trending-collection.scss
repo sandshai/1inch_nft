@@ -1,0 +1,15 @@
+.trending-collection {
+    #trend-collection__wrapper {
+        .trend-collection__item {
+            margin-bottom: 1rem;
+            &:nth-child(7),&:nth-child(8),&:nth-child(9) {
+                margin-bottom: 0px;
+            }
+            @include media-max-alt(700px) {
+                &:nth-child(6),&:nth-child(7),&:nth-child(8),&:nth-child(9) {
+                    display: none !important;
+                }
+            }
+        }
+    }
+}

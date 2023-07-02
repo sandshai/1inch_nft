@@ -1,0 +1,66 @@
+<div class="collection-card cursor-pointer">
+  <div class="card-image">
+    <div class="card-icon">
+      <div
+        class="rounded-box source-wrapper"
+        *ngIf="item?.market?.floorAsk?.source?.icon"
+      >
+        <img
+          src="{{ item?.market?.floorAsk?.source?.icon }}"
+          class="img-fluid w-100"
+          alt="tick"
+        />
+      </div>
+      <div class="rounded-box">
+        <input type="checkbox" name="" class="d-none" id="" />
+        <app-svg-icons iconName="tickIcon" class="tickIcon"></app-svg-icons>
+      </div>
+    </div>
+    <div class="img-stroke">
+      <img
+      src="{{ item?.token?.image }}"
+      class="img-fluid collection_img w-100"
+      alt="collection_img"
+      (click)="goToPage()"
+      />
+    </div>
+    <div class="btn-wrapper source-wrapper">
+      <button
+        class="btn add_btn d-flex justify-content-center align-items-center"
+      >
+        Add to bag
+      </button>
+    </div>
+  </div>
+  <div class="card-body p-0">
+    <div class="details">
+      <div class="c_name">
+        <span class="d-none d-md-block">{{
+          item?.token?.name ? item?.token?.name : "#" + item?.token?.tokenId
+        }}</span>
+        <span class="d-md-none">#{{ item?.token?.tokenId }}</span>
+      </div>
+      <div class="rarity_rank">
+        <img
+          src="../../../../../assets/images/medal.png"
+          alt="rank"
+        />
+        <span>{{ item?.token?.rarityRank }}</span>
+      </div>
+    </div>
+    <div class="details">
+      <div class="price-stats">
+        <span>{{
+          item?.market?.floorAsk?.price?.amount?.decimal | numberShorten
+        }}</span>
+        <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+      </div>
+      <div class="action-wrapper">
+        <button class="btn btn-buy d-none d-md-flex">Buy now</button>
+        <button class="d-md-none btn btn-cart">
+          <app-svg-icons iconName="cartIcon"></app-svg-icons>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

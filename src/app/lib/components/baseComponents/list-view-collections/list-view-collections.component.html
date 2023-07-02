@@ -1,0 +1,103 @@
+<div
+  class="table-view-collection w-100"
+  *ngIf="mdDeviceView"
+  id="table-view-collection"
+>
+  <div class="table-responsive w-100">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>TokenId</th>
+          <th>Rarity</th>
+          <th>Seller</th>
+          <th>On</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="itemCollections?.length > 0">
+        <tr
+          *ngFor="let itemDetail of itemCollections"
+          (click)="goToPage(itemDetail?.token?.tokenId)"
+          class="cursor-pointer"
+        >
+          {{
+            formatAddress(itemDetail?.token?.owner)
+          }}
+          <td>
+            <div class="item d-flex align-items-center">
+              <div class="i_img">
+                <img
+                  src="{{ itemDetail?.token?.image }}"
+                  class="img-fluid"
+                  alt="image"
+                />
+              </div>
+              <div class="content ms-3">
+                <p class="mb-0">{{ itemDetail?.token?.name }}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="rarity"># {{ itemDetail?.token?.tokenId }}</span>
+          </td>
+          <td>
+            <span class="rarity"># {{ itemDetail?.token?.rarityRank }}</span>
+          </td>
+          <td>
+            <span>{{ this.formatChainAddress }}</span>
+          </td>
+
+          <td>
+            <div class="on_img_container">
+              <img
+                src="{{ itemDetail?.market?.floorAsk?.source?.icon }}"
+                class="img-fluid on_image"
+                alt="t_image"
+              />
+            </div>
+          </td>
+          <td>
+            <div class="price_col d-flex align-items-center">
+              <span>{{
+                itemDetail?.market?.floorAsk?.price?.amount?.decimal
+              }}</span>
+              <img
+                src="../../../../../assets/images/icons/activity_diamond.svg"
+                class="img-fluid"
+                alt="diamond"
+              />
+            </div>
+          </td>
+          <td>
+            <div class="card-image">
+              <img
+                src="../../../../../assets/images/icons/cart-icon.svg"
+                class="img-fluid"
+                alt="cart"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="itemCollections?.length === 0" class="no-data">
+      No Data Found
+    </div>
+  </div>
+</div>
+
+<app-card-view-collections
+  class="w-100"
+  *ngIf="mobDeviceView"
+  [itemsCollections]="itemCollections"
+  (dubTokenId)="goToPage($event)"
+></app-card-view-collections>
+
+<div
+  class="d-flex justify-content-center mt-3"
+  *ngIf="this.pagination && itemCollections?.length !== 0"
+>
+  <button class="btn btn-viewmore" (click)="loadMore(true)">View More</button>
+</div>

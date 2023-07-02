@@ -1,0 +1,116 @@
+<div class="colection-list-table-filter-wrapper my-lg-5">
+    <div class="c-filter-header">
+        <h5>Filter</h5>
+        <svg (click) = "closeFilter()" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929Z" fill="#6C86AD"/>
+        </svg> 
+    </div>
+    <div class="filter-inner__wrapper">
+        <div class="d-flex justify-content-between verified_wrapper">
+        <p class="mb-0">Buy now</p>
+            <app-taggle-switch t_id="verified_input"></app-taggle-switch>
+        </div>
+        
+        <div class="accordion mt-4" id="c-list-table-filter">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="price-range">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_range" aria-expanded="true" aria-controls="collapse_range">
+                        Price Range
+                    </button>
+                </h2>
+                <div id="collapse_range" class="accordion-collapse collapse" aria-labelledby="price-range">
+                    <div class="accordion-body">
+                        <div class="range-inputs">
+                            <div class="price-range-input d-flex align-items-center justify-content-between">
+                                <input type="text" class="form-control" placeholder="Min">
+                                <span class="text-center">to</span>
+                                <input type="text" class="form-control" placeholder="Max">
+                            </div>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>ETH</option>
+                                <option value="1">Polygon</option>
+                                <option value="2">ETH</option>
+                            </select>
+                            <button class="btn btn-transparent">
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="valume_1h">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_valume" aria-expanded="true" aria-controls="collapse_valume">
+                        1H Volume
+                    </button>
+                </h2>
+                <div id="collapse_valume" class="accordion-collapse collapse" aria-labelledby="valume_1h">
+                    <div class="accordion-body">
+                        <app-checkbox i_id="1hs_0_to_10">
+                            0 - 10%
+                        </app-checkbox>
+                        <app-checkbox i_id="1hs_10_to_20">
+                            10 - 20%
+                        </app-checkbox>
+                        <app-checkbox i_id="1hs_more_than_20">
+                            More than 20%
+                        </app-checkbox>
+                        <app-checkbox i_id="s_all">
+                            All
+                        </app-checkbox>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading_sale">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesales" aria-expanded="true" aria-controls="collapsesales">
+                        1H Sales
+                    </button>
+                </h2>
+                <div id="collapsesales" class="accordion-collapse collapse" aria-labelledby="heading_sale">
+                    <div class="accordion-body">
+                        <app-checkbox i_id="1hs_0_to_10">
+                            0 - 10%
+                        </app-checkbox>
+                        <app-checkbox i_id="1hs_10_to_20">
+                            10 - 20%
+                        </app-checkbox>
+                        <app-checkbox i_id="1hs_more_than_20">
+                            More than 20%
+                        </app-checkbox>
+                        <app-checkbox i_id="all">
+                            All
+                        </app-checkbox>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingitems">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseitems" aria-expanded="true" aria-controls="collapseitems">
+                        Items
+                    </button>
+                </h2>
+                <div id="collapseitems" class="accordion-collapse collapse" aria-labelledby="headingitems">
+                    <div class="accordion-body">
+                        <app-checkbox i_id="1k_0_to_10">
+                            1K - 5K
+                        </app-checkbox>
+                        <app-checkbox i_id="1k_10_to_20">
+                            5K - 10K
+                        </app-checkbox>
+                        <app-checkbox i_id="1k_more_than_20">
+                            More than 10K
+                        </app-checkbox>
+                        <app-checkbox i_id="k_all">
+                            All
+                        </app-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="c-filter-footer">
+        <button class="btn reset-btn">Reset</button>
+        <button class="btn filter-btn">Apply</button>
+    </div>
+</div>

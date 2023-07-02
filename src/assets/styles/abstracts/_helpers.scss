@@ -1,0 +1,45 @@
+// ==================================
+// ===  Linear Gradient Variable  ===
+// ==================================
+
+$gradients: ();
+// key : linear gradient color
+
+// Gradient Classes
+
+@each $gradient, $value in $gradients {
+  @include bg-gradient(".bg-gradient-#{$gradient}", $value);
+}
+
+$count: 5;
+$width_unit: "%";
+
+@while $count < 100 {
+  .width-#{$count} {
+    width: #{$count}#{$width_unit} !important;
+  }
+
+  $count: $count + 5;
+}
+
+
+$cursor : (
+  pointer : pointer,
+  none : none,
+  wait : wait
+);
+
+@each $name, $value in $cursor {
+  @include cursor(".cursor-#{$name}", $value);
+}
+
+$imgSize : (
+  1rem : 1rem,
+  1halfrem : 1.5rem,
+  2rem : 2rem,
+  3rem : 3rem
+);
+
+@each $class,$val in $imgSize {
+  @include imgSizing(".imgs-#{$class}",$val);
+}

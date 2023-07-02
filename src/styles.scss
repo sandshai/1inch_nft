@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./assets/styles/variables";
+
+@import "./assets/styles/theme";
+
+@import "./assets/styles/abstracts/_abstracts-dir";
+@import "./assets/styles/base/_base-dir";
+@import "./assets/styles/groupComponents/_groupcomponents-dir";
+@import "./assets/styles/reset";
+@import "./assets/styles/typography";
+
+
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+// Set the initial theme to light
+body {
+  @extend .light-theme;
+}
+
+
