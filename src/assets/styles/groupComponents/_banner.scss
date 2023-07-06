@@ -1,5 +1,11 @@
 .banner-section {
   padding-top: 6.438rem !important;
+  @include media-min-md {
+    padding-top: 7.563rem !important;
+  }
+  @include media-min-xl {
+    padding-top: 7.278rem !important;
+  }
   position: relative;
   &::before {
     position: absolute;
@@ -22,9 +28,7 @@
       height: 100%;
     }
   }
-  @include media-min-alt(768px) {
-    padding-top: 7.813rem !important;
-  }
+
   &::after {
     position: absolute;
     z-index: -1;

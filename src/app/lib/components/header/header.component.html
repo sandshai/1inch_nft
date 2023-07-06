@@ -1,8 +1,8 @@
 <header id="header" class="fixed-top">
   <nav class="navbar navbar-expand-md">
-    <div class="container-fluid">
+    <div class="container-fluid c-gp-1">
       <!-- ===== logo ===== -->
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand m-0" href="#">
         <img
           src="../../../../assets/images/1inch_NFT_logo_mobile.svg"
           class="img-fluid logo d-md-none"
@@ -14,82 +14,54 @@
           alt="logo"
         />
       </a>
+
+      <app-header-search
+      id="header-search__field"
+      class="header-search__field align-items-center"
+      *ngIf="mdDevice"></app-header-search>
+
       <div
         class="custom-nav d-flex align-items-center justify-content-end"
         id="custom-nav"
       >
-        <!-- ==== search bar ==== -->
-        <app-header-search
-          id="header-search__field"
-          class="header-search__field align-items-center"
-          *ngIf="mdDevice"
-        ></app-header-search>
-
-        <!-- ==== menus ==== -->
-
-        <app-nav-menus *ngIf="mdDeviceCart"></app-nav-menus>
-
-        <!-- ==== icons ==== -->
-        <div class="icon_wrapper d-flex align-items-center">
-          <app-wallet-button class="d-none d-md-block"></app-wallet-button>
-          <button
-            class="btn menu-btn search-icon-wrapper"
-            (click)="opensearch($event)"
-          >
-            <img
-              src="../../../../assets/images/icons/search_icon.svg"
-              class="img-fluid"
-              alt="search"
-            />
-          </button>
-          <button class="btn menu-btn settings-icon-wrapper d-none d-xl-flex">
-            <img
-              src="../../../../assets/images/icons/settings.svg"
-              class="img-fluid"
-              alt="settings"
-            />
-          </button>
-          <button
-            class="btn menu-btn cart-icon-wrapper"
-            (click)="openCardWrapper()"
-          >
-            <div class="cart-icon position-relative">
-              <img
-                src="../../../../assets/images/icons/card.svg"
-                class="img-fluid"
-                alt="cart"
-              />
-              <!-- <span class="cart-count position-absolute">22</span> -->
-            </div>
-          </button>
-          <button
-            class="btn menu-btn bar_icon-wrapper d-xl-none"
-            (click)="openmenu()"
-          >
-            <app-svg-icons iconName="humburgerIcon" className="cursor-pointer"></app-svg-icons>
-          </button>
-          <button
-            class="btn menu-btn close_icon-wrapper d-none"
-            (click)="closemenu()"
-          >
-            <img
-              src="../../../../assets/images/icons/close_icon.svg"
-              class="img-fluid"
-              alt="settings"
-            />
-          </button>
+       <!-- ==== search bar ==== -->
+        <ul class="navbarNav d-none d-xl-flex" id="navbarNav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Discover</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="collections/ethereum"
+              routerLinkActive="active"
+              >Collections</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My watchlist</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header--icon-wrapper">
+        <app-wallet-button class="d-none d-md-block"></app-wallet-button>
+        <div class="menu-icon d-lg-none" (click)="opensearch($event)">
+          <app-svg-icons iconName="searchIcon" class="icon-width" className="icon-width"></app-svg-icons>
+        </div>
+        <div class="menu-icon d-none d-xl-flex">
+          <app-svg-icons iconName="settingsIcon" class="icon-width" className="icon-width"></app-svg-icons>
+        </div>
+        <div class="menu-icon" (click)="openCardWrapper()">
+          <app-svg-icons iconName="normalCartIcon" class="icon-width" className="icon-width"></app-svg-icons>
+        </div>
+        <div class="menu-icon d-xl-none" (click)="openmenu()">
+          <app-svg-icons iconName="humburgerIcon" class="icon-width" className="icon-width"></app-svg-icons>
         </div>
       </div>
     </div>
   </nav>
 </header>
-<app-cart
-  class="w-100"
-  *ngIf="is_cart"
-  (is_closed)="closeCardWrapper($event)"
-></app-cart>
+
+<app-cart class="w-100" *ngIf="is_cart" (is_closed)="closeCardWrapper($event)"></app-cart>
 <app-header-search *ngIf="mobDevice"></app-header-search>
 <app-wallet class="w-100"></app-wallet>
-<app-nav-menus *ngIf="mobDeviceCart">
-  <app-wallet-button class="d-md-none"></app-wallet-button>
-</app-nav-menus>
+<app-nav-menus *ngIf="mobDeviceCart"></app-nav-menus>

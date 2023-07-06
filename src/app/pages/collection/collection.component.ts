@@ -24,7 +24,6 @@ interface DefaultRouteObject {
 })
 export class CollectionComponent implements OnInit {
   constructor(
-    private _gridhandleservice: GridHandleService,
     private activatedRoute: ActivatedRoute,
     private _crudService: CrudService,
     private _settings: SettingsService,
@@ -62,6 +61,7 @@ export class CollectionComponent implements OnInit {
   values: any = [];
   defaultRouteList: any = {};
   data: DefaultRouteObject[] = [];
+  is_sweep: boolean = false;
 
   categories: Categories = {
     'Price low to high': { sortBy: 'floorAskPrice', sortDirection: 'asc' },
@@ -219,10 +219,15 @@ export class CollectionComponent implements OnInit {
   }
 
   opensweep() {
+    this.is_sweep ? this.is_sweep = false : this.is_sweep = true;
     document.getElementById('sweep-wrapper')?.classList.toggle('open-sweep');
+    let array: any = [];
+    this.passedArrayList(array);
+    this.shared.setSliderInput.emit(0);
   }
 
-  closeSweep() {
+  closeSweep(val: boolean) {
+    this.is_sweep = val;
     document.getElementById('sweep-wrapper')?.classList.remove('open-sweep');
   }
   getCollectionDetails(value?: any) {
@@ -386,5 +391,9 @@ export class CollectionComponent implements OnInit {
 
   setBannerImage(val: any) {
     this.setCollectionBannerImage = val?.banner ? val.banner : val?.image;
+  }
+
+  passedArrayList(value: any) {
+    this.shared.setSliderList(value);
   }
 }

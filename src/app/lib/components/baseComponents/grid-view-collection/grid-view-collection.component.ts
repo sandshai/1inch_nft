@@ -28,6 +28,7 @@ export class GridViewCollectionComponent {
   maxAmount: any;
   pagination: string = '';
   loadMoreStatus: any;
+  selectedList: any;
 
   @Output() messageEvent = new EventEmitter<any>();
   @Output() arrayListEvent = new EventEmitter<string[]>();
@@ -60,6 +61,10 @@ export class GridViewCollectionComponent {
       }
     });
 
+    this.shared.getSliderArrayList().subscribe((array) => {
+      this.selectedList = array;
+      this.handleCheckEvent(this.selectedList);
+    });
     this.collectionName =
       this.activatedRoute.snapshot.paramMap.get(`{{collection}}`);
 
@@ -103,6 +108,13 @@ export class GridViewCollectionComponent {
     });
 
     this.getItemCollections();
+  }
+
+  handleCheckEvent(value: any) {
+    const result = this.itemCollections?.filter((list: any) =>
+      value?.includes(list)
+    );
+    this.selectedList = result;
   }
 
   getItemCollections = (

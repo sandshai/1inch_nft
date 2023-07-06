@@ -12,21 +12,27 @@
         />
       </div>
       <div class="rounded-box">
-        <input type="checkbox" name="" class="d-none" id="" />
+        <input
+          type="checkbox"
+          [checked]="this.checkedValue"
+          name=""
+          class="d-none"
+          id=""
+        />
         <app-svg-icons iconName="tickIcon" class="tickIcon"></app-svg-icons>
       </div>
     </div>
     <div class="img-stroke">
       <img
-      src="{{ item?.token?.image }}"
-      class="img-fluid collection_img w-100"
-      alt="collection_img"
-      (click)="goToPage()"
+        src="{{ item?.token?.image }}"
+        class="img-fluid collection_img w-100"
+        alt="collection_img"
+        (click)="goToPage()"
       />
     </div>
     <div class="btn-wrapper source-wrapper">
       <button
-        class="btn add_btn d-flex justify-content-center align-items-center"
+        class="btn add_btn"
       >
         Add to bag
       </button>
@@ -41,10 +47,7 @@
         <span class="d-md-none">#{{ item?.token?.tokenId }}</span>
       </div>
       <div class="rarity_rank">
-        <img
-          src="../../../../../assets/images/medal.png"
-          alt="rank"
-        />
+        <img src="../../../../../assets/images/medal.png" alt="rank" />
         <span>{{ item?.token?.rarityRank }}</span>
       </div>
     </div>

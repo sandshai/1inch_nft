@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
 })
 export class NavMenusComponent {
 
+  closemenu() {
+    document.getElementById('mobile-nav')?.classList.remove('open-mobile-menu');
+  }
 }

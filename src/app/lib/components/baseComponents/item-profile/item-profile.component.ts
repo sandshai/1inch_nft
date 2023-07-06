@@ -9,12 +9,12 @@ export class ItemProfileComponent {
   @Input() mdImage: any;
   @Input() nftName: string | undefined;
   @Output() img_url = new EventEmitter<string>();
-
+  @Output() downloadImageLink = new EventEmitter<string>();
   priviewImage(url:string) {
-    this.img_url.emit(url);    
+    this.img_url.emit(url);
   }
 
-  downloadImage(cdnUrl:string) {    
+  downloadImage(cdnUrl:string) {
     const filename = this.nftName+'_nft.png';
     fetch(cdnUrl)
       .then(response => response.blob())
@@ -27,4 +27,5 @@ export class ItemProfileComponent {
         URL.revokeObjectURL(blobUrl);
     });
   }
+
 }

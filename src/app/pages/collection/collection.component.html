@@ -2,7 +2,7 @@
   <!-- ==== collection page profile wrapper ==== -->
   <!-- {{setCollectionBannerImage}} -->
   <div
-    class="collection-banner mb-5"
+    class="collection-banner page-start-padding"
     id="collection_banner"
     [style.background-image]="'url(' + setCollectionBannerImage + ')'"
   >
@@ -12,10 +12,7 @@
           <!-- == profile section == -->
           <div class="collection-profile-information">
             <div class="profile mb-4 mb-md-0">
-              <img
-                src="{{ collectionDetails[0]?.image }}"
-                alt="profile img"
-              />
+              <img src="{{ collectionDetails[0]?.image }}" alt="profile img" />
             </div>
             <div class="content mb-5 mb-md-0">
               <div class="row m-0 justify-content-between align-items-center">
@@ -144,7 +141,13 @@
             </div>
           </div>
         </div>
-        <div class="{{!is_analytics ? 'col-12' : 'col-lg-9 col-xl-8 p-0 mb-lg-0 pe-xl-2 pe-xxl-3'}}">
+        <div
+          class="{{
+            !is_analytics
+              ? 'col-12'
+              : 'col-lg-9 col-xl-8 p-0 mb-lg-0 pe-xl-2 pe-xxl-3'
+          }}"
+        >
           <app-section-end-line className="p-0"></app-section-end-line>
         </div>
 
@@ -184,10 +187,7 @@
               <div class="bit-details__card">
                 <span>Floor</span>
                 <h6 class="d-flex align-items-center">
-                  {{
-                    collectionDetails[0]?.floorAsk?.price?.amount?.decimal
-                      | numberShorten
-                  }}
+                  {{ collectionDetails[0]?.floorSale["1day"] | numberShorten }}
                   <img
                     src="../../../assets/images/icons/activity_diamond.svg"
                     class="img-fluid"
@@ -211,7 +211,13 @@
             </div>
           </div>
         </div>
-        <div class="{{!is_analytics ? 'col-12' : 'col-lg-9 col-xl-8 p-0 mb-lg-0 pe-xl-2 pe-xxl-3'}}">
+        <div
+          class="{{
+            !is_analytics
+              ? 'col-12'
+              : 'col-lg-9 col-xl-8 p-0 mb-lg-0 pe-xl-2 pe-xxl-3'
+          }}"
+        >
           <app-section-end-line className="p-0"></app-section-end-line>
         </div>
       </div>
@@ -224,118 +230,80 @@
     <div class="collection-filter__wrapper">
       <div class="container-fluid">
         <div class="d-flex m-0">
-          <div class="grid__left-side {{ !is_analytics ? 'w-100' : '' }}" id="">
-            <div class="d-flex flex-column flex-md-row align-items-md-center">
-              <div class="d-flex wrapper_content me-md-3">
-                <button class="btn single-icon__btn" (click)="openFilterTab()">
-                  <app-svg-icons
-                    iconName="filterBarIcon"
-                    className="{{ is_filter ? 'active' : '' }}"
-                  ></app-svg-icons>
-                </button>
-                <div class="c-search__wrapper ms-3 d-flex align-items-center">
-                  <input
-                    type="text"
-                    numbersOnly
-                    name="c__search"
-                    id="c__search"
-                    placeholder="Search items"
-                    class="form-control c__search"
-                    [value]="inputValue || ''"
-                    #box
-                    (keyup)="getValue(box.value)"
-                    (keypress)="onlyNumbersAllowed($event)"
-                    autocomplete="off"
-                  />
-                  <img
-                    src="../../../assets/images/icons/search_icon.svg"
-                    class="img-fluid"
-                    alt="search"
-                  />
-                </div>
-              </div>
-              <span
-                class="result_span order-3 order-md-0 mt-3 mt-md-0 d-lg-block"
-                *ngIf="this.inputValue"
-                >{{ this.searchResult }} results</span
-              >
-              <div
-                class="d-flex align-items-center justify-content-end justify-content-md-start ms-md-auto mt-3 mt-md-0"
-              >
-                <button
-                  id="sweep-btn"
-                  (click)="opensweep()"
-                  class="btn single-icon__btn d-none d-lg-flex me-3"
-                >
-                  <app-svg-icons iconName="sweepIcon"></app-svg-icons>
-                </button>
-
-                <div class="btn-groups">
-                  <button
-                    type="button"
-                    class="btn rare_common_btn d-flex align-items-center"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <span>{{ this.category }}</span>
-                    <img
-                      src="../../../assets/images/icons/down.svg"
-                      class="img-fluid"
-                      alt="icon"
-                    />
+          <div class="grid__left-side {{ !is_analytics ? 'w-100' : 'pe-xl-2 pe-xxl-3' }}" id="">
+            <div class="nft-header-section">
+              <div class="nfts-header">
+                <div class="nfts-sh-inner-section nfts-sh-search-wrapper">
+                  <button class="single-icon__btn" (click)="openFilterTab()">
+                      <div class="filter-icon-wrapper">
+                        <div  *ngIf="is_filter && this.apiValues?.length > 0" class="is-filter-active"></div>
+                        <app-svg-icons
+                          iconName="filterBarIcon"
+                          className="{{ is_filter ? 'active' : '' }}" class="icon"
+                        ></app-svg-icons>
+                      </div>
                   </button>
-                  <ul class="dropdown-menu filter-dropdown dropdown-menu-end">
-                    <li *ngFor="let key of objectKeys(categories)">
-                      <button
-                        class="dropdown-item"
-                        type="button"
-                        (click)="sortByCategory(key, categories[key])"
-                      >
-                        {{ key }}
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-
-                <app-button
-                  id="analytics_btn"
-                  className="d-none d-lg-flex align-items-center ms-3 btn-liteblue"
-                  *ngIf="!is_analytics"
-                  (click)="openAnalyticsTab()"
-                >
-                  <img
-                    src="../../../assets/images/icons/chart.svg"
-                    class="img-fluid imgs-1halfrem"
-                    alt="chart"
-                  />
-                  Analytics
-                </app-button>
-
-                <div
-                  class="collect-layout-filter__btn ms-3 btn-border-lite d-flex align-items-center"
-                >
-                  <div class="sort-icon cursor-pointer">
-                    <app-svg-image
-                      fourlayout="true"
-                      [class.activelayout]="
-                        this.active === this.layoutactive['4layout']
-                      "
-                      (click)="this.sortByDay(this.layoutactive['4layout'])"
-                    ></app-svg-image>
+                  <div class="c-search__wrapper">
+                    <app-svg-icons iconName="cSearchIcon" class="searchIcon"></app-svg-icons>
+                    <input
+                      type="text"
+                      numbersOnly
+                      name="c__search"
+                      id="c__search"
+                      placeholder="Search items"
+                      class="form-control c__search"
+                      [value]="inputValue || ''"
+                      #box
+                      (keyup)="getValue(box.value)"
+                      (keypress)="onlyNumbersAllowed($event)"
+                      autocomplete="off"
+                    />
                   </div>
-                  <div class="sort-icon cursor-pointer ms-2">
-                    <app-svg-image
-                      listlogout="true"
-                      [class.activelayout]="
-                        this.active === this.layoutactive['listlogout']
-                      "
-                      (click)="this.sortByDay(this.layoutactive['listlogout'])"
-                    ></app-svg-image>
+                  <span class="result_span d-none d-md-flex" *ngIf="this.inputValue">{{ this.searchResult }} results</span>
+                </div>
+                <div class="nfts-sh-inner-section nfts-sh-button-wrapper justify-content-end">
+                  <button
+                    id="sweep-btn"
+                    (click)="opensweep()"
+                    class="single-icon__btn d-none d-lg-flex"
+                  >
+                    <app-svg-icons class="icon" className="{{ is_sweep ? 'active' : '' }}" iconName="sweepIcon"></app-svg-icons>
+                  </button>
+                  <div class="btn-groups">
+                    <button
+                      type="button"
+                      class="rare_common_btn"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <span>{{ this.category }}</span>
+                      <app-svg-icons iconName="downIcon"></app-svg-icons>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li *ngFor="let key of objectKeys(categories)">
+                        <button
+                          class="dropdown-item"
+                          type="button"
+                          (click)="sortByCategory(key, categories[key])"
+                        >
+                          {{ key }}
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                  <button class="btn-analytics d-none d-lg-flex" *ngIf="!is_analytics"
+                  (click)="openAnalyticsTab()">
+                    <app-svg-icons iconName="chartIcon" class="icon" className="icon"></app-svg-icons>
+                    <span>Analytics</span>
+                  </button>
+                  <div class="sort-icon-wrapper">
+                    <app-svg-icons iconName="gridViewIcon" (click)="this.sortByDay(this.layoutactive['4layout'])" className="sort_icon {{this.active === this.layoutactive['4layout'] ? 'active' : ''}}" class="sort_icon cursor-pointer"></app-svg-icons>
+                    <app-svg-icons iconName="listViewIcon" (click)="this.sortByDay(this.layoutactive['listlogout'])" className="sort_icon {{this.active === this.layoutactive['listlogout'] ? 'active' : ''}}" class="sort_icon cursor-pointer"></app-svg-icons>
                   </div>
                 </div>
               </div>
+              <span class="result_span d-md-none" *ngIf="this.inputValue">{{ this.searchResult }} results</span>
             </div>
-
             <div
               class="d-flex collections--wrapper__containter"
               id="collections--wrapper__containter"
@@ -344,45 +312,23 @@
                 *ngIf="is_filter"
                 (close_filter)="closeFilterFunc($event)"
               ></app-collection-filter>
-              <div class="collection-grid-open pt-5" id="collection-grid-open">
+              <div class="collection-grid-open" id="collection-grid-open">
                 <div
-                  class="seggestion_filer mb-4 d-flex flex-wrap"
+                  class="seggestion_filer"
                   *ngIf="this.apiValues?.length > 0"
                 >
                   <div
-                    class="suggestion_result d-flex align-items-center"
+                    class="suggestion_result"
                     *ngFor="let list of apiValues"
                   >
                     <p class="mb-0">
                       {{ list?.keyData }} : <span>{{ list?.value }}</span>
                     </p>
-                    <div class="icon">
-                      <img
-                        src="../../../assets/images/icons/close_icon.svg"
-                        class="img-fluid"
-                        alt="close"
-                        (click)="removeFilterList(list?.value)"
-                      />
-                    </div>
+                    <app-svg-icons iconName="closeIcon" class="cursor-pointer" className="icon"></app-svg-icons>
                   </div>
-                  <!-- <div class="suggestion_result d-flex align-items-center">
-                    <p class="mb-0">Body : <span>Fat</span></p>
-                    <div class="icon">
-                      <img
-                        src="../../../assets/images/icons/close_icon.svg"
-                        class="img-fluid"
-                        alt="close"
-                      />
-                    </div>
-                  </div> -->
-                  <div
-                    class="clear_all d-flex align-items-center justify-content-center"
-                    *ngIf="this.apiValues?.length > 1"
-                  >
-                    <p class="mb-0" (click)="removeFilterListAll()">
-                      clear all
-                    </p>
-                  </div>
+                  <span class="mb-0 clear_all"  *ngIf="this.apiValues?.length > 1" (click)="removeFilterListAll()">
+                    clear all
+                  </span>
                 </div>
                 <app-list-view-collections
                   *ngIf="this.active === this.layoutactive['listlogout']"
@@ -395,7 +341,7 @@
               </div>
             </div>
           </div>
-          <div class="grid__right-side" *ngIf="is_analytics">
+          <div class="grid__right-side ps-xl-2 ps-xxl-3" *ngIf="is_analytics">
             <app-collection-right-side-tab
               class="analytics-container p-0"
               id="analytics-container"
@@ -411,5 +357,5 @@
 
 <app-sweep-and-analytics-mobile-tab
   (open_analytics)="openAnalyticsTab($event)"
-  (closeSweep)="closeSweep()"
+  (closeSweep)="closeSweep($event)"
 ></app-sweep-and-analytics-mobile-tab>

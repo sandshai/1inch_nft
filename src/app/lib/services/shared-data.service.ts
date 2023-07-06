@@ -11,11 +11,17 @@ export class SharedDataService {
 
   maxEvent: EventEmitter<number> = new EventEmitter<number>();
 
+  setSliderInput: EventEmitter<number> = new EventEmitter<number>();
+
   walletAddressEvent: EventEmitter<any> = new EventEmitter<any>();
 
   filterPriceEvent: EventEmitter<any> = new EventEmitter<any>();
 
   private arrayList: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+
+  private sliderArrayList: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(
+    []
+  );
 
   values: any[] = [];
   valueAdded = new EventEmitter<any>();
@@ -41,6 +47,14 @@ export class SharedDataService {
 
   getArrayList(): BehaviorSubject<any[]> {
     return this.arrayList;
+  }
+
+  setSliderList(list: any[]): void {
+    this.sliderArrayList.next(list);
+  }
+
+  getSliderArrayList(): BehaviorSubject<any[]> {
+    return this.sliderArrayList;
   }
 
   constructor() {}

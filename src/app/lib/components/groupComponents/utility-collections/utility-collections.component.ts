@@ -41,11 +41,11 @@ export class UtilityCollectionsComponent {
       },
       1200: {
         slidesPerView: 4.7,
-        spaceBetween: 15,
+        spaceBetween: 32,
       },
       1250: {
-        slidesPerView: 5,
-        spaceBetween: 15,
+        slidesPerView: 4.8,
+        spaceBetween: 32,
       },
       1300: {
         slidesPerView: 5,

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 
 @Component({
@@ -8,7 +8,6 @@ import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 export class SweepAndAnalyticsMobileTabComponent {
   @Output() open_analytics = new EventEmitter<boolean>();
   @Output() closeSweep = new EventEmitter<boolean>();
-
   receivedList: any[] = [];
   selectedItems: any[] = [];
   totalAmount: any;
@@ -18,6 +17,9 @@ export class SweepAndAnalyticsMobileTabComponent {
   ngOnInit(): void {
     this.shared.getArrayList().subscribe((array) => {
       this.receivedList = array;
+    });
+    this.shared.setSliderInput.subscribe((value) => {
+      this.onRangeChange(value);
     });
   }
 
@@ -33,8 +35,9 @@ export class SweepAndAnalyticsMobileTabComponent {
   }
 
   onRangeChange(event: any) {
-    let initialValue = event?.target?.value ? event?.target?.value : 1;
+    let initialValue = event?.target?.value ? event?.target?.value : 0;
     this.selectedItems = this.receivedList.slice(0, initialValue);
+    this.passArrayList(this.selectedItems);
 
     let totalAmount = 0;
     let decimalDigits = 2;
@@ -57,5 +60,9 @@ export class SweepAndAnalyticsMobileTabComponent {
     let result = truncatedNumber / Math.pow(10, decimalDigits);
 
     this.totalAmount = result;
+  }
+
+  passArrayList(value: any): void {
+    this.shared.setSliderList(value);
   }
 }

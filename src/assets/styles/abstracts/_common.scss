@@ -246,14 +246,6 @@ ul {
   }
 }
 
-.activelayout {
-  svg {
-    rect {
-      stroke: #E0E0E0 !important;
-    }
-  }
-}
-
 .img-border {
   &::before {
     border-radius: 1.5rem;
@@ -351,4 +343,29 @@ th,td {
   visibility: hidden;
 }
 
+.no-data__found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  img {
+    width: 6rem;
+    height: 6rem;
+    margin: 0 auto;
+  }
+  span {
+    color: var(--1inch-tc-01);
+  }
+}
+
+.page-start-padding {
+  padding-top: 6.438rem !important;
+  @include media-min-md {
+    padding-top: 7.563rem !important;
+  }
+  @include media-min-xl {
+    padding-top: 7.278rem !important;
+  }
+}
 

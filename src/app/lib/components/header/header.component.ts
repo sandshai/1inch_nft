@@ -27,22 +27,11 @@ export class HeaderComponent {
   }
 
   openmenu() {
-    document.getElementById('header')?.classList.add('open-menu');
-    document.getElementById('header')?.classList.add('bg-header');
-    document.getElementById('menus')?.classList.add('open-menu-inner');
-    document.getElementById('header')?.classList.remove('header-bg');
-  }
-
-  closemenu() {
-    document.getElementById('header')?.classList.remove('open-menu');
-    document.getElementById('header')?.classList.remove('bg-header');
-    document.getElementById('menus')?.classList.remove('open-menu-inner');
-    this.onWindowScroll();
+    document.getElementById('mobile-nav')?.classList.add('open-mobile-menu');
   }
 
   opensearch(event : Event) {
     event.stopPropagation();
-
     document
       .getElementById('search-wrapper')
       ?.classList.add('open__history');

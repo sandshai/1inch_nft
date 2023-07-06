@@ -1,5 +1,28 @@
-<div class="menus" id="menus">
-  <ul class="ms-auto" id="navbarNav">
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mob-menu-header">
+    <!-- ===== logo ===== -->
+    <a class="navbar-brand m-0" href="#">
+      <img
+        src="../../../../assets/images/1inch_NFT_logo_mobile.svg"
+        class="img-fluid logo d-md-none"
+        alt="logo"
+      />
+      <img
+        src="../../../../assets/images/1inch_NFT_ logo.svg"
+        class="logo d-none d-md-block"
+        alt="logo"
+      />
+    </a>
+    <div class="header--icon-wrapper">
+      <div class="menu-icon">
+        <app-svg-icons iconName="settingsIcon" class="icon-width" className="icon-width"></app-svg-icons>
+      </div>
+      <div class="menu-icon" (click)="closemenu()">
+        <app-svg-icons iconName="closeIcon" class="icon-width" className="icon-width"></app-svg-icons>
+      </div>
+    </div>
+  </div>
+  <ul class="navbarNav" id="navbarNav">
     <li class="nav-item">
       <a class="nav-link" href="https://1inchlaunchpad.netlify.app/">Launchpad</a>
     </li>
@@ -14,47 +37,47 @@
     <li class="nav-item">
       <a class="nav-link" href="#">My watchlist</a>
     </li>
-    <li class="nav-item d-md-none px-3">
-      <app-wallet-button class="w-100"></app-wallet-button>
-    </li>
-    <li class="nav-item d-xl-none mt-4 mt-xl-0">
-      <div class="nav-social-icons justify-content-between align-items-center">
-        <div class="social_icon">
-          <img
-            src="../../../../assets/images/icons/icon_m.svg"
-            class="img-fluid"
-            alt="social icon"
-          />
-        </div>
-        <div class="social_icon">
-          <img
-            src="../../../../assets/images/icons/reddit.svg"
-            class="img-fluid"
-            alt="social icon"
-          />
-        </div>
-        <div class="social_icon">
-          <img
-            src="../../../../assets/images/icons/icon_tw.svg"
-            class="img-fluid"
-            alt="social icon"
-          />
-        </div>
-        <div class="social_icon">
-          <img
-            src="../../../../assets/images/icons/icon_yt.svg"
-            class="img-fluid"
-            alt="social icon"
-          />
-        </div>
-        <div class="social_icon">
-          <img
-            src="../../../../assets/images/icons/icon_tg.svg"
-            class="img-fluid"
-            alt="social icon"
-          />
-        </div>
-      </div>
-    </li>
   </ul>
+
+  <div class="common-menu-wrapper-mobile">
+    <app-wallet-button class="w-100"></app-wallet-button>
+  </div>
+
+  <div class="common-menu-wrapper-mobile nav-social-icons justify-content-between align-items-center">
+    <div class="social_icon">
+      <img
+        src="../../../../assets/images/icons/icon_m.svg"
+        class="img-fluid"
+        alt="social icon"
+      />
+    </div>
+    <div class="social_icon">
+      <img
+        src="../../../../assets/images/icons/reddit.svg"
+        class="img-fluid"
+        alt="social icon"
+      />
+    </div>
+    <div class="social_icon">
+      <img
+        src="../../../../assets/images/icons/icon_tw.svg"
+        class="img-fluid"
+        alt="social icon"
+      />
+    </div>
+    <div class="social_icon">
+      <img
+        src="../../../../assets/images/icons/icon_yt.svg"
+        class="img-fluid"
+        alt="social icon"
+      />
+    </div>
+    <div class="social_icon">
+      <img
+        src="../../../../assets/images/icons/icon_tg.svg"
+        class="img-fluid"
+        alt="social icon"
+      />
+    </div>
+  </div>
 </div>

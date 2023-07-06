@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { SettingsService } from 'src/app/lib/services/settings.service';
 
 @Component({
   selector: 'app-collection-card',
@@ -10,11 +9,19 @@ export class CollectionCardComponent {
   @Input() item: any;
   @Input() index: any;
   @Input() collection: any;
+  @Input() selected: any;
 
-  constructor(private _settings: SettingsService, private router: Router) {}
+  checkedValue: any;
 
-  baseUrl = this._settings.baseUrl;
+  constructor(private router: Router) {}
 
+  ngOnChanges() {
+    const isChecked = this.selected.some(
+      (obj: any) => obj?.token?.tokenId === this.item?.token?.tokenId
+    );
+
+    this.checkedValue = isChecked;
+  }
   goToPage() {
     this.router.navigate([
       `item`,

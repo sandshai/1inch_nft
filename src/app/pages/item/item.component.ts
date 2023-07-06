@@ -134,4 +134,19 @@ export class ItemComponent {
   closePreviewWarpper(value: boolean) {
     this.is_preview = value;
   }
+
+  downloadImage(cdnUrl: string, nftName: any) {
+
+    const filename = nftName+'_nft.png';
+    fetch(cdnUrl)
+      .then(response => response.blob())
+      .then(blob => {
+        const blobUrl = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.setAttribute('download', filename);
+        link.click();
+        URL.revokeObjectURL(blobUrl);
+    });
+  }
 }

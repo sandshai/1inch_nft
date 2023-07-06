@@ -1,19 +1,16 @@
 <section class="item-page__wrapper" id="item-page__wrapper">
-  <div class="item-page-banner mb-5">
-    <div class="container-fluid px-lg-5">
+  <div class="item-page-banner page-start-padding mb-5">
+    <div class="container-fluid cp-5">
       <div class="row m-0">
-        <div class="col-md-7 p-0 mb-md-0 pe-md-2 pe-xl-3">
+        <div class="col-md-6 col-lg-7 p-0 mb-md-0 pe-md-2 pe-xl-3">
           <div class="i-details__wrapper position-relative">
             <div class="item-details">
               <div class="item-name d-flex align-items-center mb-4">
-                <img
-                  src="../../../assets/images/icons/left-arrow.svg"
-                  class="img-fluid arrow-img cursor-pointer"
-                  alt="icon"
-                  (click)="
-                    goToPreviousPage(this.collectionName, this.collectionId)
-                  "
-                />
+                <div class="back-icon"  (click)="
+                goToPreviousPage(this.collectionName, this.collectionId)
+                ">
+                  <app-svg-icons iconName="leftIcon" class="back-icon-arrow"></app-svg-icons>
+                </div>
                 <h6 class="mb-0">
                   {{ itemDetails[0]?.token?.collection?.name }}
                 </h6>
@@ -76,12 +73,28 @@
                   </button>
                 </div>
               </div>
-              <div *ngIf="mobDeviceImage" class="Nft-image mt-4">
+              <div *ngIf="mobDeviceImage" class="Nft-image i-profle position-relative mt-4">
                 <img
                   src="{{ itemDetails[0]?.token?.image }}"
                   class="img-fluid w-100"
                   alt="img"
                 />
+                <div class="icons-wrapper">
+                  <div class="zoom icons" (click)="previewFun(itemDetails[0]?.token?.image)">
+                    <img
+                      src="../../../../../assets/images/icons/zoom.svg"
+                      class="img-fluid"
+                      alt="icons"
+                    />
+                  </div>
+                  <div class="download icons" (click)="downloadImage(itemDetails[0]?.token?.image,itemDetails[0]?.token?.collection?.name)">
+                    <img
+                      src="../../../../../assets/images/icons/deposit_withdraw.svg"
+                      class="img-fluid"
+                      alt="icons"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div class="i-sale__details">
@@ -188,9 +201,10 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid px-lg-5">
+
+  <div class="container-fluid cp-5">
     <div class="row m-0">
-      <div class="col-md-7 p-0 pe-md-2 pe-xl-3">
+      <div class="col-md-6 col-lg-7 p-0 pe-md-2 pe-xl-3">
         <div class="accordion" id="item-graphs">
           <app-traits is_show="true"></app-traits>
           <app-activity-graph
@@ -209,7 +223,7 @@
           ></app-item-details>
         </div>
       </div>
-      <div class="col-md-5 p-0 ps-md-2 ps-xl-3">
+      <div class="col-md-6 col-lg-5 p-0 ps-md-2 ps-xl-3">
         <app-item-profile
         (img_url)="previewFun($event)"
         [mdImage]="this.mdDeviceImage"
@@ -220,6 +234,8 @@
     </div>
   </div>
 </section>
+
+
 <app-image-preview
   *ngIf="is_preview"
   [url]="imageUrl"

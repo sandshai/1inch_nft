@@ -72,10 +72,11 @@
         </div>
       </div>
       <div
-        class="recent-search__history mb-3 no-results"
+        class="recent-search__history no-data__found"
         *ngIf="this.recentCollectionList?.length === 0 && this.collectionName"
       >
-        No Data Found
+        <img src="../../../../../assets/images/icons/empty_states.svg" alt="empty">
+        <span>No Data Found</span>
       </div>
     </div>
 
@@ -136,12 +137,13 @@
         <div class="spinner"></div>
       </div>
       <div
-        class="recent-search__history mb-3"
+        class="recent-search__history no-data__found"
         *ngIf="
           this.searchResults?.length === 0 && this.collectionName && !isLoading
         "
       >
-        No Data Found
+        <img src="../../../../../assets/images/icons/empty_states.svg" alt="empty">
+        <span>No Data Found</span>
       </div>
     </div>
   </div>

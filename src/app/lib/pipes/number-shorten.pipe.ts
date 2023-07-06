@@ -27,10 +27,15 @@ export const roundDown = (number: any, decimals: any) => {
   return Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
 };
 
-export const roundDownValue = (value: any) => {
+export const roundDownValue = (value: any, size?: number) => {
   let number = value;
-  const FormattedNumber = Number(
-    number?.toString().match(/^\d+(?:\.\d{0,1})?/)
-  );
+
+  let FormattedNumber;
+  if (size === 2) {
+    FormattedNumber = Number(number?.toString().match(/^\d+(?:\.\d{0,2})?/));
+  } else {
+    FormattedNumber = Number(number?.toString().match(/^\d+(?:\.\d{0,1})?/));
+  }
+
   return FormattedNumber;
 };

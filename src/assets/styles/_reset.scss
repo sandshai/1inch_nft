@@ -48,3 +48,21 @@ html { // ===== reset font size depends on screen size =====
         margin: 3rem 0 0 0 !important;
     }
 }
+
+.swipe-section-top {
+    margin: 1.75rem 0 0 0 !important;
+    @include media-min-xl {
+        margin: 2.75rem 0 0 0 !important;
+    }
+}
+
+// custom padding
+
+.cp-5 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    @include media-min-xl {
+        padding-left: 5.75rem !important;
+        padding-right: 5.75rem !important;
+    }
+}

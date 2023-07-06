@@ -1,4 +1,4 @@
-<div class="filter-wrapper mt-lg-5" id="c_filter-wrapper">
+<div class="filter-wrapper" id="c_filter-wrapper">
   <div class="filter-header_wrapper d-lg-none p-3">
     <div class="d-flex justify-content-between align-items-center">
       <h4>Filter</h4>
@@ -35,6 +35,11 @@
               class="d-flex justify-content-between w-100 align-items-center"
             >
               <p class="mb-0">Price range</p>
+
+              <div class="end-wrappper">
+                <app-svg-icons class="downArrowIcon" iconName="downIcon"></app-svg-icons>
+                <app-svg-icons class="upArrowIcon" iconName="upIcon"></app-svg-icons>
+              </div>
             </div>
           </button>
         </h2>
@@ -93,7 +98,11 @@
               class="d-flex justify-content-between w-100 align-items-center"
             >
               <p class="mb-0">{{ list.key }}</p>
-              <span class="me-2 d-none">{{ list?.count }}</span>
+              <div class="end-wrappper">
+                <span class="d-none">{{ list?.count }}</span>
+                <app-svg-icons class="downArrowIcon" iconName="downIcon"></app-svg-icons>
+                <app-svg-icons class="upArrowIcon" iconName="upIcon"></app-svg-icons>
+              </div>
             </div>
           </button>
         </h2>
