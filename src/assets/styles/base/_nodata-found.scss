@@ -1,0 +1,50 @@
+.nodata-found-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3.5rem 0;
+  .nodata-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .not-found-img {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      img {
+        display: flex;
+        width: 10rem;
+        height: 10rem;
+        justify-content: center;
+        align-items: center;
+      }
+      p {
+        margin: 0;
+        color: var(--1inch-tc-02);
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.625rem;
+      }
+    }
+    button {
+      background-color: transparent;
+      display: flex;
+      height: 2.625rem;
+      padding: 0.5rem 1.125rem;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid #202835;
+      color: var(--1inch-tc-01);
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.625rem;
+      &:hover {
+        background-color: var(--1inch-cbc-11);
+      }
+    }
+  }
+}

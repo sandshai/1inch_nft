@@ -1,0 +1,43 @@
+<section class="user-profile-section page-start-padding">
+  <div class="overlay"></div>
+  <div class="container-fluid">
+    <div class="user-profile-main-wrapper">
+      <div class="profile-main-stats-wrapper {{is_listItemCard ? 'is_listItemCard' : ''}}">
+        <div class="user-profile-information-wrapper">
+          <app-profile-info></app-profile-info>
+        </div>
+        <div class="user-profile-content">
+          <ul class="nav nav-pills" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-portfilio-tab" data-bs-toggle="pill" data-bs-target="#pills-portfilio" type="button" role="tab" aria-controls="pills-portfilio" aria-selected="true">Portfolio</button>
+              <div class="line"></div>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-offer-tab" data-bs-toggle="pill" data-bs-target="#pills-offer" type="button" role="tab" aria-controls="pills-offer" aria-selected="false">Offers</button>
+              <div class="line"></div>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-activity-tab" data-bs-toggle="pill" data-bs-target="#pills-activity" type="button" role="tab" aria-controls="pills-activity" aria-selected="false">Activity</button>
+              <div class="line"></div>
+            </li>
+          </ul>
+          <div class="tab-content w-100" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-portfilio" role="tabpanel" aria-labelledby="pills-portfilio-tab">
+              <app-user-portfolio-tab (listItemNewEvent)="setOpenListItem($event)" [is_listItemOpen]="is_listItemCard" [filterIsOpen]="is_filter"></app-user-portfolio-tab>
+            </div>
+            <div class="tab-pane fade" id="pills-offer" role="tabpanel" aria-labelledby="pills-offer-tab">
+              <app-user-profile-offer-tab [filterIsOpen]="is_filter"></app-user-profile-offer-tab>
+            </div>
+            <div class="tab-pane fade" id="pills-activity" role="tabpanel" aria-labelledby="pills-activity-tab">
+              <app-user-profile-activity-tab [filterIsOpen]="is_filter"></app-user-profile-activity-tab>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-list-card-wrapper" *ngIf="is_listItemCard">
+        <app-user-profile-list-items [dummyData]="dummyNftCollections" (closeListItemEvent)="setOpenListItem($event)"></app-user-profile-list-items>
+      </div>
+    </div>
+
+  </div>
+</section>

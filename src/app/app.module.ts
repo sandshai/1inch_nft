@@ -64,6 +64,22 @@ import { FilterButtonComponent } from './lib/components/baseComponents/filter-bu
 import { ImagePreviewComponent } from './lib/components/baseComponents/image-preview/image-preview.component';
 import { NavMenusComponent } from './lib/components/baseComponents/nav-menus/nav-menus.component';
 import { SvgIconsComponent } from './lib/components/baseComponents/svg-icons/svg-icons.component';
+import { UniqueHoldersComponent } from './lib/components/baseComponents/unique-holders/unique-holders.component';
+import { MyWatchlistComponent } from './pages/my-watchlist/my-watchlist.component';
+import { SectionFilterWrapperComponent } from './lib/components/baseComponents/section-filter-wrapper/section-filter-wrapper.component';
+import { WatchlistTableComponent } from './lib/components/baseComponents/watchlist-table/watchlist-table.component';
+import { WatchlistCardComponent } from './lib/components/baseComponents/watchlist-card/watchlist-card.component';
+import { NodataFoundComponent } from './lib/components/baseComponents/nodata-found/nodata-found.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ProfileInfoComponent } from './lib/components/baseComponents/profile-info/profile-info.component';
+import { TooltipDirective } from './lib/directives/tooltip.directive';
+import { UserPortfolioTabComponent } from './lib/components/baseComponents/user-portfolio-tab/user-portfolio-tab.component';
+import { UserProfileFilterTabComponent } from './lib/components/baseComponents/user-profile-filter-tab/user-profile-filter-tab.component';
+import { PortfolioGridLayoutComponent } from './lib/components/baseComponents/portfolio-grid-layout/portfolio-grid-layout.component';
+import { UserProfileListItemsComponent } from './lib/components/baseComponents/user-profile-list-items/user-profile-list-items.component';
+import { UserProfileTableLayoutComponent } from './lib/components/baseComponents/user-profile-table-layout/user-profile-table-layout.component';
+import { UserProfileOfferTabComponent } from './lib/components/baseComponents/user-profile-offer-tab/user-profile-offer-tab.component';
+import { UserProfileActivityTabComponent } from './lib/components/baseComponents/user-profile-activity-tab/user-profile-activity-tab.component';
 
 @NgModule({
   declarations: [
@@ -125,6 +141,22 @@ import { SvgIconsComponent } from './lib/components/baseComponents/svg-icons/svg
     ImagePreviewComponent,
     NavMenusComponent,
     SvgIconsComponent,
+    UniqueHoldersComponent,
+    MyWatchlistComponent,
+    SectionFilterWrapperComponent,
+    WatchlistTableComponent,
+    WatchlistCardComponent,
+    NodataFoundComponent,
+    UserProfileComponent,
+    ProfileInfoComponent,
+    TooltipDirective,
+    UserPortfolioTabComponent,
+    UserProfileFilterTabComponent,
+    PortfolioGridLayoutComponent,
+    UserProfileListItemsComponent,
+    UserProfileTableLayoutComponent,
+    UserProfileOfferTabComponent,
+    UserProfileActivityTabComponent,
   ],
   imports: [
     BrowserModule,

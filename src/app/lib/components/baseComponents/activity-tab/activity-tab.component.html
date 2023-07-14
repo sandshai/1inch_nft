@@ -1,42 +1,38 @@
 <div class="activity-tab__wrapper">
     <div class="activity-filter_container d-flex justify-content-between align-items-center">
         <div class="btn-group">
-            <button type="button" class="btn btn-liteblue dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
-                All events
+            <button type="button" class="btn-all-events" data-bs-toggle="dropdown" aria-expanded="false">
+                <span>All events</span>
+                <app-svg-icons iconName="downIcon"></app-svg-icons>
             </button>
             <ul class="dropdown-menu filter-dropdown dropdown-menu-end">
-              <li><button class="dropdown-item" type="button">Action</button></li>
-              <li><button class="dropdown-item" type="button">Another action</button></li>
-              <li><button class="dropdown-item" type="button">Something else here</button></li>
+              <li><button class="dropdown-item" type="button">All events</button></li>
+              <li><button class="dropdown-item" type="button">Sales</button></li>
+              <li><button class="dropdown-item" type="button">Listings</button></li>
+              <li><button class="dropdown-item" type="button">Transferes</button></li>
             </ul>
         </div>
-
-        <div class="filter-button border-rounded-12">
-            <button
-              class="btn btn-trd border-0"
-            >
-              1H
-            </button>
-            <button
-              class="btn btn-trd border-0"
-            >
-              1D
-            </button>
-            <button
-              class="btn btn-trd border-0"
-            >
-              1W
-            </button>
-            <button
-            class="btn btn-trd border-0"
-            >
-                1M
-            </button>
-            <button
-            class="btn btn-trd border-0"
-            >
-                All
-            </button>
+        <div class="button-filter-wrapper">
+            <div class="f-button-wrapper">
+              <div class="f-btn active">1H</div>
+              <div class="f-btn">1D</div>
+              <div class="f-btn">1W</div>
+              <div class="f-btn">1M</div>
+              <div class="f-btn">All</div>
+            </div>
+            <div class="dropdown">
+              <button type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span>1H</span>
+                  <app-svg-icons iconName="downIcon"></app-svg-icons>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">1H</a></li>
+                <li><a class="dropdown-item" href="#">1D</a></li>
+                <li><a class="dropdown-item" href="#">1W</a></li>
+                <li><a class="dropdown-item" href="#">1M</a></li>
+                <li><a class="dropdown-item" href="#">All</a></li>
+              </ul>
+            </div>
         </div>
     </div>
 

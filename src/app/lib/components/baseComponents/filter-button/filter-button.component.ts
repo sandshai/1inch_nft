@@ -1,8 +1,14 @@
-import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-filter-button',
-  templateUrl: './filter-button.component.html'
+  templateUrl: './filter-button.component.html',
 })
 export class FilterButtonComponent {
   public mobDevice: any;
@@ -11,11 +17,12 @@ export class FilterButtonComponent {
     '1day': '1DayVolume',
     '7day': '7DayVolume',
     '30day': '30DayVolume',
+    allTime: 'allTimeVolume',
   };
 
   @Input() sortBy?: string;
-  
-  @Output() filterByValue = new EventEmitter<{value: string, day?: string}>();
+
+  @Output() filterByValue = new EventEmitter<{ value: string; day?: string }>();
 
   ngOnInit() {
     this.setFilterButton();
@@ -41,7 +48,7 @@ export class FilterButtonComponent {
       value: value,
       day: day,
     };
-    
+
     this.filterByValue.emit(data);
   }
 }

@@ -17,7 +17,11 @@
                 alt="icon"
               />
               <div class="rounded-box">
-                <img src="../../../../../assets/images/icons/star_white.svg" class="img-fluid" alt="icon">
+                <img
+                  src="../../../../../assets/images/icons/star_white.svg"
+                  class="img-fluid"
+                  alt="icon"
+                />
               </div>
             </div>
             <div class="card-body p-0">
@@ -52,9 +56,14 @@
                 </div>
                 <div class="bit-detail">
                   <span class="text-gray">Floor.</span>
-                  <span class="text-white">{{
-                    bannerData[1]?.floorAsk?.price?.amount?.decimal | numberShorten
-                  }}</span>
+                  <span
+                    class="text-white {{
+                      bannerData[1]?.floorAsk?.price?.amount?.decimal
+                    }}"
+                    >{{
+                      bannerData[1]?.floorSale["1day"] | numberShorten
+                    }}</span
+                  >
                   <img
                     src="../../../../../assets/images/icons/activity_diamond.svg"
                     class="img-fluid"
@@ -75,7 +84,11 @@
                 alt="icon"
               />
               <div class="rounded-box">
-                <img src="../../../../../assets/images/icons/star_white.svg" class="img-fluid" alt="icon">
+                <img
+                  src="../../../../../assets/images/icons/star_white.svg"
+                  class="img-fluid"
+                  alt="icon"
+                />
               </div>
             </div>
             <div class="card-body p-0">
@@ -138,7 +151,7 @@
                 <div class="bit-detail">
                   <span class="text-gray">Floor.</span>
                   <span class="text-white">{{
-                    bannerData[2]?.floorAsk?.price?.amount?.decimal | numberShorten
+                    bannerData[2]?.floorSale["1day"] | numberShorten
                   }}</span>
                   <svg
                     width="8"
@@ -187,7 +200,11 @@
                 alt="icon"
               />
               <div class="rounded-box">
-                <img src="../../../../../assets/images/icons/star_white.svg" class="img-fluid" alt="icon">
+                <img
+                  src="../../../../../assets/images/icons/star_white.svg"
+                  class="img-fluid"
+                  alt="icon"
+                />
               </div>
             </div>
             <div class="card-body p-0">
@@ -250,7 +267,7 @@
                 <div class="bit-detail">
                   <span class="text-gray">Floor.</span>
                   <span class="text-white">{{
-                    bannerData[3]?.floorAsk?.price?.amount?.decimal | numberShorten
+                    bannerData[3]?.floorSale["1day"] | numberShorten
                   }}</span>
                   <svg
                     width="8"
@@ -299,7 +316,11 @@
                 alt="icon"
               />
               <div class="rounded-box">
-                <img src="../../../../../assets/images/icons/star_white.svg" class="img-fluid" alt="icon">
+                <img
+                  src="../../../../../assets/images/icons/star_white.svg"
+                  class="img-fluid"
+                  alt="icon"
+                />
               </div>
             </div>
             <div class="card-body p-0">
@@ -362,7 +383,7 @@
                 <div class="bit-detail">
                   <span class="text-gray">Floor.</span>
                   <span class="text-white">{{
-                    bannerData[4]?.floorAsk?.price?.amount?.decimal | numberShorten
+                    bannerData[4]?.floorSale["1day"] | numberShorten
                   }}</span>
                   <svg
                     width="8"

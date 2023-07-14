@@ -1,0 +1,7 @@
+<div class="user-profile-stats-wrapper">
+  <app-user-profile-filter-tab [demoData]="dummyData" *ngIf="filterIsOpen"></app-user-profile-filter-tab>
+  <div class="profile-stats {{!filterIsOpen ? 'w-100' : ''}}">
+    <app-section-filter-wrapper [filterActive]="filterIsOpen" pageLayOut="userProfile" profileFilterLayOut="layOutOne" (viewLayout)="setLayOut($event)" [activeLayout] = "layOut"></app-section-filter-wrapper>
+    <app-user-profile-table-layout *ngIf="layOut == 'table'" layOutTable = "offer" [data] = "dummyNftCollections"></app-user-profile-table-layout>
+  </div>
+</div>

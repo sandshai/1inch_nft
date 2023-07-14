@@ -144,7 +144,7 @@
   }
 }
 
-// cursor 
+// cursor
 
 @mixin cursor($name,$value) {
   #{$name} {
@@ -222,13 +222,13 @@
   }
 
   &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+      // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+      // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
   }
 
   &::-webkit-scrollbar-thumb {
-      background-color: #8e8e96;
-      outline: 0.05rem solid #8e8e96;
+      background-color: #44556F;
+      outline: 0.05rem solid #44556F;
       border-radius: 50rem;
   }
 }

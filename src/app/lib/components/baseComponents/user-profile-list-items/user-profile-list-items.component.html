@@ -1,0 +1,198 @@
+<div class="list-card">
+  <div class="list-card__header">
+    <ul class="nav nav-pills" id="list-card" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-sell-items-tab" data-bs-toggle="pill" data-bs-target="#pills-sell-items" type="button" role="tab" aria-controls="pills-sell-items" aria-selected="true">Sell items</button>
+        <div class="line"></div>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-transfer-tab" data-bs-toggle="pill" data-bs-target="#pills-transfer" type="button" role="tab" aria-controls="pills-transfer" aria-selected="false">Transfer</button>
+        <div class="line"></div>
+      </li>
+    </ul>
+    <div class="close-button" (click)="closeListItem()">
+      <app-svg-icons iconName="chevronRightIcon"></app-svg-icons>
+    </div>
+  </div>
+  <div class="tab-content" id="list-cardContent">
+    <div class="tab-pane fade show active" id="pills-sell-items" role="tabpanel" aria-labelledby="pills-sell-items-tab" tabindex="0">
+      <div class="list-card-body">
+        <div class="card-content">
+          <div class="card-body-header">
+            <div class="card-inner__header">
+              <p>Global settings</p>
+              <div class="expand-items cursor-pointer" (click)="expandPriceFilter()">
+                <span>{{expand ? '0.2221ETH / 34 days' : 'Set price/expiration'}}</span>
+                <app-svg-icons iconName="downIcon"></app-svg-icons>
+              </div>
+            </div>
+            <div class="input-wrapper gap-3" *ngIf="expand">
+              <div class="form-group">
+                <label>Set global price</label>
+                <div class="price-input">
+                  <input type="text" name="" placeholder="Price" id="">
+                  <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Set global expiration</label>
+                <select class="form-select">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <span>Expires 12 Jul,2023 11.58 am</span>
+              </div>
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="clear-all-section">
+            <p class="noOfItems">5 items</p>
+            <div class="btn-clear">
+              <span>Clear all</span>
+            </div>
+          </div>
+          <div class="body-content">
+            <div class="item-card" *ngFor="let data of dummyData">
+              <div class="item-image">
+                <img src="../../../assets/images/c__image.png" alt="image">
+                <div class="close-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3.9375 10.0625L10.0625 3.9375" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3.9375 3.9375L10.0625 10.0625" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="item-card-body">
+                <div class="set-price-wrapper">
+                  <p>Psychosis Ape#1</p>
+                  <div class="price-wrapper">
+                    <input type="text" name="" id="" placeholder="Price">
+                    <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                  </div>
+                </div>
+                <div class="last-price-wrapper">
+                  <div class="subtitle-wrapper">
+                    <p>Psychosis Ape Club</p>
+                    <app-svg-icons iconName="verifiedIcon" class="icon"></app-svg-icons>
+                  </div>
+                  <div class="last-price">
+                    <span>Last price:</span>
+                    <span>0.343</span>
+                    <div class="icon">
+                      <app-svg-icons iconName="ethGrayIcon" class="icon"></app-svg-icons>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="body-footer">
+          <div class="price-info">
+            <div class="info">
+              <p class="info-name">Creator fee</p>
+              <div class="info-value-wrapper">
+                <span class="text-green">5%</span>
+                <div class="price">
+                  <span class="text-static-white">0.0001</span>
+                  <app-svg-icons iconName="ethIcon"></app-svg-icons>
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <p class="info-name">Estimated gas fee</p>
+              <div class="info-value-wrapper">
+                <div class="price">
+                  <span class="text-static-white">0.002</span>
+                  <app-svg-icons iconName="ethIcon"></app-svg-icons>
+                </div>
+              </div>
+            </div>
+            <div class="total-value">
+              <p>Total earn</p>
+              <div class="value">
+                <p>0.343</p>
+                <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+              </div>
+            </div>
+          </div>
+          <div class="btn-list">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+              <path d="M4.6213 10.8787L10.6212 4.8787C11.1838 4.31609 11.9469 4.00002 12.7425 4.00001L16.4999 3.99996C18.709 3.99993 20.4999 5.79077 20.4999 7.99992L20.5 11.7573C20.5 12.553 20.1839 13.3161 19.6213 13.8787L13.6213 19.8787C12.4497 21.0503 10.5503 21.0503 9.37868 19.8787L4.62131 15.1213C3.44974 13.9497 3.44974 12.0503 4.6213 10.8787Z" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="16" cy="8.5" r="1.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>List items</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-transfer" role="tabpanel" aria-labelledby="pills-transfer-tab" tabindex="0">
+      <div class="list-card-body">
+        <div class="card-content">
+          <div class="card-body-header">
+            <div class="card-inner__header">
+              <p>Transfer to</p>
+            </div>
+            <div class="input-wrapper">
+              <input type="text" name="" placeholder="Address" class="is-valid" id="">
+              <span class="d-none">Invalid address</span>
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="clear-all-section">
+            <p class="noOfItems">5 items</p>
+            <div class="btn-clear">
+              <span>Clear all</span>
+            </div>
+          </div>
+          <div class="body-content">
+            <div class="item-card" *ngFor="let data of dummyData">
+              <div class="item-image">
+                <img src="../../../assets/images/c__image.png" alt="image">
+                <div class="close-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3.9375 10.0625L10.0625 3.9375" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3.9375 3.9375L10.0625 10.0625" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="item-card-body">
+                <div class="set-price-wrapper">
+                  <p>Psychosis Ape#1</p>
+                </div>
+                <div class="last-price-wrapper">
+                  <div class="subtitle-wrapper">
+                    <p>Psychosis Ape Club</p>
+                    <app-svg-icons iconName="verifiedIcon" class="icon"></app-svg-icons>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="body-footer">
+          <div class="price-info">
+            <div class="info">
+              <p class="info-name">Estimated gas fee</p>
+              <div class="info-value-wrapper">
+                <div class="price">
+                  <span class="text-static-white">0.002</span>
+                  <app-svg-icons iconName="ethIcon"></app-svg-icons>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-list">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+              <path d="M4.5 17H20.5M20.5 17L15.5 12M20.5 17L15.5 22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20.5 7H4.5M4.5 7L9.5 2M4.5 7L9.5 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Transfer items</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

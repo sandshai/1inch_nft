@@ -5,6 +5,8 @@ import { CollectionComponent } from './pages/collection/collection.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ItemComponent } from './pages/item/item.component';
 import { CollectionsPageComponent } from './pages/collections-page/collections-page.component';
+import { MyWatchlistComponent } from './pages/my-watchlist/my-watchlist.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
     component: ItemComponent,
   },
   { path: 'collections/:{chain}', component: CollectionsPageComponent },
+  { path: 'watchlist', component: MyWatchlistComponent },
+  { path: 'profile', component: UserProfileComponent },
 ];
 
 @NgModule({

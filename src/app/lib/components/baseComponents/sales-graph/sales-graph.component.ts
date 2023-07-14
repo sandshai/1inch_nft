@@ -5,5 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './sales-graph.component.html'
 })
 export class SalesGraphComponent {
-  @Input() is_show : string | undefined;
+  @Input() is_show: string | undefined;
+  @Input() accordionBdyClass: string | undefined;
+  @Input() hideFilterButtonClass: string | undefined;
 }

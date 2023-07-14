@@ -1,0 +1,71 @@
+.myWatchlist-section {
+  position: relative;
+  .s-title {
+    h6 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.5rem;
+      margin: 0 0 2rem 0;
+      color: var(--1inch-tc-01);
+      @include media-min-md {
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 2.375rem;
+      }
+    }
+  }
+  .myWatchlist-section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 70vh;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow-x: hidden;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    left: -30%;
+    top: 0%;
+    width: 65%;
+    height: 70%;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(40, 94, 176, 0.41) 0%,
+      rgba(6, 19, 31, 0) 100%
+    );
+    @include media-min-lg {
+      width: 50%;
+      height: 70%;
+    }
+  }
+  &::after {
+    @include media-min-lg {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      top: 1%;
+      right: -25%;
+      width: 45%;
+      height: 75%;
+      background: radial-gradient(
+        50% 50% at 50% 50%,
+        rgba(124, 40, 176, 0.41) 0%,
+        rgba(6, 19, 31, 0) 100%
+      );
+      opacity: 0.5;
+    }
+  }
+}

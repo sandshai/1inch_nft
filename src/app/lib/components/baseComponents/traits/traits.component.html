@@ -1,9 +1,11 @@
 <div class="accordion-item bg-transparent mt-2">
     <div class="accordion-header" id="traits">
       <button class="accordion-button" [class.collapsed] = "(is_show === 'false' || is_show === undefined)" type="button" data-bs-toggle="collapse" data-bs-target="#traits-content" aria-expanded="false" aria-controls="traits-content">
-        <img src="../../../assets/images/graph-icon/open_traits.svg" class="img-fluid imgs-1halfrem opened_icon" alt="chart">
-        <img src="../../../assets/images/graph-icon/not_open_traits.svg" class="img-fluid not_open_icon imgs-1halfrem" alt="chart">
-        <span>Traits</span> 
+        <app-svg-icons iconName="starIcon" class="acc-icon" className="acc-icon f-active"></app-svg-icons>
+        <div class="a-title">
+          <span>Sales</span>
+          <app-svg-icons iconName="infoIcon"></app-svg-icons>
+        </div>
         <div class="badges">
           <span class="badge"># 7,468</span>
           <span class="badge"># 7,468</span>

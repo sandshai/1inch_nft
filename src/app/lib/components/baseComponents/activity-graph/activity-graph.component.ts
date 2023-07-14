@@ -12,7 +12,7 @@ interface Types {
 }
 @Component({
   selector: 'app-activity-graph',
-  templateUrl: './activity-graph.component.html'
+  templateUrl: './activity-graph.component.html',
 })
 export class ActivityGraphComponent {
   @Input() is_show: string | undefined;
@@ -44,6 +44,7 @@ export class ActivityGraphComponent {
 
   sendTypes(key: string) {
     this.currentType = key;
+    this.loadMoreEvent.emit(false);
     this.messageEvent.emit(key);
   }
 
@@ -74,26 +75,26 @@ export class ActivityGraphComponent {
   loadMore(load = false) {
     this.loadMoreEvent.emit(load);
   }
-  
-  getCurrentType(val:any) {
+
+  getCurrentType(val: any) {
     switch (val) {
       case 'sale':
-        this.setClassName = 'text-sold'
+        this.setClassName = 'text-sold';
         break;
       case 'transfer':
-        this.setClassName = 'text-transfer'
+        this.setClassName = 'text-transfer';
         break;
       case 'bid_cancel':
-        this.setClassName = 'text-cancel'
+        this.setClassName = 'text-cancel';
         break;
       case 'listed':
-        this.setClassName = 'text-listed'
+        this.setClassName = 'text-listed';
         break;
       case 'ask_cancel':
-        this.setClassName = 'text-cancel'
+        this.setClassName = 'text-cancel';
         break;
       default:
-        this.setClassName = 'text-transfer'
+        this.setClassName = 'text-transfer';
         break;
     }
   }

@@ -27,14 +27,14 @@
                 </div>
                 <div class="col-md-3 p-0">
                   <div class="btn_groups_collection_details float-md-end">
-                    <button class="c-btn__small">
+                    <button class="c-btn__small"  data-bs-placement="top" title="Add to watchlist">
                       <img
                         src="../../../assets/images/icons/star.svg"
                         class="img-fluid"
                         alt="plus icon"
                       />
                     </button>
-                    <button class="c-btn__small">
+                    <button class="c-btn__small"  data-bs-placement="top" title="Share URL">
                       <img
                         src="../../../assets/images/icons/share.svg"
                         class="img-fluid"
@@ -49,6 +49,7 @@
                   By <span>{{ this.formatChainAddress }}</span>
                 </p>
                 <app-svg-icons
+                  id="copy-button"
                   iconName="copyIcon"
                   (click)="copyToClipboard(collectionDetails[0]?.id)"
                   class="cursor-pointer copyIcon"

@@ -1,40 +1,144 @@
 .activity-tab__wrapper {
     .activity-filter_container {
         .btn-group {
-            button {
+            .btn-all-events {
+                border: none;
+                min-width: 7.5rem;
+                display: flex;
+                padding: 0.5rem 0.75rem;
+                justify-content: center;
+                align-items: center;
+                gap: 0.25rem;
+                background-color: rgba(47, 138, 245, 0.16);
                 border-radius: 0.5rem;
-                font-size: 0.813rem;
+                @include media-min-lg {
+                    border-radius: 0.75rem;
+                }
+                &:hover {
+                    background-color: rgba(47, 138, 245, 0.32);
+                }
+                span {
+                    color: var(--1inch-tc-08) !important;
+                    text-align: center;
+                    font-size: 0.8125rem;
+                    font-weight: 400;
+                    line-height: 1rem;
+                }
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+            ul {
+                margin-top: 0.5rem !important;
+                min-width: 7.5rem;
+                padding: 0.5rem 0rem;
+                background-color: var(--1inch-cbc-03) !important;
+                border-radius: 0.5rem;
+                @include media-min-lg {
+                    border-radius: 0.75rem;
+                }
+                li {
+                    width: 100%;
+                    display: flex;
+                    button {
+                      padding: 0.25rem 1rem;
+                      font-size: 1rem;
+                      font-weight: 400;
+                      line-height: 1.625rem;
+                      background-color: transparent !important;
+                      color: var(--1inch-tc-02) !important;
+                      &:hover {
+                        background-color: rgba(6, 10, 16, 0.5) !important;
+                      }
+                    }
+                }
             }
         }
-        .filter-button {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 0.25rem;
-            background-color: #10141C !important;
-            box-shadow: 0px 0px 0.25rem rgba(0, 0, 0, 0.1), 0px 0.01rem 0.125rem rgba(0, 0, 0, 0.25);
-            border-radius: 0.75rem;
-            height: 2rem;
-            button {
-                height: 1.5rem;
-                padding: 0.313rem 0;
-                width: 1.8rem;
-                border: 0;
-                outline: 0;
-                display: inline-block;
-                font-size: 0.713rem;
-                line-height: 0.938rem;
-                text-transform: uppercase;
-                border-radius: 0.5rem;
-                color: $theme-clr-litewhite;
-                @include media-min-md {
-                    width: 2.25rem;
-                    font-size: 0.813rem;
+        .button-filter-wrapper {
+            .f-button-wrapper {
+                display: none;
+                height: 2rem;
+                padding: 0.25rem;
+                align-items: center;
+                border-radius: 0.75rem;
+                background: var(--inch-cbc-09);
+                box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25), 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+                @include media-min-lg {
+                display: flex;
                 }
-               
-                &.active,&:active {
-                background: #2B374A;
-                color: $theme-clr-litewhite;
+                .f-btn {
+                    display: flex;
+                    padding: 0.625rem 0.5rem;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.25rem;
+                    align-self: stretch;
+                    cursor: pointer;
+                    border-radius: 0.5rem;
+                    background: transparent;
+                    color: var(--1inch-tc-01);
+                    text-align: center;
+                    font-size: 0.8125rem;
+                    font-weight: 500;
+                    line-height: normal;
+                    &.active {
+                        width: 2.70831rem;
+                        background: var(--1inch-cbc-10) !important;
+                    }
+                }
+            }
+            .dropdown {
+                @include media-min-lg {
+                    display: none;
+                }
+                button {
+                    border: none;
+                    display: flex;
+                    padding: 0.5rem 0.75rem;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.25rem;
+                    background: rgba(47, 138, 245, 0.16);
+                    border-radius: 0.5rem;
+                    @include media-min-lg {
+                        border-radius: 0.75rem;
+                    }
+                    span {
+                        color: var(--1inch-tc-08);
+                        text-align: center;
+                        font-size: 0.8125rem;
+                        font-weight: 400;
+                        line-height: 1rem;
+                    }
+                    svg {
+                        width: 1rem;
+                        height: 1rem;
+                    }
+                }
+                ul {
+                    margin-top: 0.5rem;
+                    padding: 1rem 0px;
+                    min-width: 3.813rem;
+                    background: var(--1inch-bc-02);
+                    box-shadow: 0px 0px 0.25rem rgba(0, 0, 0, 0.1),
+                    0px 0.01rem 0.125rem rgba(0, 0, 0, 0.25);
+                    border-radius: 0.5rem;
+                    @include media-min-lg {
+                        border-radius: 0.75rem;
+                    }
+                    li {
+                        width: 100%;
+                        a {
+                            color: $theme-clr-litewhite;
+                            padding: 0.5rem 1rem;
+                            transition: all 0.4s ease-in-out;
+                            &:hover {
+                            background: rgba(6, 10, 16, 0.5);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -64,7 +168,7 @@
                         color: $theme-clr-litewhite;
                     }
                 }
-               
+
                 .status {
                     img {
                         width: 0.75rem !important;

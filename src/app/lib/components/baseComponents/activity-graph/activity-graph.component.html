@@ -9,17 +9,11 @@
       aria-expanded="false"
       aria-controls="activity-content"
     >
-      <img
-        src="../../../assets/images/graph-icon/activity_graph.svg"
-        class="img-fluid me-2 imgs-1halfrem opened_icon"
-        alt="chart"
-      />
-      <img
-        src="../../../assets/images/graph-icon/not_open_activity_graph.svg"
-        class="img-fluid me-2 not_open_icon imgs-1halfrem"
-        alt="chart"
-      />
-      Activity
+      <app-svg-icons iconName="activityIcon" class="acc-icon" className="acc-icon icon"></app-svg-icons>
+      <div class="a-title">
+        <span>Activity</span>
+        <app-svg-icons iconName="infoIcon"></app-svg-icons>
+      </div>
       <div class="badges d-none d-sm-flex">
         <span class="badge">Last Sale: 0.051 ETH 12 days ago</span>
       </div>
@@ -59,7 +53,7 @@
           </li>
         </ul>
       </div>
-      <div class="activity-table mt-4">
+      <div class="activity-table">
         <div class="table-responsive">
           <table class="table table-hover table-borderless">
             <thead>
@@ -146,7 +140,7 @@
               </tr>
             </tbody>
           </table>
-          
+
           <div
             class="d-flex justify-content-center"
             *ngIf="this.pagination && activity?.length !== 0"

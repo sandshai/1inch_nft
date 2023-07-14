@@ -1,5 +1,4 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { GridHandleService } from '../../lib/services/grid-handle.service';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { CrudService } from 'src/app/lib/services/crud.service';
 import { SettingsService } from 'src/app/lib/services/settings.service';

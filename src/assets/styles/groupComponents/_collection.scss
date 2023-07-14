@@ -474,7 +474,10 @@
       border-radius: 1.25rem;
   }
   .collection-header__wrappper {
-      padding: 1rem 1.5rem 0.5rem 1.5rem;
+      padding: 1rem;
+      @include media-min-xl {
+        padding: 1rem 1.5rem 0.5rem 1.5rem;
+      }
       .c__header {
           .nav-item {
               padding-right: 1.5rem;
@@ -534,7 +537,7 @@
       @include scroll-bar($width:0.2rem,$height:0.2rem);
       height: calc(100vh - 5rem);
       @include media-min-xl {
-          height: calc(100vh - 12rem);
+          height: 40rem;
       }
   }
 }

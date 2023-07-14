@@ -26,7 +26,7 @@ export class WalletButtonComponent {
       )}...${this.walletAddress.slice(-4)}`;
     }
     this.shared.walletAddressEvent.subscribe((data) => {
-      this.walletAddress = data[0];
+      this.walletAddress = data;
       if (this.walletAddress) {
         this.formatAddress = `${this.walletAddress.slice(
           0,
@@ -35,6 +35,7 @@ export class WalletButtonComponent {
       }
       this.cdr.detectChanges();
     });
+    this.cdr.detectChanges();
   }
 
   openwallet() {

@@ -13,7 +13,7 @@ interface Chains {
 
 @Component({
   selector: 'app-collections-page',
-  templateUrl: './collections-page.component.html'
+  templateUrl: './collections-page.component.html',
 })
 export class CollectionsPageComponent {
   trendingCollections: any = [];
@@ -21,6 +21,7 @@ export class CollectionsPageComponent {
     '1day': '1DayVolume',
     '7day': '7DayVolume',
     '30day': '30DayVolume',
+    allTime: 'allTimeVolume',
   }; // [1DayVolume, 7DayVolume, 30DayVolume, allTimeVolume, createdAt, floorAskPrice]
 
   chains: Chains = {
@@ -42,7 +43,8 @@ export class CollectionsPageComponent {
   isLoading = false;
   loadMoreStatus = false;
   search = false;
-  is_filter =  false;
+  is_filter = false;
+  defaultTab: any = 'collections';
 
   currencyAddress = '0x0000000000000000000000000000000000000000';
 
@@ -54,15 +56,15 @@ export class CollectionsPageComponent {
   ) {}
 
   openCollectionFilter() {
-   (this.is_filter == true) ? this.is_filter = false : this.is_filter = true;
+    this.is_filter == true ? (this.is_filter = false) : (this.is_filter = true);
     document
       .getElementById('c-list-wrapper')
       ?.classList.toggle('active-filter');
     document.getElementById('open-fliter')?.classList.toggle('active');
   }
 
-  closeFilter(value : boolean){
-    this.is_filter = value
+  closeFilter(value: boolean) {
+    this.is_filter = value;
   }
 
   ngOnInit() {
@@ -74,7 +76,7 @@ export class CollectionsPageComponent {
 
     this.selectedChain = this.collectionName;
     this._settings.changeChainHeader(this.selectedChain);
-    document.querySelector('main')?.classList.remove('overflow-x-hidden')
+    document.querySelector('main')?.classList.remove('overflow-x-hidden');
   }
 
   getTrendingCollections = (sortBy?: string, chain?: any) => {
@@ -107,7 +109,7 @@ export class CollectionsPageComponent {
     this.getTrendingCollections(this.sortBy);
   }
 
-  sortByDay(data : { value: string, day?: string }) {
+  sortByDay(data: { value: string; day?: string }) {
     this.sortBy = data?.value;
     this.sortedDay = data?.day || '7day';
     this.loadMoreStatus = false;
@@ -124,5 +126,9 @@ export class CollectionsPageComponent {
 
   goToPage(collectionId: string) {
     this.router.navigate(['collection/', this.selectedChain, collectionId]);
+  }
+
+  handleTabSelection(value: string): void {
+    this.defaultTab = value;
   }
 }

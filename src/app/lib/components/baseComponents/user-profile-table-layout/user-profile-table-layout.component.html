@@ -1,0 +1,294 @@
+<div class="table-responsive" *ngIf="layOutTable == 'portfolio'">
+  <table class="table table-borderless profile-portfolio-table">
+    <thead>
+      <tr>
+        <th>
+          <div class="table-heading">
+            <span>List</span>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Collection / NFT</span>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Rarity</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Floor price</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Cost</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Value</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of data;">
+        <td>
+          <app-checkbox i_id="check"></app-checkbox>
+        </td>
+        <td>
+          <div class="nft-collection">
+            <div class="nft-image">
+              <img src="../../../../../assets/images/c__image.png" alt="nft">
+            </div>
+            <div class="nft-content">
+              <h6 class="wrap-title">Psychosis Ape Club mid</h6>
+              <div class="nft-title-wrapper">
+                <p class="wrap-title">Psychosis Ape Club midnight</p>
+                <app-svg-icons iconName="verifiedIcon"></app-svg-icons>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <span class="text-gray">#6</span>
+        </td>
+        <td>
+          <div class="price">
+            <p>3,759.35</p>
+            <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+          </div>
+        </td>
+        <td>
+          <div class="price">
+            <p>3,759.35</p>
+            <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+          </div>
+        </td>
+        <td>
+          <div class="value">
+            <div class="price">
+              <p>3,759.35</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+            <span class="percentage text-green">
+              +25.23%
+            </span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-responsive" *ngIf="layOutTable == 'offer'">
+  <table class="table table-borderless profile-offer-table">
+    <thead>
+      <tr>
+        <th>
+          <div class="table-heading">
+            <span>Collection</span>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Status</span>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Floor price</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Offer price</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Expiration</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of data;">
+        <td>
+          <div class="nft-collection">
+            <div class="nft-image">
+              <img src="../../../../../assets/images/c__image.png" alt="nft">
+            </div>
+            <div class="nft-content">
+              <div class="nft-title-wrapper">
+                <p class="wrap-title">Psychosis Ape Club midnight</p>
+                <app-svg-icons iconName="verifiedIcon"></app-svg-icons>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="status-wrapper">
+            <div class="status-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.93262 8.00065C1.93262 4.32065 4.91928 1.33398 8.59928 1.33398C12.2793 1.33398 15.266 4.32065 15.266 8.00065C15.266 11.6807 12.2793 14.6673 8.59928 14.6673C4.91928 14.6673 1.93262 11.6807 1.93262 8.00065ZM12.0239 6.72492C12.2582 6.49061 12.2582 6.11071 12.0239 5.8764C11.7896 5.64208 11.4097 5.64208 11.1753 5.8764L7.69961 9.35213L6.02387 7.6764C5.78956 7.44208 5.40966 7.44208 5.17535 7.6764C4.94103 7.91071 4.94103 8.29061 5.17535 8.52492L7.27535 10.6249L7.69961 11.0492L8.12387 10.6249L12.0239 6.72492Z" fill="#6C86AD"/>
+              </svg>
+            </div>
+            <p>Pending</p>
+          </div>
+        </td>
+        <td>
+          <div class="price">
+            <p>3,759.35</p>
+            <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+          </div>
+        </td>
+        <td>
+          <div class="value">
+            <div class="price">
+              <p>3,759.35</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+            <span class="percentage text-gray">
+              -9.6%  from floor
+            </span>
+          </div>
+        </td>
+        <td>
+          <div class="price">
+            <p>6 may 2023, 11:44:14 AM</p>
+          </div>
+        </td>
+        <td>
+          <div class="btn-cancel">Cancel</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-responsive" *ngIf="layOutTable == 'activity'">
+  <table class="table table-borderless profile-activity-table">
+    <thead>
+      <tr>
+        <th>
+          <div class="table-heading">
+            <span>Transaction</span>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Name</span>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Price</span>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Seller</span>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Buyer</span>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Time</span>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of data;">
+        <td>
+          <div class="transacion-wrapper">
+            <div class="transacion-details">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle cx="8" cy="8" r="5.25" stroke="#6C86AD" stroke-width="1.5"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C7.63181 4 7.33333 4.29848 7.33333 4.66667V4.75333C6.56064 4.99535 6 5.7169 6 6.5694C6 7.2901 6.40719 7.94895 7.05181 8.27126L8.35191 8.92131C8.54481 9.01776 8.66667 9.21493 8.66667 9.4306C8.66667 9.74507 8.41174 10 8.09726 10H8.00081H8C7.63181 10 7.33333 9.70152 7.33333 9.33333C7.33333 8.96514 7.03486 8.66667 6.66667 8.66667C6.29848 8.66667 6 8.96514 6 9.33333C6 10.2041 6.55654 10.945 7.33333 11.2195V11.3333C7.33333 11.7015 7.63181 12 8 12C8.36819 12 8.66667 11.7015 8.66667 11.3333V11.2467C9.43936 11.0047 10 10.2831 10 9.4306C10 8.7099 9.59281 8.05105 8.94819 7.72874L7.64809 7.07869C7.45519 6.98224 7.33333 6.78507 7.33333 6.5694C7.33333 6.25493 7.58826 6 7.90273 6H8C8.36819 6 8.66667 6.29848 8.66667 6.66667C8.66667 7.03486 8.96514 7.33333 9.33333 7.33333C9.70152 7.33333 10 7.03486 10 6.66667C10 5.79585 9.44346 5.05503 8.66667 4.78047V4.66667C8.66667 4.29848 8.36819 4 8 4Z" fill="#6C86AD"/>
+                </svg>
+              </div>
+              <p class="text-green">Sold</p>
+            </div>
+            <div class="market-place-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <g clip-path="url(#clip0_5097_26498)">
+                  <path opacity="0.4" d="M32 16C32 24.8361 24.8361 32 16 32C7.16394 32 0 24.8361 0 16C0 7.16394 7.16394 0 16 0C24.8379 0 32 7.16394 32 16Z" fill="#06070A"/>
+                  <path d="M7.89396 16.5373L7.96298 16.4288L12.1252 9.91747C12.1861 9.82214 12.3291 9.832 12.3751 9.93555C13.0704 11.4939 13.6704 13.432 13.3893 14.6386C13.2693 15.1351 12.9406 15.8074 12.5707 16.4288C12.523 16.5192 12.4704 16.608 12.4145 16.6934C12.3882 16.7329 12.3438 16.7559 12.2962 16.7559H8.01559C7.90052 16.7559 7.83312 16.631 7.89396 16.5373Z" fill="white"/>
+                  <path d="M26.4459 17.7479V18.7786C26.4459 18.8378 26.4098 18.8904 26.3572 18.9134C26.035 19.0515 24.932 19.5578 24.4733 20.1956C23.3029 21.8246 22.4087 24.154 20.4097 24.154H12.0704C9.11483 24.154 6.71973 21.7507 6.71973 18.7852V18.6898C6.71973 18.6109 6.78382 18.5468 6.86273 18.5468H11.5116C11.6036 18.5468 11.671 18.6323 11.6628 18.7227C11.6299 19.0252 11.6858 19.3342 11.8288 19.6153C12.105 20.1759 12.677 20.526 13.2951 20.526H15.5965V18.7293H13.3214C13.2047 18.7293 13.1357 18.5945 13.2031 18.4991C13.2277 18.4613 13.2557 18.4219 13.2853 18.3775C13.5006 18.0718 13.808 17.5967 14.1138 17.0558C14.3225 16.6909 14.5247 16.3013 14.6875 15.9101C14.7204 15.8394 14.7466 15.767 14.7729 15.6964C14.8173 15.5714 14.8634 15.4547 14.8962 15.338C14.9291 15.2394 14.9554 15.1358 14.9817 15.0388C15.059 14.7068 15.0919 14.355 15.0919 13.9901C15.0919 13.847 15.0853 13.6974 15.0721 13.5544C15.0655 13.3983 15.0458 13.2421 15.0261 13.0859C15.0129 12.9478 14.9883 12.8114 14.962 12.6684C14.9291 12.4596 14.8831 12.2525 14.8305 12.0437L14.8124 11.9648C14.7729 11.8218 14.7401 11.6854 14.6941 11.5424C14.5642 11.0936 14.4146 10.6563 14.2568 10.247C14.1992 10.0843 14.1335 9.9281 14.0677 9.77194C13.9708 9.53687 13.8721 9.32317 13.7817 9.12097C13.7357 9.0289 13.6962 8.94506 13.6568 8.85959C13.6124 8.7626 13.5664 8.66561 13.5203 8.57357C13.4875 8.50289 13.4496 8.43713 13.4233 8.37137L13.1423 7.85191C13.1028 7.78122 13.1686 7.69738 13.2458 7.71876L15.0048 8.19546H15.0097C15.0129 8.19546 15.0146 8.19713 15.0162 8.19713L15.248 8.26122L15.5028 8.33357L15.5965 8.35985V7.31437C15.5965 6.8097 16.0009 6.40039 16.5007 6.40039C16.7505 6.40039 16.9774 6.50231 17.1401 6.66833C17.3028 6.83437 17.4048 7.06122 17.4048 7.31437V8.86618L17.5922 8.91876C17.607 8.92372 17.6217 8.93028 17.6349 8.94013C17.6809 8.97466 17.7467 9.02561 17.8305 9.0881C17.8963 9.14068 17.967 9.20481 18.0524 9.27057C18.2217 9.40698 18.424 9.58289 18.6459 9.78509C18.705 9.83604 18.7626 9.88865 18.8152 9.94125C19.1012 10.2076 19.4218 10.5199 19.7275 10.8651C19.813 10.9621 19.8968 11.0607 19.9823 11.1643C20.0678 11.2695 20.1582 11.373 20.2371 11.4766C20.3407 11.6147 20.4525 11.7577 20.5495 11.9073C20.5955 11.978 20.6481 12.0503 20.6925 12.121C20.8174 12.31 20.9275 12.5057 21.0328 12.7013C21.0771 12.7917 21.1232 12.8903 21.1626 12.9873C21.2793 13.2487 21.3714 13.515 21.4305 13.7813C21.4486 13.8388 21.4618 13.9013 21.4684 13.9572V13.9703C21.4881 14.0492 21.4947 14.1331 21.5012 14.2185C21.5275 14.4914 21.5144 14.7643 21.4552 15.0388C21.4305 15.1556 21.3977 15.2657 21.3582 15.3824C21.3188 15.4942 21.2793 15.6109 21.2284 15.721C21.1297 15.9495 21.013 16.178 20.8749 16.3917C20.8305 16.4706 20.7779 16.5545 20.7253 16.6334C20.6678 16.7172 20.6086 16.7961 20.556 16.8734C20.4837 16.972 20.4064 17.0756 20.3275 17.1676C20.2568 17.2646 20.1845 17.3616 20.1056 17.4471C19.9955 17.5769 19.8903 17.7002 19.7801 17.8186C19.7144 17.8958 19.6437 17.9748 19.5713 18.0454C19.5007 18.1243 19.4283 18.195 19.3626 18.2608C19.2525 18.3709 19.1604 18.4564 19.0831 18.5271L18.9023 18.6931C18.876 18.7161 18.8415 18.7293 18.8053 18.7293H17.4048V20.526H19.167C19.5615 20.526 19.9363 20.3863 20.2388 20.1298C20.3423 20.0394 20.7944 19.6482 21.3286 19.0581C21.3467 19.0383 21.3697 19.0235 21.396 19.017L26.2635 17.6098C26.3539 17.5835 26.4459 17.6525 26.4459 17.7479Z" fill="white"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_5097_26498">
+                    <rect width="32" height="32" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="nft-collection">
+            <div class="nft-image">
+              <img src="../../../../../assets/images/c__image.png" alt="nft">
+            </div>
+            <div class="nft-content">
+              <div class="nft-title-wrapper">
+                <p class="wrap-title">Psychosis Ape Club midnight</p>
+                <app-svg-icons iconName="verifiedIcon"></app-svg-icons>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="price">
+            <p class="text-static-white">3,759.35</p>
+            <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+          </div>
+        </td>
+        <td>
+          <div class="buy-sell-wrapper">
+            <div class="icon">
+              <img src="../../../../../assets/images/graph-icon/profile-1.png" alt="icon">
+            </div>
+            <p class="text-gray">5254..4352</p>
+          </div>
+        </td>
+        <td>
+          <div class="buy-sell-wrapper">
+            <div class="icon">
+              <img src="../../../../../assets/images/graph-icon/profile-3.png" alt="icon">
+            </div>
+            <p class="text-gray">5254..4352</p>
+          </div>
+        </td>
+        <td>
+          <div class="time-wrapper">
+            <p class="text-gray">1 hour ago</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99965 2.0332C7.58544 2.0332 7.24965 2.36899 7.24965 2.7832C7.24965 3.19742 7.58544 3.5332 7.99965 3.5332H11.4062L5.97846 8.96099C5.68557 9.25389 5.68557 9.72876 5.97846 10.0217C6.27135 10.3145 6.74623 10.3145 7.03912 10.0217L12.467 4.59373V8.00059C12.467 8.41481 12.8028 8.75059 13.217 8.75059C13.6313 8.75059 13.967 8.41481 13.967 8.00059V2.7832C13.967 2.36899 13.6313 2.0332 13.217 2.0332H7.99965Z" fill="#6C86AD"/>
+            </svg>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,125 @@
+<div class="table-responsive">
+  <table class="table table-borderless myWatchlist-table">
+    <thead>
+      <tr>
+        <th>
+          <div class="table-heading">
+            <span>Collection / NFT</span>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Floor price</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>1H Volume</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>1H Sales</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Owners</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+            <span>Items</span>
+            <app-svg-icons iconName="sortIcon"></app-svg-icons>
+          </div>
+        </th>
+        <th>
+          <div class="table-heading">
+
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let dummy of data;">
+        <td>
+          <div class="nft-collection">
+            <div class="nft-image">
+              <img src="../../../../../assets/images/c__image.png" alt="nft">
+            </div>
+            <div class="nft-content">
+              <div class="nft-title-wrapper">
+                <h6 class="wrap-title">Psychosis Ape Club mid</h6>
+                <app-svg-icons iconName="verifiedIcon"></app-svg-icons>
+              </div>
+              <div class="nft-title-wrapper" *ngIf="dummy.flag">
+                <p class="wrap-title">Psychosis Ape Club midnight</p>
+                <app-svg-icons iconName="verifiedIcon"></app-svg-icons>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="nft-stats-w-icon">
+            <div class="text-wicon">
+              <p class="text-static-white cfw-500">10.8</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+            <div class="text-stats">
+              <p class="text-red cfw-400">-83.79%</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="nft-stats-w-icon">
+            <div class="text-wicon">
+              <p class="text-static-white cfw-500">3,759.35</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+            <div class="text-stats">
+              <p class="text-green cfw-400">+25.23%</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="nft-stats-w-icon">
+            <div class="text-wicon">
+              <p class="text-static-white cfw-500">3,759.35</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+            <div class="text-stats">
+              <p class="text-green cfw-400">+25.23%</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="nft-stats-w-icon">
+            <div class="text-wicon">
+              <p class="text-static-white cfw-400">11.4K</p>
+            </div>
+            <div class="text-stats">
+              <p class="text-gray cfw-400">57.45%</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="nft-stats-w-icon">
+            <div class="text-wicon">
+              <p class="text-static-white cfw-400">1.4<span class="text-gray">/19.4K</span></p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="add-watchlist">
+            <app-svg-icons iconName="starIcon" class="icon"></app-svg-icons>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

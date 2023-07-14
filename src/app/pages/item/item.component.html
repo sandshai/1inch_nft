@@ -205,7 +205,7 @@
   <div class="container-fluid cp-5">
     <div class="row m-0">
       <div class="col-md-6 col-lg-7 p-0 pe-md-2 pe-xl-3">
-        <div class="accordion" id="item-graphs">
+        <div class="accordion graph-wrapper" id="item-graphs">
           <app-traits is_show="true"></app-traits>
           <app-activity-graph
             is_show="true"
@@ -215,6 +215,8 @@
             [pagination]="this.pagination"
             (loadMoreEvent)="receiveLoadMoreStatus($event)"
           ></app-activity-graph>
+          <app-sales-graph is_show="true" accordionBdyClass="bg-sec-accordion"></app-sales-graph>
+          <app-valume-price-graph gName="Price" accordionBdyClass="bg-sec-accordion" is_show="true"></app-valume-price-graph>
           <app-item-details
             is_show="true"
             [c_address]="this.formatChainAddress"

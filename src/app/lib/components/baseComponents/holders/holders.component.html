@@ -1,14 +1,15 @@
 <div class="accordion-item bg-transparent">
     <div class="accordion-header" id="profile">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#profile-content" aria-expanded="false" aria-controls="profile-content">
-        <img src="../../../assets/images/graph-icon/open_profile.svg" class="img-fluid me-2 imgs-1halfrem opened_icon" alt="chart">
-        <img src="../../../assets/images/graph-icon/not_open_profile.svg" class="img-fluid me-2 not_open_icon imgs-1halfrem" alt="chart">
-        Holders 
-        <img src="../../../../../assets/images/icons/info.svg" class="img-fluid imgs-1rem ms-1" alt="info_icon">
+      <button class="accordion-button analytics-graph-component collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#profile-content" aria-expanded="false" aria-controls="profile-content">
+        <app-svg-icons iconName="userProfileIcon" class="acc-icon" className="acc-icon f-active"></app-svg-icons>
+        <div class="a-title">
+          <span>Holders</span>
+          <app-svg-icons iconName="infoIcon"></app-svg-icons>
+        </div>
       </button>
     </div>
     <div id="profile-content" class="accordion-collapse collapse collapse" aria-labelledby="profile">
-      <div class="accordion-body">
+      <div class="accordion-body {{accordionBdyClass}}">
           <div class="profile-list__wrapper">
             <div class="profile-list">
                 <div class="profile-details-wrapper">

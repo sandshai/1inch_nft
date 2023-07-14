@@ -199,23 +199,152 @@
             }
         }
         ul {
-            margin-top: 0.5rem;
-            padding: 0.75rem 0px;
-            background: var(--1inch-cbc-03);
-            box-shadow: 0px 0px 0.25rem rgba(0, 0, 0, 0.1), 0px 0.0613rem 0.125rem rgba(0, 0, 0, 0.25);
+            margin-top: 0.25rem;
+            min-width: 17.5rem;
+            border-radius: 1.5rem;
+            background: var(--1inch-cbc-05);
             li {
-                width: 100%;
-                button {
+                .connect-wallet-dropdown {
                     display: flex;
-                    align-items: center;
-                    padding: 0.5rem 1rem;
-                    gap: 1rem;
-                    color: var(--1inch-cbc-06);
-                    font-size: 1rem;
-                    line-height: 1.6rem;
-                    &:hover {
-                        background: rgba(6, 10, 16, 0.5);
-                        color: var(--1inch-cbc-06);
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    .line {
+                        width: 100%;
+                        height: 1px;
+                        background-color: var(--1inch-bc-11);
+                    }
+                    .profile-popup-header {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                        .account-number {
+                            display: flex;
+                            padding: 0.75rem 0.75rem 0.75rem 1rem;
+                            justify-content: space-between;
+                            align-items: center;
+                            gap: 0.5rem;
+                            align-self: stretch;
+                            .acc-details {
+                                display: flex;
+                                align-items: center;
+                                gap: 0.5rem;
+                                .profile-img {
+                                    display: flex;
+                                    width: 1.5rem;
+                                    height: 1.5rem;
+                                    justify-content: center;
+                                    align-items: center;
+                                    img {
+                                        width: 1.5rem;
+                                        height: 1.5rem;
+                                        border-radius: 1.5rem;
+                                    }
+                                }
+                                p {
+                                    margin: 0;
+                                    color: var(--1inch-tc-01);
+                                    font-size: 1.25rem;
+                                    font-weight: 500;
+                                    line-height: 1.5rem;
+                                }
+                            }
+                            .icon-wrapper {
+                                display: flex;
+                                align-items: center;
+                                gap: 0.5rem;
+                                .icon {
+                                    display: flex;
+                                    width: 2rem;
+                                    height: 2rem;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 0.625rem;
+                                    cursor: pointer;
+                                    svg {
+                                        width: 1.5rem;
+                                        height: 1.5rem;
+                                        flex-shrink: 0;
+                                    }
+                                    &:last-child {
+                                        svg {
+                                            width: 1rem;
+                                            height: 1rem;
+                                            flex-shrink: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .account-bl-wrapper {
+                            display: flex;
+                            padding: 0.5rem 1.5rem;
+                            align-items: flex-start;
+                            gap: 0.5rem;
+                            align-self: stretch;
+                            .price-wrapper {
+                                display: flex;
+                                align-items: center;
+                                gap: 0.125rem;
+                                p {
+                                    margin: 0;
+                                    color: var(--1inch-tc-01);
+                                    font-size: 1rem;
+                                    font-weight: 500;
+                                    line-height: 1.625rem;
+                                    letter-spacing: 0.01875rem;
+                                }
+                                .icon {
+                                    display: flex;
+                                    width: 1rem;
+                                    height: 1rem;
+                                    padding: 0.125rem;
+                                    justify-content: center;
+                                    align-items: center;
+                                    svg {
+                                        width: 0.75rem;
+                                        height: 0.75rem;
+                                        flex-shrink: 0;
+                                    }
+                                }
+                            }
+                            span {
+                                color: var(--1inch-tc-02);
+                                font-size: 1rem;
+                                font-weight: 400;
+                                line-height: 1.625rem;
+                            }
+                        }
+                    }
+                    .profile-popup-body {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+                    .profile-popup-footer {
+                        padding-bottom: 1rem;
+                    }
+                    .menu-item {
+                        cursor: pointer;
+                        display: flex;
+                        padding: 0.5rem 1rem;
+                        align-items: center;
+                        gap: 1rem;
+                        align-self: stretch;
+                        background-color: var(--1inch-cbc-03);
+                        &:hover {
+                            background-color: var(--1inch-cbc-08);
+                        }
+                        svg {
+                            width: 1.5rem;
+                            height: 1.5rem;
+                        }
+                        p {
+                            margin: 0;
+                            color: var(--1inch-tc-01);
+                            font-size: 1rem;
+                            font-weight: 500;
+                            line-height: 1.625rem;
+                        }
                     }
                 }
             }

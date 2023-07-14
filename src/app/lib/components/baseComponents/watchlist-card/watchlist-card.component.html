@@ -1,0 +1,99 @@
+<div class="myWatchlist-card-wrapper">
+  <div class="myWatchlist-card d-none d-md-flex" *ngFor="let listData of data;">
+    <div class="nft-image">
+      <img src="../../../../../assets/images/collection-image-1.png" alt="nft">
+      <div class="add-fav">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.22246 2.06807C7.54036 1.42392 8.4589 1.42393 8.7768 2.06807L10.2057 4.96333L13.4008 5.4276C14.1117 5.5309 14.3955 6.40448 13.8811 6.90587L11.5691 9.15951L12.1149 12.3417C12.2363 13.0497 11.4932 13.5896 10.8574 13.2553L7.99963 11.7529L5.14184 13.2553C4.50603 13.5896 3.76292 13.0497 3.88435 12.3417L4.43014 9.15951L2.11814 6.90587C1.60376 6.40447 1.8876 5.5309 2.59846 5.4276L5.79356 4.96333L7.22246 2.06807Z" fill="white"/>
+        </svg>
+      </div>
+    </div>
+    <div class="myWatchlist-card-content">
+      <div class="nft-name-wrapper">
+        <h6>Psychosis Ape club #1234</h6>
+        <app-svg-icons iconName="verifiedIcon"></app-svg-icons>
+      </div>
+      <div class="nft-name-wrapper">
+        <p>Psychosis Ape Club midnight corps</p>
+        <app-svg-icons iconName="verifiedIcon"></app-svg-icons>
+      </div>
+      <div class="nft-stats-wrapper">
+        <div class="nft-floor-stats-wrapper">
+          <div class="text-with-icon">
+            <div class="text-detail">
+              <p class="text-gray cfw-400">Price</p>
+            </div>
+            <div class="detail-with-icon">
+              <p class="text-static-white cfw-500"># 7,468</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+          </div>
+          <p class="percentage text-red">-83.79%</p>
+        </div>
+        <div class="nft-val-stats-wrapper">
+          <div class="text-with-icon">
+            <div class="text-detail">
+              <p class="text-gray cfw-400">Top offer</p>
+            </div>
+            <div class="detail-with-icon">
+              <p class="text-static-white cfw-500"># 7,468</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+          </div>
+          <p class="percentage text-green">+25.23%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mob-watchlist-card d-md-none" *ngFor="let listData of data;">
+    <div class="nft-image">
+      <img src="../../../../../assets/images/collection-image-1.png" alt="nft">
+    </div>
+    <div class="content">
+      <div class="nft-title-wrapper">
+        <div class="nft-name">
+          <div class="nft-name-wrapper">
+            <h6>Psychosis Ape club #1234</h6>
+            <app-svg-icons iconName="verifiedIcon"></app-svg-icons>
+          </div>
+          <div class="nft-name-wrapper d-none">
+            <p>Psychosis Ape club #1234</p>
+            <app-svg-icons iconName="verifiedIcon"></app-svg-icons>
+          </div>
+        </div>
+        <div class="add-fav">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.22246 2.06905C7.54036 1.4249 8.4589 1.4249 8.7768 2.06905L10.2057 4.9643L13.4008 5.42858C14.1117 5.53187 14.3955 6.40545 13.8811 6.90685L11.5691 9.16049L12.1149 12.3427C12.2363 13.0507 11.4932 13.5906 10.8574 13.2563L7.99963 11.7539L5.14184 13.2563C4.50603 13.5906 3.76292 13.0507 3.88435 12.3427L4.43014 9.16049L2.11814 6.90685C1.60376 6.40545 1.8876 5.53187 2.59846 5.42858L5.79356 4.9643L7.22246 2.06905Z" fill="#6C86AD"/>
+          </svg>
+        </div>
+      </div>
+      <div class="nft-stats-wrapper">
+        <div class="nft-floor-stats-wrapper">
+          <div class="text-with-icon">
+            <div class="text-detail">
+              <p class="text-gray cfw-400">1H Vol.</p>
+            </div>
+            <div class="detail-with-icon">
+              <p class="text-static-white cfw-500">3,759.35</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+          </div>
+          <p class="percentage text-red">-83.79%</p>
+        </div>
+        <div class="nft-val-stats-wrapper">
+          <div class="text-with-icon">
+            <div class="text-detail">
+              <p class="text-gray cfw-400">Floor</p>
+            </div>
+            <div class="detail-with-icon">
+              <p class="text-static-white cfw-500">7,468</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+          </div>
+          <p class="percentage text-green">+25.23%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

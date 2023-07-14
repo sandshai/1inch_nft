@@ -1,0 +1,140 @@
+.user-profile-account-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  .user-account-details {
+    display: flex;
+    align-items: center;
+    .profile-id {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      .profile-img {
+        display: flex;
+        width: 2.5rem;
+        height: 2.5rem;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+      }
+      h6 {
+        margin: 0;
+        color: var(--1inch-tc-01);
+        font-size: 1rem;
+        line-height: 1rem;
+        font-weight: 600;
+        @include media-min-sm {
+          font-size: 2rem;
+        line-height: 2.375rem;
+        }
+
+      }
+    }
+    .copyText {
+      cursor: pointer;
+      display: flex;
+      padding: 0.5625rem;
+      align-items: flex-start;
+      gap: 0.5rem;
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+  .profile-share-icon {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    .profile-share-button {
+      cursor: pointer;
+      display: flex;
+      padding: 0.75rem;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #202835;
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+}
+
+.user-profile-stats-info {
+  display: flex;
+  padding: 2.5rem 0rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  gap: 1rem;
+  overflow-y: hidden;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  @include scroll-bar(0, 0);
+  .user-profile-stats {
+    width: 15.6rem;
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    border-radius: 0.75rem;
+    background: var(--1inch-cbc-05);
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
+    .stats-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      p {
+        margin: 0;
+        color: var(--1inch-tc-02);
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.625rem;
+      }
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+    .stats-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.25rem;
+      .stat-with-icon {
+        display: flex;
+        align-items: center;
+        gap: 0.125rem;
+        p {
+          margin: 0;
+          text-align: center;
+          font-size: 1.25rem;
+          font-weight: 400s;
+          line-height: 1.5rem;
+        }
+        .icon {
+          display: flex;
+          width: 1.5rem;
+          height: 1.5rem;
+          padding: 0.1875rem;
+          justify-content: center;
+          align-items: center;
+          svg {
+            width: 1.125rem;
+            height: 1.125rem;
+            flex-shrink: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,14 +1,15 @@
 <div class="accordion-item bg-transparent">
     <div class="accordion-header" id="owner-distribution">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#owner-distribution-content" aria-expanded="false" aria-controls="owner-distribution-content">
-        <img src="../../../assets/images/graph-icon/open_roundedchart.svg" class="img-fluid me-2 imgs-1halfrem opened_icon" alt="chart">
-        <img src="../../../assets/images/graph-icon/not_open_roundedchart.svg" class="img-fluid me-2 not_open_icon imgs-1halfrem" alt="chart">
-        Owner Distribution 
-        <img src="../../../../../assets/images/icons/info.svg" class="img-fluid imgs-1rem ms-1" alt="info_icon">
+      <button class="accordion-button analytics-graph-component collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#owner-distribution-content" aria-expanded="false" aria-controls="owner-distribution-content">
+        <app-svg-icons iconName="ownerDisIcon" class="acc-icon" className="acc-icon f-active"></app-svg-icons>
+        <div class="a-title">
+          <span>Owner Distribution</span>
+          <app-svg-icons iconName="infoIcon"></app-svg-icons>
+        </div>
       </button>
     </div>
     <div id="owner-distribution-content" class="accordion-collapse collapse collapse" aria-labelledby="owner-distribution">
-      <div class="accordion-body">
+      <div class="accordion-body {{accordionBdyClass}}">
           <div class="row m-0 justify-content-center">
             <div class="col-7 p-0">
                 <img src="../../../assets/images/owner-distribution.png" class="img-fluid w-100 mt-3" alt="demo-chart">

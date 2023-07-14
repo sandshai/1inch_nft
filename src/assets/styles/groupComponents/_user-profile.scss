@@ -1,0 +1,70 @@
+.user-profile-section {
+  position: relative;
+  .user-profile-main-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    .profile-main-stats-wrapper {
+      width: 100%;
+      &.is_listItemCard {
+        width: calc(100% - 28.9rem) !important;
+      }
+      // .search__wrapper {
+      //   width: auto !important;
+      // }
+      .user-profile-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+
+        .nav-pills {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          width: 100%;
+          margin: 0;
+          border-bottom: 1px solid var(--1inch-bc-11);
+          li {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            .nav-link {
+              padding: 0;
+              background-color: transparent !important;
+              color: var(--1inch-tc-02) !important;
+              text-align: center;
+              font-size: 1.25rem;
+              font-weight: 400;
+              line-height: 1.5rem;
+              &.active {
+                color: var(--1inch-tc-01) !important;
+              }
+            }
+            .line {
+              width: 100%;
+              height: 1px;
+              background-color: transparent;
+            }
+            .active + .line {
+              background-color: var(--1inch-bc-08);
+            }
+          }
+        }
+      }
+
+      .user-profile-stats-wrapper {
+        display: flex;
+        gap: 2rem;
+        .profile-stats {
+          width: calc(100% - 22rem);
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+      }
+    }
+  }
+}

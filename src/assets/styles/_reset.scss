@@ -66,3 +66,20 @@ html { // ===== reset font size depends on screen size =====
         padding-right: 5.75rem !important;
     }
 }
+
+$colors: ("static-white": #fbfbfb, "gray": #6C86AD, "red": #E3402A,"green" : #21C187);
+
+@each $name, $color in $colors {
+    .text-#{$name} {
+        color: $color;
+    }
+}
+
+
+$weights : 100, 200, 300, 400, 500, 600, 700, 800, 900;
+
+@each $weight in $weights {
+  .cfw-#{$weight} {
+    font-weight: $weight;
+  }
+}

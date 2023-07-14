@@ -1,0 +1,535 @@
+.profile-list-card-wrapper {
+  width: 26.9rem;
+
+  .list-card {
+    border-radius: 1.5rem;
+    background-color: var(--1inch-cbc-03);
+    overflow: hidden;
+    .list-card__header {
+      display: flex;
+      padding: 1rem 1rem 0.75rem 1.5rem;
+      justify-content: space-between;
+      align-items: center;
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        li {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          button {
+            background-color: transparent !important;
+            padding: 0 !important;
+            color: var(--1inch-tc-02);
+            font-size: 1.25rem;
+            font-weight: 400s;
+            line-height: 1.5rem;
+          }
+          .active {
+            color: var(--1inch-tc-01) !important;
+          }
+          .active ~ .line {
+            background-color: var(--1inch-bc-08) !important;
+          }
+          .line {
+            height: 1px;
+            background-color: transparent;
+          }
+        }
+      }
+      .close-button {
+        display: flex;
+        width: 2rem;
+        height: 2rem;
+        padding: 0.25rem;
+        align-items: center;
+        justify-content: center;
+        gap: 0.625rem;
+        border-radius: 0.5rem;
+        background-color: transparent;
+        cursor: pointer;
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+        &:hover {
+          background-color: var(--1inch-cbc-02) !important;
+        }
+      }
+    }
+    .list-card-body {
+      display: flex;
+      width: 100%;
+      padding: 0.5rem 0rem;
+      flex-direction: column;
+      gap: 0.5rem;
+      background-color: var(--1inch-cbc-05);
+
+      .card-content {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+        max-height: 25rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+        @include scroll-bar(0.15rem,0.15rem);
+        .card-body-header {
+          display: flex;
+          padding: 0rem 0.5rem;
+          flex-direction: column;
+          align-items: flex-start;
+          .card-inner__header {
+            width: 100%;
+            display: flex;
+            padding: 0.6875rem 0.75rem 0.6875rem 1rem;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            border-radius: 0.75rem;
+            p {
+              margin: 0;
+              color: var(--1inch-tc-01);
+              font-size: 1rem;
+              font-weight: 400;
+              line-height: 1.625rem;
+            }
+            .expand-items {
+              display: flex;
+              align-items: center;
+              gap: 0.75rem;
+              span {
+                color: var(--1inch-tc-02);
+                font-size: 0.8125rem;
+                font-weight: 400;
+                line-height: 1rem;
+              }
+              svg {
+                width: 1rem;
+                height: 1rem;
+              }
+            }
+          }
+          .input-wrapper {
+            padding: 0.6875rem 0.75rem 0rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            align-self: stretch;
+            gap: 0.25rem;
+            input,select {
+              width: 100%;
+              display: flex;
+              padding: 0.8125rem 0.75rem 0.8125rem 1rem;
+              align-items: center;
+              gap: 0.5rem;
+              align-self: stretch;
+              border-radius: 0.75rem;
+              background-color: var(--1inch-cbc-02);
+              color: var(--1inch-tc-01);
+              font-size: 1rem;
+              font-weight: 400;
+              line-height: 1rem;
+              border: 1px solid transparent;
+              &:focus {
+                color: var(--1inch-tc-01);
+                outline: none !important;
+                box-shadow: none !important;
+                border: 1px solid transparent !important;
+              }
+              &.is-valid {
+                border: 1px solid var(--1inch-tc-08) !important;
+              }
+              &.in-valid {
+                border: 1px solid #E3402A;
+              }
+              &::placeholder {
+                color: var(--1inch-tc-02);
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1rem;
+              }
+            }
+
+            span, label{
+              color: var(--1inch-tc-02);
+              font-size: 0.8125rem;
+              font-weight: 400;
+              line-height: 1rem;
+            }
+            .form-group {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 0.25rem;
+              .price-input {
+                position: relative;
+                width: 100%;
+                .icon {
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: 2.5rem;
+                }
+                svg {
+                  width: 0.75rem;
+                  height: 0.75rem;
+                }
+              }
+            }
+          }
+        }
+        .line {
+          width: 100%;
+          height: 1px;
+          background-color: #212936;
+        }
+        .clear-all-section {
+          display: flex;
+          padding: 0.25rem 1rem 0.5rem 1.5rem;
+          justify-content: space-between;
+          align-items: center;
+          align-self: stretch;
+          .noOfItems {
+            margin: 0;
+            color: var(--1inch-tc-02);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            line-height: 1rem;
+          }
+          .btn-clear {
+            display: flex;
+            padding: 0.0625rem 0.5rem;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            &:hover {
+              background-color: #0e1c2f;
+            }
+            span {
+              color: var(--1inch-tc-08);
+              text-align: center;
+              font-size: 0.8125rem;
+              font-weight: 500;
+              line-height: 1.625rem;
+            }
+          }
+        }
+        .body-content {
+          display: flex;
+          padding: 0.5rem;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+          .item-card {
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            padding: 0.5rem 1rem;
+            align-items: center;
+            gap: 1rem;
+            border-radius: 0.75rem;
+            background-color: transparents;
+            &:hover {
+              background-color: var(--inch-cbc-09);
+            }
+            .item-image {
+              width: 2.875rem;
+              height: 2.875rem;
+              border-radius: 0.5rem;
+              position: relative;
+              z-index: 1;
+              &::before {
+                border-radius: 0.5rem;
+                content: '';
+                z-index: -1;
+                position: absolute;
+                left: -1px;
+                right: -1px;
+                top: -1px;
+                bottom: -1px;
+                background: linear-gradient(178.39deg, #434343 0%, rgba(33, 33, 33, 0) 83.3%);
+              }
+              img {
+                width: 2.875rem;
+                height: 2.875rem;
+                border-radius: 0.5rem;
+              }
+              .close-icon {
+                display: flex;
+                width: 1rem;
+                height: 1rem;
+                padding: 0.0625rem;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                right: -10px;
+                top: -8px;
+                cursor: pointer;
+                border-radius: 0.5rem;
+                background: #263042;
+                box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25), 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+                svg {
+                  width: 0.875rem;
+                  height: 0.875rem;
+                  flex-shrink: 0;
+                }
+              }
+            }
+            .item-card-body {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: flex-start;
+              gap: 0.25rem;
+              width: calc(100% - 3.875rem);
+              .set-price-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                p {
+                  margin: 0;
+                  max-width: calc(100% - 7.25rem);
+                  color: var(--1inch-tc-01);
+                  text-align: right;
+                  font-size: 1rem;
+                  font-weight: 500;
+                  line-height: 1.625rem;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+                .price-wrapper {
+                  display: flex;
+                  width: 6.25rem;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  gap: 0.25rem;
+                  height: 2rem;
+                  position: relative;
+                  input {
+                    display: flex;
+                    padding: 0.5rem;
+                    justify-content: space-between;
+                    align-items: center;
+                    align-self: stretch;
+                    border-radius: 0.5rem;
+                    border: 1px solid var(--1inch-bc-08);
+                    background: var(--1inch-cbc-02);
+                    height: 2rem;
+                    color: var(--1inch-tc-01);
+                    &:focus {
+                      border: 1px solid var(--1inch-bc-08);
+                      box-shadow: none;
+                      outline: none;
+                    }
+                    &::placeholder {
+                      color: var(--1inch-tc-02);
+                      font-size: 0.8125rem;
+                      font-weight: 400;
+                      line-height: 1rem;
+                    }
+                  }
+                  .icon {
+                    position: absolute;
+                    top: 0;
+                    right: 7px;
+                    bottom: 0;
+                    display: flex;
+                    width: 1rem;
+                    height: 100%;
+                    padding: 0.125rem;
+                    justify-content: center;
+                    align-items: center;
+                    svg {
+                      width: 0.75rem;
+                      height: 0.75rem;
+                      flex-shrink: 0;
+                    }
+                  }
+                }
+              }
+              .last-price-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                .subtitle-wrapper {
+                  display: flex;
+                  align-items: center;
+                  gap: 0.25rem;
+                  max-width: calc(100% - 7rem);
+                  p {
+                    margin: 0;
+                    color: var(--1inch-tc-02);
+                    font-size: 0.8125rem;
+                    font-weight: 400;
+                    line-height: 1rem;
+                    max-width: 100%;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                  }
+                  svg {
+                    width: 1rem;
+                    height: 1rem;
+                  }
+                }
+                .last-price {
+                  display: flex;
+                  align-items: center;
+                  gap: 0.25rem;
+                  min-width: 6.44rem;
+                  span {
+                    color: var(--1inch-tc-02);
+                    font-size: 0.6875rem;
+                    font-weight: 400;
+                    line-height: 0.875rem;
+                  }
+                  .icon {
+                    display: flex;
+                    width: 1rem;
+                    height: 1rem;
+                    padding: 0.125rem;
+                    justify-content: center;
+                    align-items: center;
+                    svg {
+                      width: 0.75rem;
+                      height: 0.75rem;
+                      flex-shrink: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .body-footer {
+        display: flex;
+        width: 100%;
+        padding: 1rem 1.5rem 1rem 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 1.5rem;
+        background: var(--1inch-cbc-05);
+        .price-info {
+          display: flex;
+          padding: 0.75rem 1rem;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+          width: 100%;
+          background-color: var(--1inch-cbc-01);
+          border-radius: 1rem;
+          .info {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            .info-name {
+              margin: 0;
+              color: var(--1inch-tc-02);
+              font-size: 0.8125rem;
+              font-weight: 400;
+              line-height: 1rem;
+            }
+            .info-value-wrapper {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              span {
+                text-align: right;
+                font-size: 0.8125rem;
+                font-weight: 500;
+                line-height: 1rem;
+              }
+              .price {
+                display: flex;
+                align-items: center;
+                gap: 0.125rem;
+                .icon {
+                  display: flex;
+                  width: 1rem;
+                  height: 1rem;
+                  padding: 0.125rem;
+                  justify-content: center;
+                  align-items: center;
+                  svg {
+                    width: 0.75rem;
+                    height: 0.75rem;
+                  }
+                }
+              }
+            }
+          }
+          .total-value {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            p {
+              margin: 0;
+              color: var(--1inch-tc-01);
+              font-size: 1.5rem;
+              font-weight: 400;
+              line-height: 1.75rem;
+            }
+            .value {
+              display: flex;
+              align-items: center;
+              gap: 0.125rem;
+              .icon {
+                display: flex;
+                width: 1.5rem;
+                height: 1.5rem;
+                padding: 0.1875rem;
+                justify-content: center;
+                align-items: center;
+                svg {
+                  width: 1.125rem;
+                  height: 1.125rem;
+                  flex-shrink: 0;
+}
+              }
+            }
+          }
+        }
+        .btn-list {
+          width: 100%;
+          display: flex;
+          padding: 0.5rem;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          border-radius: 0.75rem;
+          background: var(--1inch-bc-08);
+          cursor: pointer;
+          &:hover {
+            background-color: var(--1inch-bc-13) !important;
+          }
+          svg {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+          span {
+            color: var(--1inch-tc-01);
+            text-align: right;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.625rem;
+          }
+        }
+      }
+    }
+  }
+}
