@@ -27,7 +27,7 @@ export class TrendingCollectionsComponent {
     // Arbitrum: 42161,
     // Optimism: 10,
   };
-
+  selectedIcon: any;
   selectedChain: any = 'ethereum';
   limit = 9;
   normalizeRoyalties = false;
@@ -45,6 +45,7 @@ export class TrendingCollectionsComponent {
   ngOnInit() {
     this.sortedDay = '7day';
     this.getTrendingCollections(this.sortBy);
+    this.selectIcon();
   }
 
   getTrendingCollections = (sortBy?: string, chain?: any) => {
@@ -71,5 +72,17 @@ export class TrendingCollectionsComponent {
     this._settings.changeChainURL(key);
     this._settings.changeChainHeader(key);
     this.getTrendingCollections(this.sortBy, value);
+    this.selectIcon();
+  }
+
+  selectIcon() {
+    switch (this.selectedChain) {
+      case 'ethereum':
+        return this.selectedIcon = 'ethIcon';
+      case 'polygon':
+        return this.selectedIcon = 'polygonIcon';
+      default:
+        return this.selectedIcon = 'ethIcon';
+    }
   }
 }

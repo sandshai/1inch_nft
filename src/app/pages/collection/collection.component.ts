@@ -5,6 +5,7 @@ import { SettingsService } from 'src/app/lib/services/settings.service';
 import { ClipboardService } from 'ngx-clipboard';
 import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 import { ChangeDetectorRef } from '@angular/core';
+declare var bootstrap: any;
 
 interface Categories {
   [key: string]: any;
@@ -84,6 +85,7 @@ export class CollectionComponent implements OnInit {
   active: string = this.layoutactive['4layout'];
 
   ngOnInit() {
+    document.querySelector('body')?.classList.add('sweep-body-padding');
     this.sortByDay(this.active);
 
     this.getScreenWidth = window.innerWidth;
@@ -123,7 +125,6 @@ export class CollectionComponent implements OnInit {
       }
     });
 
-    document.querySelector('main')?.classList.remove('overflow-x-hidden');
     this.gridChangeFunc();
 
     if (window.innerWidth > 1199) {
@@ -198,6 +199,10 @@ export class CollectionComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+  ngOnDestroy() {
+    document.querySelector('body')?.classList.remove('sweep-body-padding');
+  }
+
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
     if (window.innerWidth > 1199) {
@@ -207,9 +212,6 @@ export class CollectionComponent implements OnInit {
       this.is_analytics = false;
       this.is_filter = false;
     }
-    document
-      .getElementById('collection-grid-open')
-      ?.classList.remove('open-filter');
     this.gridChangeFunc();
   }
 
@@ -219,7 +221,6 @@ export class CollectionComponent implements OnInit {
 
   opensweep() {
     this.is_sweep ? this.is_sweep = false : this.is_sweep = true;
-    document.getElementById('sweep-wrapper')?.classList.toggle('open-sweep');
     let array: any = [];
     this.passedArrayList(array);
     this.shared.setSliderInput.emit(0);
@@ -227,7 +228,6 @@ export class CollectionComponent implements OnInit {
 
   closeSweep(val: boolean) {
     this.is_sweep = val;
-    document.getElementById('sweep-wrapper')?.classList.remove('open-sweep');
   }
   getCollectionDetails(value?: any) {
     this.isLoading = true;
@@ -311,8 +311,8 @@ export class CollectionComponent implements OnInit {
     }
   }
 
-  closeAnalyticsTab(val: boolean) {
-    this.is_analytics = val;
+  closeAnalyticsTab() {
+    this.is_analytics = false;
     this.gridChangeFunc();
   }
 
@@ -326,18 +326,7 @@ export class CollectionComponent implements OnInit {
   }
 
   openFilterTab() {
-    if (this.is_filter === true) {
-      this.is_filter = false;
-      document
-        .getElementById('collection-grid-open')
-        ?.classList.remove('open-filter');
-    } else {
-      this.is_filter = true;
-      document
-        .getElementById('collection-grid-open')
-        ?.classList.add('open-filter');
-    }
-
+    this.is_filter === true ? this.is_filter = false : this.is_filter = true;
     this.gridChangeFunc();
   }
   receiveMessage(value: string) {

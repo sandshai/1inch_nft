@@ -6,7 +6,6 @@ import { SharedDataService } from 'src/app/lib/services/shared-data.service';
   templateUrl: './sweep-and-analytics-mobile-tab.component.html',
 })
 export class SweepAndAnalyticsMobileTabComponent {
-  @Output() open_analytics = new EventEmitter<boolean>();
   @Output() closeSweep = new EventEmitter<boolean>();
   receivedList: any[] = [];
   selectedItems: any[] = [];
@@ -21,10 +20,6 @@ export class SweepAndAnalyticsMobileTabComponent {
     this.shared.setSliderInput.subscribe((value) => {
       this.onRangeChange(value);
     });
-  }
-
-  openAnalyticsTab() {
-    this.open_analytics.emit(false);
   }
 
   sweepClose() {

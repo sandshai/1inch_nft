@@ -11,7 +11,8 @@ export class CardSmallXComponent {
   @Input() sortBy: any;
   @Input() index: any;
   @Input() isLoad: any;
-
+  @Input() iconSelectedChain: any;
+  @Input() marketplaceIcon: any;
   constructor(private _settings: SettingsService) {}
 
   baseUrl = this._settings.baseUrl;

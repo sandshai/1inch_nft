@@ -1,25 +1,57 @@
 .collection-card {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0.5rem;
-
-  .card-image {
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    .icon-wrapper,.add-to-cart-wrapper {
+      display: flex !important;
+    }
+    .nft-image {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+  .nft-card-image {
     position: relative;
-    border-radius: 1.5rem;
-    overflow: hidden;
-    .card-icon {
-      position: absolute;
-      top: 0.75rem;
-      left: 0.75rem;
-      right: 0.75rem;
+    width: 100%;
+    .nft-image {
       display: flex;
       align-items: center;
+      border-radius: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      img {
+        transition: transform 0.3s;
+        border-radius: 1.5rem;
+        width: 100%;
+        aspect-ratio: 1/1;
+        &.is_checked {
+          border: 2px solid var(--1inch-bc-08);
+        }
+      }
+    }
+    .icon-wrapper {
+      position: absolute;
+      top: 0.75rem;
+      left: 0;
+      right: 0;
+      padding: 0 0.75rem;
+      display: none;
+      align-items: center;
       justify-content: space-between;
-      .rounded-box {
+      .marketplace-icon {
+        width: 2rem;
+        height: 2rem;
+      }
+      .cus-marketplace-icon {
         width: 2rem;
         height: 2rem;
         border-radius: 50%;
-        display: none;
+        display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
@@ -42,67 +74,60 @@
           width: 1.45rem !important;
           height: 1.45rem !important;
         }
-        .tickIcon {
-          display: none;
-          svg {
-            width: 1rem !important;
-            height: 1rem !important;
-          }
+      }
+      .custom-checkbox {
+        svg {
+          cursor: pointer;
+          width: 2rem;
+          height: 2rem;
         }
-        input[type="checkbox"]:checked ~ .tickIcon {
-          display: block !important;
+        .rounded_is_checked {
+          display: none ;
+        }
+        .rounded_is_not_checked {
+          display: block;
+        }
+        input[type="checkbox"]:checked ~ label {
+          .rounded_is_checked {
+            display: block !important;
+          }
+          .rounded_is_not_checked {
+            display: none !important;
+          }
         }
       }
     }
-    .btn-wrapper {
+    .add-to-cart-wrapper {
       position: absolute;
+      bottom: 0.5rem;
       left: 0;
       right: 0;
-      bottom: 0.75rem;
       display: none;
-      justify-content: center;
       align-items: center;
-      z-index: 1;
-
-      .add_btn {
-        display: flex !important;
+      justify-content: center;
+      .add-to-cart {
+        display: inline-flex;
         padding: 0.5rem 1rem;
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
         border-radius: 0.5rem;
-        background: var(--1inch-bc-08);
-        color: var(--1inch-tc-01);
-        font-weight: 400;
-        font-size: 0.8125rem;
-        line-height: 1rem;
-        @include media-min-lg {
-          font-size: 1rem;
-          line-height: 1.625rem;
+        background-color: var(--1inch-bc-08);
+        cursor: pointer;
+        &:hover {
+          background-color: var(--1inch-bc-13) !important;
+        }
+        @include media-min-md {
           border-radius: 0.75rem;
           height: 2.73438rem;
           padding: 0.6875rem 1.125rem;
         }
-      }
-    }
-    .img-stroke {
-      position: relative;
-      &::before {
-        border-radius: 1.5rem;
-        content: '';
-        z-index: -2;
-        position: absolute;
-        left: -1px;
-        right: -1px;
-        top: -1px;
-        bottom: -1px;
-        background: linear-gradient(178.39deg, #434343 0%, rgba(33, 33, 33, 0) 83.3%);
-      }
-      .collection_img {
-        border-radius: 1.5rem;
-        transition: transform 0.3s;
-        &.is_checked {
-          border: 2px solid var(--1inch-bc-08);
+        span {
+          color: var(--1inch-tc-01);
+          text-align: center;
+          font-size: 1rem;
+          font-weight: 500;
+          line-height: 1.625rem; /* 162.5% */
         }
       }
     }
@@ -110,135 +135,116 @@
   .card-body {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 0.25rem;
-    .details {
+    padding: 0;
+    width: 100%;
+    .collection-nft-title-wrapper {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 0.25rem;
-      .c_name {
-        max-width: calc(100% - 5.25rem);
+      align-items: center;
+      align-self: stretch;
+      width: 100%;
+      p {
+        margin: 0;
         color: var(--1inch-tc-02);
-        span {
-          width: 100%;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          font-size: 0.8125rem;
-          line-height: 1rem;
-          font-weight: 400;
-          color: var(--1inch-tc-02);
-          @include media-min-md {
-            font-size: 1rem;
-            line-height: 1.625rem;
-          }
-        }
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.625rem; /* 162.5% */
+        max-width: calc(100% - 5rem);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
-      .rarity_rank {
+      .badge {
         display: flex;
-        align-items: center;
-        max-width: 5rem;
-        background-color: var(--1inch-bc-09);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.25rem;
         padding: 0.25rem 0.5rem;
-        border-radius: 1.5rem;
-        img {
-          width: 0.85rem !important;
-          height: 0.85rem !important;
-          filter: invert(1);
-        }
-        span {
-          white-space: nowrap;
-          font-size: 0.6875rem;
-          line-height: 0.875rem;
-          font-weight: 400;
-          color: var(--1inch-tc-02);
-          @include media-min-md {
-            font-size: 0.8125rem;
-            line-height: 1rem;
-          }
-        }
-      }
-      .price-stats {
-        display: flex;
+        justify-content: center;
         align-items: center;
         gap: 0.25rem;
+        border-radius: 1.5rem;
+        background-color: var(--1inch-cbc-11);
+        max-width: 5rem;
         span {
-          font-size: 1rem;
-          line-height: 1.625rem;
-          color: var(--1inch-tc-01);
+          color: var(--1inch-tc-02);
+          text-align: center;
+          font-size: 0.8125rem;
           font-weight: 400;
-          @include media-min-md {
-            font-size: 1.25rem;
-            line-height: 1.5rem;
-          }
+          line-height: 1rem; /* 123.077% */
+        }
+      }
+    }
+    .collection-nft-price-buy-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-self: stretch;
+      .price-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.125rem;
+        p {
+          margin: 0;
+          color: var(--1inch-tc-01);
+          font-size: 1.25rem;
+          font-weight: 500;
+          line-height: 1.5rem; /* 120% */
         }
         .icon {
           display: flex;
-          width: 1.2rem;
-          height: 1.2rem;
-          padding: 0.05875rem;
+          width: 1.5rem;
+          height: 1.5rem;
+          padding: 0.1875rem;
           justify-content: center;
           align-items: center;
-          @include media-min-md {
-            width: 1.5rem;
-            height: 1.5rem;
-          }
           svg {
-            width: 1rem;
-            height: 1rem;
+            width: 1.125rem;
+            height: 1.125rem;
           }
         }
       }
-      .action-wrapper {
-        .btn-buy {
-          white-space: nowrap;
-          padding: 0.5rem 1rem;
-          font-size: 0.813rem;
-          line-height: 1rem;
+      .btn-wrapper {
+        display: none;
+        padding: 0.5rem 1rem;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: transparent;
+        cursor: pointer;
+        @include media-min-md {
+          display: flex;
+        }
+        span {
+          font-size: 0.8125rem;
           font-weight: 500;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 0.5rem;
-          color: var(--1inch-tc-08);
-          background-color: transparent;
+          line-height: 1rem; /* 123.077% */
+        }
+        &.bg-blue {
+          span {
+            color: var(--1inch-tc-08);
+          }
           &:hover {
-            background-color: rgba(47, 138, 245, 0.16);
-          }
-        }
-        .btn-cart {
-          background-color: #2f8af529;
-          padding: 0.25rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          border-radius: 0.5rem;
-          svg {
-            width: 1.5rem;
-            height: 1.5rem;
+            background-color: rgba(47, 138, 245, 0.16) !important;
           }
         }
       }
-    }
-  }
-
-  &:hover {
-    .source-wrapper {
-      display: flex !important;
-    }
-    .img-stroke {
-      position: relative;
-      overflow: hidden;
-      .collection_img {
-        border-radius: 1.5rem;
-        transform: scale(1.1);
+      .btn-cart {
+        display: flex;
+        padding: 0.25rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: rgba(47, 138, 245, 0.16);
+        @include media-min-md {
+          display: none;
+        }
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
       }
     }
-
   }
 }

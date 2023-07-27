@@ -2,11 +2,16 @@
   <div *ngIf="mdImage" class="i-profle position-relative">
     <img
       src="{{ itemDetail[0]?.token?.image }}"
-      class="img-fluid"
+      class="img-fluid w-100"
       alt="profile"
     />
     <div class="icons-wrapper">
-      <div class="zoom icons">
+      <div
+        class="zoom icons"
+        appTooltip
+        data-bs-placement="top"
+        title="Full size"
+      >
         <img
           src="../../../../../assets/images/icons/zoom.svg"
           class="img-fluid"
@@ -14,7 +19,13 @@
           (click)="priviewImage(itemDetail[0]?.token?.image)"
         />
       </div>
-      <div class="download icons" (click)="downloadImage(itemDetail[0]?.token?.image)">
+      <div
+        class="download icons"
+        appTooltip
+        data-bs-placement="top"
+        title="Download image"
+        (click)="downloadImage(itemDetail[0]?.token?.image)"
+      >
         <img
           src="../../../../../assets/images/icons/deposit_withdraw.svg"
           class="img-fluid"
@@ -23,5 +34,8 @@
       </div>
     </div>
   </div>
-  <app-item-buy-details></app-item-buy-details>
+  <app-item-buy-details
+    [price]="itemDetail[0]?.market?.floorAsk?.price?.amount?.decimal"
+    [usdPrice]="itemDetail[0]?.market?.floorAsk?.price?.amount?.usd"
+  ></app-item-buy-details>
 </div>

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  @include media-min-md {
+  @include media-min-lg {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -40,7 +40,7 @@
       border-radius: 0.75rem;
       background: var(--1inch-cbc-12);
       flex: 1;
-      @include media-min-md {
+      @include media-min-lg {
         flex: unset;
       }
       @include media-min-xl {
@@ -73,14 +73,29 @@
   }
 
   .section-filter-right-side {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    @include media-min-md {
-      gap: 1rem;
+    &.profile-section-dropdown {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      @include media-min-md {
+        gap: 1rem;
+      }
     }
-
+    &.watchlist-dropdown-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      @include media-min-sm {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.5rem;
+      }
+      @include media-min-md {
+        gap: 1rem;
+      }
+    }
     // ==== custom dropdown ====
     .dropdown {
       .btn-cus-dropdown {
@@ -93,8 +108,9 @@
         background-color: rgba(47, 138, 245, 0.16);
         border: none;
         white-space: nowrap;
-        @include media-max-alt(360px) {
-          padding: 0.5rem 0.75rem;
+        width: 100%;
+        @include media-min-sm {
+          width: auto;
         }
         &:hover {
           background-color: rgba(47, 138, 245, 0.32);
@@ -103,7 +119,7 @@
           color: var(--1inch-tc-08);
           text-align: center;
           font-size: 1rem;
-          font-weight: 500;
+          font-weight: 400;
           line-height: 1.625rem;
           @include media-max-alt(360px) {
             font-size: 0.813rem;
@@ -113,6 +129,10 @@
         .icon {
           width: 1.5rem;
           height: 1.5rem;
+          svg {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
         }
       }
       .cus-ul {
@@ -159,7 +179,7 @@
             padding: 0;
             color: var(--1inch-tc-01);
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 400;
             line-height: 1.625rem;
             background-color: transparent;
           }
@@ -184,17 +204,19 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        align-self: stretch;
-        color: var(--1inch-tc-01);
-        text-align: center;
-        font-size: 0.8125rem;
-        font-weight: 400;
-        line-height: normal;
+        border-radius: 0.5rem;
         cursor: pointer;
+        span {
+          color: var(--1inch-tc-01);
+          text-align: center;
+          font-size: 0.8125rem;
+          font-weight: 400;
+          line-height: normal;
+        }
         &.active {
-          width: 2.70831rem;
-          border-radius: 0.5rem;
-          background: var(--1inch-cbc-10);
+          width: 2.688rem;
+          gap: 0.25rem;
+          background-color: var(--1inch-cbc-04) !important;
         }
       }
     }
@@ -217,6 +239,24 @@
           rect {
             stroke: var(--1inch-tc-01);
           }
+        }
+      }
+    }
+
+    .dropdown-wrapper-watchlist {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      @include media-min-sm {
+        justify-content: flex-end;
+      }
+      @include media-min-md {
+        gap: 1rem;
+      }
+      .layout-c-wrapper {
+        margin-left: auto;
+        @include media-min-sm {
+          margin-left: 0;
         }
       }
     }

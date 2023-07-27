@@ -42,8 +42,11 @@ export class HighlightProjectsComponent {
       992 : {
         slidesPerView: 2,
         spaceBetween: 15,
+      },
+      1200: {
+        slidesPerView: 2,
+        spaceBetween: 32,
       }
-     
     },
   };
 }

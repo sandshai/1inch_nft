@@ -1,134 +1,88 @@
-<div class="search-wrapper" id="search-wrapper">
+<div class="search-wrapper">
   <div class="search-input-wrapper">
     <div class="header-search__icon">
       <app-svg-icons
         iconName="searchIcon"
-        className="deks-icon cursor-pointer"
+        class="d-none d-lg-block cursor-pointer"
       ></app-svg-icons>
       <app-svg-icons
-        (click)="removesearchhistory()"
+        (click)="onCloseClick()"
         iconName="backIcon"
-        className="mobile-icon cursor-pointer"
+        class="d-lg-none cursor-pointer"
       ></app-svg-icons>
     </div>
     <input
       type="text"
       name="search"
+      class="{{isOpen ? 'is-open' : ''}}"
       (focus)="
         this.recentCollectionList?.length > 0 && opensearchhistory($event)
       "
       placeholder="Search items, collection or accounts"
-      class="form-control"
       #box
       (keyup)="getValue(box.value)"
       autocomplete="off"
       value="{{ this.collectionName }}"
     />
   </div>
-  <div id="search__history" class="search__history py-3">
-    <div
-      class="recent-search__history mb-3"
-      *ngIf="!this?.collectionName && this.recentCollectionList?.length > 0"
-    >
-      <p class="search__history_title" *ngIf="!this.hideContent">Recent</p>
-      <div class="search__item" *ngFor="let recent of recentCollectionList">
-        <div
-          class="d-flex align-items-center"
-          (click)="pageReload(recent?.chain, recent?.collectionId)"
-        >
-          <div class="item-detail d-flex align-items-center">
-            <div class="profile-img">
-              <img
-                src="{{ recent?.image }}"
-                class="img-fluid"
-                alt="nft image"
-              />
-            </div>
-            <div class="profile-detail ms-3">
-              <div class="profile-title d-flex align-items-center">
-                <h5 class="title mb-0 text-themewhite">
-                  {{ recent?.name }}
-                </h5>
-                <img
-                  src="../../../../assets/images/icons/verified.svg"
-                  alt="verified"
-                  class="img-fluid"
-                />
-              </div>
-              <p class="mb-0">{{ recent?.tokenCount }}</p>
-            </div>
+  <div class="search-common-wrapper {{isOpen ? 'is_open' : ''}}" *ngIf="isOpen">
+    <div class="line"></div>
+
+    <div class="search__history">
+      <div class="search-result-wrapper" *ngIf="!this?.collectionName && this.recentCollectionList?.length > 0">
+        <div class="search-result-title" *ngIf="!this.hideContent">
+          <p>Recent</p>
+        </div>
+        <div class="search-result-items" *ngFor="let recent of recentCollectionList" (click)="pageReload(recent?.chain, recent?.collectionId)">
+          <div class="search-result-image">
+            <img  src="{{ recent?.image }}" alt="nft">
           </div>
-          <div class="bit-detail ms-auto">
-            <div class="d-flex align-items-center">
-              <span class="text-themewhite">{{ recent?.floorAskPrice }}</span>
-              <img
-                src="../../../../assets/images/icons/activity_diamond.svg"
-                alt="diamond image"
-                class="img-fluid"
-              />
+          <div class="search-result-content">
+            <div class="content">
+              <div class="nft-title-wrapper">
+                <p>{{ recent?.name }}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                  <path d="M14.6164 6.42596C14.3806 6.18011 14.1368 5.92596 14.0447 5.70325C13.9601 5.49866 13.955 5.15979 13.95 4.83203C13.9408 4.22211 13.9304 3.53082 13.4498 3.05023C12.9692 2.56964 12.2779 2.5592 11.668 2.54999C11.3402 2.54504 11.0013 2.53992 10.7968 2.45526C10.5741 2.36316 10.3199 2.11939 10.074 1.88361C9.64221 1.46942 9.15265 1 8.5 1C7.84735 1 7.35785 1.46942 6.92596 1.88361C6.68011 2.11939 6.42596 2.36316 6.20325 2.45526C5.99866 2.53992 5.65979 2.54504 5.33203 2.54999C4.72211 2.5592 4.03082 2.56964 3.55023 3.05023C3.06964 3.53082 3.0592 4.22211 3.04999 4.83203C3.04504 5.15979 3.03992 5.49866 2.95526 5.70325C2.86316 5.9259 2.61939 6.18011 2.38361 6.42596C1.96942 6.85779 1.5 7.34735 1.5 8C1.5 8.65265 1.96942 9.14215 2.38361 9.57404C2.61939 9.81989 2.86316 10.074 2.95526 10.2968C3.03992 10.5013 3.04504 10.8402 3.04999 11.168C3.0592 11.7779 3.06964 12.4692 3.55023 12.9498C4.03082 13.4304 4.72211 13.4408 5.33203 13.45C5.65979 13.455 5.99866 13.4601 6.20325 13.5447C6.4259 13.6368 6.68011 13.8806 6.92596 14.1164C7.35779 14.5306 7.84735 15 8.5 15C9.15265 15 9.64215 14.5306 10.074 14.1164C10.3199 13.8806 10.574 13.6368 10.7968 13.5447C11.0013 13.4601 11.3402 13.455 11.668 13.45C12.2779 13.4408 12.9692 13.4304 13.4498 12.9498C13.9304 12.4692 13.9408 11.7779 13.95 11.168C13.955 10.8402 13.9601 10.5013 14.0447 10.2968C14.1368 10.0741 14.3806 9.81989 14.6164 9.57404C15.0306 9.14221 15.5 8.65265 15.5 8C15.5 7.34735 15.0306 6.85785 14.6164 6.42596Z" fill="#2F8AF5"/>
+                  <path d="M7.92865 10.3618L11.5953 6.86182C11.6429 6.81649 11.681 6.76224 11.7076 6.70217C11.7341 6.64211 11.7486 6.5774 11.7501 6.51174C11.7517 6.44608 11.7403 6.38076 11.7165 6.31952C11.6928 6.25827 11.6573 6.20229 11.612 6.15478C11.5666 6.10727 11.5123 6.06916 11.4523 6.04263C11.3922 6.01609 11.3275 6.00165 11.2618 6.00013C11.1962 5.99862 11.1308 6.01005 11.0696 6.03378C11.0084 6.0575 10.9524 6.09306 10.9049 6.13843L7.58344 9.3089L6.09534 7.88843C6.04785 7.84307 5.99188 7.8075 5.93065 7.78378C5.86941 7.76005 5.80409 7.74862 5.73843 7.75013C5.67278 7.75165 5.60806 7.76609 5.54798 7.79263C5.48791 7.81916 5.43365 7.85727 5.3883 7.90478C5.34296 7.95229 5.30742 8.00827 5.28371 8.06952C5.26 8.13076 5.2486 8.19608 5.25014 8.26174C5.25168 8.3274 5.26614 8.39211 5.2927 8.45217C5.31926 8.51224 5.35739 8.56649 5.40491 8.61182L7.23823 10.3618C7.33123 10.4506 7.45487 10.5001 7.58344 10.5001C7.71201 10.5001 7.83565 10.4506 7.92865 10.3618Z" fill="white"/>
+                </svg>
+              </div>
+              <div class="price">
+                <p>{{ recent?.floorAskPrice }}</p>
+                <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+              </div>
             </div>
-            <p class="mb-0">Floor price</p>
+            <div class="content">
+              <span>{{ recent?.tokenCount }}</span>
+              <span>Floor price</span>
+            </div>
           </div>
         </div>
       </div>
-      <div
-        class="recent-search__history no-data__found"
-        *ngIf="this.recentCollectionList?.length === 0 && this.collectionName"
-      >
-        <img src="../../../../../assets/images/icons/empty_states.svg" alt="empty">
-        <span>No Data Found</span>
-      </div>
-    </div>
-
-    <div class="recent-search__history mb-3">
-      <!-- <p class="search__history_title">Recent</p> -->
-      <div *ngIf="!isLoading">
-        <div
-          class="recent-search__history mb-3"
-          *ngIf="this.searchResults?.length > 0"
-        >
-          <div class="search__item" *ngFor="let list of searchResults">
-            <div
-              class="d-flex align-items-center"
-              (click)="pageReload(list?.chain, list?.collectionId, list)"
-            >
-              <div class="item-detail d-flex align-items-center">
-                <div class="profile-img">
-                  <img
-                    src="{{ list?.image }}"
-                    class="img-fluid"
-                    alt="nft image"
-                  />
-                </div>
-                <div class="profile-detail ms-3">
-                  <div class="profile-title d-flex align-items-center">
-                    <h5 class="title mb-0 text-themewhite">
-                      {{ list?.name }}
-                    </h5>
-                    <img
-                      src="../../../../assets/images/icons/verified.svg"
-                      alt="verified"
-                      class="img-fluid"
-                    />
-                  </div>
-                  <p class="mb-0">{{ list?.tokenCount }}</p>
-                </div>
+      <div class="search-result-wrapper" *ngIf="!isLoading && this.searchResults?.length > 0">
+        <div class="search-result-title">
+          <p>Collections</p>
+        </div>
+        <div class="search-result-items"  *ngFor="let list of searchResults" (click)="pageReload(list?.chain, list?.collectionId, list)">
+          <div class="search-result-image">
+            <img  src="{{ list?.image }}" alt="nft">
+          </div>
+          <div class="search-result-content">
+            <div class="content">
+              <div class="nft-title-wrapper">
+                <p>{{ list?.name }}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                  <path d="M14.6164 6.42596C14.3806 6.18011 14.1368 5.92596 14.0447 5.70325C13.9601 5.49866 13.955 5.15979 13.95 4.83203C13.9408 4.22211 13.9304 3.53082 13.4498 3.05023C12.9692 2.56964 12.2779 2.5592 11.668 2.54999C11.3402 2.54504 11.0013 2.53992 10.7968 2.45526C10.5741 2.36316 10.3199 2.11939 10.074 1.88361C9.64221 1.46942 9.15265 1 8.5 1C7.84735 1 7.35785 1.46942 6.92596 1.88361C6.68011 2.11939 6.42596 2.36316 6.20325 2.45526C5.99866 2.53992 5.65979 2.54504 5.33203 2.54999C4.72211 2.5592 4.03082 2.56964 3.55023 3.05023C3.06964 3.53082 3.0592 4.22211 3.04999 4.83203C3.04504 5.15979 3.03992 5.49866 2.95526 5.70325C2.86316 5.9259 2.61939 6.18011 2.38361 6.42596C1.96942 6.85779 1.5 7.34735 1.5 8C1.5 8.65265 1.96942 9.14215 2.38361 9.57404C2.61939 9.81989 2.86316 10.074 2.95526 10.2968C3.03992 10.5013 3.04504 10.8402 3.04999 11.168C3.0592 11.7779 3.06964 12.4692 3.55023 12.9498C4.03082 13.4304 4.72211 13.4408 5.33203 13.45C5.65979 13.455 5.99866 13.4601 6.20325 13.5447C6.4259 13.6368 6.68011 13.8806 6.92596 14.1164C7.35779 14.5306 7.84735 15 8.5 15C9.15265 15 9.64215 14.5306 10.074 14.1164C10.3199 13.8806 10.574 13.6368 10.7968 13.5447C11.0013 13.4601 11.3402 13.455 11.668 13.45C12.2779 13.4408 12.9692 13.4304 13.4498 12.9498C13.9304 12.4692 13.9408 11.7779 13.95 11.168C13.955 10.8402 13.9601 10.5013 14.0447 10.2968C14.1368 10.0741 14.3806 9.81989 14.6164 9.57404C15.0306 9.14221 15.5 8.65265 15.5 8C15.5 7.34735 15.0306 6.85785 14.6164 6.42596Z" fill="#2F8AF5"/>
+                  <path d="M7.92865 10.3618L11.5953 6.86182C11.6429 6.81649 11.681 6.76224 11.7076 6.70217C11.7341 6.64211 11.7486 6.5774 11.7501 6.51174C11.7517 6.44608 11.7403 6.38076 11.7165 6.31952C11.6928 6.25827 11.6573 6.20229 11.612 6.15478C11.5666 6.10727 11.5123 6.06916 11.4523 6.04263C11.3922 6.01609 11.3275 6.00165 11.2618 6.00013C11.1962 5.99862 11.1308 6.01005 11.0696 6.03378C11.0084 6.0575 10.9524 6.09306 10.9049 6.13843L7.58344 9.3089L6.09534 7.88843C6.04785 7.84307 5.99188 7.8075 5.93065 7.78378C5.86941 7.76005 5.80409 7.74862 5.73843 7.75013C5.67278 7.75165 5.60806 7.76609 5.54798 7.79263C5.48791 7.81916 5.43365 7.85727 5.3883 7.90478C5.34296 7.95229 5.30742 8.00827 5.28371 8.06952C5.26 8.13076 5.2486 8.19608 5.25014 8.26174C5.25168 8.3274 5.26614 8.39211 5.2927 8.45217C5.31926 8.51224 5.35739 8.56649 5.40491 8.61182L7.23823 10.3618C7.33123 10.4506 7.45487 10.5001 7.58344 10.5001C7.71201 10.5001 7.83565 10.4506 7.92865 10.3618Z" fill="white"/>
+                </svg>
               </div>
-              <div class="bit-detail ms-auto">
-                <div class="d-flex align-items-center">
-                  <span class="text-themewhite">{{
-                    list?.floorAskPrice
-                      ? list?.floorAskPrice
-                      : list?.allTimeVolume.toFixed(2)
-                  }}</span>
-                  <img
-                    src="../../../../assets/images/icons/activity_diamond.svg"
-                    alt="diamond image"
-                    class="img-fluid"
-                  />
-                </div>
-                <p class="mb-0">Floor price</p>
+              <div class="price">
+                <p>{{ list?.floorAskPrice ? list?.floorAskPrice : list?.allTimeVolume.toFixed(2) | numberShorten }}</p>
+                <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
               </div>
+            </div>
+            <div class="content">
+              <span>{{ list?.tokenCount }}</span>
+              <span>Floor price</span>
             </div>
           </div>
         </div>
@@ -137,14 +91,15 @@
         <div class="spinner"></div>
       </div>
       <div
-        class="recent-search__history no-data__found"
-        *ngIf="
-          this.searchResults?.length === 0 && this.collectionName && !isLoading
-        "
+      class="recent-search__history no-data__found"
+      *ngIf="
+        this.searchResults?.length === 0 && this.collectionName && !isLoading
+      "
       >
         <img src="../../../../../assets/images/icons/empty_states.svg" alt="empty">
         <span>No Data Found</span>
       </div>
     </div>
   </div>
+
 </div>

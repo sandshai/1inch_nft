@@ -1,68 +1,57 @@
-<div class="collection-card cursor-pointer">
-  <div class="card-image">
-    <div class="card-icon">
-      <div
-        class="rounded-box source-wrapper"
-        *ngIf="item?.market?.floorAsk?.source?.icon"
-      >
-        <img
-          src="{{ item?.market?.floorAsk?.source?.icon }}"
-          class="img-fluid w-100"
-          alt="tick"
-        />
-      </div>
-      <div class="rounded-box">
-        <input
-          type="checkbox"
-          [checked]="this.checkedValue"
-          name=""
-          class="d-none"
-          id=""
-        />
-        <app-svg-icons iconName="tickIcon" class="tickIcon"></app-svg-icons>
-      </div>
-    </div>
-    <div class="img-stroke">
+<div class="collection-card">
+  <div class="nft-card-image img-border">
+    <div class="nft-image">
       <img
         src="{{ item?.token?.image }}"
-        class="img-fluid collection_img w-100"
         alt="collection_img"
         (click)="goToPage()"
       />
     </div>
-    <div class="btn-wrapper source-wrapper">
-      <button
-        class="btn add_btn"
-      >
-        Add to bag
-      </button>
+    <div class="icon-wrapper">
+      <div class="cus-marketplace-icon">
+        <img
+        src="{{ item?.market?.floorAsk?.source?.icon }}"
+        alt="tick"
+        />
+      </div>
+      <div class="custom-checkbox">
+        <input class="d-none" type="checkbox" value="" id="card-checkbox_{{index}}">
+        <label class="form-check-label" for="card-checkbox_{{index}}">
+          <app-svg-icons iconName="rounded_is_not_checked" class="rounded_is_not_checked"></app-svg-icons>
+          <app-svg-icons iconName="rounded_is_checked" class="rounded_is_checked"></app-svg-icons>
+        </label>
+      </div>
+    </div>
+    <div class="add-to-cart-wrapper">
+      <div class="add-to-cart">
+        <span>Add to bag</span>
+      </div>
     </div>
   </div>
-  <div class="card-body p-0">
-    <div class="details">
-      <div class="c_name">
-        <span class="d-none d-md-block">{{
-          item?.token?.name ? item?.token?.name : "#" + item?.token?.tokenId
-        }}</span>
-        <span class="d-md-none">#{{ item?.token?.tokenId }}</span>
-      </div>
-      <div class="rarity_rank">
-        <img src="../../../../../assets/images/medal.png" alt="rank" />
+  <div class="card-body">
+    <div class="collection-nft-title-wrapper">
+      <p appTooltip data-bs-placement="top" title='{{ item?.token?.name ? item?.token?.name : "#" + item?.token?.tokenId}}'>{{
+        item?.token?.name ? item?.token?.name : "#" + item?.token?.tokenId
+      }}</p>
+      <div class="badge">
+        <span>#</span>
         <span>{{ item?.token?.rarityRank }}</span>
       </div>
     </div>
-    <div class="details">
-      <div class="price-stats">
-        <span>{{
+    <div class="collection-nft-price-buy-wrapper">
+      <div class="price-wrapper">
+        <p>{{
           item?.market?.floorAsk?.price?.amount?.decimal | numberShorten
-        }}</span>
+        }}</p>
         <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
       </div>
-      <div class="action-wrapper">
-        <button class="btn btn-buy d-none d-md-flex">Buy now</button>
-        <button class="d-md-none btn btn-cart">
+      <div class="action-btn-wrapper">
+        <div class="btn-wrapper bg-blue">
+          <span>Buy now</span>
+        </div>
+        <div class="btn-cart">
           <app-svg-icons iconName="cartIcon"></app-svg-icons>
-        </button>
+        </div>
       </div>
     </div>
   </div>

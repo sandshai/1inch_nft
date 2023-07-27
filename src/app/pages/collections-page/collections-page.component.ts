@@ -76,7 +76,6 @@ export class CollectionsPageComponent {
 
     this.selectedChain = this.collectionName;
     this._settings.changeChainHeader(this.selectedChain);
-    document.querySelector('main')?.classList.remove('overflow-x-hidden');
   }
 
   getTrendingCollections = (sortBy?: string, chain?: any) => {
@@ -130,5 +129,9 @@ export class CollectionsPageComponent {
 
   handleTabSelection(value: string): void {
     this.defaultTab = value;
+  }
+
+  sortByShortCut(value: any) {
+    return value == '1DayVolume' ? '1D' : value == '7DayVolume' ? '1W' : value == '30DayVolume' ? '1M' : 'All';
   }
 }

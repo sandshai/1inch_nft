@@ -4,11 +4,9 @@
     (click)="openwallet()"
     *ngIf="!this.walletAddress"
   >
-    <img
-      src="../../../../assets/images/icons/wallet.svg"
-      class="img-fluid"
-      alt="wallet"
-    />
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M3 6.59619C3 4.93934 4.34315 3.59619 6 3.59619H14C15.6569 3.59619 17 4.93934 17 6.59619V7.59619C19.2091 7.59619 21 9.38705 21 11.5962V17.5962C21 19.8053 19.2091 21.5962 17 21.5962H7C4.79086 21.5962 3 19.8053 3 17.5962V8.59619V6.59619ZM15 6.59619V7.59619H5V6.59619C5 6.04391 5.44772 5.59619 6 5.59619H14C14.5523 5.59619 15 6.04391 15 6.59619ZM5 17.5962V9.59619H16H17C18.1046 9.59619 19 10.4916 19 11.5962V17.5962C19 18.7008 18.1046 19.5962 17 19.5962H7C5.89543 19.5962 5 18.7008 5 17.5962ZM14 13.5962C13.4477 13.5962 13 14.0439 13 14.5962C13 15.1485 13.4477 15.5962 14 15.5962H16C16.5523 15.5962 17 15.1485 17 14.5962C17 14.0439 16.5523 13.5962 16 13.5962H14Z" fill="#2F8AF5"/>
+    </svg>
     <span>Connect wallet</span>
   </button>
 
@@ -20,16 +18,33 @@
       aria-expanded="false"
     >
       <div class="wallet-icon">
-        <img
-          src="../../../../assets/images/icons/wallet-state.svg"
-          class="img-fluid"
-          alt="wallet"
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+          <g clip-path="url(#clip0_5815_45350)">
+            <rect y="0.595703" width="24" height="24" rx="12" fill="url(#paint0_linear_5815_45350)"/>
+            <rect x="5.25" y="5.8457" width="13.5" height="13.5" rx="6.75" fill="white"/>
+            <rect x="9.75" y="10.3457" width="4.5" height="4.5" rx="1" fill="url(#paint1_linear_5815_45350)"/>
+          </g>
+          <defs>
+            <linearGradient id="paint0_linear_5815_45350" x1="12" y1="0.595703" x2="12" y2="24.5957" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2D66F5"/>
+              <stop offset="1" stop-color="#144ADF"/>
+            </linearGradient>
+            <linearGradient id="paint1_linear_5815_45350" x1="12" y1="10.3457" x2="12" y2="14.8457" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2D66F5"/>
+              <stop offset="1" stop-color="#144ADF"/>
+            </linearGradient>
+            <clipPath id="clip0_5815_45350">
+              <rect width="24" height="24" fill="white" transform="translate(0 0.595703)"/>
+            </clipPath>
+          </defs>
+        </svg>
       </div>
-      <span class="eth_value">0.9876 ETH</span>
-      <span class="acc_eth_id">{{ this.formatAddress }}</span>
+      <p class="eth_value">0.9876 ETH</p>
+      <div class="acc_eth_id_wrapper">
+        <p>{{ this.formatAddress }}</p>
+      </div>
     </button>
-    <ul class="dropdown-menu dropdown-menu-end">
+    <ul class="dropdown-menu dropdown-menu-end" (click)="$event.stopPropagation()">
       <li>
         <div class="connect-wallet-dropdown">
           <div class="profile-popup-header">
@@ -41,7 +56,13 @@
                 <p>5254..4352</p>
               </div>
               <div class="icon-wrapper">
-                <div class="icon">
+                <div class="icon" (click)="copyWalletAddress()" *ngIf="!addressIsCopied" appTooltip data-bs-placement="top" title="Copy">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="10" y="4" width="10" height="10" rx="2" stroke="#6C86AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 10H6C4.89543 10 4 10.8954 4 12V18C4 19.1046 4.89543 20 6 20H12C13.1046 20 14 19.1046 14 18V14" stroke="#6C86AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="icon" (click)="copyWalletAddress()" *ngIf="addressIsCopied" appTooltip data-bs-placement="top" title="Copied">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <rect x="10" y="4" width="10" height="10" rx="2" stroke="#6C86AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M10 10H6C4.89543 10 4 10.8954 4 12V18C4 19.1046 4.89543 20 6 20H12C13.1046 20 14 19.1046 14 18V14" stroke="#6C86AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -61,6 +82,7 @@
                 </div>
               </div>
             </div>
+            <div class="line"></div>
             <div class="account-bl-wrapper">
               <div class="price-wrapper">
                 <p>0.0452</p>
@@ -73,7 +95,7 @@
           <div class="profile-popup-body">
             <div class="menu-item" routerLink="profile">
               <app-svg-icons iconName="portfolioIcon"></app-svg-icons>
-              <p>portfolio</p>
+              <p>Portfolio</p>
             </div>
             <div class="menu-item">
               <app-svg-icons iconName="offerProfileIcon"></app-svg-icons>

@@ -1,33 +1,46 @@
 <div class="buy-details__wrapper">
-    <div class="i-wrapper">
-        <p class="mb-0 title">Psychosis Ape Club #1234</p>
-        <div class="nft-buy-details">
-            <div class="nft-price-wrapper">
-                <div class="nft-price">
-                    <h6>0.064</h6>
-                    <app-svg-icons iconName="largeETHIcon" class="p-icon"></app-svg-icons>
-                </div>
-                <span>$24.35</span>
-            </div>
-            <div class="marketPlaceIcon">
-                <app-svg-icons iconName="openseaIcon"></app-svg-icons>
-            </div>
+  <div class="i-wrapper">
+    <p class="mb-0 title">Psychosis Ape Club #1234</p>
+    <div class="nft-buy-details">
+      <div class="nft-price-wrapper">
+        <div class="nft-price">
+          <h6>
+            {{ price | numberShorten }}
+          </h6>
+          <app-svg-icons iconName="largeETHIcon" class="p-icon"></app-svg-icons>
         </div>
+        <span>${{ usdPrice | numberShorten }}</span>
+      </div>
+      <div class="marketPlaceIcon">
+        <app-svg-icons iconName="openseaIcon"></app-svg-icons>
+      </div>
     </div>
-    <div class="buy-detail-button">
-        <button class="btn-buynow">
-            Buy now
-        </button>
-        <button class="btn-offer">
-            <app-svg-icons iconName="offerIcon" class="off-icon" className="off-icon"></app-svg-icons>
-            <span class="d-none d-sm-block">Make an offer</span>
-            <span class="d-sm-none">Offer</span>
-        </button>
-        <button class="btn-cart">
-            <app-svg-icons iconName="cartIcon" class="c-icon" className="c-icon"></app-svg-icons>
-        </button>
-    </div>
-    <div class="sale-end-on">
-        <span>Sale end in 1hr 22sec</span>
-    </div>
+  </div>
+  <div class="buy-detail-button">
+    <button class="btn-buynow">Buy now</button>
+    <button class="btn-offer">
+      <app-svg-icons
+        iconName="offerIcon"
+        class="off-icon"
+        className="off-icon"
+      ></app-svg-icons>
+      <span class="d-none d-sm-block">Make an offer</span>
+      <span class="d-sm-none">Offer</span>
+    </button>
+    <button
+      class="btn-cart"
+      appTooltip
+      data-bs-placement="top"
+      title="Add to bag"
+    >
+      <app-svg-icons
+        iconName="cartIcon"
+        class="c-icon"
+        className="c-icon"
+      ></app-svg-icons>
+    </button>
+  </div>
+  <div class="sale-end-on">
+    <span>Sale end in 1hr 22sec</span>
+  </div>
 </div>

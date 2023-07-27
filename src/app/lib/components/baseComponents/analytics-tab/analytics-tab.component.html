@@ -1,9 +1,460 @@
-<div class="accordion accordion-flush graph-wrapper" id="analytics-and-active__tab">
-    <app-valume-price-graph gName="Volume & Price" hideFilterButtonClass="analytics-hide" accordionBdyClass="bg-sec-accordion" is_show="true"></app-valume-price-graph>
-    <app-sales-graph hideFilterButtonClass="analytics-hide" accordionBdyClass="bg-sec-accordion"></app-sales-graph>
-    <app-owner-distribution-graph accordionBdyClass="bg-sec-accordion"></app-owner-distribution-graph>
-    <app-unique-holders hideFilterButtonClass="analytics-hide" accordionBdyClass="bg-sec-accordion"></app-unique-holders>
-    <app-listings-graph hideFilterButtonClass="analytics-hide" accordionBdyClass="bg-sec-accordion"></app-listings-graph>
-    <app-listings-disturbtion hideFilterButtonClass="analytics-hide" accordionBdyClass="bg-sec-accordion"></app-listings-disturbtion>
-    <app-holders accordionBdyClass="bg-sec-accordion"></app-holders>
+<div class="accordion common-graph-wrapper" id="analytics-and-active__tab">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="valume-accordion">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#valume-price-graph" aria-expanded="true" aria-controls="valume-price-graph">
+            <div class="title-wrapper">
+                <div class="title">
+                    <app-svg-icons iconName="valGraphIcon" class="acc-icon" className="acc-icon icon"></app-svg-icons>
+                    <p>Volume & Price</p>
+                </div>
+                <app-svg-icons iconName="infoIcon"></app-svg-icons>
+            </div>
+            <div class="icon-wrapper">
+                <app-svg-icons class="downArrowIcon" iconName="downIcon"></app-svg-icons>
+                <app-svg-icons class="upArrowIcon" iconName="upIcon"></app-svg-icons>
+            </div>
+        </button>
+      </h2>
+      <div id="valume-price-graph" class="accordion-collapse collapse show w-100" aria-labelledby="valume-accordion">
+        <div class="accordion-body">
+            <div class="details-header">
+                <div class="stats-wrapper">
+                    <div class="text-icon">
+                    <span>2 536.6844</span>
+                    <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                    </div>
+                    <span class="val-percentage positive-percentage">+5.37%</span>
+                </div>
+                <div class="button-filter-wrapper">
+                    <div class="f-button-wrapper">
+                    <div class="f-btn active">1H</div>
+                    <div class="f-btn">1D</div>
+                    <div class="f-btn">1W</div>
+                    <div class="f-btn">1M</div>
+                    <div class="f-btn">All</div>
+                    </div>
+                    <div class="dropdown">
+                    <button type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>1H</span>
+                        <app-svg-icons iconName="downIcon"></app-svg-icons>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">1H</a></li>
+                        <li><a class="dropdown-item" href="#">1D</a></li>
+                        <li><a class="dropdown-item" href="#">1W</a></li>
+                        <li><a class="dropdown-item" href="#">1M</a></li>
+                        <li><a class="dropdown-item" href="#">All</a></li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="graph">
+                <img src="../../../assets/images/Chart Wrapper.png" class="img-fluid w-100" alt="demo chart">
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="sales-accordion">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sales-graph" aria-expanded="true" aria-controls="sales-graph">
+              <div class="title-wrapper">
+                  <div class="title">
+                    <app-svg-icons iconName="salesIcon" class="acc-icon" className="acc-icon icon"></app-svg-icons>
+                    <p>Sales</p>
+                  </div>
+                  <app-svg-icons iconName="infoIcon"></app-svg-icons>
+              </div>
+              <div class="icon-wrapper">
+                  <app-svg-icons class="downArrowIcon" iconName="downIcon"></app-svg-icons>
+                  <app-svg-icons class="upArrowIcon" iconName="upIcon"></app-svg-icons>
+              </div>
+          </button>
+        </h2>
+        <div id="sales-graph" class="accordion-collapse collapse w-100" aria-labelledby="sales-accordion">
+          <div class="accordion-body">
+            <div class="details-header">
+                <div class="stats-wrapper">
+                  <div class="text-icon">
+                    <span>26.6844</span>
+                    <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                  </div>
+                  <span class="sale-stat">$1.23562</span>
+                </div>
+                <div class="button-filter-wrapper">
+                  <div class="f-button-wrapper">
+                    <div class="f-btn active">1H</div>
+                    <div class="f-btn">1D</div>
+                    <div class="f-btn">1W</div>
+                    <div class="f-btn">1M</div>
+                    <div class="f-btn">All</div>
+                  </div>
+                  <div class="dropdown">
+                    <button type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>1H</span>
+                        <app-svg-icons iconName="downIcon"></app-svg-icons>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">1H</a></li>
+                      <li><a class="dropdown-item" href="#">1D</a></li>
+                      <li><a class="dropdown-item" href="#">1W</a></li>
+                      <li><a class="dropdown-item" href="#">1M</a></li>
+                      <li><a class="dropdown-item" href="#">All</a></li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+            <div class="graph">
+                <img src="../../../assets/images/sales-chart.png" class="img-fluid w-100" alt="demo-chart">
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="owner-distribution-accordion">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#owner-distribution-graph" aria-expanded="true" aria-controls="owner-distribution-graph">
+              <div class="title-wrapper">
+                  <div class="title">
+                    <app-svg-icons iconName="ownerDisIcon" class="acc-icon" className="acc-icon f-active"></app-svg-icons>
+                    <p>Owner Distribution</p>
+                  </div>
+                  <app-svg-icons iconName="infoIcon"></app-svg-icons>
+              </div>
+              <div class="icon-wrapper">
+                  <app-svg-icons class="downArrowIcon" iconName="downIcon"></app-svg-icons>
+                  <app-svg-icons class="upArrowIcon" iconName="upIcon"></app-svg-icons>
+              </div>
+          </button>
+        </h2>
+        <div id="owner-distribution-graph" class="accordion-collapse collapse w-100" aria-labelledby="owner-distribution-accordion">
+          <div class="accordion-body">
+            <div class="row m-0 w-100 justify-content-center">
+                <div class="col-7 p-0">
+                    <img src="../../../assets/images/owner-distribution.png" class="img-fluid w-100 mt-3" alt="demo-chart">
+                </div>
+            </div>
+            <div class="graph-data-details">
+                <div class="data-detail d-flex align-items-start">
+                    <div class="round bg-1">
+
+                    </div>
+                    <div class="detail">
+                        <span class="mb-0">1 item</span>
+                        <p>15.0%</p>
+                    </div>
+                </div>
+                <div class="data-detail d-flex align-items-start">
+                    <div class="round bg-2">
+
+                    </div>
+                    <div class="detail">
+                        <span class="mb-0">2-3 items</span>
+                        <p>25.0%</p>
+                    </div>
+                </div>
+                <div class="data-detail d-flex align-items-start">
+                    <div class="round bg-3">
+
+                    </div>
+                    <div class="detail">
+                        <span class="mb-0">4-10 items</span>
+                        <p>32.7%</p>
+                    </div>
+                </div>
+                <div class="data-detail d-flex align-items-start">
+                    <div class="round bg-4">
+
+                    </div>
+                    <div class="detail">
+                        <span class="mb-0">11-20 items</span>
+                        <p>45.5%</p>
+                    </div>
+                </div>
+                <div class="data-detail d-flex align-items-start">
+                    <div class="round bg-5">
+
+                    </div>
+                    <div class="detail">
+                        <span class="mb-0">4-10 items</span>
+                        <p>32.7%</p>
+                    </div>
+                </div>
+                <div class="data-detail d-flex align-items-start">
+                    <div class="round bg-6">
+
+                    </div>
+                    <div class="detail">
+                        <span class="mb-0">11-20 items</span>
+                        <p>45.5%</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="unique-holder-accordion">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#unique-holder-graph" aria-expanded="true" aria-controls="unique-holder-graph">
+              <div class="title-wrapper">
+                  <div class="title">
+                    <app-svg-icons iconName="starIcon" class="acc-icon" className="acc-icon f-active"></app-svg-icons>
+                    <p>Unique holders</p>
+                  </div>
+                  <app-svg-icons iconName="infoIcon"></app-svg-icons>
+              </div>
+              <div class="icon-wrapper">
+                  <app-svg-icons class="downArrowIcon" iconName="downIcon"></app-svg-icons>
+                  <app-svg-icons class="upArrowIcon" iconName="upIcon"></app-svg-icons>
+              </div>
+          </button>
+        </h2>
+        <div id="unique-holder-graph" class="accordion-collapse collapse w-100" aria-labelledby="unique-holder-accordion">
+            <div class="accordion-body">
+                <div class="details-header">
+                    <div class="stats-wrapper">
+                    <div class="now-text-wrapper">
+                        <span class="now">Now</span>
+                        <div class="stats-text">2.37</div>
+                    </div>
+
+                    </div>
+                    <div class="button-filter-wrapper">
+                    <div class="f-button-wrapper">
+                        <div class="f-btn active">1H</div>
+                        <div class="f-btn">1D</div>
+                        <div class="f-btn">1W</div>
+                        <div class="f-btn">1M</div>
+                        <div class="f-btn">All</div>
+                    </div>
+                    <div class="dropdown">
+                        <button type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>1H</span>
+                            <app-svg-icons iconName="downIcon"></app-svg-icons>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">1H</a></li>
+                        <li><a class="dropdown-item" href="#">1D</a></li>
+                        <li><a class="dropdown-item" href="#">1W</a></li>
+                        <li><a class="dropdown-item" href="#">1M</a></li>
+                        <li><a class="dropdown-item" href="#">All</a></li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+                <div class="graph">
+                    <img src="../../../assets/images/sales-chart.png" class="img-fluid w-100" alt="demo-chart">
+                </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="listings-accordion">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#listings-graph" aria-expanded="true" aria-controls="listings-graph">
+                <div class="title-wrapper">
+                  <div class="title">
+                    <app-svg-icons iconName="listingsGraphIcon" class="acc-icon" className="acc-icon icon"></app-svg-icons>
+                    <p>Listings</p>
+                  </div>
+                  <app-svg-icons iconName="infoIcon"></app-svg-icons>
+                </div>
+                <div class="icon-wrapper">
+                    <app-svg-icons class="downArrowIcon" iconName="downIcon"></app-svg-icons>
+                    <app-svg-icons class="upArrowIcon" iconName="upIcon"></app-svg-icons>
+                </div>
+            </button>
+        </h2>
+        <div id="listings-graph" class="accordion-collapse collapse w-100" aria-labelledby="listings-accordion">
+            <div class="accordion-body">
+                <div class="details-header">
+                    <div class="stats-wrapper">
+                      <div class="now-text-wrapper">
+                        <span class="now">Now</span>
+                        <div class="stats-text">2.37</div>
+                      </div>
+
+                    </div>
+                    <div class="button-filter-wrapper">
+                      <div class="f-button-wrapper">
+                        <div class="f-btn active">1H</div>
+                        <div class="f-btn">1D</div>
+                        <div class="f-btn">1W</div>
+                        <div class="f-btn">1M</div>
+                        <div class="f-btn">All</div>
+                      </div>
+                      <div class="dropdown">
+                        <button type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>1H</span>
+                            <app-svg-icons iconName="downIcon"></app-svg-icons>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                          <li><a class="dropdown-item" href="#">1H</a></li>
+                          <li><a class="dropdown-item" href="#">1D</a></li>
+                          <li><a class="dropdown-item" href="#">1W</a></li>
+                          <li><a class="dropdown-item" href="#">1M</a></li>
+                          <li><a class="dropdown-item" href="#">All</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+                <div class="graph">
+                    <img src="../../../assets/images/sales-chart.png" class="img-fluid w-100" alt="demo-chart">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="listing-distribution-accordion">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#listing-distribution-graph" aria-expanded="true" aria-controls="listing-distribution-graph">
+                <div class="title-wrapper">
+                  <div class="title">
+                    <app-svg-icons iconName="salesIcon" class="acc-icon" className="acc-icon icon"></app-svg-icons>
+                    <p>Listing distribution</p>
+                  </div>
+                  <app-svg-icons iconName="infoIcon"></app-svg-icons>
+                </div>
+                <div class="icon-wrapper">
+                    <app-svg-icons class="downArrowIcon" iconName="downIcon"></app-svg-icons>
+                    <app-svg-icons class="upArrowIcon" iconName="upIcon"></app-svg-icons>
+                </div>
+            </button>
+        </h2>
+        <div id="listing-distribution-graph" class="accordion-collapse collapse w-100" aria-labelledby="listing-distribution-accordion">
+            <div class="accordion-body">
+                <div class="details-header">
+                    <div class="stats-wrapper">
+
+                    </div>
+                    <div class="button-filter-wrapper">
+                        <div class="f-button-wrapper">
+                        <div class="f-btn active">1H</div>
+                        <div class="f-btn">1D</div>
+                        <div class="f-btn">1W</div>
+                        <div class="f-btn">1M</div>
+                        <div class="f-btn">All</div>
+                        </div>
+                        <div class="dropdown">
+                        <button type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>1H</span>
+                            <app-svg-icons iconName="downIcon"></app-svg-icons>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">1H</a></li>
+                            <li><a class="dropdown-item" href="#">1D</a></li>
+                            <li><a class="dropdown-item" href="#">1W</a></li>
+                            <li><a class="dropdown-item" href="#">1M</a></li>
+                            <li><a class="dropdown-item" href="#">All</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="graph">
+                    <img src="../../../assets/images/listing_distribution_chart.png" class="img-fluid w-100" alt="demo-chart">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="holders-accordion">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#holders-graph" aria-expanded="true" aria-controls="holders-graph">
+                <div class="title-wrapper">
+                  <div class="title">
+                    <app-svg-icons iconName="userProfileIcon" class="acc-icon" className="acc-icon f-active"></app-svg-icons>
+                    <p>Holders</p>
+                  </div>
+                  <app-svg-icons iconName="infoIcon"></app-svg-icons>
+                </div>
+                <div class="icon-wrapper">
+                    <app-svg-icons class="downArrowIcon" iconName="downIcon"></app-svg-icons>
+                    <app-svg-icons class="upArrowIcon" iconName="upIcon"></app-svg-icons>
+                </div>
+            </button>
+        </h2>
+        <div id="holders-graph" class="accordion-collapse collapse w-100" aria-labelledby="holders-accordion">
+            <div class="accordion-body">
+                <div class="profile-list__wrapper">
+                    <div class="profile-list">
+                        <div class="profile-details-wrapper">
+                            <div class="profile-img">
+                                <img src="../../../../../assets/images/graph-icon/profile-1.png" class="img-fluid" alt="profile">
+                            </div>
+                            <div class="p_details">
+                                <h6 class="mb-0">Francisco</h6>
+                                <p class="mb-0">0x08d83848aedd</p>
+                            </div>
+                        </div>
+                        <div class="s_percentage">
+                            <p class="mb-0 text-w">
+                                5.3%
+                            </p>
+                            <p class="mb-0 text-g">
+                                Own 363
+                            </p>
+                        </div>
+                    </div>
+                    <div class="profile-list">
+                        <div class="profile-details-wrapper">
+                            <div class="profile-img">
+                                <img src="../../../../../assets/images/graph-icon/profile-2.png" class="img-fluid" alt="profile">
+                            </div>
+                            <div class="p_details">
+                                <h6 class="mb-0">Francisco</h6>
+                                <p class="mb-0">0x08d83848aedd</p>
+                            </div>
+                        </div>
+                        <div class="s_percentage">
+                            <p class="mb-0 text-w">
+                                5.3%
+                            </p>
+                            <p class="mb-0 text-g">
+                                Own 363
+                            </p>
+                        </div>
+                    </div>
+                    <div class="profile-list">
+                        <div class="profile-details-wrapper">
+                            <div class="profile-img">
+                                <img src="../../../../../assets/images/graph-icon/profile-3.png" class="img-fluid" alt="profile">
+                            </div>
+                            <div class="p_details">
+                                <h6 class="mb-0">Francisco</h6>
+                                <p class="mb-0">0x08d83848aedd</p>
+                            </div>
+                        </div>
+                        <div class="s_percentage">
+                            <p class="mb-0 text-w">
+                                5.3%
+                            </p>
+                            <p class="mb-0 text-g">
+                                Own 363
+                            </p>
+                        </div>
+                    </div>
+                    <div class="profile-list">
+                        <div class="profile-details-wrapper">
+                            <div class="profile-img">
+                                <img src="../../../../../assets/images/graph-icon/profile-4.png" class="img-fluid" alt="profile">
+                            </div>
+                            <div class="p_details">
+                                <h6 class="mb-0">Francisco</h6>
+                                <p class="mb-0">0x08d83848aedd</p>
+                            </div>
+                        </div>
+                        <div class="s_percentage">
+                            <p class="mb-0 text-w">
+                                5.3%
+                            </p>
+                            <p class="mb-0 text-g">
+                                Own 363
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

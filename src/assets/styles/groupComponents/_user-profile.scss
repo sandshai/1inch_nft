@@ -65,6 +65,13 @@
           gap: 2rem;
         }
       }
+      .profile-offer-tab-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
+        @include media-min-alt(680px) {
+          gap: 1rem;
+          grid-template-columns: repeat(auto-fill, minmax(calc(50% - 2rem), 1fr)) !important;
+        }
+      }
     }
   }
 }

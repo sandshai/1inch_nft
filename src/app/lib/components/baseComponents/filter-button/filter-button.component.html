@@ -1,33 +1,31 @@
 <div class="c___filter-button border-rounded-12" *ngIf="mdDevice">
-  <button class="btn btn-trd border-0">1H</button>
-  <button
-    class="btn btn-trd border-0"
-    [class.active]="this.sortBy === this.sort['1day']"
-    (click)="this.filterByDayFun(this.sort['1day'], '1day')"
+  <div class="d-f-w">
+    <span>1H</span>
+  </div>
+  <div class="d-f-w"
+  [class.active]="this.sortBy === this.sort['1day']"
+  (click)="this.filterByDayFun(this.sort['1day'], '1day')"
   >
-    1D
-  </button>
-  <button
-    class="btn btn-trd border-0"
-    [class.active]="this.sortBy === this.sort['7day']"
-    (click)="this.filterByDayFun(this.sort['7day'], '7day')"
+    <span>1D</span>
+  </div>
+  <div class="d-f-w"
+  [class.active]="this.sortBy === this.sort['7day']"
+  (click)="this.filterByDayFun(this.sort['7day'], '7day')"
   >
-    1W
-  </button>
-  <button
-    class="btn btn-trd border-0"
-    [class.active]="this.sortBy === this.sort['30day']"
-    (click)="this.filterByDayFun(this.sort['30day'], '30day')"
+    <span>1W</span>
+  </div>
+  <div class="d-f-w"
+  [class.active]="this.sortBy === this.sort['30day']"
+  (click)="this.filterByDayFun(this.sort['30day'], '30day')"
   >
-    1M
-  </button>
-  <button
-    class="btn btn-trd border-0"
-    [class.active]="this.sortBy === this.sort['allTime']"
-    (click)="this.filterByDayFun(this.sort['allTime'], 'allTime')"
+    <span>1M</span>
+  </div>
+  <div class="d-f-w"
+  [class.active]="this.sortBy === this.sort['allTime']"
+  (click)="this.filterByDayFun(this.sort['allTime'], 'allTime')"
   >
-    All
-  </button>
+    <span>All</span>
+  </div>
 </div>
 
 <div class="c__btn-group" *ngIf="mobDevice">
@@ -38,11 +36,9 @@
     aria-expanded="false"
   >
     <span>All</span>
-    <img
-      src="../../../../../assets/images/icons/down.svg"
-      class="img-fluid"
-      alt="icon"
-    />
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M8 10L12 14L16 10" stroke="#6C86AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
     <li><button class="dropdown-item" type="button">1H</button></li>

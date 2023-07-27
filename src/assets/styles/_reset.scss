@@ -59,15 +59,13 @@ html { // ===== reset font size depends on screen size =====
 // custom padding
 
 .cp-5 {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
     @include media-min-xl {
         padding-left: 5.75rem !important;
         padding-right: 5.75rem !important;
     }
 }
 
-$colors: ("static-white": #fbfbfb, "gray": #6C86AD, "red": #E3402A,"green" : #21C187);
+$colors: ("static-white": #fbfbfb, "gray": #6C86AD, "red": #E3402A,"green" : #21C187,"brand-blue" : #2F8AF5);
 
 @each $name, $color in $colors {
     .text-#{$name} {

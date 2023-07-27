@@ -27,13 +27,11 @@ import { CollectionComponent } from './pages/collection/collection.component';
 import { CollectionCardComponent } from './lib/components/baseComponents/collection-card/collection-card.component';
 import { ButtonComponent } from './lib/components/baseComponents/button/button.component';
 import { TaggleSwitchComponent } from './lib/components/baseComponents/taggle-switch/taggle-switch.component';
-import { SvgImageComponent } from './lib/components/baseComponents/svg-image/svg-image.component';
 import { CheckboxComponent } from './lib/components/baseComponents/checkbox/checkbox.component';
 import { InputComponent } from './lib/components/baseComponents/input/input.component';
 import { SelectComponent } from './lib/components/baseComponents/select/select.component';
 import { CollectionFilterComponent } from './lib/components/baseComponents/collection-filter/collection-filter.component';
 import { GridViewCollectionComponent } from './lib/components/baseComponents/grid-view-collection/grid-view-collection.component';
-import { CollectionRightSideTabComponent } from './lib/components/baseComponents/collection-right-side-tab/collection-right-side-tab.component';
 import { AnalyticsTabComponent } from './lib/components/baseComponents/analytics-tab/analytics-tab.component';
 import { ActivityTabComponent } from './lib/components/baseComponents/activity-tab/activity-tab.component';
 import { ListViewCollectionsComponent } from './lib/components/baseComponents/list-view-collections/list-view-collections.component';
@@ -43,16 +41,10 @@ import { HeaderSearchComponent } from './lib/components/baseComponents/header-se
 import { WalletComponent } from './lib/components/baseComponents/wallet/wallet.component';
 import { CartComponent } from './lib/components/baseComponents/cart/cart.component';
 import { ValumePriceGraphComponent } from './lib/components/baseComponents/valume-price-graph/valume-price-graph.component';
-import { SalesGraphComponent } from './lib/components/baseComponents/sales-graph/sales-graph.component';
-import { OwnerDistributionGraphComponent } from './lib/components/baseComponents/owner-distribution-graph/owner-distribution-graph.component';
-import { ListingsGraphComponent } from './lib/components/baseComponents/listings-graph/listings-graph.component';
-import { ListingsDisturbtionComponent } from './lib/components/baseComponents/listings-disturbtion/listings-disturbtion.component';
-import { HoldersComponent } from './lib/components/baseComponents/holders/holders.component';
 import { SweepAndAnalyticsMobileTabComponent } from './lib/components/baseComponents/sweep-and-analytics-mobile-tab/sweep-and-analytics-mobile-tab.component';
 import { ItemComponent } from './pages/item/item.component';
 import { ItemProfileComponent } from './lib/components/baseComponents/item-profile/item-profile.component';
 import { ItemBuyDetailsComponent } from './lib/components/baseComponents/item-buy-details/item-buy-details.component';
-import { TraitsComponent } from './lib/components/baseComponents/traits/traits.component';
 import { ActivityGraphComponent } from './lib/components/baseComponents/activity-graph/activity-graph.component';
 import { ItemDetailsComponent } from './lib/components/baseComponents/item-details/item-details.component';
 import { NumberShortenPipe } from './lib/pipes/number-shorten.pipe';
@@ -64,7 +56,6 @@ import { FilterButtonComponent } from './lib/components/baseComponents/filter-bu
 import { ImagePreviewComponent } from './lib/components/baseComponents/image-preview/image-preview.component';
 import { NavMenusComponent } from './lib/components/baseComponents/nav-menus/nav-menus.component';
 import { SvgIconsComponent } from './lib/components/baseComponents/svg-icons/svg-icons.component';
-import { UniqueHoldersComponent } from './lib/components/baseComponents/unique-holders/unique-holders.component';
 import { MyWatchlistComponent } from './pages/my-watchlist/my-watchlist.component';
 import { SectionFilterWrapperComponent } from './lib/components/baseComponents/section-filter-wrapper/section-filter-wrapper.component';
 import { WatchlistTableComponent } from './lib/components/baseComponents/watchlist-table/watchlist-table.component';
@@ -80,6 +71,8 @@ import { UserProfileListItemsComponent } from './lib/components/baseComponents/u
 import { UserProfileTableLayoutComponent } from './lib/components/baseComponents/user-profile-table-layout/user-profile-table-layout.component';
 import { UserProfileOfferTabComponent } from './lib/components/baseComponents/user-profile-offer-tab/user-profile-offer-tab.component';
 import { UserProfileActivityTabComponent } from './lib/components/baseComponents/user-profile-activity-tab/user-profile-activity-tab.component';
+import { ContentLoaderModule } from '@netbasal/ngx-content-loader';
+import { WalletImagesComponent } from './lib/components/baseComponents/wallet-images/wallet-images.component';
 
 @NgModule({
   declarations: [
@@ -106,13 +99,11 @@ import { UserProfileActivityTabComponent } from './lib/components/baseComponents
     CollectionCardComponent,
     ButtonComponent,
     TaggleSwitchComponent,
-    SvgImageComponent,
     CheckboxComponent,
     InputComponent,
     SelectComponent,
     CollectionFilterComponent,
     GridViewCollectionComponent,
-    CollectionRightSideTabComponent,
     AnalyticsTabComponent,
     ActivityTabComponent,
     ListViewCollectionsComponent,
@@ -122,16 +113,10 @@ import { UserProfileActivityTabComponent } from './lib/components/baseComponents
     WalletComponent,
     CartComponent,
     ValumePriceGraphComponent,
-    SalesGraphComponent,
-    OwnerDistributionGraphComponent,
-    ListingsGraphComponent,
-    ListingsDisturbtionComponent,
-    HoldersComponent,
     SweepAndAnalyticsMobileTabComponent,
     ItemComponent,
     ItemProfileComponent,
     ItemBuyDetailsComponent,
-    TraitsComponent,
     ActivityGraphComponent,
     ItemDetailsComponent,
     NumberShortenPipe,
@@ -141,7 +126,6 @@ import { UserProfileActivityTabComponent } from './lib/components/baseComponents
     ImagePreviewComponent,
     NavMenusComponent,
     SvgIconsComponent,
-    UniqueHoldersComponent,
     MyWatchlistComponent,
     SectionFilterWrapperComponent,
     WatchlistTableComponent,
@@ -157,6 +141,7 @@ import { UserProfileActivityTabComponent } from './lib/components/baseComponents
     UserProfileTableLayoutComponent,
     UserProfileOfferTabComponent,
     UserProfileActivityTabComponent,
+    WalletImagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -164,6 +149,7 @@ import { UserProfileActivityTabComponent } from './lib/components/baseComponents
     HttpClientModule,
     SwiperModule,
     FormsModule,
+    ContentLoaderModule,
   ],
   providers: [SharedDataService],
   bootstrap: [AppComponent],

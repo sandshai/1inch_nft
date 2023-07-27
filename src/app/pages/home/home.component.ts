@@ -9,4 +9,7 @@ export class HomeComponent {
   ngOnInit()  {
     document.querySelector('main')?.classList.add('overflow-x-hidden')
   }
+  ngOnDestroy() {
+    document.querySelector('main')?.classList.remove('overflow-x-hidden')
+  }
 }

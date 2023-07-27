@@ -54,24 +54,30 @@
 }
 
 .filter-input {
+  width: 100%;
   input {
+      width: 100%;
+      display: flex;
+      padding: 0.8125rem 0.5rem;
+      align-items: center;
+      gap: 0.5rem;
+      align-self: stretch;
+      border-radius: 0.75rem;
+      background-color: var(--1inch-cbc-02);
       border: none;
-      color: var(---1inch-cstc-02) !important;
-      background-color: var(---1inch-csbc-04);
-      font-weight: 400;
+      color: var(--1inch-tc-02);
       font-size: 1rem;
-      line-height: 1;
-      padding: 0.66rem 0.5rem;
-      border-radius: 0.5rem;
+      font-weight: 400;
+      line-height: 1rem; /* 100% */
       @include media-min-lg {
           padding: 0.55rem 0.5rem;
       }
       &:focus {
-        color: var(---1inch-cstc-02) !important;
-        background-color: var(---1inch-csbc-04);
+        color: var(--1inch-tc-02);
+        background-color: var(--1inch-cbc-02);
       }
       &::placeholder {
-          color: var(---1inch-cstc-02) !important;
+        color: var(--1inch-tc-02);
       }
   }
 }

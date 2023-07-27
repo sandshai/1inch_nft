@@ -1,13 +1,25 @@
 .trending-collection {
     #trend-collection__wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        gap: 1rem;
+        @include media-min-md {
+            grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1rem), 1fr));
+        }
+        @include media-min-xl {
+            grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 1rem), 1fr));
+        }
+        @include media-min-xxl {
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 2rem), 1fr));
+        }
         .trend-collection__item {
-            margin-bottom: 1rem;
-            &:nth-child(7),&:nth-child(8),&:nth-child(9) {
-                margin-bottom: 0px;
+            &:nth-child(6),&:nth-child(7),&:nth-child(8),&:nth-child(9) {
+                display: none !important;
             }
-            @include media-max-alt(700px) {
+            @include media-min-md {
                 &:nth-child(6),&:nth-child(7),&:nth-child(8),&:nth-child(9) {
-                    display: none !important;
+                    display: block !important;
                 }
             }
         }

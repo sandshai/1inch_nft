@@ -25,54 +25,44 @@
             formatAddress(itemDetail?.token?.owner)
           }}
           <td>
-            <div class="item d-flex align-items-center">
-              <div class="i_img">
-                <img
-                  src="{{ itemDetail?.token?.image }}"
-                  class="img-fluid"
-                  alt="image"
-                />
-              </div>
-              <div class="content ms-3">
-                <p class="mb-0">{{ itemDetail?.token?.name }}</p>
-              </div>
+            <div class="profile-item">
+              <img src="{{ itemDetail?.token?.image }}" alt="profile">
+              <p>{{ itemDetail?.token?.name }}</p>
             </div>
           </td>
           <td>
-            <span class="rarity"># {{ itemDetail?.token?.rarityRank }}</span>
+            <div class="badge">
+              <span>#</span>
+              <span>{{ itemDetail?.token?.rarityRank }}</span>
+            </div>
           </td>
           <td>
-            <span>{{ this.formatChainAddress }}</span>
+            <p class="common-text">{{ this.formatChainAddress }}</p>
           </td>
-
           <td>
-            <div class="on_img_container">
+            <div class="on-icon">
               <img
                 src="{{ itemDetail?.market?.floorAsk?.source?.icon }}"
-                class="img-fluid on_image"
-                alt="t_image"
+                class="on_image"
+                alt="on image"
               />
             </div>
           </td>
           <td>
-            <div class="price_col d-flex align-items-center">
-              <span>{{
-                itemDetail?.market?.floorAsk?.price?.amount?.decimal
-              }}</span>
-              <img
-                src="../../../../../assets/images/icons/activity_diamond.svg"
-                class="img-fluid"
-                alt="diamond"
-              />
+            <div class="price-buy-wrapper">
+              <div class="price">
+                <p>{{
+                  itemDetail?.market?.floorAsk?.price?.amount?.decimal
+                }}</p>
+                <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+              </div>
+              <div class="line"></div>
+              <p class="buy-text">Buy</p>
             </div>
           </td>
           <td>
-            <div class="card-image">
-              <img
-                src="../../../../../assets/images/icons/cart-icon.svg"
-                class="img-fluid"
-                alt="cart"
-              />
+            <div class="add-to-cart ms-auto" appTooltip data-bs-placement="top" title="Add to bag">
+              <app-svg-icons iconName="cartIcon"></app-svg-icons>
             </div>
           </td>
         </tr>

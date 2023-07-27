@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-user-portfolio-tab',
   templateUrl: './user-portfolio-tab.component.html'
 })
 export class UserPortfolioTabComponent {
+  constructor(private cdr: ChangeDetectorRef,) { }
   getScreenWidth: any;
   getScreenHeight: any;
   dummyData: any = [
@@ -45,16 +46,43 @@ export class UserPortfolioTabComponent {
   ];
   dummyNftCollections: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'];
   layOut: string = 'card';
-
+  filterIsOpen: boolean | undefined;
   @Input() is_listItemOpen: boolean | undefined;
-  @Input() filterIsOpen: boolean | undefined;
   @Output() listItemNewEvent = new EventEmitter<boolean>();
 
+  ngOnInit() {
+    this.cdr.detectChanges();
+    this.filterLayout();
+  }
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.filterLayout();
+    this.toggleBodyScroll();
+  }
+  filterLayout() {
+    if (window.innerWidth > 1199) {
+      this.filterIsOpen = true;
+    } else {
+      this.filterIsOpen = false;
+    }
+  }
+  filterEvent(value:boolean) {
+    this.filterIsOpen = value;
+    this.toggleBodyScroll();
+  }
   listItemEvent(value : boolean) {
     this.listItemNewEvent.emit(value)
   }
-
   setLayOut(value :string) {
     this.layOut = value;
+  }
+  closePopup(value:boolean) {
+    this.filterIsOpen = value;
+    this.toggleBodyScroll();
+  }
+
+  private toggleBodyScroll() {
+    const isMobileScreen = window.innerWidth < 992; // Adjust the width as per your requirement
+    document.body.style.overflow = isMobileScreen && this.filterIsOpen ? 'hidden' : '';
   }
 }

@@ -1,13 +1,4 @@
 header {
-  height: 4.438rem;
-  border-bottom: 1px solid $theme-clr-border-gray;
-  @include media-min-md {
-    height: 5.563rem;
-  }
-  @include media-min-xl {
-    height: 6.563rem;
-    border-bottom: 1px solid transparent;
-  }
   .c-gp-1 {
     gap: 1rem;
     @include media-min-xxl {
@@ -16,9 +7,6 @@ header {
   }
   nav {
     padding: 0.875rem 0 !important;
-    @include media-min-xl {
-      padding: 1.375rem 0 !important;
-    }
 
     .logo {
       @include media-min-alt(768px) {
@@ -118,31 +106,109 @@ header {
   }
 }
 
-// === loader ===
-
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5rem 0;
-  .spinner {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: radial-gradient(farthest-side, var(--1inch-bc-08) 94%, #0000)
-        top/9px 9px no-repeat,
-      conic-gradient(#0000 30%, var(--1inch-bc-08));
-    -webkit-mask: radial-gradient(
-      farthest-side,
-      #0000 calc(100% - 9px),
-      #000 0
-    );
-    animation: spinner-c7wet2 1s infinite linear;
+.settings-cus-dropdown {
+  width: 20rem;
+  border-radius: 0 !important;
+  background-color: var(--1inch-cbc-05) !important;
+  border-radius: 1.5rem 1.5rem 0rem 0rem !important;
+  padding: 0 !important;
+  border: none;
+  &.is_rounded {
+    border-radius: 1.5rem !important;
   }
+  .settings-dropdown-wrapper {
+    .settings-header {
+      display: flex;
+      padding: 0.75rem 0.75rem 0.75rem 1rem;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #2F3B4D;
+      .header-title {
+        color: var(--1inch-tc-01);
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        margin: 0;
+      }
+      .icon {
+        display: flex;
+        padding: 0.25rem;
+        align-items: flex-start;
+        gap: 0.625rem;
+        border-radius: 0.5rem;
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+    .settings-body {
+      display: flex;
+      padding: 0.5rem 0rem 2rem 0rem;
+      flex-direction: column;
+      align-items: flex-start;
+      align-self: stretch;
+      .menu-item {
+        display: flex;
+        padding: 0.6875rem 1rem;
+        align-items: center;
+        gap: 1rem;
+        align-self: stretch;
+        background-color: var(--1inch-cbc-05);
+        cursor: pointer;
 
-  @keyframes spinner-c7wet2 {
-    100% {
-      transform: rotate(1turn);
+        &:hover {
+          background-color: var(--1inch-cbc-08);
+        }
+        &.isDisabled {
+          opacity: 0.5;
+        }
+        &.notDisabled {
+          opacity: 1 !important;
+          p {
+            color: var(--1inch-tc-01) !important;
+          }
+          .is_notChecked {
+            display: none !important;
+          }
+          .is_checked {
+            display: block !important;
+          }
+        }
+        svg,img {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+        .label-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.125rem;
+          flex: 1 0 0;
+          p {
+            margin: 0;
+            color: var( --1inch-tc-02);
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.625rem;
+          }
+          span {
+            color: var(--1inch-tc-02);
+            font-size: 0.8125rem;
+            font-weight: 400;
+            line-height: 1rem;
+          }
+        }
+        .is_notChecked {
+          display: block;
+        }
+        .is_checked {
+          display: none;
+        }
+        input:checked {
+          background-color: #fff !important;
+        }
+      }
     }
   }
 }

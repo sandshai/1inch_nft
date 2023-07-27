@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { SettingsService } from '../../services/settings.service';
 // import { ThemeService } from '../../services/theme.service';
 
@@ -12,10 +12,33 @@ export class HeaderComponent {
   is_cart:boolean = false;
   mobDeviceCart: any;
   mdDeviceCart: any;
+  currentLanguage: string = 'en';
+  currentMode: any = 'dark';
+  activePopup: string = 'globalSettings'
+  openMobileSearchWrapper: boolean = false;
+
+  languages: any = [
+    { name: 'English', flag: 'flag-1', lan : 'en' },
+    { name: '简体中文', flag: 'flag-2', lan : 'cn' },
+    { name: 'Français', flag: 'flag-3', lan : 'fn' },
+    { name: '日本語', flag: 'flag-8', lan : 'jn' },
+    { name: 'Русский', flag: 'flag-7', lan : 'ru' },
+    { name: 'Tiếng Việt', flag: 'flag-9', lan : 'vi' },
+    { name: 'Bahasa Indonesia', flag: 'flag-6', lan : 'ina' },
+    { name: '한국어', flag: 'flag-5', lan : 'ko' },
+    { name: 'Español', flag: 'flag-4', lan : 'spn' }
+  ]
+
+  modes: any = [
+    { name: 'Dark', icon: 'darkThemeIcon', mode: 'dark' },
+    { name: 'Light', icon: 'lightThemeIcon', mode: 'light' },
+    { name: 'Automatic', icon: 'automaticThemeIcon', mode: 'auto' },
+  ]
 
   constructor(
     // public _themeService: ThemeService,
-    private _settingsService: SettingsService
+    private _settingsService: SettingsService,
+    private renderer: Renderer2, private elementRef: ElementRef
   ) {}
 
   toggleTheme() {
@@ -32,20 +55,19 @@ export class HeaderComponent {
 
   opensearch(event : Event) {
     event.stopPropagation();
-    document
-      .getElementById('search-wrapper')
-      ?.classList.add('open__history');
+    this.openMobileSearchWrapper = true;
   }
 
-  closesearchhistory() {
-    document.getElementById('header-search__field')?.classList.remove('open-search-history');
+  closesearchhistory(val : boolean) {
+    this.openMobileSearchWrapper = val;
   }
 
   insidewallet(event :any) {
     event.stopPropagation();
   }
 
-  openCardWrapper() {
+  openCardWrapper(event : Event) {
+    event.stopPropagation();
     this.is_cart == true ? this.is_cart = false : this.is_cart = true;
   }
 
@@ -55,6 +77,8 @@ export class HeaderComponent {
   ngOnInit() {
     this.setSearchComponent();
     this.setCartComponent();
+    const dropdownElement = this.elementRef.nativeElement.querySelector('.cus-settings-menu');
+    this.renderer.listen(dropdownElement, 'hidden.bs.dropdown', this.onDropdownHidden.bind(this));
   }
 
   @HostListener("window:scroll", [])
@@ -96,5 +120,26 @@ export class HeaderComponent {
       this.mobDeviceCart = true;
       this.mdDeviceCart = false;
     }
+  }
+
+  chooseLanguage(value: string) {
+    this.currentLanguage = value;
+  }
+
+  chooseMode(value: string) {
+    this.currentMode = value;
+  }
+
+  setActivePopup(value: string) {
+    this.activePopup = value;
+  }
+
+  onDropdownHidden() {
+    this.activePopup = 'globalSettings';
+  }
+
+  closePopup() {
+    const ele = document.getElementById('dropdownMenuButton1');
+    ele?.click();
   }
 }

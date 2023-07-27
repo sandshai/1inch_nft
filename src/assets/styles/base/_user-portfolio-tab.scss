@@ -1,18 +1,23 @@
 .profolio-grid-layout-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(calc(50% - 2rem), 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  gap: 1rem;
+  @include media-min-alt(360px) {
+    grid-template-columns: repeat(auto-fill, minmax(calc(50% - 2rem), 1fr));
+  }
   @include media-min-md {
+    gap: 1.5rem;
     grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 2rem), 1fr));
   }
   @include media-min-lg {
+    gap: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(calc(25% - 2rem), 1fr));
   }
 
   @include media-min-xxl {
-    grid-template-columns: repeat(auto-fill, minmax(calc(20% - 2rem), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(calc(16.66% - 2rem), 1fr));
   }
-  &.list-item-wrapper__isOpen {
+  &.both-openListItemCard {
     @include media-min-lg {
       grid-template-columns: repeat(auto-fill, minmax(calc(50% - 2rem), 1fr)) !important;
     }
@@ -20,6 +25,26 @@
       grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 2rem), 1fr)) !important;
     }
   }
+  &.filter-openListItemCard {
+    @include media-min-lg {
+      grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 2rem), 1fr)) !important;
+    }
+    @include media-min-xl {
+      grid-template-columns: repeat(auto-fill, minmax(calc(25% - 2rem), 1fr)) !important;
+    }
+    @include media-min-xxl {
+      grid-template-columns: repeat(auto-fill, minmax(calc(20% - 2rem), 1fr)) !important;
+    }
+  }
+  &.item-openListItemCard {
+    @include media-min-lg {
+      grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 2rem), 1fr)) !important;
+    }
+    @include media-min-xxl {
+      grid-template-columns: repeat(auto-fill, minmax(calc(25% - 2rem), 1fr)) !important;
+    }
+  }
+
   .portfolio-card {
     display: flex;
     flex-direction: column;

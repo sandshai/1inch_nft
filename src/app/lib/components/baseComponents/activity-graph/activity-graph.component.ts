@@ -19,11 +19,14 @@ export class ActivityGraphComponent {
   @Input() activity: any;
   @Input() dataAvailable: any;
   @Input() pagination: any;
+  @Input() saleDate: any;
 
   formatChainAddress: any;
   formatToAddress: any;
   daysAgo: any;
   setClassName = '';
+  timeInterval: string = '';
+  saleInterval: string = '';
 
   types: Types = {
     sale: 'sale',
@@ -36,6 +39,7 @@ export class ActivityGraphComponent {
   };
 
   currentType: string = '';
+  saleDay: any;
 
   @Output() messageEvent = new EventEmitter<any>();
   @Output() loadMoreEvent = new EventEmitter<any>();
@@ -48,6 +52,29 @@ export class ActivityGraphComponent {
     this.messageEvent.emit(key);
   }
 
+  ngOnChanges() {
+    if (this.saleDate) {
+      let value = new Date(this.saleDate * 1000);
+
+      const currentDate = new Date();
+
+      const oneDayInMillis = 1000 * 60 * 60 * 24;
+      const minutesCalculation = 1000 * 60;
+
+      const timeDiff = currentDate.getTime() - value.getTime();
+
+      if (timeDiff < oneDayInMillis) {
+        this.saleDay = Math.floor(timeDiff / (1000 * 60 * 60));
+        this.saleInterval = 'h';
+      } else if (timeDiff < minutesCalculation) {
+        this.saleDay = Math.floor(timeDiff / (1000 * 60));
+        this.saleInterval = 'm';
+      } else {
+        this.saleDay = Math.floor(timeDiff / (1000 * 3600 * 24));
+        this.saleInterval = 'd';
+      }
+    }
+  }
   formatFromAddress(address: string) {
     if (address) {
       this.formatChainAddress = `${address.slice(0, 4)}...${address.slice(-4)}`;
@@ -64,12 +91,24 @@ export class ActivityGraphComponent {
     }
   }
 
-  getDaysAgo(value: string) {
+  getDaysAgo(value: string): void {
     const givenDate = new Date(value);
     const currentDate = new Date();
 
+    const oneDayInMillis = 1000 * 60 * 60 * 24;
+    const minutesCalculation = 1000 * 60;
+
     const timeDiff = currentDate.getTime() - givenDate.getTime();
-    this.daysAgo = Math.floor(timeDiff / (1000 * 3600 * 24));
+    if (timeDiff < oneDayInMillis) {
+      this.daysAgo = Math.floor(timeDiff / (1000 * 60 * 60));
+      this.timeInterval = 'h';
+    } else if (timeDiff < minutesCalculation) {
+      this.daysAgo = Math.floor(timeDiff / (1000 * 60));
+      this.timeInterval = 'm';
+    } else {
+      this.daysAgo = Math.floor(timeDiff / (1000 * 3600 * 24));
+      this.timeInterval = 'd';
+    }
   }
 
   loadMore(load = false) {

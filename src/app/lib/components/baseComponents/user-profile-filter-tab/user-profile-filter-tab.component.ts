@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-profile-filter-tab',
@@ -6,5 +6,9 @@ import { Component, Input } from '@angular/core';
 })
 export class UserProfileFilterTabComponent {
   @Input() demoData: any;
-  @Input() collections: any = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'];
+  @Input() collections: any = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'];
+  @Output() ItemEvent = new EventEmitter<boolean>();
+  popupCloseEvent() {
+    this.ItemEvent.emit(false)
+  }
 }

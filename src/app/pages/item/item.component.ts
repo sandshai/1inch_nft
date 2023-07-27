@@ -5,7 +5,7 @@ import { SettingsService } from 'src/app/lib/services/settings.service';
 
 @Component({
   selector: 'app-item',
-  templateUrl: './item.component.html'
+  templateUrl: './item.component.html',
 })
 export class ItemComponent {
   constructor(
@@ -26,6 +26,7 @@ export class ItemComponent {
   is_preview: boolean = false;
   loadMoreStatus: any;
   pagination: string = '';
+  dateFormat: Date = new Date();
 
   public collectionId: any;
   public collectionName: any;
@@ -34,7 +35,7 @@ export class ItemComponent {
   public mdDeviceImage: any;
 
   ngOnInit() {
-    // this.getScreenWidth = window.innerWidth;
+    document.querySelector('body')?.classList.add('nft-page-bottom-padding');
 
     this.collectionId =
       this.activatedRoute.snapshot.paramMap.get('{collectionId}');
@@ -52,13 +53,17 @@ export class ItemComponent {
     this.setProfileImageBasedOnImage();
   }
 
+  ngOnDestroy() {
+    document.querySelector('body')?.classList.remove('nft-page-bottom-padding');
+  }
+
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
     this.setProfileImageBasedOnImage();
   }
 
   setProfileImageBasedOnImage = () => {
-    if (window.innerWidth > 767) {
+    if (window.innerWidth > 766) {
       this.mobDeviceImage = false;
       this.mdDeviceImage = true;
     } else {
@@ -68,13 +73,19 @@ export class ItemComponent {
   };
 
   getItemDetails = (sortBy?: string, chain?: any) => {
+    let attributes = true;
     this._crudService
       .getAll(
-        `tokens/v6?tokens=${this.collectionId}:${this.tokenId}`,
+        `tokens/v6?tokens=${this.collectionId}:${
+          this.tokenId
+        }&includeAttributes=${attributes}&includeDynamicPricing=${true}&includeTopBid=${true}&includeLastSale=${true}`,
         this.search
       )
       .subscribe((response) => {
         this.itemDetails = response?.tokens;
+        this.dateFormat = new Date(
+          this.itemDetails[0]?.token?.lastSale?.timestamp * 1000
+        );
       });
   };
 
@@ -83,7 +94,7 @@ export class ItemComponent {
     this.getTokenActivity(message);
   }
 
-  getTokenActivity = (activity: string, chain?: any) => {
+  getTokenActivity = (activity: string) => {
     let url = `tokens/${this.collectionId}:${this.tokenId}/activity/v5?types=${activity}`;
     if (this.loadMoreStatus) {
       url = `tokens/${this.collectionId}:${this.tokenId}/activity/v5?types=${activity}&continuation=${this.pagination}`;
@@ -114,7 +125,9 @@ export class ItemComponent {
 
   receiveLoadMoreStatus(message: string) {
     this.loadMoreStatus = message;
-    this.getTokenActivity(this.activityType);
+    if (this.loadMoreStatus) {
+      this.getTokenActivity(this.activityType);
+    }
   }
 
   formatAddress(address: string) {
@@ -136,17 +149,16 @@ export class ItemComponent {
   }
 
   downloadImage(cdnUrl: string, nftName: any) {
-
-    const filename = nftName+'_nft.png';
+    const filename = nftName + '_nft.png';
     fetch(cdnUrl)
-      .then(response => response.blob())
-      .then(blob => {
+      .then((response) => response.blob())
+      .then((blob) => {
         const blobUrl = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = blobUrl;
         link.setAttribute('download', filename);
         link.click();
         URL.revokeObjectURL(blobUrl);
-    });
+      });
   }
 }

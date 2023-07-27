@@ -1,8 +1,8 @@
 <div class="user-profile-stats-wrapper">
-  <app-user-profile-filter-tab [demoData]="dummyData" *ngIf="filterIsOpen"></app-user-profile-filter-tab>
+  <app-user-profile-filter-tab [demoData]="dummyData" (ItemEvent)="closePopup($event)" *ngIf="filterIsOpen"></app-user-profile-filter-tab>
 
   <div class="profile-stats {{!filterIsOpen ? 'w-100' : ''}}">
-    <app-section-filter-wrapper [filterActive]="filterIsOpen" pageLayOut="userProfile" profileFilterLayOut="layOutTwo"></app-section-filter-wrapper>
+    <app-section-filter-wrapper [filterActive]="filterIsOpen" (profileFilterEvent) = "filterEvent($event)" pageLayOut="userProfile" profileFilterLayOut="layOutTwo"></app-section-filter-wrapper>
     <app-user-profile-table-layout layOutTable = "activity" [data]="dummyNftCollections"></app-user-profile-table-layout>
   </div>
 </div>

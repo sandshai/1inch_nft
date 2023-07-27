@@ -10,6 +10,7 @@ export class WalletButtonComponent {
   walletAddress: any;
   formatAddress: any;
   storedValue: any;
+  addressIsCopied: boolean = false;
 
   constructor(
     private shared: SharedDataService,
@@ -47,5 +48,12 @@ export class WalletButtonComponent {
   clearWalletAddress() {
     let value = '';
     this.shared.setValue(value);
+  }
+
+  copyWalletAddress() {
+    this.addressIsCopied = true;
+    setTimeout(() => {
+      this.addressIsCopied = false;
+    }, 2000);
   }
 }

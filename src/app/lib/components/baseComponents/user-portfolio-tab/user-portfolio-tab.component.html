@@ -1,9 +1,9 @@
 <div class="user-profile-stats-wrapper">
-  <app-user-profile-filter-tab *ngIf="filterIsOpen" [demoData]="dummyData"></app-user-profile-filter-tab>
+  <app-user-profile-filter-tab *ngIf="filterIsOpen" (ItemEvent)="closePopup($event)" [demoData]="dummyData"></app-user-profile-filter-tab>
 
   <div class="profile-stats {{!filterIsOpen ? 'w-100' : ''}}">
-    <app-section-filter-wrapper [filterActive]="filterIsOpen" pageLayOut="userProfile" profileFilterLayOut="layOutOne" [searchBarWidth]="is_listItemOpen" (viewLayout)="setLayOut($event)" [activeLayout] = "layOut"></app-section-filter-wrapper>
-    <app-portfolio-grid-layout *ngIf="layOut == 'card'" [data]="dummyNftCollections" (newItemEvent)="listItemEvent($event)" [is_open]="is_listItemOpen"></app-portfolio-grid-layout>
+    <app-section-filter-wrapper [filterActive]="filterIsOpen" (profileFilterEvent) = "filterEvent($event)" pageLayOut="userProfile" profileFilterLayOut="layOutOne" [searchBarWidth]="is_listItemOpen" (viewLayout)="setLayOut($event)" [activeLayout] = "layOut"></app-section-filter-wrapper>
+    <app-portfolio-grid-layout *ngIf="layOut == 'card'" [data]="dummyNftCollections" (newItemEvent)="listItemEvent($event)" [is_open]="is_listItemOpen" [is_filter_open]="filterIsOpen"></app-portfolio-grid-layout>
     <app-user-profile-table-layout *ngIf="layOut == 'table'" layOutTable = "portfolio" [data]="dummyNftCollections"></app-user-profile-table-layout>
   </div>
 </div>

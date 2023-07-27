@@ -5,7 +5,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './item-details.component.html'
 })
 export class ItemDetailsComponent {
-  @Input() is_show: string | undefined;
   @Input() c_address: string | undefined;
   @Input() token_id: string | undefined;
   @Input() chain: string | undefined;

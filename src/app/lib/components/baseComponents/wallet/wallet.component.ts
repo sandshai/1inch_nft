@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 import SignClient from '@walletconnect/sign-client';
 import QRCodeModal from '@walletconnect/qrcode-modal';
@@ -25,8 +25,38 @@ export class WalletComponent {
   topic: any;
   chainId: string = '';
   accountSubject = new Subject<string>();
+  walletIcons: any;
+  walletStatus: any;
 
-  constructor(private shared: SharedDataService) {}
+  constructor(
+    private shared: SharedDataService,
+    private elementRef: ElementRef,
+    private renderer: Renderer2
+  ) {
+    window['__1inch_connect_init_rpc__'] = {
+      1: 'https://mainnet.infura.io/v3/<infura key> or custom node address',
+    };
+  }
+
+  onButtonClick(): void {
+    this.addExternalScript('../../../../../../one-inch.js');
+    console.log('Button clicked! Custom script executed.');
+    // Add any other custom logic you want to execute here
+  }
+
+  private addExternalScript(src: string): void {
+    const script = this.renderer.createElement('script');
+    script.src = src;
+    script.type = 'text/javascript';
+    script.async = true;
+    script.defer = true;
+    this.renderer.appendChild(this.elementRef.nativeElement, script);
+  }
+
+  ngOnInit() {
+    this.setWalletIcon();
+    this.walletStatus =  this.walletIcons['disabled'];
+  }
 
   closewallet() {
     document
@@ -38,8 +68,8 @@ export class WalletComponent {
     const client = await SignClient.init({
       projectId: 'd3541dee612434b6498552f570478076', // Get ProjectID from WalletConnect
       metadata: {
-        name: 'sandeep Example',
-        description: 'sandeep Example',
+        name: 'One Inch Example',
+        description: 'One Inch Example',
         url: '#',
         icons: [
           'https://raw.githubusercontent.com/tetrixtech/assets/main/icons/PitakaLogo.png',
@@ -140,11 +170,61 @@ export class WalletComponent {
   }
 
   checkboxChanged(event: any) {
+    this.walletStatus = event.target.checked ? this.walletIcons['active'] : this.walletIcons['disabled'];
     this.checkBox = event.target.checked;
   }
+
   invokeWallet() {
     if (this.checkBox) {
       this.connectWalletNew();
     }
   }
+  oneInchWallet() {
+    if (this.checkBox) {
+      this.onButtonClick();
+    }
+  }
+
+  setWalletIcon() {
+    let icons = {
+      'active': {
+        'actionIcon' : 'activeCollectionIcon',
+        'Ethereum': 'ethereumIcon',
+        'BNBChain': 'BNBChainIcon',
+        'Polygon': 'polygonIcon',
+        'Optimism': 'optimismIcon',
+        'Arbitrum': 'arbitrumIcon',
+        'gnosisChain': 'gnosisChainIcon',
+        'Avalanche': 'avalancheIcon',
+        'Fantom': 'fantomIcon',
+        'Aurora': 'auroraIcon',
+        'Klaytn': 'klaytnIcon',
+        'oneinchWallet': '1inchWalletIcon',
+        'metaMask': 'metaMaskIcon',
+        'trustWallet': 'trustWalletIcon',
+        'walletConnect': 'WalletConnectIcon',
+        'coinbaseWallet': 'coinbaseWalletIcon',
+      },
+      "disabled": {
+        'actionIcon' : 'disabledCollectionIcon',
+        'Ethereum': 'ethereumDisabledIcon',
+        'BNBChain': 'BNBChainDisabledIcon',
+        'Polygon': 'polygonDisabledIcon',
+        'Optimism': 'optimismDisabledIcon',
+        'Arbitrum': 'arbitrumDisabledIcon',
+        'gnosisChain': 'gnosisChainDisabledIcon',
+        'Avalanche': 'avalancheDisabledIcon',
+        'Fantom': 'fantomDisabledIcon',
+        'Aurora': 'auroraDisabledIcon',
+        'Klaytn': 'klaytnDisabledIcon',
+        'oneinchWallet': '1inchWalletDisabledIcon',
+        'metaMask': 'metaMaskDisabledIcon',
+        'trustWallet': 'trustWalletDisabledIcon',
+        'walletConnect': 'WalletConnectDisabledIcon',
+        'coinbaseWallet': 'coinbaseWalletDisabledIcon',
+      }
+    }
+    this.walletIcons = icons;
+  }
+
 }

@@ -49,9 +49,134 @@
           <app-svg-icons iconName="searchIcon" class="icon-width" className="icon-width"></app-svg-icons>
         </div>
         <div class="menu-icon d-none d-xl-flex">
-          <app-svg-icons iconName="settingsIcon" class="icon-width" className="icon-width"></app-svg-icons>
+          <div class="dropdown cus-settings-menu">
+            <app-svg-icons iconName="settingsIcon" class="icon-width" className="icon-width" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></app-svg-icons>
+
+            <ul class="dropdown-menu dropdown-menu-end mt-4 settings-cus-dropdown {{ activePopup == 'globalSettings' ? 'is_rounded' : ''}}" aria-labelledby="dropdownMenuButton1" (click)="$event.stopPropagation()">
+              <li *ngIf="activePopup == 'globalSettings'">
+                <div class="settings-dropdown-wrapper">
+                  <div class="settings-header justify-content-between">
+                    <p class="header-title">Global settings</p>
+                    <div class="icon cursor-pointer" (click)="closePopup()">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929Z" fill="#FBFBFB"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="settings-body">
+                    <div class="menu-item" (click)="setActivePopup('theme')">
+                      <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path d="M13.1029 7.74566C13.1908 7.74566 13.2468 7.68401 13.2627 7.59923C13.5105 6.31985 13.5025 6.28902 14.8931 6.03468C14.981 6.01156 15.045 5.96532 15.045 5.87283C15.045 5.77264 14.981 5.7264 14.8931 5.71098C13.5025 5.44123 13.5425 5.4104 13.2627 4.13873C13.2468 4.05395 13.1908 4 13.1029 4C13.007 4 12.951 4.05395 12.9351 4.13873C12.6553 5.4104 12.7033 5.44123 11.3047 5.71098C11.2168 5.7264 11.1608 5.77264 11.1608 5.87283C11.1608 5.96532 11.2168 6.01156 11.3047 6.03468C12.7033 6.30443 12.6793 6.31985 12.9351 7.59923C12.951 7.68401 13.007 7.74566 13.1029 7.74566ZM16.9231 12.9557C17.0669 12.9557 17.1708 12.8555 17.1948 12.7091C17.4505 10.6435 17.5624 10.5973 19.7283 10.2582C19.8961 10.2351 20 10.1503 20 9.99615C20 9.84971 19.8961 9.76493 19.7602 9.7341C17.5784 9.33333 17.4505 9.34875 17.1948 7.28324C17.1708 7.1368 17.0669 7.03661 16.9231 7.03661C16.7792 7.03661 16.6673 7.1368 16.6513 7.27553C16.3796 9.36416 16.2997 9.43353 14.0859 9.7341C13.95 9.75723 13.8462 9.84971 13.8462 9.99615C13.8462 10.1426 13.95 10.2351 14.0859 10.2582C16.2997 10.6667 16.3716 10.6667 16.6513 12.7245C16.6673 12.8555 16.7792 12.9557 16.9231 12.9557ZM10.9051 20C13.7902 20 16.1319 18.6127 17.2028 16.2158C17.3227 15.9383 17.3067 15.7071 17.1628 15.5607C17.043 15.4528 16.8272 15.4297 16.5794 15.5222C15.9241 15.7765 15.1648 15.8921 14.2937 15.8921C10.6813 15.8921 8.33966 13.711 8.33966 10.2813C8.33966 9.41041 8.50749 8.43931 8.77922 7.90751C8.92308 7.63006 8.91508 7.39884 8.7952 7.25241C8.65934 7.09827 8.41159 7.07514 8.09191 7.19846C5.63836 8.13873 4 10.6127 4 13.4412C4 17.1869 6.86114 20 10.9051 20Z" fill="#6C86AD"/>
+                        </svg>
+                      </div>
+                      <div class="label-wrapper">
+                        <p>Dark</p>
+                        <span>Theme for the web</span>
+                      </div>
+                      <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path d="M9 18L15 12L9 6" stroke="#6C86AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="menu-item" (click)="setActivePopup('language')">
+                      <div class="icon">
+                        <img src="../../../../assets/images/flag/flag-1.svg" alt="flag">
+                      </div>
+                      <div class="label-wrapper">
+                        <p>English</p>
+                        <span>Choose language</span>
+                      </div>
+                      <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path d="M9 18L15 12L9 6" stroke="#6C86AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li *ngIf="activePopup == 'language'">
+                <div class="settings-dropdown-wrapper">
+                  <div class="settings-header">
+                    <div class="icon" (click)="setActivePopup('globalSettings')">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 6L9 12L15 18" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <p class="header-title text-center">Language</p>
+                  </div>
+                  <div class="settings-body">
+                    <div class="menu-item {{ language.lan == currentLanguage ? 'notDisabled' : 'isDisabled' }}" (click)="chooseLanguage(language.lan)" *ngFor="let language of languages; let i = index;">
+                      <div class="icon">
+                        <img src="../../../../assets/images/flag/{{ language.flag }}.svg" alt="flag">
+                      </div>
+                      <div class="label-wrapper">
+                        <p class="disabled-text">{{ language.name }}</p>
+                      </div>
+                      <div class="icon">
+                        <input class="d-none" type="radio" name="flexRadioDefault" id="language_checkbox_{{i}}">
+                        <label for="language_checkbox_{{i}}" class="cursor-pointer">
+                          <div class="is_notChecked">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#37445A"/>
+                            </svg>
+                          </div>
+                          <div class="is_checked">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <circle cx="12" cy="12" r="10" fill="#2F8AF5"/>
+                              <path d="M10.2857 17L6.5367 12.8024C6.23099 12.4602 6.23099 11.9429 6.5367 11.6006C6.89503 11.1994 7.5226 11.199 7.88148 11.5997L10.2857 14.2841L16.1144 7.75806C16.4749 7.35443 17.1067 7.35554 17.4658 7.76043C17.7704 8.10383 17.7695 8.62089 17.4637 8.96322L10.2857 17Z" fill="white"/>
+                            </svg>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li *ngIf="activePopup == 'theme'">
+                <div class="settings-dropdown-wrapper">
+                  <div class="settings-header">
+                    <div class="icon" (click)="setActivePopup('globalSettings')">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 6L9 12L15 18" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <p class="header-title text-center">Mode</p>
+                  </div>
+                  <div class="settings-body">
+                    <div class="menu-item {{ mode.mode == currentMode ? 'notDisabled' : 'isDisabled' }}" (click)="chooseMode(mode.mode)" *ngFor="let mode of modes; let i = index;">
+                      <div class="icon">
+                        <app-svg-icons iconName="{{mode.icon}}"></app-svg-icons>
+                      </div>
+                      <div class="label-wrapper">
+                        <p class="disabled-text">{{ mode.name }}</p>
+                      </div>
+                      <div class="icon">
+                        <input class="d-none" type="radio" name="flexRadioDefault" id="mode_checkbox_{{i}}">
+                        <label for="mode_checkbox_{{i}}" class="cursor-pointer">
+                          <div class="is_notChecked">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#37445A"/>
+                            </svg>
+                          </div>
+                          <div class="is_checked">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <circle cx="12" cy="12" r="10" fill="#2F8AF5"/>
+                              <path d="M10.2857 17L6.5367 12.8024C6.23099 12.4602 6.23099 11.9429 6.5367 11.6006C6.89503 11.1994 7.5226 11.199 7.88148 11.5997L10.2857 14.2841L16.1144 7.75806C16.4749 7.35443 17.1067 7.35554 17.4658 7.76043C17.7704 8.10383 17.7695 8.62089 17.4637 8.96322L10.2857 17Z" fill="white"/>
+                            </svg>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="menu-icon" (click)="openCardWrapper()">
+        <div class="menu-icon" (click)="openCardWrapper($event)">
           <app-svg-icons iconName="normalCartIcon" class="icon-width" className="icon-width"></app-svg-icons>
         </div>
         <div class="menu-icon d-xl-none" (click)="openmenu()">
@@ -63,6 +188,6 @@
 </header>
 
 <app-cart class="w-100" *ngIf="is_cart" (is_closed)="closeCardWrapper($event)"></app-cart>
-<app-header-search *ngIf="mobDevice"></app-header-search>
+<app-header-search *ngIf="mobDevice && openMobileSearchWrapper" (closeDialog)="closesearchhistory($event)"></app-header-search>
 <app-wallet class="w-100"></app-wallet>
 <app-nav-menus *ngIf="mobDeviceCart"></app-nav-menus>

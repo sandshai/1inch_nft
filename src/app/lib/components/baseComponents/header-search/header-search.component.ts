@@ -36,6 +36,7 @@ export class HeaderSearchComponent {
   polyWalletData: any = [];
   walletTotalData: any = [];
   hideContent: boolean = false;
+  isOpen: boolean = false;
 
   chains: any[] = [
     {
@@ -74,35 +75,28 @@ export class HeaderSearchComponent {
     private eRef: ElementRef
   ) {}
 
-  @Output() closeDialog = new EventEmitter<void>();
+  @Output() closeDialog = new EventEmitter<boolean>();
 
   @HostListener('document:click', ['$event.target'])
   onClickOutside(targetElement: any) {
     const clickedInside = this.eRef.nativeElement.contains(targetElement);
     if (!clickedInside) {
-      this.closeDialog.emit();
-      this.removesearchhistory();
+      // this.closeDialog.emit();
+      this.isOpen = false;
     }
   }
 
-  // onCloseClick() {
-  //   this.closeDialog.emit();
-  // }
-
-  removesearchhistory() {
-    document
-      .getElementById('search-wrapper')
-      ?.classList.remove('open__history');
+  onCloseClick() {
+    this.closeDialog.emit(false);
   }
 
-  closesearchhistory() {
-    document
-      .getElementById('search-wrapper')
-      ?.classList.remove('open__history');
+  removesearchhistory() {
+    this.isOpen = false;
   }
 
   opensearchhistory(event?: any) {
-    document.getElementById('search-wrapper')?.classList.add('open__history');
+    // document.getElementById('search-wrapper')?.classList.add('open__history');
+    this.isOpen = true;
   }
 
   ngOnInit() {

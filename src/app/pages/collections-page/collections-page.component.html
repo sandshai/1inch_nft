@@ -1,563 +1,420 @@
-<section class="collection-list-page page-start-padding">
+<section class="all-collection-list page-start-padding">
   <div class="overlay"></div>
-  <div class="container-fluid px-lg-5">
-    <div class="section-title">
-      <h6
+  <div class="container-fluid">
+    <div class="listOfCollections">
+      <div class="list-collection__header">
+        <h6
         (click)="handleTabSelection('collections')"
         [ngClass]="{ active: this.defaultTab === 'collections' }"
-        class="title mb-0"
-      >
-        Collections
-      </h6>
-      <h6
-        class="title mb-0"
-        [ngClass]="{ active: this.defaultTab === 'trending' }"
-        (click)="handleTabSelection('trending')"
-      >
-        Trending
-      </h6>
-    </div>
-
-    <div class="filter-section mt-4">
-      <!-- <div class="left-side">
-        <button
-          class="btn btn-filter"
-          id="open-fliter"
-          (click)="openCollectionFilter()"
+        class="title"
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M4 7C4 6.44772 4.44772 6 5 6H19C19.5523 6 20 6.44772 20 7C20 7.55228 19.5523 8 19 8H5C4.44772 8 4 7.55228 4 7ZM6 12C6 11.4477 6.44772 11 7 11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H7C6.44772 13 6 12.5523 6 12ZM9 16C8.44772 16 8 16.4477 8 17C8 17.5523 8.44772 18 9 18H15C15.5523 18 16 17.5523 16 17C16 16.4477 15.5523 16 15 16H9Z"
-              fill="#6C86AD"
-            />
-          </svg>
-
-          <span class="d-none d-md-block">Filter collections</span>
-        </button>
-      </div> -->
-      <div class="right-side">
-        <div class="section-title___wrapper">
-          <button
-            type="button"
-            class="btn section-title__button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <span>{{ this.selectedChain }}</span>
-            <img
-              src="../../../../../assets/images/icons/down.svg"
-              class="img-fluid"
-              alt="icon"
-            />
-          </button>
-          <ul class="dropdown-menu">
-            <li *ngFor="let key of objectKeys(chains)">
-              <button
-                class="dropdown-item"
-                type="button"
-                (click)="changeChain(key, chains[key])"
-              >
-                {{ key }}
-              </button>
-            </li>
-          </ul>
+          Collections
+        </h6>
+        <h6
+          class="title"
+          [ngClass]="{ active: this.defaultTab === 'trending' }"
+          (click)="handleTabSelection('trending')"
+        >
+          Trending
+        </h6>
+      </div>
+      <div class="list-collection-filter-wrapper">
+        <div class="filter-btn" (click)="openCollectionFilter()">
+          <app-svg-icons iconName="filterBarIcon" class="icon {{is_filter ? 'active' : ''}}"></app-svg-icons>
+          <span>Filter collections</span>
         </div>
-        <app-filter-button
+        <div class="filters-wrapper">
+          <div class="section-title___wrapper">
+            <button
+              type="button"
+              class="btn section-title__button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span>{{ this.selectedChain }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                <path d="M8.66699 10L12.667 14L16.667 10" stroke="#6C86AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let key of objectKeys(chains)">
+                <button
+                  class="dropdown-item"
+                  type="button"
+                  (click)="changeChain(key, chains[key])"
+                >
+                  {{ key }}
+                </button>
+              </li>
+            </ul>
+          </div>
+          <app-filter-button
           [sortBy]="this.sortBy"
           (filterByValue)="this.sortByDay($event)"
-        ></app-filter-button>
+          ></app-filter-button>
+        </div>
       </div>
-    </div>
-
-    <div class="c-list-wrapper" id="c-list-wrapper">
-      <app-collections-list-table-filter
+      <div class="c-list-wrapper" id="c-list-wrapper">
+        <app-collections-list-table-filter
         *ngIf="is_filter"
         (is_close_filter)="closeFilter($event)"
-      ></app-collections-list-table-filter>
-      <div
-        class="table-responsive my-4 collection-table-res"
-        *ngIf="!this.isLoading && this.defaultTab === 'collections'"
-      >
-        <table class="table table-borderless" id="c-table__list">
-          <thead>
-            <tr>
-              <th>Collection name</th>
-              <th>
-                <div class="heading">
-                  <span>Floor price</span>
-                  <img
-                    src="../../../assets/images/icons/c-sort-icon.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-              </th>
-              <th>
-                <div class="heading">
-                  <span>Volume</span>
-                  <img
-                    src="../../../assets/images/icons/c-sort-icon.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-              </th>
-              <th>
-                <div class="heading">
-                  <span>Sales</span>
-                  <img
-                    src="../../../assets/images/icons/c-sort-icon.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-              </th>
-              <th>
-                <div class="heading">
-                  <span>Owners</span>
-                  <img
-                    src="../../../assets/images/icons/c-sort-icon.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-              </th>
-              <th>
-                <div class="heading">
-                  <span>Items</span>
-                  <img
-                    src="../../../assets/images/icons/c-sort-icon.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              *ngFor="let collection of trendingCollections; let i = index"
-              (click)="goToPage(collection.id)"
-            >
-              <td>
-                <div class="c-profile">
-                  <div class="profile-img">
-                    <img
-                      src="{{
+        ></app-collections-list-table-filter>
+        <div class="table-responsive collection-table-res {{ is_filter ? 'active-filter' : ''}}" *ngIf="!this.isLoading && this.defaultTab === 'collections'">
+          <table class="table table-borderless" id="c-table__list">
+            <thead>
+              <tr>
+                <th></th>
+                <th>
+                  <div class="heading">
+                    <span>Collection name</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="heading">
+                    <span>Floor price</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 10L8 12L10 10" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 6L8 4L6 6" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </th>
+                <th>
+                  <div class="heading">
+                    <span>{{sortByShortCut(this.sortBy)}} Volume</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 10L8 12L10 10" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 6L8 4L6 6" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </th>
+                <th>
+                  <div class="heading">
+                    <span>{{sortByShortCut(this.sortBy)}} Sales</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 10L8 12L10 10" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 6L8 4L6 6" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </th>
+                <th>
+                  <div class="heading">
+                    <span>Owners</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 10L8 12L10 10" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 6L8 4L6 6" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </th>
+                <th>
+                  <div class="heading">
+                    <span>Items</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 10L8 12L10 10" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 6L8 4L6 6" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let collection of trendingCollections; let i = index" (click)="goToPage(collection.id)">
+                <td>
+                  <span class="sl-no">{{i+1}}</span>
+                </td>
+                <td>
+                  <div class="collections-wrapper">
+                    <div class="collection-image">
+                      <img src="{{
                         collection?.image ||
                           '../../../assets/images/c__image.png'
-                      }}"
-                      src="../../../assets/images/c__image.png"
-                      class="img-fluid"
-                      alt="image"
-                    />
+                      }}" alt="collection image">
+                    </div>
+                    <div class="collection-content">
+                      <p>{{ collection?.name }}</p>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M14.1164 6.42596C13.8806 6.18011 13.6368 5.92596 13.5447 5.70325C13.4601 5.49866 13.455 5.15979 13.45 4.83203C13.4408 4.22211 13.4304 3.53082 12.9498 3.05023C12.4692 2.56964 11.7779 2.5592 11.168 2.54999C10.8402 2.54504 10.5013 2.53992 10.2968 2.45526C10.0741 2.36316 9.81989 2.11939 9.57404 1.88361C9.14221 1.46942 8.65265 1 8 1C7.34735 1 6.85785 1.46942 6.42596 1.88361C6.18011 2.11939 5.92596 2.36316 5.70325 2.45526C5.49866 2.53992 5.15979 2.54504 4.83203 2.54999C4.22211 2.5592 3.53082 2.56964 3.05023 3.05023C2.56964 3.53082 2.5592 4.22211 2.54999 4.83203C2.54504 5.15979 2.53992 5.49866 2.45526 5.70325C2.36316 5.9259 2.11939 6.18011 1.88361 6.42596C1.46942 6.85779 1 7.34735 1 8C1 8.65265 1.46942 9.14215 1.88361 9.57404C2.11939 9.81989 2.36316 10.074 2.45526 10.2968C2.53992 10.5013 2.54504 10.8402 2.54999 11.168C2.5592 11.7779 2.56964 12.4692 3.05023 12.9498C3.53082 13.4304 4.22211 13.4408 4.83203 13.45C5.15979 13.455 5.49866 13.4601 5.70325 13.5447C5.9259 13.6368 6.18011 13.8806 6.42596 14.1164C6.85779 14.5306 7.34735 15 8 15C8.65265 15 9.14215 14.5306 9.57404 14.1164C9.81989 13.8806 10.074 13.6368 10.2968 13.5447C10.5013 13.4601 10.8402 13.455 11.168 13.45C11.7779 13.4408 12.4692 13.4304 12.9498 12.9498C13.4304 12.4692 13.4408 11.7779 13.45 11.168C13.455 10.8402 13.4601 10.5013 13.5447 10.2968C13.6368 10.0741 13.8806 9.81989 14.1164 9.57404C14.5306 9.14221 15 8.65265 15 8C15 7.34735 14.5306 6.85785 14.1164 6.42596Z" fill="#2F8AF5"/>
+                        <path d="M7.42865 10.3618L11.0953 6.86182C11.1429 6.81649 11.181 6.76224 11.2076 6.70217C11.2341 6.64211 11.2486 6.5774 11.2501 6.51174C11.2517 6.44608 11.2403 6.38076 11.2165 6.31952C11.1928 6.25827 11.1573 6.20229 11.112 6.15478C11.0666 6.10727 11.0123 6.06916 10.9523 6.04263C10.8922 6.01609 10.8275 6.00165 10.7618 6.00013C10.6962 5.99862 10.6308 6.01005 10.5696 6.03378C10.5084 6.0575 10.4524 6.09306 10.4049 6.13843L7.08344 9.3089L5.59534 7.88843C5.54785 7.84307 5.49188 7.8075 5.43065 7.78378C5.36941 7.76005 5.30409 7.74862 5.23843 7.75013C5.17278 7.75165 5.10806 7.76609 5.04798 7.79263C4.98791 7.81916 4.93365 7.85727 4.8883 7.90478C4.84296 7.95229 4.80742 8.00827 4.78371 8.06952C4.76 8.13076 4.7486 8.19608 4.75014 8.26174C4.75168 8.3274 4.76614 8.39211 4.7927 8.45217C4.81926 8.51224 4.85739 8.56649 4.90491 8.61182L6.73823 10.3618C6.83123 10.4506 6.95487 10.5001 7.08344 10.5001C7.21201 10.5001 7.33565 10.4506 7.42865 10.3618Z" fill="white"/>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="profile-details">
-                    <p class="mb-0">{{ collection?.name }}</p>
-                    <img
-                      *ngIf="
-                        collection?.openseaVerificationStatus === 'verified'
-                      "
-                      src="../../../assets/images/icons/verified.svg"
-                      class="img-fluid"
-                      alt="icon"
-                    />
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="c-val">
-                  <div class="icon">
-                    <span>
-                      {{
+                </td>
+                <td>
+                  <div class="price-percentage-wrapper">
+                    <div class="price">
+                      <p>{{
                         collection?.floorAsk?.price?.amount?.decimal
                           | numberShorten
-                      }}
-                    </span>
-                    <img
-                      src="{{ this._settings.baseUrl }}redirect/currency/{{
-                        this.currencyAddress
-                      }}/icon/v1"
-                      class="img-fluid"
-                      alt="icon"
-                    />
-                  </div>
-                  <div>
-                    <span
-                      *ngIf="
-                        (collection?.floorSaleChange[sortedDay] - 1) * 100 > 0
-                      "
-                      class="txt-success"
-                    >
+                      }}</p>
+                      <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                    </div>
+                    <p class="percentage text-green" *ngIf="
+                      (collection?.floorSaleChange[sortedDay] - 1) * 100 > 0
+                    ">
                       +{{
                         (
                           (collection?.floorSaleChange[sortedDay] - 1) *
                           100
                         ).toFixed(2)
                       }}%
-                    </span>
-                    <span
-                      *ngIf="
-                        (collection?.floorSaleChange[sortedDay] - 1) * 100 < 0
-                      "
-                      class="txt-danger"
-                    >
-                      {{
+                    </p>
+                    <p class="percentage text-red" *ngIf="
+                      (collection?.floorSaleChange[sortedDay] - 1) * 100 < 0
+                    ">
+                      -{{
                         (
                           (collection?.floorSaleChange[sortedDay] - 1) *
                           100
                         ).toFixed(2)
                       }}%
-                    </span>
+                    </p>
                   </div>
-                </div>
-              </td>
-              <td>
-                <div class="c-val">
-                  <div class="icon">
-                    <span>{{
-                      collection?.volume[sortedDay] | numberShorten
-                    }}</span>
-                    <img
-                      src="{{ this._settings.baseUrl }}redirect/currency/{{
-                        this.currencyAddress
-                      }}/icon/v1"
-                      class="img-fluid"
-                      alt="icon"
-                    />
-                  </div>
-                  <div>
-                    <span
-                      *ngIf="
-                        (collection?.volumeChange[sortedDay] - 1) * 100 > 0
-                      "
-                      class="txt-success"
-                    >
-                      +{{
+                </td>
+                <td>
+                  <div class="price-percentage-wrapper">
+                    <div class="price">
+                      <p>{{
+                        collection?.volume[sortedDay] | numberShorten
+                      }}</p>
+                      <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                    </div>
+                    <p class="percentage text-green" *ngIf="
+                      (collection?.volumeChange[sortedDay] - 1) * 100 > 0
+                    ">
+                    +{{
+                      (
+                        (collection?.volumeChange[sortedDay] - 1) *
+                        100
+                      ).toFixed(2)
+                    }}%
+                    </p>
+                    <p class="percentage text-red" *ngIf="
+                      (collection?.volumeChange[sortedDay] - 1) * 100 < 0
+                    ">
+                      -{{
                         (
                           (collection?.volumeChange[sortedDay] - 1) *
                           100
                         ).toFixed(2)
                       }}%
-                    </span>
-                    <span
-                      *ngIf="
-                        (collection?.volumeChange[sortedDay] - 1) * 100 < 0
-                      "
-                      class="txt-danger"
-                    >
-                      {{
-                        (
-                          (collection?.volumeChange[sortedDay] - 1) *
-                          100
-                        ).toFixed(2)
-                      }}%
-                    </span>
+                    </p>
                   </div>
-                </div>
-              </td>
-              <td>
-                <div class="c-val">
-                  <div class="icon">
-                    <span>3,759.35</span>
-                    <img
-                      src="{{ this._settings.baseUrl }}redirect/currency/{{
-                        this.currencyAddress
-                      }}/icon/v1"
-                      class="img-fluid"
-                      alt="icon"
-                    />
+                </td>
+                <td>
+                  <div class="price-percentage-wrapper">
+                    <div class="price">
+                      <p>3,759.35</p>
+                      <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                    </div>
+                    <p class="percentage text-green">
+                      +25.23%
+                    </p>
                   </div>
-                  <div>
-                    <span class="txt-success">+25.23%</span>
+                </td>
+                <td>
+                  <div class="c-text-wrapper">
+                    <p class="txt-white">11.4K</p>
+                    <p class="txt-gray">57.45%</p>
                   </div>
-                </div>
-              </td>
-              <td>
-                <div class="c-val">
-                  <span>11.4K</span>
-                  <div>
-                    <span class="txt-gray">57.45%</span>
+                </td>
+                <td>
+                  <div class="c-text-wrapper">
+                    <p class="txt-white">1.4<span class="txt-gray">/19.4K</span></p>
                   </div>
-                </div>
-              </td>
-              <td>
-                <div class="c-val">
-                  <span class="txt-gray">1.4/19.4K</span>
-                </div>
-              </td>
-              <td>
-                <div class="c-val add-watchlist">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M7.22295 2.06807C7.54085 1.42392 8.45938 1.42393 8.77729 2.06807L10.2062 4.96333L13.4013 5.4276C14.1122 5.5309 14.396 6.40448 13.8816 6.90587L11.5696 9.15952L12.1154 12.3417C12.2368 13.0497 11.4937 13.5896 10.8579 13.2553L8.00012 11.7529L5.14233 13.2553C4.50652 13.5896 3.76341 13.0497 3.88484 12.3417L4.43063 9.15952L2.11863 6.90587C1.60424 6.40447 1.88809 5.5309 2.59895 5.4276L5.79405 4.96333L7.22295 2.06807ZM8.00012 3.50608L6.88112 5.77342C6.75488 6.02921 6.51086 6.20651 6.22857 6.24752L3.72642 6.61111L5.537 8.37598C5.74126 8.57509 5.83447 8.86196 5.78625 9.1431L5.35883 11.6351L7.59682 10.4586C7.8493 10.3258 8.15093 10.3258 8.40341 10.4586L10.6414 11.6351L10.214 9.1431C10.1658 8.86196 10.259 8.57509 10.4632 8.37598L12.2738 6.61111L9.77166 6.24752C9.48938 6.20651 9.24536 6.02921 9.11912 5.77342L8.00012 3.50608Z"
-                      fill="#6C86AD"
-                    />
-                  </svg>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div
-        class="table-responsive my-4 collection-table-res"
-        *ngIf="!this.isLoading && this.defaultTab === 'trending'"
-      >
-        <table class="table table-borderless" id="c-table__list">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Collection name</th>
-              <th>
-                <div class="heading">
-                  <span>Floor price</span>
-                  <img
-                    src="../../../assets/images/icons/c-sort-icon.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-              </th>
-              <th>
-                <div class="heading">
-                  <span>Volume</span>
-                  <img
-                    src="../../../assets/images/icons/c-sort-icon.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-              </th>
-              <th>
-                <div class="heading">
-                  <span>Sales</span>
-                  <img
-                    src="../../../assets/images/icons/c-sort-icon.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-              </th>
-              <th>
-                <div class="heading">
-                  <span>Owners</span>
-                  <img
-                    src="../../../assets/images/icons/c-sort-icon.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-              </th>
-              <th>
-                <div class="heading">
-                  <span>Items</span>
-                  <img
-                    src="../../../assets/images/icons/c-sort-icon.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              *ngFor="let collection of trendingCollections; let i = index"
-              (click)="goToPage(collection.id)"
-            >
-              <td style="color: white">{{ i + 1 }}</td>
-              <td>
-                <div class="c-profile">
-                  <div class="profile-img">
-                    <img
-                      src="{{
+                </td>
+                <td>
+                  <div class="add-watchlist" appTooltip
+                  data-bs-placement="top"
+                  title="Add to bag">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M7.22246 2.06807C7.54037 1.42392 8.4589 1.42393 8.7768 2.06807L10.2057 4.96333L13.4008 5.4276C14.1117 5.5309 14.3955 6.40448 13.8811 6.90587L11.5691 9.15952L12.1149 12.3417C12.2363 13.0497 11.4932 13.5896 10.8574 13.2553L7.99963 11.7529L5.14184 13.2553C4.50603 13.5896 3.76292 13.0497 3.88435 12.3417L4.43014 9.15952L2.11814 6.90587C1.60376 6.40447 1.8876 5.5309 2.59846 5.4276L5.79356 4.96333L7.22246 2.06807ZM7.99963 3.50608L6.88063 5.77342C6.75439 6.02921 6.51037 6.20651 6.22809 6.24752L3.72593 6.61111L5.53651 8.37598C5.74077 8.57509 5.83398 8.86196 5.78576 9.1431L5.35834 11.6351L7.59633 10.4586C7.84881 10.3258 8.15044 10.3258 8.40293 10.4586L10.6409 11.6351L10.2135 9.1431C10.1653 8.86196 10.2585 8.57509 10.4628 8.37598L12.2733 6.61111L9.77117 6.24752C9.48889 6.20651 9.24487 6.02921 9.11863 5.77342L7.99963 3.50608Z" fill="#6C86AD"/>
+                    </svg>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-responsive collection-table-res {{ is_filter ? 'active-filter' : ''}}" *ngIf="!this.isLoading && this.defaultTab === 'trending'">
+          <table class="table table-borderless" id="c-table__list">
+            <thead>
+              <tr>
+                <th></th>
+                <th>
+                  <div class="heading">
+                    <span>Collection name</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="heading">
+                    <span>Floor price</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 10L8 12L10 10" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 6L8 4L6 6" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </th>
+                <th>
+                  <div class="heading">
+                    <span>{{sortByShortCut(this.sortBy)}} Volume</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 10L8 12L10 10" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 6L8 4L6 6" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </th>
+                <th>
+                  <div class="heading">
+                    <span>{{sortByShortCut(this.sortBy)}} Sales</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 10L8 12L10 10" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 6L8 4L6 6" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </th>
+                <th>
+                  <div class="heading">
+                    <span>Owners</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 10L8 12L10 10" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 6L8 4L6 6" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </th>
+                <th>
+                  <div class="heading">
+                    <span>Items</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M6 10L8 12L10 10" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 6L8 4L6 6" stroke="#6C86AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let collection of trendingCollections; let i = index" (click)="goToPage(collection.id)">
+                <td>
+                  <span class="sl-no">{{i+1}}</span>
+                </td>
+                <td>
+                  <div class="collections-wrapper">
+                    <div class="collection-image">
+                      <img src="{{
                         collection?.image ||
                           '../../../assets/images/c__image.png'
-                      }}"
-                      src="../../../assets/images/c__image.png"
-                      class="img-fluid"
-                      alt="image"
-                    />
+                      }}" alt="collection image">
+                    </div>
+                    <div class="collection-content">
+                      <p>{{ collection?.name }}</p>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M14.1164 6.42596C13.8806 6.18011 13.6368 5.92596 13.5447 5.70325C13.4601 5.49866 13.455 5.15979 13.45 4.83203C13.4408 4.22211 13.4304 3.53082 12.9498 3.05023C12.4692 2.56964 11.7779 2.5592 11.168 2.54999C10.8402 2.54504 10.5013 2.53992 10.2968 2.45526C10.0741 2.36316 9.81989 2.11939 9.57404 1.88361C9.14221 1.46942 8.65265 1 8 1C7.34735 1 6.85785 1.46942 6.42596 1.88361C6.18011 2.11939 5.92596 2.36316 5.70325 2.45526C5.49866 2.53992 5.15979 2.54504 4.83203 2.54999C4.22211 2.5592 3.53082 2.56964 3.05023 3.05023C2.56964 3.53082 2.5592 4.22211 2.54999 4.83203C2.54504 5.15979 2.53992 5.49866 2.45526 5.70325C2.36316 5.9259 2.11939 6.18011 1.88361 6.42596C1.46942 6.85779 1 7.34735 1 8C1 8.65265 1.46942 9.14215 1.88361 9.57404C2.11939 9.81989 2.36316 10.074 2.45526 10.2968C2.53992 10.5013 2.54504 10.8402 2.54999 11.168C2.5592 11.7779 2.56964 12.4692 3.05023 12.9498C3.53082 13.4304 4.22211 13.4408 4.83203 13.45C5.15979 13.455 5.49866 13.4601 5.70325 13.5447C5.9259 13.6368 6.18011 13.8806 6.42596 14.1164C6.85779 14.5306 7.34735 15 8 15C8.65265 15 9.14215 14.5306 9.57404 14.1164C9.81989 13.8806 10.074 13.6368 10.2968 13.5447C10.5013 13.4601 10.8402 13.455 11.168 13.45C11.7779 13.4408 12.4692 13.4304 12.9498 12.9498C13.4304 12.4692 13.4408 11.7779 13.45 11.168C13.455 10.8402 13.4601 10.5013 13.5447 10.2968C13.6368 10.0741 13.8806 9.81989 14.1164 9.57404C14.5306 9.14221 15 8.65265 15 8C15 7.34735 14.5306 6.85785 14.1164 6.42596Z" fill="#2F8AF5"/>
+                        <path d="M7.42865 10.3618L11.0953 6.86182C11.1429 6.81649 11.181 6.76224 11.2076 6.70217C11.2341 6.64211 11.2486 6.5774 11.2501 6.51174C11.2517 6.44608 11.2403 6.38076 11.2165 6.31952C11.1928 6.25827 11.1573 6.20229 11.112 6.15478C11.0666 6.10727 11.0123 6.06916 10.9523 6.04263C10.8922 6.01609 10.8275 6.00165 10.7618 6.00013C10.6962 5.99862 10.6308 6.01005 10.5696 6.03378C10.5084 6.0575 10.4524 6.09306 10.4049 6.13843L7.08344 9.3089L5.59534 7.88843C5.54785 7.84307 5.49188 7.8075 5.43065 7.78378C5.36941 7.76005 5.30409 7.74862 5.23843 7.75013C5.17278 7.75165 5.10806 7.76609 5.04798 7.79263C4.98791 7.81916 4.93365 7.85727 4.8883 7.90478C4.84296 7.95229 4.80742 8.00827 4.78371 8.06952C4.76 8.13076 4.7486 8.19608 4.75014 8.26174C4.75168 8.3274 4.76614 8.39211 4.7927 8.45217C4.81926 8.51224 4.85739 8.56649 4.90491 8.61182L6.73823 10.3618C6.83123 10.4506 6.95487 10.5001 7.08344 10.5001C7.21201 10.5001 7.33565 10.4506 7.42865 10.3618Z" fill="white"/>
+                      </svg>
+                    </div>
                   </div>
-                  <div class="profile-details">
-                    <p class="mb-0">{{ collection?.name }}</p>
-                    <img
-                      *ngIf="
-                        collection?.openseaVerificationStatus === 'verified'
-                      "
-                      src="../../../assets/images/icons/verified.svg"
-                      class="img-fluid"
-                      alt="icon"
-                    />
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="c-val">
-                  <div class="icon">
-                    <span>
-                      {{
+                </td>
+                <td>
+                  <div class="price-percentage-wrapper">
+                    <div class="price">
+                      <p>{{
                         collection?.floorAsk?.price?.amount?.decimal
                           | numberShorten
-                      }}
-                    </span>
-                    <img
-                      src="{{ this._settings.baseUrl }}redirect/currency/{{
-                        this.currencyAddress
-                      }}/icon/v1"
-                      class="img-fluid"
-                      alt="icon"
-                    />
-                  </div>
-                  <div>
-                    <span
-                      *ngIf="
-                        (collection?.floorSaleChange[sortedDay] - 1) * 100 > 0
-                      "
-                      class="txt-success"
-                    >
+                      }}</p>
+                      <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                    </div>
+                    <p class="percentage text-green" *ngIf="
+                      (collection?.floorSaleChange[sortedDay] - 1) * 100 > 0
+                    ">
                       +{{
                         (
                           (collection?.floorSaleChange[sortedDay] - 1) *
                           100
                         ).toFixed(2)
                       }}%
-                    </span>
-                    <span
-                      *ngIf="
-                        (collection?.floorSaleChange[sortedDay] - 1) * 100 < 0
-                      "
-                      class="txt-danger"
-                    >
-                      {{
+                    </p>
+                    <p class="percentage text-red" *ngIf="
+                      (collection?.floorSaleChange[sortedDay] - 1) * 100 < 0
+                    ">
+                      -{{
                         (
                           (collection?.floorSaleChange[sortedDay] - 1) *
                           100
                         ).toFixed(2)
                       }}%
-                    </span>
+                    </p>
                   </div>
-                </div>
-              </td>
-              <td>
-                <div class="c-val">
-                  <div class="icon">
-                    <span>{{
-                      collection?.volume[sortedDay] | numberShorten
-                    }}</span>
-                    <img
-                      src="{{ this._settings.baseUrl }}redirect/currency/{{
-                        this.currencyAddress
-                      }}/icon/v1"
-                      class="img-fluid"
-                      alt="icon"
-                    />
-                  </div>
-                  <div>
-                    <span
-                      *ngIf="
-                        (collection?.volumeChange[sortedDay] - 1) * 100 > 0
-                      "
-                      class="txt-success"
-                    >
-                      +{{
+                </td>
+                <td>
+                  <div class="price-percentage-wrapper">
+                    <div class="price">
+                      <p>{{
+                        collection?.volume[sortedDay] | numberShorten
+                      }}</p>
+                      <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                    </div>
+                    <p class="percentage text-green" *ngIf="
+                      (collection?.volumeChange[sortedDay] - 1) * 100 > 0
+                    ">
+                    +{{
+                      (
+                        (collection?.volumeChange[sortedDay] - 1) *
+                        100
+                      ).toFixed(2)
+                    }}%
+                    </p>
+                    <p class="percentage text-red" *ngIf="
+                      (collection?.volumeChange[sortedDay] - 1) * 100 < 0
+                    ">
+                      -{{
                         (
                           (collection?.volumeChange[sortedDay] - 1) *
                           100
                         ).toFixed(2)
                       }}%
-                    </span>
-                    <span
-                      *ngIf="
-                        (collection?.volumeChange[sortedDay] - 1) * 100 < 0
-                      "
-                      class="txt-danger"
-                    >
-                      {{
-                        (
-                          (collection?.volumeChange[sortedDay] - 1) *
-                          100
-                        ).toFixed(2)
-                      }}%
-                    </span>
+                    </p>
                   </div>
-                </div>
-              </td>
-              <td>
-                <div class="c-val">
-                  <div class="icon">
-                    <span>3,759.35</span>
-                    <img
-                      src="{{ this._settings.baseUrl }}redirect/currency/{{
-                        this.currencyAddress
-                      }}/icon/v1"
-                      class="img-fluid"
-                      alt="icon"
-                    />
+                </td>
+                <td>
+                  <div class="price-percentage-wrapper">
+                    <div class="price">
+                      <p>3,759.35</p>
+                      <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                    </div>
+                    <p class="percentage text-green">
+                      +25.23%
+                    </p>
                   </div>
-                  <div>
-                    <span class="txt-success">+25.23%</span>
+                </td>
+                <td>
+                  <div class="c-text-wrapper">
+                    <p class="txt-white">11.4K</p>
+                    <p class="txt-gray">57.45%</p>
                   </div>
-                </div>
-              </td>
-              <td>
-                <div class="c-val">
-                  <span>11.4K</span>
-                  <div>
-                    <span class="txt-gray">57.45%</span>
+                </td>
+                <td>
+                  <div class="c-text-wrapper">
+                    <p class="txt-white">1.4<span class="txt-gray">/19.4K</span></p>
                   </div>
-                </div>
-              </td>
-              <td>
-                <div class="c-val">
-                  <span class="txt-gray">1.4/19.4K</span>
-                </div>
-              </td>
-              <td>
-                <div class="c-val add-watchlist">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M7.22295 2.06807C7.54085 1.42392 8.45938 1.42393 8.77729 2.06807L10.2062 4.96333L13.4013 5.4276C14.1122 5.5309 14.396 6.40448 13.8816 6.90587L11.5696 9.15952L12.1154 12.3417C12.2368 13.0497 11.4937 13.5896 10.8579 13.2553L8.00012 11.7529L5.14233 13.2553C4.50652 13.5896 3.76341 13.0497 3.88484 12.3417L4.43063 9.15952L2.11863 6.90587C1.60424 6.40447 1.88809 5.5309 2.59895 5.4276L5.79405 4.96333L7.22295 2.06807ZM8.00012 3.50608L6.88112 5.77342C6.75488 6.02921 6.51086 6.20651 6.22857 6.24752L3.72642 6.61111L5.537 8.37598C5.74126 8.57509 5.83447 8.86196 5.78625 9.1431L5.35883 11.6351L7.59682 10.4586C7.8493 10.3258 8.15093 10.3258 8.40341 10.4586L10.6414 11.6351L10.214 9.1431C10.1658 8.86196 10.259 8.57509 10.4632 8.37598L12.2738 6.61111L9.77166 6.24752C9.48938 6.20651 9.24536 6.02921 9.11912 5.77342L8.00012 3.50608Z"
-                      fill="#6C86AD"
-                    />
-                  </svg>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+                <td>
+                  <div class="add-watchlist" appTooltip
+                  data-bs-placement="top"
+                  title="Add to bag">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M7.22246 2.06807C7.54037 1.42392 8.4589 1.42393 8.7768 2.06807L10.2057 4.96333L13.4008 5.4276C14.1117 5.5309 14.3955 6.40448 13.8811 6.90587L11.5691 9.15952L12.1149 12.3417C12.2363 13.0497 11.4932 13.5896 10.8574 13.2553L7.99963 11.7529L5.14184 13.2553C4.50603 13.5896 3.76292 13.0497 3.88435 12.3417L4.43014 9.15952L2.11814 6.90587C1.60376 6.40447 1.8876 5.5309 2.59846 5.4276L5.79356 4.96333L7.22246 2.06807ZM7.99963 3.50608L6.88063 5.77342C6.75439 6.02921 6.51037 6.20651 6.22809 6.24752L3.72593 6.61111L5.53651 8.37598C5.74077 8.57509 5.83398 8.86196 5.78576 9.1431L5.35834 11.6351L7.59633 10.4586C7.84881 10.3258 8.15044 10.3258 8.40293 10.4586L10.6409 11.6351L10.2135 9.1431C10.1653 8.86196 10.2585 8.57509 10.4628 8.37598L12.2733 6.61111L9.77117 6.24752C9.48889 6.20651 9.24487 6.02921 9.11863 5.77342L7.99963 3.50608Z" fill="#6C86AD"/>
+                    </svg>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-
-    <div class="d-flex justify-content-center" *ngIf="!this.isLoading">
-      <button class="btn btn-seemore" (click)="loadMore(true)">View All</button>
+      <div class="see-more-wrapper" *ngIf="!this.isLoading">
+        <div class="btn-seemore" (click)="loadMore(true)">View All</div>
+      </div>
     </div>
   </div>
 </section>

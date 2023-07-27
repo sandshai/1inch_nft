@@ -1,10 +1,27 @@
 .profile-list-card-wrapper {
-  width: 26.9rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  background-color: var(--1inch-cbc-03);
 
+  @include media-min-xl {
+    position: sticky;
+    top: 6rem;
+    z-index: 9;
+    width: 26.9rem;
+    background-color: transparent;
+  }
   .list-card {
-    border-radius: 1.5rem;
     background-color: var(--1inch-cbc-03);
     overflow: hidden;
+    @include media-min-xl {
+      border-radius: 1.5rem;
+    }
     .list-card__header {
       display: flex;
       padding: 1rem 1rem 0.75rem 1.5rem;
@@ -75,6 +92,20 @@
         overflow-x: hidden;
         overflow-y: auto;
         @include scroll-bar(0.15rem,0.15rem);
+
+        &.sell-item-height {
+          @include media-max-xl {
+            height: calc(100vh - 18rem) !important;
+            max-height: unset !important;
+          }
+        }
+
+        &.transfer-height {
+          @include media-max-xl {
+            height: calc(100vh - 14rem) !important;
+            max-height: unset !important;
+          }
+        }
         .card-body-header {
           display: flex;
           padding: 0rem 0.5rem;

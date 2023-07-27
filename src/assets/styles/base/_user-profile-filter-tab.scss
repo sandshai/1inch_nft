@@ -3,7 +3,47 @@
   width: 20rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2rem;
+  @include media-max-alt(991px) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2000;
+    width: 100%;
+    height: 100%;
+    background-color: var(--1inch-cbc-03);
+  }
+  .profile-filter-header {
+    display: flex;
+    width: 100%;
+    padding: 1.25rem 1rem 1rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--1inch-cbc-05);
+    border-bottom: 1px solid #2F3B4D;
+    @include media-min-alt(992px) {
+      display: none;
+    }
+    p {
+      margin: 0;
+      color: var(--1inch-tc-01);
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.5rem; /* 120% */
+    }
+    .icon {
+      display: flex;
+      padding: 0.25rem;
+      align-items: flex-start;
+      gap: 0.625rem;
+      border-radius: 0.5rem;
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
   .p-filter {
     display: flex;
     padding: 1rem 0rem;
@@ -13,6 +53,16 @@
     align-self: stretch;
     border-radius: 1.5rem;
     background-color: var(--1inch-cbc-03);
+    @include media-max-alt(991px) {
+      border-radius: 0;
+      width: 100%;
+      height: calc(100% - 4.625rem);
+      overflow: auto;
+      @include scroll-bar(0.15rem,0.15rem);
+      .Nft-collections {
+        height: 100%;
+      }
+    }
     .accordion {
       width: 100%;
       height: fit-content;
@@ -86,10 +136,10 @@
               padding: 0.4375rem 0.5rem;
               gap: 0.5rem;
               width: 100%;
-              background-color: transparent;
               border-radius: 0.75rem;
+              background-color: var(--1inch-cbc-05);
               &:hover {
-                background-color: var(--1inch-cbc-05);
+                background-color: #1e2633;
               }
               span {
                 color: var(--1inch-tc-02);
@@ -126,14 +176,17 @@
       .Nft-collections {
         display: flex;
         width: 100%;
-        max-height: 26.625rem;
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
         border-radius: 1rem;
         padding: 0rem 1rem;
-        overflow: auto;
-        @include scroll-bar(0.15rem,0.15rem);
+
+        @include media-min-lg {
+          max-height: 26.625rem;
+          overflow: auto;
+          @include scroll-bar(0.15rem,0.15rem);
+        }
         .nft-card {
           display: flex;
           padding: 0.5rem;
@@ -180,6 +233,7 @@
               display: flex;
               align-items: center;
               gap: 0.25rem;
+              width: 100%;
               .nft-title {
                 margin: 0;
                 color: var(--1inch-tc-01);
@@ -227,6 +281,44 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+  .profile-filter-footer {
+    display: flex;
+    width: 100%;
+    padding: 0.5rem 1rem 1rem 1rem;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.949999988079071;
+    background: var(--1inch-cbc-03);
+    backdrop-filter: blur(50px);
+    @include media-min-alt(992px) {
+      display: none;
+    }
+    .button {
+      display: flex;
+      padding: 0.5rem 1.125rem;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1 0 0;
+      border-radius: 0.75rem;
+      span {
+        color: var(--1inch-tc-01);
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.625rem; /* 162.5% */
+      }
+      &.btn-reset {
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      &.btn-filter {
+        background-color: var(--1inch-bc-08);
+        &:hover {
+          background-color: var(--1inch-bc-13);
         }
       }
     }

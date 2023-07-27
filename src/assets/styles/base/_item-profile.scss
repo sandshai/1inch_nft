@@ -6,13 +6,9 @@
     z-index: 99;
 
     @include media-min-md {
-        background: var(--1inch-cbc-03);
-        overflow: hidden;
-        border-radius: 1.5rem;
         height: fit-content;
         position: sticky;
-        top: 7rem;
-        margin-top: -31.5rem;
+        top: 6rem;
         border-radius: 1.5rem;
         display: flex;
         flex-direction: column;
@@ -34,6 +30,7 @@
         background: var(--1inch-cbc-03);
         @include media-min-md {
             padding: 1.25rem 1rem 1rem 1rem;
+            border-radius: 1.5rem;
         }
         .i-wrapper {
             display: flex;
@@ -117,7 +114,7 @@
                 gap: 0.5rem;
                 flex: 1 0 0;
                 border-radius: 0.75rem;
-                background: var(--1inch-bc-08);
+                background-color: var(--1inch-bc-08);
                 border: none;
                 color: var(--1inch-tc-01);
                 text-align: center;
@@ -125,6 +122,9 @@
                 font-weight: 500;
                 line-height: 1.625rem;
                 white-space: nowrap;
+                &:hover {
+                    background-color: var(--1inch-bc-13);
+                }
             }
             .btn-offer {
                 display: flex;
@@ -134,10 +134,9 @@
                 gap: 0.5rem;
                 flex: 1 0 0;
                 border-radius: 0.75rem;
-                background: rgba(47, 138, 245, 0.16);
+                background-color: rgba(47, 138, 245, 0.16);
                 border: none;
                 white-space: nowrap;
-
                 .off-icon {
                     width: 1.5rem;
                     height: 1.5rem;
@@ -148,6 +147,9 @@
                     font-size: 1rem;
                     font-weight: 500;
                     line-height: 1.625rem;
+                }
+                &:hover {
+                    background-color: rgba(47, 138, 245, 0.32);
                 }
             }
             .btn-cart {
@@ -160,10 +162,12 @@
                 background: rgba(47, 138, 245, 0.16);
                 border: none;
                 white-space: nowrap;
-
                 .c-icon {
                     width: 1.5rem;
                     height: 1.5rem;
+                }
+                &:hover {
+                    background-color: rgba(47, 138, 245, 0.32);
                 }
             }
         }
@@ -188,10 +192,6 @@
 }
 
 .i-profle {
-    @include media-min-md {
-        max-height: 60%;
-        padding: 1rem;
-    }
     img {
         object-fit: contain;
         height: 100%;

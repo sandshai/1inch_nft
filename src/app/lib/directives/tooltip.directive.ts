@@ -1,12 +1,20 @@
 import { Directive, ElementRef } from '@angular/core';
-import { Tooltip } from 'bootstrap';
+declare var bootstrap: any;
 
 @Directive({
   selector: '[appTooltip]'
 })
 export class TooltipDirective {
-  // constructor(private el: ElementRef) {}
-  //   ngAfterViewInit() {
-  //     new Tooltip(this.el.nativeElement);
-  // }
+  private tooltip: any;
+
+  constructor(private elementRef: ElementRef) {}
+
+  ngAfterViewInit() {
+    const domElement: HTMLElement = this.elementRef.nativeElement;
+    this.tooltip = new bootstrap.Tooltip(domElement);
+  }
+
+  ngOnDestroy(): void {
+    this.tooltip.dispose();
+  }
 }

@@ -1,12 +1,13 @@
 .myWatchlist-section {
   position: relative;
   .s-title {
+    margin: 0 0 2rem 0;
     h6 {
       font-size: 1.25rem;
       font-weight: 500;
       line-height: 1.5rem;
-      margin: 0 0 2rem 0;
       color: var(--1inch-tc-01);
+      margin: 0;
       @include media-min-md {
         font-size: 2rem;
         font-weight: 600;
