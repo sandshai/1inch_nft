@@ -1,7 +1,83 @@
 .small-card {
-  transition: all 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+  &:hover {
+    @include media-min-lg {
+      .add-to-bag,.three-dot  {
+        display: flex !important;
+      }
+    }
+  }
 
-  .c__image {
+  .utility-nft-image {
+    width: 100%;
+    height: 11rem;
+    @include media-min-sm {
+      height: 13.125rem;
+    }
+    position: relative;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 1.5rem;
+    }
+
+    .event-status {
+      display: none;
+      @include media-min-sm {
+        position: absolute;
+        left: 0.75rem;
+        bottom: 0.5rem;
+        display: flex;
+        padding: 0.5rem 0.75rem;
+        align-items: center;
+        gap: 0.75rem;
+        border-radius: 0.5rem;
+        background-color: rgba(224, 224, 224, 0.16);
+        backdrop-filter: blur(16px);
+      }
+      span {
+        color: #FBFBFB;
+        font-size: 0.8125rem;
+        font-weight: 400;
+        line-height: 1rem; /* 123.077% */
+      }
+    }
+
+    .add-to-bag {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      border-radius: 50px;
+      overflow: hidden;
+      display: none;
+      &::before {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        background-color: #06070A;
+        opacity: 0.7;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
     &::before{
       content: "";
       position: absolute;
@@ -9,141 +85,112 @@
       right: -1px;
       bottom: -1px;
       left: -1px;
-      z-index: -1;
+      z-index: -2;
       border-radius: 1.5rem;
       background: linear-gradient(178.39deg, #434343 0%, rgba(33, 33, 33, 0) 83.3%);
     }
-  }
-  &:hover {
-    .rounded-box {
-      cursor: pointer;
-      visibility: visible !important;
-      opacity: 1 !important;
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        border-radius: 1.5rem;
+        background: var(--1inch-cbc-02);
     }
+  }
+  .utility-nft-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
     .title-wrapper {
+      width: 100%;
       display: flex;
-      gap: 0.5rem;
-      .card-title {
-        width: calc(100% - 2.25rem);
-      }
-      .h-icon {
-        cursor: pointer;
-        display: block !important;
-      }
-    }
-  }
-
-  .card-img-wrapper {
-    .card-image {
-      border-radius: 1.5rem;
-    }
-    .badge-status {
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.5rem;
-      left: 1rem;
-      bottom: 1rem;
-      background-color: rgba(224, 224, 224, 0.16);
-      backdrop-filter: blur(1rem);
-    }
-    .rounded-box {
-      width: 1.8rem;
-      height: 1.8rem;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
       align-items: center;
-      z-index: 1;
-      overflow: hidden;
-      position: absolute;
-      right: 0.5rem;
-      top: 0.5rem;
-      visibility: hidden;
-      opacity: 0;
-      &::before {
-          position: absolute;
-          z-index: -1;
-          content: "";
-          background-color: #06070A;
-          opacity: 0.7;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-      }
-      img {
-        width: 1rem !important;
-        height: 1rem !important;
-      }
-    }
-  }
-
-  .card-body {
-    .title-wrapper {
-      .card-title {
+      gap: 0.25rem;
+      .title {
         display: flex;
         align-items: center;
-        gap: 0.3rem;
-        width: 100%;
+        gap: 0.25rem;
+        width: calc(100% - 1.5rem);
         h5 {
-          font-weight: 500;
-          font-size: 1.25rem;
-          line-height: 1.5rem;
-          max-width: calc(100% - 2.25rem);
+          margin: 0;
+          color: var(--1inch-tc-01);
+          font-weight: 400;
+          font-size: 1rem;
+          line-height: 1.5rem; /* 150% */
+          max-width: calc(100% - 1.25rem);
           overflow: hidden;
-          text-overflow: ellipsis;
           white-space: nowrap;
-          color: var(---inch-text-color-01);
-          margin-bottom: 0;
-          @include media-max-md {
-            font-size: 1rem;
-            line-height: 1.25rem;
+          text-overflow: ellipsis;
+          @include media-min-sm {
+            font-size: 1.25rem;
+            line-height: 1.5rem; /* 120% */
           }
         }
-        img {
-          width: 1rem !important;
-          height: 1rem !important;
+        svg {
+          width: 1rem;
+          height: 1rem;
         }
       }
-      .h-icon {
+      .three-dot {
         display: none;
-        img {
-          width: 1.25rem !important;
-          height: 1.25rem !important;
+        width: 1.25rem;
+        height: 0.25rem;
+      }
+    }
+    .nft-stats-wrapper{
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 0.5rem;
+      .stats-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        .name {
+          color: var(--1inch-tc-02);
+          margin: 0;
+          font-size: 0.875rem;
+          line-height: 1.625rem; /* 185.714% */
+          font-weight: 300;
+          @include media-min-sm {
+            font-size: 1rem;
+            line-height: 1.625rem; /* 162.5% */
+          }
+        }
+        .price {
+          display: flex;
+          align-items: center;
+          gap: 0.125rem;
+          p {
+            color: var(--1inch-tc-01);
+            margin: 0;
+            font-size: 0.875rem;
+            line-height: 1.625rem; /* 185.714% */
+            font-weight: 300;
+            @include media-min-sm {
+              font-size: 1rem;
+              line-height: 1.625rem; /* 162.5% */
+            }
+          }
+          .icon {
+            display: flex;
+            width: 1rem;
+            height: 1rem;
+            justify-content: center;
+            align-items: center;
+            svg {
+              width: 0.75rem;
+              height: 0.75rem;
+            }
+          }
         }
       }
     }
-
-     .bit-detail-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        .bit-detail {
-          display: flex;
-          align-items: flex-start;
-          gap: 0.25rem;
-          .text-gray {
-            color: var(---inch-theme-text-color-02);
-            font-weight: 300;
-            font-size: 1rem;
-            line-height: 1.625rem;
-            @include media-max-sm {
-              font-size: 0.875rem;
-            }
-          }
-          .text-white {
-            color: var(---inch-text-color-01) !important;
-            font-weight: 500;
-            font-size: 1rem;
-            line-height: 1.625rem;
-            @include media-max-sm {
-              font-size: 0.875rem;
-            }
-          }
-          svg,img {
-            width: 0.75rem !important;
-            height: 0.75rem !important;
-          }
-        }
-      }
   }
 }

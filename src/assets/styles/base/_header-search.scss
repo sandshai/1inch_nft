@@ -82,7 +82,7 @@
         background-color: var(--1inch-cbc-01);
         color: var(--1inch-tc-01);
         @include media-min-lg {
-          background: var(--1inch-bc-10);
+          background-color: var(--1inch-cbc-12);
         }
       }
       &:focus-visible {
@@ -176,27 +176,29 @@
             border-radius: 0.75rem;
             position: relative;
             z-index: 1;
-            &::before {
-              border-radius: 0.75rem;
-              content: '';
-              z-index: -2;
-              position: absolute;
-              left: -1px;
-              right: -1px;
-              top: -1px;
-              bottom: -1px;
-              background: linear-gradient(178.39deg, #434343 0%, rgba(33, 33, 33, 0) 83.3%);
-            }
-            &::after {
-              position: absolute;
-              top: 0;
-              right: 0;
-              left: 0;
-              bottom: 0;
-              content: '';
-              border-radius: 0.75rem;
-              z-index: -1;
-              background-color: #131823;
+            &.bordered {
+              &::before {
+                border-radius: 0.75rem;
+                content: '';
+                z-index: -2;
+                position: absolute;
+                left: -1px;
+                right: -1px;
+                top: -1px;
+                bottom: -1px;
+                background: linear-gradient(178.39deg, #434343 0%, rgba(33, 33, 33, 0) 83.3%);
+              }
+              &::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                content: '';
+                border-radius: 0.75rem;
+                z-index: -1;
+                background-color: #131823;
+              }
             }
             img {
               width: 3rem;

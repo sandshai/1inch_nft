@@ -10,6 +10,7 @@ import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 })
 export class GridViewCollectionComponent {
   @Input() className: string | undefined;
+  @Input() externalUrl: any;
   itemCollections: any = [];
 
   selectedChain: any = 'ethereum';
@@ -28,7 +29,10 @@ export class GridViewCollectionComponent {
   maxAmount: any;
   pagination: string = '';
   loadMoreStatus: any;
-  selectedList: any;
+  routeDataList: any = [];
+  routeParamValues: any;
+  routeParams: any[] = [];
+  selectedList: any = [];
 
   @Output() messageEvent = new EventEmitter<any>();
   @Output() arrayListEvent = new EventEmitter<string[]>();
@@ -61,10 +65,31 @@ export class GridViewCollectionComponent {
       }
     });
 
-    this.shared.getSliderArrayList().subscribe((array) => {
-      this.selectedList = array;
-      this.handleCheckEvent(this.selectedList);
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.routeParams = this.convertToValueArray(params);
+
+      const result = [];
+
+      for (const [key, values] of Object.entries(this.routeParams)) {
+        for (const value of values) {
+          result.push({
+            value,
+            keyData: key,
+            checked: true,
+          });
+        }
+      }
+
+      this.routeDataList = result;
+      console.log(
+        '🚀 ~ file: grid-view-collection.component.ts:83 ~ GridViewCollectionComponent ~ this.activatedRoute.queryParams.subscribe ~ this.routeDataList:',
+        this.routeDataList
+      );
+      this.getItemCollections(undefined, undefined, undefined, undefined, {
+        attributes: this.routeDataList,
+      });
     });
+
     this.collectionName =
       this.activatedRoute.snapshot.paramMap.get(`{{collection}}`);
 
@@ -75,6 +100,7 @@ export class GridViewCollectionComponent {
     this.shared.valueAdded.subscribe((data) => {
       if (data?.checked) {
         this.paramValue.push(data?.payLoad?.value);
+
         this.apiValues.push(data?.payLoad);
 
         this.getItemCollections(undefined, undefined, undefined, undefined, {
@@ -92,9 +118,6 @@ export class GridViewCollectionComponent {
           attributes: this.apiValues,
         });
       }
-      this.router.navigate([], {
-        queryParams: { attribute: this.paramValue },
-      });
     });
 
     this.shared.filterPriceEvent.subscribe((data) => {
@@ -107,7 +130,13 @@ export class GridViewCollectionComponent {
       this.getItemCollections(data);
     });
 
-    this.getItemCollections();
+    if (this.routeDataList?.length > 0) {
+      this.getItemCollections(undefined, undefined, undefined, undefined, {
+        attributes: this.routeDataList,
+      });
+    } else {
+      this.getItemCollections();
+    }
   }
 
   handleCheckEvent(value: any) {
@@ -180,5 +209,17 @@ export class GridViewCollectionComponent {
 
   passArrayList(value: any): void {
     this.shared.setList(value);
+  }
+
+  convertToValueArray(data: any): any {
+    const result: any = {};
+    Object.keys(data).forEach((key) => {
+      if (Array.isArray(data[key])) {
+        result[key] = data[key];
+      } else {
+        result[key] = [data[key]];
+      }
+    });
+    return result;
   }
 }

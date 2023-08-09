@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/app/lib/services/crud.service';
 import { SettingsService } from 'src/app/lib/services/settings.service';
@@ -9,6 +9,7 @@ import { SharedDataService } from 'src/app/lib/services/shared-data.service';
   templateUrl: './list-view-collections.component.html',
 })
 export class ListViewCollectionsComponent {
+  @Input() externalUrl: string | undefined;
   itemCollections: any = [];
   selectedChain: any = 'ethereum';
   formatChainAddress: any;

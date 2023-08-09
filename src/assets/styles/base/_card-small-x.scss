@@ -5,6 +5,10 @@
   gap: 0.25rem;
   background-color: transparent;
   cursor: pointer;
+  margin-left: -10px;
+  @include media-min-alt(360px) {
+    margin-left: 0;
+  }
   @include media-min-xl {
     border-radius: 0.75rem;
     padding: 0.5rem;
@@ -30,7 +34,7 @@
     span {
       color: var(--1inch-tc-02);
       font-size: 1rem;
-      font-weight: 400;
+      font-weight: 300;
       line-height: 1.625rem; /* 162.5% */
     }
   }

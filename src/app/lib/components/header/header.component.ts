@@ -41,8 +41,15 @@ export class HeaderComponent {
     private renderer: Renderer2, private elementRef: ElementRef
   ) {}
 
-  toggleTheme() {
-    this._settingsService.toggleTheme();
+  toggleTheme(theme: any) {
+    this.currentMode = theme;
+    // this._settingsService.toggleTheme(this.autoSelectTheme(theme));
+  }
+
+  autoSelectTheme(value:any) {
+    let randomNumber = Math.floor(Math.random() * 2);
+    let randomColor = randomNumber == 1 ? 'light' : 'dark';
+    return value == 'auto' ? randomColor : value == 'light' ? 'light' : '';
   }
 
   setTheme(theme: string) {
@@ -50,15 +57,18 @@ export class HeaderComponent {
   }
 
   openmenu() {
+    document.querySelector('body')?.classList.add('overflow-hidden');
     document.getElementById('mobile-nav')?.classList.add('open-mobile-menu');
   }
 
   opensearch(event : Event) {
     event.stopPropagation();
+    document.querySelector('body')?.classList.add('overflow-hidden');
     this.openMobileSearchWrapper = true;
   }
 
-  closesearchhistory(val : boolean) {
+  closesearchhistory(val: boolean) {
+    document.querySelector('body')?.classList.remove('overflow-hidden');
     this.openMobileSearchWrapper = val;
   }
 
@@ -69,9 +79,11 @@ export class HeaderComponent {
   openCardWrapper(event : Event) {
     event.stopPropagation();
     this.is_cart == true ? this.is_cart = false : this.is_cart = true;
+    this.is_cart == true && window.innerWidth < 767 ? document.querySelector('body')?.classList.add('overflow-hidden') : document.querySelector('body')?.classList.remove('overflow-hidden');
   }
 
-  closeCardWrapper(val:boolean) {
+  closeCardWrapper(val: boolean) {
+    document.querySelector('body')?.classList.remove('overflow-hidden');
     this.is_cart = val;
   }
   ngOnInit() {
@@ -84,13 +96,8 @@ export class HeaderComponent {
   @HostListener("window:scroll", [])
 
   onWindowScroll() {
-    if (document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20) {
-        if (document.getElementById('header')?.classList.contains('active-mob-menu')) {
-          document.getElementById('header')?.classList.remove('header-bg');
-        }else {
-          document.getElementById('header')?.classList.add('header-bg');
-        }
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById('header')?.classList.add('header-bg');
     }else {
       document.getElementById('header')?.classList.remove('header-bg');
     }
@@ -98,6 +105,7 @@ export class HeaderComponent {
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
+    this.closeCardWrapper(false);
     this.setSearchComponent();
     this.setCartComponent();
   }
@@ -124,10 +132,6 @@ export class HeaderComponent {
 
   chooseLanguage(value: string) {
     this.currentLanguage = value;
-  }
-
-  chooseMode(value: string) {
-    this.currentMode = value;
   }
 
   setActivePopup(value: string) {

@@ -53,6 +53,11 @@ button {
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1rem; /* 123.077% */
+  &:hover{
+    @include media-min-lg {
+      background-color: var(--1inch-cbc-20);
+    }
+  }
 }
 
 .c-btn__small {

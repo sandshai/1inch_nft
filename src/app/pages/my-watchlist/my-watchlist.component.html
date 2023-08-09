@@ -1,4 +1,4 @@
-<section class="myWatchlist-section page-start-padding">
+<section class="myWatchlist-section">
   <div class="overlay"></div>
   <div class="container-fluid">
     <div class="s-title">
@@ -7,7 +7,7 @@
     <div class="myWatchlist-section-content">
       <app-section-filter-wrapper pageLayOut='watchlist' (viewLayout) = "setPageLayout($event)" [activeLayout] = "layout"></app-section-filter-wrapper>
       <app-watchlist-table *ngIf="layout == 'table'" [data] = 'dummyData'></app-watchlist-table>
-      <app-watchlist-card *ngIf="layout == 'card'" [data] = 'dummyData'></app-watchlist-card>
+      <app-watchlist-card *ngIf="layout == 'card'" [data] = 'dummyData' profileOfferTabClass="watch-pt-2"></app-watchlist-card>
       <app-nodata-found *ngIf="dummyData.length == 0"></app-nodata-found>
     </div>
   </div>

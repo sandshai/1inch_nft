@@ -1,7 +1,7 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 import SignClient from '@walletconnect/sign-client';
-import QRCodeModal from '@walletconnect/qrcode-modal';
+import { WalletConnectModal } from '@walletconnect/modal';
 import { Subject } from 'rxjs';
 import _ from 'lodash';
 
@@ -27,6 +27,14 @@ export class WalletComponent {
   accountSubject = new Subject<string>();
   walletIcons: any;
   walletStatus: any;
+  chooseNetwork: any;
+  selectedNetwork: any;
+  activeIcon: any;
+  activeNetwork: any = 'ethereum';
+  walletConnectModal: WalletConnectModal = new WalletConnectModal({
+    projectId: 'd3541dee612434b6498552f570478076',
+    // `standaloneChains` can also be specified when calling `walletConnectModal.openModal(...)` later on.
+  });
 
   constructor(
     private shared: SharedDataService,
@@ -55,21 +63,24 @@ export class WalletComponent {
 
   ngOnInit() {
     this.setWalletIcon();
-    this.walletStatus =  this.walletIcons['disabled'];
+    this.walletStatus = this.walletIcons['disabled'];
+    this.selectedNetwork = this.chooseNetwork['disabled'];
+    this.activeIcon = 'disabledCollectionIcon';
   }
 
   closewallet() {
     document
       .getElementById('connect-wallet__wrapper')
       ?.classList.remove('open-wallet');
+    document.querySelector('body')?.classList.remove('overflow-hidden');
   }
 
   async connectWalletNew() {
     const client = await SignClient.init({
       projectId: 'd3541dee612434b6498552f570478076', // Get ProjectID from WalletConnect
       metadata: {
-        name: 'One Inch Example',
-        description: 'One Inch Example',
+        name: '1inch',
+        description: '1inch',
         url: '#',
         icons: [
           'https://raw.githubusercontent.com/tetrixtech/assets/main/icons/PitakaLogo.png',
@@ -79,17 +90,19 @@ export class WalletComponent {
 
     this.client = client;
 
+    // client.on('');
+
     client.on('session_event', (args) => {
       const id = args.id;
       const ddd = args.params;
       const topic = args.topic;
       this.topic = topic;
-      console.log('id===', id);
+      console.log('event ===', args);
+
       // Handle session events, such as "chainChanged", "accountsChanged", etc.
     });
 
     client.on('session_update', ({ topic, params }) => {
-      console.log('topic===', topic);
       const { namespaces } = params;
       const _session = client.session.get(topic);
       // Overwrite the `namespaces` of the existing session with the incoming one.
@@ -135,17 +148,17 @@ export class WalletComponent {
 
       // Open QRCode modal if a URI was returned (i.e. we're not connecting an existing pairing).
       if (uri) {
-        QRCodeModal.open(uri, _, {});
+        this.walletConnectModal.openModal({ uri });
         const session = await approval();
         this.onSessionConnected(session);
-        QRCodeModal.close();
+        this.walletConnectModal.closeModal();
       }
 
       // Await session approval from the wallet.
     } catch (e) {
       console.error(e);
     } finally {
-      QRCodeModal.close();
+      this.walletConnectModal.closeModal();
     }
   }
 
@@ -153,7 +166,7 @@ export class WalletComponent {
     console.log('comimng');
     this.session = session;
     console.log('session===', session);
-    QRCodeModal.close();
+    this.walletConnectModal.closeModal();
     const accounts = session.namespaces.eip155.accounts;
     console.log('accounts=', accounts);
     if (accounts && accounts.length > 0) {
@@ -170,7 +183,15 @@ export class WalletComponent {
   }
 
   checkboxChanged(event: any) {
-    this.walletStatus = event.target.checked ? this.walletIcons['active'] : this.walletIcons['disabled'];
+    this.walletStatus = event.target.checked
+      ? this.walletIcons['active']
+      : this.walletIcons['disabled'];
+    this.selectedNetwork = event.target.checked
+      ? this.chooseNetwork['active']
+      : this.chooseNetwork['disabled'];
+    this.activeIcon = event.target.checked
+      ? 'activeCollectionIcon'
+      : 'disabledCollectionIcon';
     this.checkBox = event.target.checked;
   }
 
@@ -187,44 +208,67 @@ export class WalletComponent {
 
   setWalletIcon() {
     let icons = {
-      'active': {
-        'actionIcon' : 'activeCollectionIcon',
-        'Ethereum': 'ethereumIcon',
-        'BNBChain': 'BNBChainIcon',
-        'Polygon': 'polygonIcon',
-        'Optimism': 'optimismIcon',
-        'Arbitrum': 'arbitrumIcon',
-        'gnosisChain': 'gnosisChainIcon',
-        'Avalanche': 'avalancheIcon',
-        'Fantom': 'fantomIcon',
-        'Aurora': 'auroraIcon',
-        'Klaytn': 'klaytnIcon',
-        'oneinchWallet': '1inchWalletIcon',
-        'metaMask': 'metaMaskIcon',
-        'trustWallet': 'trustWalletIcon',
-        'walletConnect': 'WalletConnectIcon',
-        'coinbaseWallet': 'coinbaseWalletIcon',
+      active: {
+        oneinchWallet: '1inchWalletIcon',
+        metaMask: 'metaMaskIcon',
+        trustWallet: 'trustWalletIcon',
+        walletConnect: 'WalletConnectIcon',
+        coinbaseWallet: 'coinbaseWalletIcon',
       },
-      "disabled": {
-        'actionIcon' : 'disabledCollectionIcon',
-        'Ethereum': 'ethereumDisabledIcon',
-        'BNBChain': 'BNBChainDisabledIcon',
-        'Polygon': 'polygonDisabledIcon',
-        'Optimism': 'optimismDisabledIcon',
-        'Arbitrum': 'arbitrumDisabledIcon',
-        'gnosisChain': 'gnosisChainDisabledIcon',
-        'Avalanche': 'avalancheDisabledIcon',
-        'Fantom': 'fantomDisabledIcon',
-        'Aurora': 'auroraDisabledIcon',
-        'Klaytn': 'klaytnDisabledIcon',
-        'oneinchWallet': '1inchWalletDisabledIcon',
-        'metaMask': 'metaMaskDisabledIcon',
-        'trustWallet': 'trustWalletDisabledIcon',
-        'walletConnect': 'WalletConnectDisabledIcon',
-        'coinbaseWallet': 'coinbaseWalletDisabledIcon',
-      }
-    }
+      disabled: {
+        oneinchWallet: '1inchWalletDisabledIcon',
+        metaMask: 'metaMaskDisabledIcon',
+        trustWallet: 'trustWalletDisabledIcon',
+        walletConnect: 'WalletConnectDisabledIcon',
+        coinbaseWallet: 'coinbaseWalletDisabledIcon',
+      },
+    };
     this.walletIcons = icons;
+    this.chooseNetwork = {
+      active: [
+        { icon: 'ethereumIcon', name: 'Ethereum', key: 'ethereum' },
+        // {icon: 'BNBChainIcon', name: 'BNB Chain', key: 'BNBChain'},
+        { icon: 'polygonIcon', name: 'Polygon', key: 'polygon' },
+        // {icon: 'optimismIcon', name: 'Optimism', key: 'optimism'},
+        // {icon: 'arbitrumIcon', name: 'Arbitrum', key: 'arbitrum'},
+        // {icon: 'gnosisChainIcon', name: 'Gnosis Chain', key: 'GnosisChain'},
+        // {icon: 'avalancheIcon', name: 'Avalanche', key: 'avalanche'},
+        // {icon: 'fantomIcon', name: 'Fantom', key: 'fantom'},
+        // {icon: 'auroraIcon', name: 'Aurora', key: 'aurora'},
+        // {icon: 'klaytnIcon', name: 'Klaytn', key: 'klaytn'},
+      ],
+      disabled: [
+        { icon: 'ethereumDisabledIcon', name: 'Ethereum', key: 'ethereum' },
+        // {icon: 'BNBChainDisabledIcon', name: 'BNB Chain', key: 'BNBChain'},
+        { icon: 'polygonDisabledIcon', name: 'Polygon', key: 'polygon' },
+        // {icon: 'optimismDisabledIcon', name: 'Optimism', key: 'optimism'},
+        // {icon: 'arbitrumDisabledIcon', name: 'Arbitrum', key: 'arbitrum'},
+        // {icon: 'gnosisChainDisabledIcon', name: 'Gnosis Chain', key: 'GnosisChain'},
+        // {icon: 'avalancheDisabledIcon', name: 'Avalanche', key: 'avalanche'},
+        // {icon: 'fantomDisabledIcon', name: 'Fantom', key: 'fantom'},
+        // {icon: 'auroraDisabledIcon', name: 'Aurora', key: 'aurora'},
+        // {icon: 'klaytnDisabledIcon', name: 'Klaytn', key: 'klaytn'},
+      ],
+    };
   }
 
+  selectNetwork(network: any) {
+    if (this.checkBox) {
+      network ? (this.activeNetwork = network) : '';
+    }
+  }
+
+  onBackdropClick(event: MouseEvent): void {
+    // Check if the clicked target is outside the modal content
+    if (
+      !this.elementRef.nativeElement
+        .querySelector('.wallet-wrapper')
+        .contains(event.target)
+    ) {
+      document
+        .getElementById('connect-wallet__wrapper')
+        ?.classList.remove('open-wallet');
+      document.querySelector('body')?.classList.remove('overflow-hidden');
+    }
+  }
 }

@@ -38,217 +38,181 @@ $font-family: "Roboto", sans-serif;
 /*------ theme colors --------
 ==================================================*/
 
-$clr-white: #fff;
 $clr-dark: #000;
-$theme-clr-gray: #bdbdbd;
 $theme-clr-grayblue: #6c86ad;
-$theme-clr-grayblue-2: #6c86ac;
 $theme-clr-litewhite: #fbfbfb;
 $theme-clr-mirage: #141822;
-$theme-search-input-bg: #212936;
-$theme-clr-brightgray : #354052;
-$theme-clr-border-gray: #202835;
-$theme-clr-increment: #21C085;
-$theme-clr-decrement: #FF837A;
-$theme-clr-footer-text: #FFFFFF99;
-$theme-clr-subscription-email-bg:#FFFFFF1A;
-$card-overlay-black:#06070A;
-$section-end-line:#1E1E1E;
-$dark-blue: #131823;
-$positive-clr : #21C187;
-$negative-clr: #FF837A;
-$accordion-bg-clr-close:#0D1119;
-$accordion-bg-clr-hover: #10141C;
-$accordion-bg-clr-open: #06070A;
-$text-blue:#2F8AF5;
-$input-color: #44556F;
-$color--01 : #13182311;
-$card-overlay-black-light : #ffffff;
-$theme-clr-gray-light : #2e2e2e;
+$theme-clr-brightgray: #354052;
+
 /*------ dark theme colors --------
 ==================================================*/
 
-$dark-theme-clr: #06070A;
 $dark-theme-text-color: #fbfbfb;
-$highlight-bg: #06070A;
 
 /*------ lite theme colors --------
 ==================================================*/
 
-$lite-theme-clr: #ffffff;
 $lite-theme-text-color: #000;
 
 :root {
-    ---inch-text-color-01 : #{$theme-clr-litewhite} !important;
-    ---1inch-theme-text-color: #{$dark-theme-text-color} !important;
-    ---1inch-theme-collection-analytics-bg : #{$dark-blue} !important;
-    ---inch-theme-blue-text-color : #{$text-blue} !important;
-    ---inch-theme-text-color-01: #{$input-color} !important;
-    ---inch-theme-text-color-02 : #{$theme-clr-grayblue} !important;
-    ---inch-background-color-01 : #{$accordion-bg-clr-hover} !important;
-    ---inch-background-color-02 : #141924 !important;
-    ---inch-background-color-03 : #{$card-overlay-black} !important;
-    ---inch-background-color-04 : #{$dark-blue} !important;
-    ---inch-background-color-05 : #{$theme-clr-gray} !important;
-    ---inch-background-color-06 : #{$highlight-bg} !important;
+  --wcm-z-index: 999999 !important;
+  ---inch-text-color-01: #{$theme-clr-litewhite} !important;
+  ---1inch-theme-text-color: #{$dark-theme-text-color} !important;
+  ---inch-theme-text-color-02: #{$theme-clr-grayblue} !important;
 
-    // ==== common background color ====
-    ---1inch-theme-background : #06070A;
-    ---1inch-th-bc-01 : #141924;
-    ---1inch-th-bc-02 : #2F8AF529 !important;
-    ---1inch-th-bc-03 : #060a1080 !important;
-    // ===== text color =====
+  // ==== common background color ====
+  ---1inch-theme-background: #06070a;
+  ---1inch-th-bc-01: #141924;
+  ---1inch-th-bc-02: #2f8af529 !important;
+  ---1inch-th-bc-03: #060a1080 !important;
+  // ===== text color =====
 
-    ---1inch-cstc-01 : #fbfbfb !important;
-    ---1inch-cstc-02 : #6C86AD !important;
-    ---1inch-cstc-03 : #2F8AF5 !important;
+  ---1inch-cstc-01: #fbfbfb !important;
 
-    // ==== dark theme background colors for collection ====
-    ---1inch-banner-overlay-background : rgba(0,0,0,0.75) !important;
-    ---1inch-analytics-background : #{$dark-blue} !important;
+  // ==== dark theme text colors for collection ====
+  ---1inch-tc-01: #fbfbfb;
 
-    // ==== dark theme text colors for collection ====
-    ---1inch-tc-01 : #fbfbfb;
-    ---1inch-tc-02 : #bdbdbd;
+  // ===== theme variables =====
+  --1inch-bc-01: #06070a;
+  --1inch-bc-02: #141924;
+  --1inch-bc-03: #2b374a;
+  --1inch-bc-04: #ffffff1a;
+  --1inch-bc-05: #131823;
+  --1inch-bc-06: #060a1080;
+  --1inch-bc-07: #fbfbfb;
+  --1inch-bc-08: #2f8af5;
+  --1inch-bc-09: #202835;
+  --1inch-bc-10: #141822;
+  --1inch-bc-11: #212936;
+  --1inch-bc-12: #0d1119;
+  --1inch-bc-13: #4399ff;
+  --1inch-bc-14: rgba(255, 255, 255, 0.25);
+  --1inch-bc-15: rgba(255, 255, 255, 0.10);
+  --1inch-bc-16: rgba(6, 7, 10, 0.90);
+  --1inch-bc-17: #324054;
+  --1inch-bc-18: #2F3B4D;
+  --1inch-bc-19: rgba(6, 7, 10, .72);
 
-    // ==== dark theme background colors for collections ====
-    ---1inch-csbc-01 : #10141C;
-    ---1inch-csbc-02 : #141924;
-    ---inch-csbc-03 : #131823;
-    ---1inch-csbc-04 : #06070A;
+  // ====  change varibale ====
+  --1inch-cbc-01: #0d1119;
+  --1inch-cbc-02: #06070a;
+  --1inch-cbc-03: #141924;
+  --1inch-cbc-04: #324054;
+  --1inch-cbc-05: #131823;
+  --1inch-cbc-06: #fbfbfb;
+  --1inch-cbc-07: rgba(255, 255, 255, 0.3);
+  --1inch-cbc-08: rgba(6, 10, 16, 0.5);
+  --inch-cbc-09: #10141c;
+  --1inch-cbc-10: #2b374a;
+  --1inch-cbc-11: #202835;
+  --1inch-cbc-12: #141822;
+  --1inch-cbc-13: rgba(0, 0, 0, 0.5);
+  --1inch-cbc-14: rgba(6, 10, 16, 0.5);
+  --1inch-cbc-15: #37445a;
+  --1inch-cbc-16: linear-gradient(
+    180deg,
+    rgba(6, 7, 10, 0) 0%,
+    rgba(6, 7, 10, 0.52) 24.48%,
+    #06070a 100%
+  );
+  --1inch-cbc-17: rgba(6, 10, 16, 0.5);
+  --1inch-cbc-18: #37445a;
+  --1inch-cbc-19: #324053;
+  --1inch-cbc-20: rgba(255, 255, 255, 0.2);
+  --1inch-cbc-21: transparent;
 
-
-
-    // ===== theme variables =====
-    --1inch-bc-01 : #06070A;
-    --1inch-bc-02 : #141924;
-    --1inch-bc-03 : #2B374A;
-    --1inch-bc-04 : #FFFFFF1A;
-    --1inch-bc-05 : #131823;
-    --1inch-bc-06 : #060A1080;
-    --1inch-bc-07 : #fbfbfb;
-    --1inch-bc-08 : #2F8AF5;
-    --1inch-bc-09 : #202835;
-    --1inch-bc-10 : #141822;
-    --1inch-bc-11 : #212936;
-    --1inch-bc-12 : #0D1119;
-    --1inch-bc-13 : #4399ff;
-
-
-    // ====  change varibale ====
-    --1inch-cbc-01 : #0D1119;
-    --1inch-cbc-02 : #06070A;
-    --1inch-cbc-03 : #141924;
-    --1inch-cbc-04 : #324054;
-    --1inch-cbc-05 : #131823;
-    --1inch-cbc-06 : #FBFBFB;
-    --1inch-cbc-07 : rgba(255, 255, 255, 0.3);
-    --1inch-cbc-08 : rgba(6, 10, 16, 0.50);
-    --inch-cbc-09 : #10141C;
-    --1inch-cbc-10 : #2B374A;
-    --1inch-cbc-11 : #202835;
-    --1inch-cbc-12 : #141822;
-    --1inch-cbc-13 : rgba(0, 0, 0, 0.5);
-    --1inch-cbc-14 : rgba(6, 10, 16, 0.50);
-    --1inch-cbc-15 : #37445A;
-    --1inch-cbc-16 : linear-gradient(180deg, rgba(6, 7, 10, 0.00) 0%, rgba(6, 7, 10, 0.52) 24.48%, #06070A 100%);
-    --1inch-cbc-17 : rgba(6, 10, 16, 0.50);
-
-    --1inch-tc-01 : #FBFBFB;
-    --1inch-tc-02 : #6C86AD;
-    --1inch-tc-03 : #21C085;
-    --1inch-tc-04 : #FF837A;
-    --1inch-tc-05 : #FFFFFF99;
-    --1inch-tc-06 : #BDBDBD;
-    --1inch-tc-07 : #2F8AF529;
-    --1inch-tc-08 : #2F8AF5;
-    --1inch-tc-09 : #44556F;
-    --1inch-tc-11 : #21C187;
-    --1inch-tc-12 : #BDBDBD;
+  --1inch-tc-01: #fbfbfb;
+  --1inch-tc-02: #6c86ad;
+  --1inch-tc-03: #21c085;
+  --1inch-tc-04: #ff837a;
+  --1inch-tc-05: #ffffff99;
+  --1inch-tc-06: #bdbdbd;
+  --1inch-tc-07: #2f8af529;
+  --1inch-tc-08: #2f8af5;
+  --1inch-tc-09: #44556f;
+  --1inch-tc-11: #21c187;
+  --1inch-tc-12: #bdbdbd;
+  --1inch-tc-13: rgba(255, 255, 255, 0.6);
+  --1inch-tc-14: #fff;
+  --1inch-tc-15: rgba(255, 255, 255, 0.6);
 }
 
+.light-theme {
+  ---1inch-theme-text-color: #{$lite-theme-text-color} !important;
+  ---inch-text-color-01: #{$clr-dark} !important;
+  ---inch-theme-text-color-02: #{$theme-clr-grayblue} !important;
 
-.light {
-    ---1inch-theme-text-color: #{$lite-theme-text-color} !important;
-    ---1inch-theme-collection-analytics-bg : #{$lite-theme-clr} !important;
-    ---inch-theme-blue-text-color : #{$text-blue} !important;
-    ---inch-theme-text-color-01: #{$input-color} !important;
-    ---inch-text-color-01 : #{$clr-dark} !important;
-    ---inch-theme-text-color-02 : #{$theme-clr-grayblue} !important;
-    ---inch-background-color-01 : #{$accordion-bg-clr-hover} !important;
-    ---inch-background-color-02 : #141924 !important;
-    ---inch-background-color-03 : #{$card-overlay-black-light} !important;
-    ---inch-background-color-04 : #{$color--01} !important;
-    ---inch-background-color-05 : #{$theme-clr-gray-light} !important;
-    ---inch-background-color-06 : #{$lite-theme-clr} !important;
+  // ==== common background color ====
+  ---1inch-theme-background: #f7f9ff;
+  ---1inch-th-bc-01: #edeef182;
+  ---1inch-th-bc-02: #2f8af529 !important;
+  ---1inch-th-bc-03: #060a1080 !important;
 
-    // ==== common background color ====
-    ---1inch-theme-background : #F7F9FF;
-    ---1inch-th-bc-01 : #edeef182;
-    ---1inch-th-bc-02 : #2F8AF529 !important;
-    ---1inch-th-bc-03 : #060a1080 !important;
+  ---1inch-cstc-01: #06070a !important;
 
-    ---1inch-cstc-01 : #06070A !important;
-    ---1inch-cstc-02 : #6C86AD !important;
-    ---1inch-cstc-03 : #2F8AF5 !important;
+  // ==== light theme text colors for collection ====
+  ---1inch-tc-01: #fbfbfb;
 
-    // ==== light theme background colors for collection ====
-    ---1inch-banner-overlay-background : rgba(0,0,0,0.75) !important;
-    ---1inch-analytics-background : #fff !important;
+  // ===== theme variables =====
+  --1inch-bc-01: #fbfbfb;
+  --1inch-bc-02: #dee3ee;
+  --1inch-bc-03: #2b374a;
+  --1inch-bc-04: #ffffff1a;
+  --1inch-bc-05: #fff;
+  --1inch-bc-06: #060a1080;
+  --1inch-bc-07: #06070a;
+  --1inch-bc-08: #2f8af5;
+  --1inch-bc-09: #e3e7ee;
+  --1inch-bc-10: #fff;
+  --1inch-bc-11: #212936;
+  --1inch-bc-12: #0d1119;
+  --1inch-bc-13: #4399ff;
+  --1inch-bc-14: #E3E7EE;
+  --1inch-bc-15: #F4F6FF;
+  --1inch-bc-16: #F7F9FF;
+  --1inch-bc-17: #fff;
+  --1inch-bc-18: #E3E7EE;
+  --1inch-bc-19: rgba(108, 134, 173, .6);
 
-    // ==== light theme text colors for collection ====
-    ---1inch-tc-01 : #fbfbfb;
-    ---1inch-tc-02 : #bdbdbd;
+  // ====  change varibale ====
+  --1inch-cbc-01: #ffffff;
+  --1inch-cbc-02: #fff;
+  --1inch-cbc-03: #fff;
+  --1inch-cbc-04: #ecf0f9;
+  --1inch-cbc-05: #fff;
+  --1inch-cbc-06: #fbfbfb;
+  --1inch-cbc-07: rgba(255, 255, 255, 0.3);
+  --1inch-cbc-08: rgba(6, 10, 16, 0.5);
+  --inch-cbc-09 : #ffffff;
+  --1inch-cbc-10: #ECF0F9;
+  --1inch-cbc-11: #f4f6ff;
+  --1inch-cbc-12: #fbfbfb;
+  --1inch-cbc-13: rgba(108, 134, 173, 0.6);
+  --1inch-cbc-14: #ecf0f9;
+  --1inch-cbc-15: #b2c3dd;
+  --1inch-cbc-16: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 24.48%,
+    #fff 100%
+  );
+  --1inch-cbc-17: rgba(6, 10, 16, 0.5);
+  --1inch-cbc-18: #37445a;
+  --1inch-cbc-19: #bac7da;
+  --1inch-cbc-20: rgba(255, 255, 255, 0.2);
+  --1inch-cbc-21: #F4F6FF;
 
-    // ==== light theme background colors for collections ====
-    ---1inch-csbc-01 : #e3e1e1;
-    ---1inch-csbc-02 : #ffffff;
-    ---inch-csbc-03 : #1318232e;
-    ---1inch-csbc-04 : #06070ab3;
-
-
-    // ===== theme variables =====
-    --1inch-bc-01 : #fbfbfb;
-    --1inch-bc-02 : #dee3ee;
-    --1inch-bc-03 : #2B374A;
-    --1inch-bc-04 : #FFFFFF1A;
-    --1inch-bc-05 : #131823;
-    --1inch-bc-06 : #060A1080;
-    --1inch-bc-07 : #06070A;
-    --1inch-bc-08 : #2F8AF5;
-    --1inch-bc-09 : #202835;
-    --1inch-bc-10 : #141822;
-    --1inch-bc-11 : #212936;
-    --1inch-bc-12 : #0D1119;
-    --1inch-bc-13 : #4399ff;
-
-    // ====  change varibale ====
-    --1inch-cbc-01 : #0D1119;
-    --1inch-cbc-02 : #06070A;
-    --1inch-cbc-03 : #fff;
-    --1inch-cbc-04 : #324054;
-    --1inch-cbc-05 : #131823;
-    --1inch-cbc-06 : #FBFBFB;
-    --1inch-cbc-07 : rgba(255, 255, 255, 0.3);
-    --1inch-cbc-08 : rgba(6, 10, 16, 0.50);
-    --inch-cbc-09 : #10141C;
-    --1inch-cbc-10 : #2B374A;
-    --1inch-cbc-11 : #F4F6FF;
-    --1inch-cbc-12 : #141822;
-    --1inch-cbc-13 : rgba(108, 134, 173, 0.60);
-    --1inch-cbc-14 : #ECF0F9;
-    --1inch-cbc-15 : #B2C3DD;
-    --1inch-cbc-16 : linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.80) 24.48%, #FFF 100%);
-    --1inch-cbc-17 : rgba(6, 10, 16, 0.50);
-
-    --1inch-tc-01 : #222;
-    --1inch-tc-02 : #6C86AD;
-    --1inch-tc-03 : #21C085;
-    --1inch-tc-04 : #FF837A;
-    --1inch-tc-05 : #FFFFFF99;
-    --1inch-tc-06 : #BDBDBD;
-    --1inch-tc-07 : #2F8AF529;
-    --1inch-tc-08 : #2F8AF5;
-    --1inch-tc-09 : #44556F;
-    --1inch-tc-12 : #6C86AD;
+  --1inch-tc-01: #222;
+  --1inch-tc-02: #6c86ad;
+  --1inch-tc-03: #21c085;
+  --1inch-tc-04: #ff837a;
+  --1inch-tc-05: #ffffff99;
+  --1inch-tc-06: #6c86ad;
+  --1inch-tc-07: #2f8af529;
+  --1inch-tc-08: #2f8af5;
+  --1inch-tc-09: #44556f;
+  --1inch-tc-12: #6c86ad;
+  --1inch-tc-13: #6c86ad;
+  --1inch-tc-14: #6c86ad;
+  --1inch-tc-15: #222;
 }

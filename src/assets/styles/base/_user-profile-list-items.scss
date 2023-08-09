@@ -11,7 +11,7 @@
 
   @include media-min-xl {
     position: sticky;
-    top: 6rem;
+    top: 6.5rem;
     z-index: 9;
     width: 26.9rem;
     background-color: transparent;
@@ -88,9 +88,9 @@
         width: 100%;
         flex-direction: column;
         gap: 0.5rem;
-        max-height: 25rem;
         overflow-x: hidden;
         overflow-y: auto;
+        height: calc(100vh - 27.75rem);
         @include scroll-bar(0.15rem,0.15rem);
 
         &.sell-item-height {

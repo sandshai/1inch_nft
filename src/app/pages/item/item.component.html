@@ -1,11 +1,13 @@
 <section class="item-page__wrapper page-start-padding" id="item-page__wrapper">
-  <div class="background-overlay">
+  <!-- <div class="background-overlay">
     <img
       src="../../../assets/images/banner_image_1.jpg"
       class="img-fluid"
       alt=""
     />
-  </div>
+  </div> -->
+  <div class="overlay"></div>
+
   <div class="container-fluid cp-5">
     <div class="nft-item-info-wrapper">
       <div class="nft-item-left__side">
@@ -35,7 +37,13 @@
                 </svg>
               </div>
               <div class="name">
-                <h6>{{ itemDetails[0]?.token?.collection?.name }}</h6>
+                <h6
+                  (click)="
+                    goToPreviousPage(this.collectionName, this.collectionId)
+                  "
+                >
+                  {{ itemDetails[0]?.token?.collection?.name }}
+                </h6>
                 <app-svg-icons iconName="verifiedIcon"></app-svg-icons>
               </div>
             </div>
@@ -126,7 +134,7 @@
               </div>
             </div>
           </div>
-          <h3>Psychosis Ape Club #1234</h3>
+          <h3>{{ itemDetails[0]?.token?.name }}</h3>
         </div>
 
         <div *ngIf="itemDetails[0]?.token?.description" class="collection_desc">
@@ -135,7 +143,11 @@
 
         <div class="social-media-link-wrapper">
           <div class="media-link-wrapper">
-            <div class="icon">
+            <div
+              class="icon"
+              (click)="goToExternalPage()"
+              *ngIf="!this.externalUrl"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -152,7 +164,7 @@
                 />
               </svg>
             </div>
-            <div class="icon">
+            <div class="icon" (click)="handleAddressNavigation()">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -357,7 +369,7 @@
             </div>
             <div class="profile-account-details">
               <p class="detail-name">Seller</p>
-              <p class="acc-number">0xA858…2Ef1</p>
+              <p class="acc-number">{{ this.ownerAddress }}</p>
             </div>
           </div>
           <div class="account-detail">
@@ -634,6 +646,7 @@
               [token_id]="tokenId"
               [chain]="this.collectionName"
               class="w-100"
+              [earnings]="this.creatorEarnings"
             ></app-item-details>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wallet-button',
@@ -10,11 +11,12 @@ export class WalletButtonComponent {
   walletAddress: any;
   formatAddress: any;
   storedValue: any;
-  addressIsCopied: boolean = false;
+  isCopied: boolean = false;
 
   constructor(
     private shared: SharedDataService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,17 +45,32 @@ export class WalletButtonComponent {
     document
       .getElementById('connect-wallet__wrapper')
       ?.classList.add('open-wallet');
+    document.querySelector('body')?.classList.add('overflow-hidden');
   }
 
   clearWalletAddress() {
     let value = '';
     this.shared.setValue(value);
+    this.router.navigate(['/']);
   }
 
-  copyWalletAddress() {
-    this.addressIsCopied = true;
+  handleNavigate(value: any) {
+    if (value === 'portfolio') {
+      const queryParams = { tab: 'portfolio' };
+      this.router.navigate(['profile'], { queryParams });
+    }
+  }
+  copyToClipboard() {
+    this.isCopied = true;
+    navigator.clipboard.writeText(this.walletAddress).then(() => {
+      console.log('Content copied to clipboard');
+      /* Resolved - text copied to clipboard successfully */
+    },() => {
+      console.error('Failed to copy');
+      /* Rejected - text failed to copy to the clipboard */
+    });
     setTimeout(() => {
-      this.addressIsCopied = false;
+      this.isCopied = false;
     }, 2000);
   }
 }

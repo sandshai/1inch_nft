@@ -17,7 +17,11 @@
     <div class="dropdown order-2 order-sm-0">
       <button class="btn-cus-dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <span>Highest Vol. change</span>
-        <app-svg-icons iconName="downIcon" class="icon" className="icon"></app-svg-icons>
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+            <path d="M8.6665 10.1934L12.6665 14.1934L16.6665 10.1934" stroke="#6C86AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
       </button>
       <ul class="dropdown-menu dropdown-menu-end cus-ul cus-vol-list" aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" href="#">Highest Vol. change</a></li>
@@ -32,7 +36,11 @@
       <div class="dropdown">
         <button class="btn-cus-dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           <span>All chains</span>
-          <app-svg-icons iconName="downIcon" class="icon"></app-svg-icons>
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <path d="M8.6665 10.1934L12.6665 14.1934L16.6665 10.1934" stroke="#6C86AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </button>
         <ul class="dropdown-menu dropdown-menu-end cus-ul cus-all-chain" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item" href="#">All chains</a></li>
@@ -53,7 +61,11 @@
       <div class="dropdown d-md-none">
         <button class="btn-cus-dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           <span>All</span>
-          <app-svg-icons iconName="downIcon" class="icon"></app-svg-icons>
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <path d="M8.6665 10.1934L12.6665 14.1934L16.6665 10.1934" stroke="#6C86AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </button>
         <ul class="dropdown-menu dropdown-menu-end cus-ul cus-filter" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item" href="#">1H</a></li>
@@ -95,10 +107,14 @@
   </div>
   <div class="section-filter-right-side profile-section-dropdown">
     <!-- === vol dropdown === -->
-    <div class="dropdown" *ngIf="profileFilterLayOut == 'layOutOne'">
+    <div class="dropdown" *ngIf="profileFilterLayOut == 'layOutOne' || 'layOutThree'">
       <button class="btn-cus-dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <span>Highest Vol. change</span>
-        <app-svg-icons iconName="downIcon" class="icon" className="icon"></app-svg-icons>
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+            <path d="M8.6665 10.1934L12.6665 14.1934L16.6665 10.1934" stroke="#6C86AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
       </button>
       <ul class="dropdown-menu dropdown-menu-end cus-ul cus-vol-list" aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" href="#">Highest Vol. change</a></li>
@@ -119,7 +135,11 @@
     <div class="dropdown d-sm-none" *ngIf="profileFilterLayOut == 'layOutTwo'">
       <button class="btn-cus-dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <span>All</span>
-        <app-svg-icons iconName="downIcon" class="icon" className="icon"></app-svg-icons>
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+            <path d="M8.6665 10.1934L12.6665 14.1934L16.6665 10.1934" stroke="#6C86AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
       </button>
       <ul class="dropdown-menu dropdown-menu-end cus-ul cus-filter" aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" href="#">1D</a></li>

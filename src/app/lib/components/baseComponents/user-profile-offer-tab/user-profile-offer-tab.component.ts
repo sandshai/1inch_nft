@@ -26,6 +26,14 @@ export class UserProfileOfferTabComponent {
           "label": "Tofunft",
           "count" : 140
         },
+        {
+          "label": "Etherium",
+          "count" : 140
+        },
+        {
+          "label": "Polygon",
+          "count" : 140
+        },
       ]
     }
   ];

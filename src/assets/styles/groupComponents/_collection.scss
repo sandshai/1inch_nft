@@ -44,7 +44,7 @@
             @include media-min-md {
               flex-direction: row;
               justify-content: center;
-              align-items: center;
+              align-items: flex-start;
               padding: 0rem 2rem;
               gap: 2rem;
             }
@@ -130,7 +130,7 @@
                     align-items: center;
                     gap: 0.5rem;
                     border-radius: 0.75rem;
-                    border: 1px solid #202835;
+                    border: 1px solid var(--1inch-bc-09);
                     svg {
                       width: 1.5rem;
                       height: 1.5rem;
@@ -195,7 +195,7 @@
               .collection_desc {
                 p {
                   margin: 0;
-                  color: rgba(255, 255, 255, 0.60);
+                  color: var(--1inch-tc-13);
                   font-size: 0.875rem;
                   font-weight: 400;
                   line-height: 1.5rem;
@@ -204,7 +204,7 @@
                     line-height: 1.625rem; /* 162.5% */
                   }
                   span {
-                    color: var(--1inch-tc-01);
+                    color: var(--1inch-tc-14);
                   }
                 }
               }
@@ -247,7 +247,7 @@
                     color: var(--1inch-tc-02);
                     white-space: nowrap;
                     font-size: 0.8125rem;
-                    font-weight: 400;
+                    font-weight: 300;
                     line-height: 1rem;
                     @include media-min-md {
                       font-size: 1rem;
@@ -273,7 +273,6 @@
                         line-height: 1.625rem;
                         @include media-min-md {
                           font-size: 1.25rem;
-                          font-weight: 500;
                           line-height: 1.5rem; /* 120% */
                         }
                       }
@@ -343,7 +342,7 @@
                 align-items: center;
                 gap: 0.5rem;
                 border-radius: 0.75rem;
-                border: 1px solid #202835;
+                border: 1px solid var(--1inch-bc-09);
                 background-color: transparent;
                 .icon {
                   width: 1.5rem;
@@ -377,7 +376,7 @@
                 align-items: center;
                 border-radius: 0.75rem;
                 padding: 0.5rem 0.75rem 0.5rem 1rem;
-                background: #141822;
+                background: var(--1inch-bc-10);
                 gap: 0.75rem;
                 flex: 1 1;
                 @include media-min-xxl {
@@ -389,7 +388,7 @@
                   align-items: center;
                   padding: 0;
                   border-radius: 0;
-                  background: #141822;
+                  background: var(--1inch-bc-10);
                   border: none;
                   font-size: 1rem;
                   font-weight: 400;
@@ -450,7 +449,7 @@
                     font-size: 1rem;
                     font-weight: 400;
                     line-height: 1.625rem;
-                    color: var(---1inch-tc-02);
+                    color: var(--1inch-tc-02);
                     &:hover {
                       background-color: rgba(6, 10, 16, 0.5) !important;
                     }
@@ -465,7 +464,7 @@
                 gap: 0.5rem;
                 border-radius: 12px;
                 background-color: transparent;
-                border: 1px solid #202835;
+                border: 1px solid var(--1inch-bc-09);
                 &:hover {
                   background-color: rgba(255, 255, 255, 0.20);
                 }
@@ -486,14 +485,14 @@
                 align-items: flex-start;
                 gap: 1rem;
                 border-radius: 0.75rem;
-                border: 1px solid #202835;
+                border: 1px solid var(--1inch-bc-09);
                 .sort_icon {
                   width: 1.5rem;
                   height: 1.5rem;
                   svg {
                     &.active {
                       rect {
-                        stroke: var(--1inch-cbc-06);
+                        stroke: var(--1inch-tc-01);
                       }
                     }
                   }
@@ -510,7 +509,7 @@
           align-items: center;
           gap: 0.75rem;
           border-radius: 12px;
-          background: var(---inch-csbc-03);
+          background: var(--1inch-bc-05);
           margin-bottom: 2rem;
           width: auto;
           max-width: 100%;
@@ -521,7 +520,7 @@
             align-items: center;
             gap: 0.25rem;
             border-radius: 0.5rem;
-            background: rgba(6, 10, 16, 0.50);
+            background-color: var(--1inch-cbc-14);
             p {
               color: var(--1inch-tc-01);
               font-size: 1rem;
@@ -573,10 +572,10 @@
       z-index: 2000;
       @include media-min-xl {
         position: sticky;
-        top: 6rem;
+        top: 6.5rem;
         z-index: unset;
         width: 26.875rem;
-        height: 45.8125rem;
+        height: calc(100vh - 8.438rem);
         border-radius: 1.5rem;
       }
       .analytics-container {
@@ -584,6 +583,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
+        height: 100%;
         .collection-header__wrappper {
           width: 100%;
           display: flex;
@@ -661,11 +661,12 @@
           align-items: flex-start;
           gap: 0.5rem;
           overflow-x: hidden;
-          overflow-y: auto;
+          overflow-y: scroll;
           height: calc(100vh - 5.5rem);
           @include scroll-bar(0.125rem,0.125rem);
           @include media-min-xl {
-            height: 40.3rem;
+            height: auto;
+            max-height: calc(100% - 5.5rem);
           }
         }
       }

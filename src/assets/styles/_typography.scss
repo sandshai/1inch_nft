@@ -1,7 +1,16 @@
-$text-colors: "themegray" $theme-clr-gray, "themewhite" var(---1inch-theme-text-color),"grayblue" $theme-clr-grayblue;
+$text-colors: "themewhite" var(---1inch-theme-text-color),"grayblue" $theme-clr-grayblue;
 
 @each $color in $text-colors {
   .text-#{nth($color,1)} {
     color: nth($color, 2) !important;
   }
+}
+
+
+$colors: ("static-white": var(--1inch-tc-01), "gray": #6C86AD, "red": #E3402A,"green" : #21C187,"brand-blue" : #2F8AF5,"gray-2" : #B0BFFF,"green-2" : #008A7C,"yellow" : #FF9C08);
+
+@each $name, $color in $colors {
+    .text-#{$name} {
+        color: $color;
+    }
 }

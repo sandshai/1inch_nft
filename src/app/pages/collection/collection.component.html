@@ -2,34 +2,65 @@
   <!-- banner background image -->
 
   <div class="background-overlay">
-    <img src="{{ setCollectionBannerImage }}" class="img-fluid" alt="">
+    <img src="{{ setCollectionBannerImage }}" class="img-fluid" alt="" />
   </div>
 
   <div class="container-fluid">
     <div class="collection-wrapper page-start-padding" id="collection_banner">
-
       <!-- ====== Information Section ====== -->
 
-      <div class="collection-left-side-wrapper {{ !is_analytics ? 'w-100' : '' }}">
+      <div
+        class="collection-left-side-wrapper {{ !is_analytics ? 'w-100' : '' }}"
+      >
         <div class="collection-nft-details-wrapper">
           <div class="collection-nft-information">
-            <div class="Nft-collection-details {{ !is_analytics ? 'is-expand' : '' }}">
-              <img src="{{ collectionDetails[0]?.image }}" class="nft-profile" alt="profile img" />
+            <div
+              class="Nft-collection-details {{
+                !is_analytics ? 'is-expand' : ''
+              }}"
+            >
+              <img
+                src="{{ collectionDetails[0]?.image }}"
+                class="nft-profile"
+                alt="profile img"
+              />
               <div class="nft-detail-wrapper">
                 <div class="nft-collections-name-wrapper">
                   <div class="nft-name-wrapper">
                     <div class="name">
                       <p>{{ collectionDetails[0]?.name }}</p>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M21.1746 9.63895C20.8209 9.27017 20.4553 8.88895 20.3171 8.55487C20.1901 8.24799 20.1824 7.73969 20.175 7.24805C20.1612 6.33316 20.1455 5.29623 19.4247 4.57535C18.7038 3.85446 17.6668 3.83881 16.752 3.82498C16.2603 3.81757 15.752 3.80988 15.4451 3.68289C15.1111 3.54474 14.7298 3.17908 14.3611 2.82541C13.7133 2.20413 12.979 1.5 12 1.5C11.021 1.5 10.2868 2.20413 9.63895 2.82541C9.27017 3.17908 8.88895 3.54474 8.55487 3.68289C8.24799 3.80988 7.73969 3.81757 7.24805 3.82498C6.33316 3.83881 5.29623 3.85446 4.57535 4.57535C3.85446 5.29623 3.83881 6.33316 3.82498 7.24805C3.81757 7.73969 3.80988 8.24798 3.68289 8.55487C3.54474 8.88885 3.17908 9.27017 2.82541 9.63895C2.20413 10.2867 1.5 11.021 1.5 12C1.5 12.979 2.20413 13.7132 2.82541 14.3611C3.17908 14.7298 3.54474 15.1111 3.68289 15.4451C3.80988 15.752 3.81757 16.2603 3.82498 16.752C3.83881 17.6668 3.85446 18.7038 4.57535 19.4247C5.29623 20.1455 6.33316 20.1612 7.24805 20.175C7.73969 20.1824 8.24798 20.1901 8.55487 20.3171C8.88885 20.4553 9.27017 20.8209 9.63895 21.1746C10.2867 21.7959 11.021 22.5 12 22.5C12.979 22.5 13.7132 21.7959 14.3611 21.1746C14.7298 20.8209 15.1111 20.4553 15.4451 20.3171C15.752 20.1901 16.2603 20.1824 16.752 20.175C17.6668 20.1612 18.7038 20.1455 19.4247 19.4247C20.1455 18.7038 20.1612 17.6668 20.175 16.752C20.1824 16.2603 20.1901 15.752 20.3171 15.4451C20.4553 15.1111 20.8209 14.7298 21.1746 14.3611C21.7959 13.7133 22.5 12.979 22.5 12C22.5 11.021 21.7959 10.2868 21.1746 9.63895Z" fill="#2F8AF5"/>
-                        <path d="M11.143 15.5425L16.643 10.2925C16.7143 10.2245 16.7715 10.1431 16.8113 10.053C16.8512 9.96292 16.8729 9.86585 16.8752 9.76736C16.8775 9.66888 16.8604 9.5709 16.8248 9.47903C16.7893 9.38716 16.7359 9.30319 16.6679 9.23193C16.5999 9.16066 16.5185 9.1035 16.4284 9.0637C16.3383 9.02389 16.2412 9.00223 16.1427 8.99996C16.0442 8.99768 15.9463 9.01483 15.8544 9.05042C15.7626 9.08601 15.6786 9.13935 15.6074 9.2074L10.6252 13.9631L8.39301 11.8324C8.32177 11.7644 8.23783 11.711 8.14597 11.6754C8.05411 11.6398 7.95614 11.6227 7.85765 11.625C7.75916 11.6272 7.66209 11.6489 7.57198 11.6887C7.48186 11.7285 7.40047 11.7857 7.33245 11.8569C7.26444 11.9282 7.21112 12.0122 7.17556 12.104C7.14 12.1959 7.12289 12.2939 7.12521 12.3924C7.12752 12.4909 7.14921 12.5879 7.18905 12.678C7.22888 12.7681 7.28608 12.8495 7.35737 12.9175L10.1073 15.5425C10.2469 15.6756 10.4323 15.7499 10.6252 15.7499C10.818 15.7499 11.0035 15.6756 11.143 15.5425Z" fill="white"/>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M21.1746 9.63895C20.8209 9.27017 20.4553 8.88895 20.3171 8.55487C20.1901 8.24799 20.1824 7.73969 20.175 7.24805C20.1612 6.33316 20.1455 5.29623 19.4247 4.57535C18.7038 3.85446 17.6668 3.83881 16.752 3.82498C16.2603 3.81757 15.752 3.80988 15.4451 3.68289C15.1111 3.54474 14.7298 3.17908 14.3611 2.82541C13.7133 2.20413 12.979 1.5 12 1.5C11.021 1.5 10.2868 2.20413 9.63895 2.82541C9.27017 3.17908 8.88895 3.54474 8.55487 3.68289C8.24799 3.80988 7.73969 3.81757 7.24805 3.82498C6.33316 3.83881 5.29623 3.85446 4.57535 4.57535C3.85446 5.29623 3.83881 6.33316 3.82498 7.24805C3.81757 7.73969 3.80988 8.24798 3.68289 8.55487C3.54474 8.88885 3.17908 9.27017 2.82541 9.63895C2.20413 10.2867 1.5 11.021 1.5 12C1.5 12.979 2.20413 13.7132 2.82541 14.3611C3.17908 14.7298 3.54474 15.1111 3.68289 15.4451C3.80988 15.752 3.81757 16.2603 3.82498 16.752C3.83881 17.6668 3.85446 18.7038 4.57535 19.4247C5.29623 20.1455 6.33316 20.1612 7.24805 20.175C7.73969 20.1824 8.24798 20.1901 8.55487 20.3171C8.88885 20.4553 9.27017 20.8209 9.63895 21.1746C10.2867 21.7959 11.021 22.5 12 22.5C12.979 22.5 13.7132 21.7959 14.3611 21.1746C14.7298 20.8209 15.1111 20.4553 15.4451 20.3171C15.752 20.1901 16.2603 20.1824 16.752 20.175C17.6668 20.1612 18.7038 20.1455 19.4247 19.4247C20.1455 18.7038 20.1612 17.6668 20.175 16.752C20.1824 16.2603 20.1901 15.752 20.3171 15.4451C20.4553 15.1111 20.8209 14.7298 21.1746 14.3611C21.7959 13.7133 22.5 12.979 22.5 12C22.5 11.021 21.7959 10.2868 21.1746 9.63895Z"
+                          fill="#2F8AF5"
+                        />
+                        <path
+                          d="M11.143 15.5425L16.643 10.2925C16.7143 10.2245 16.7715 10.1431 16.8113 10.053C16.8512 9.96292 16.8729 9.86585 16.8752 9.76736C16.8775 9.66888 16.8604 9.5709 16.8248 9.47903C16.7893 9.38716 16.7359 9.30319 16.6679 9.23193C16.5999 9.16066 16.5185 9.1035 16.4284 9.0637C16.3383 9.02389 16.2412 9.00223 16.1427 8.99996C16.0442 8.99768 15.9463 9.01483 15.8544 9.05042C15.7626 9.08601 15.6786 9.13935 15.6074 9.2074L10.6252 13.9631L8.39301 11.8324C8.32177 11.7644 8.23783 11.711 8.14597 11.6754C8.05411 11.6398 7.95614 11.6227 7.85765 11.625C7.75916 11.6272 7.66209 11.6489 7.57198 11.6887C7.48186 11.7285 7.40047 11.7857 7.33245 11.8569C7.26444 11.9282 7.21112 12.0122 7.17556 12.104C7.14 12.1959 7.12289 12.2939 7.12521 12.3924C7.12752 12.4909 7.14921 12.5879 7.18905 12.678C7.22888 12.7681 7.28608 12.8495 7.35737 12.9175L10.1073 15.5425C10.2469 15.6756 10.4323 15.7499 10.6252 15.7499C10.818 15.7499 11.0035 15.6756 11.143 15.5425Z"
+                          fill="white"
+                        />
                       </svg>
                     </div>
                     <div class="share-btn-wrapper">
-                      <div class="share-btn cursor-pointer" appTooltip data-bs-placement="top" title="Add to watchlist">
+                      <div
+                        class="share-btn cursor-pointer"
+                        appTooltip
+                        data-bs-placement="top"
+                        title="Add to watchlist"
+                      >
                         <app-svg-icons iconName="starIcon"></app-svg-icons>
                       </div>
-                      <div class="share-btn cursor-pointer" appTooltip data-bs-placement="top" title="Share URL">
+                      <div
+                        class="share-btn cursor-pointer"
+                        appTooltip
+                        data-bs-placement="top"
+                        title="Share URL"
+                      >
                         <app-svg-icons iconName="shareIcon"></app-svg-icons>
                       </div>
                     </div>
@@ -37,16 +68,54 @@
                   <div class="address-wrapper">
                     <p class="text-gray cfw-300">By</p>
                     <div class="address">
-                      <p class="text-static-white cfw-400">{{ this.formatChainAddress }}</p>
+                      <p class="text-static-white cfw-400">
+                        {{ this.formatChainAddress }}
+                      </p>
 
-                      <div *ngIf="!isCopied" class="cursor-pointer copyIcon" (click)="copyToClipboard(collectionDetails[0]?.id)" appTooltip data-bs-placement="top" title="Copy">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M8 1.25C6.48122 1.25 5.25 2.48122 5.25 4L5.25 5.25H4C2.48122 5.25 1.25 6.48122 1.25 8L1.25 12C1.25 13.5188 2.48122 14.75 4 14.75H8C9.51878 14.75 10.75 13.5188 10.75 12V10.75H12C13.5188 10.75 14.75 9.51878 14.75 8V4C14.75 2.48122 13.5188 1.25 12 1.25L8 1.25ZM9.25 10.75L8 10.75C6.48122 10.75 5.25 9.51878 5.25 8V6.75L4 6.75C3.30964 6.75 2.75 7.30964 2.75 8L2.75 12C2.75 12.6904 3.30964 13.25 4 13.25H8C8.69036 13.25 9.25 12.6904 9.25 12V10.75ZM6.75 4C6.75 3.30964 7.30964 2.75 8 2.75L12 2.75C12.6904 2.75 13.25 3.30964 13.25 4V8C13.25 8.69036 12.6904 9.25 12 9.25H8C7.30964 9.25 6.75 8.69036 6.75 8L6.75 4Z" fill="#6C86AD"/>
+                      <div
+                        *ngIf="!isCopied"
+                        class="cursor-pointer copyIcon"
+                        (click)="copyToClipboard(collectionDetails[0]?.id)"
+                        appTooltip
+                        data-bs-placement="top"
+                        title="Copy"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M8 1.25C6.48122 1.25 5.25 2.48122 5.25 4L5.25 5.25H4C2.48122 5.25 1.25 6.48122 1.25 8L1.25 12C1.25 13.5188 2.48122 14.75 4 14.75H8C9.51878 14.75 10.75 13.5188 10.75 12V10.75H12C13.5188 10.75 14.75 9.51878 14.75 8V4C14.75 2.48122 13.5188 1.25 12 1.25L8 1.25ZM9.25 10.75L8 10.75C6.48122 10.75 5.25 9.51878 5.25 8V6.75L4 6.75C3.30964 6.75 2.75 7.30964 2.75 8L2.75 12C2.75 12.6904 3.30964 13.25 4 13.25H8C8.69036 13.25 9.25 12.6904 9.25 12V10.75ZM6.75 4C6.75 3.30964 7.30964 2.75 8 2.75L12 2.75C12.6904 2.75 13.25 3.30964 13.25 4V8C13.25 8.69036 12.6904 9.25 12 9.25H8C7.30964 9.25 6.75 8.69036 6.75 8L6.75 4Z"
+                            fill="#6C86AD"
+                          />
                         </svg>
                       </div>
-                      <div *ngIf="isCopied" class="cursor-pointer copyIcon" (click)="copyToClipboard(collectionDetails[0]?.id)" appTooltip data-bs-placement="top" title="Copied">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M8 1.25C6.48122 1.25 5.25 2.48122 5.25 4L5.25 5.25H4C2.48122 5.25 1.25 6.48122 1.25 8L1.25 12C1.25 13.5188 2.48122 14.75 4 14.75H8C9.51878 14.75 10.75 13.5188 10.75 12V10.75H12C13.5188 10.75 14.75 9.51878 14.75 8V4C14.75 2.48122 13.5188 1.25 12 1.25L8 1.25ZM9.25 10.75L8 10.75C6.48122 10.75 5.25 9.51878 5.25 8V6.75L4 6.75C3.30964 6.75 2.75 7.30964 2.75 8L2.75 12C2.75 12.6904 3.30964 13.25 4 13.25H8C8.69036 13.25 9.25 12.6904 9.25 12V10.75ZM6.75 4C6.75 3.30964 7.30964 2.75 8 2.75L12 2.75C12.6904 2.75 13.25 3.30964 13.25 4V8C13.25 8.69036 12.6904 9.25 12 9.25H8C7.30964 9.25 6.75 8.69036 6.75 8L6.75 4Z" fill="#6C86AD"/>
+                      <div
+                        *ngIf="isCopied"
+                        class="cursor-pointer copyIcon"
+                        (click)="copyToClipboard(collectionDetails[0]?.id)"
+                        appTooltip
+                        data-bs-placement="top"
+                        title="Copied"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M8 1.25C6.48122 1.25 5.25 2.48122 5.25 4L5.25 5.25H4C2.48122 5.25 1.25 6.48122 1.25 8L1.25 12C1.25 13.5188 2.48122 14.75 4 14.75H8C9.51878 14.75 10.75 13.5188 10.75 12V10.75H12C13.5188 10.75 14.75 9.51878 14.75 8V4C14.75 2.48122 13.5188 1.25 12 1.25L8 1.25ZM9.25 10.75L8 10.75C6.48122 10.75 5.25 9.51878 5.25 8V6.75L4 6.75C3.30964 6.75 2.75 7.30964 2.75 8L2.75 12C2.75 12.6904 3.30964 13.25 4 13.25H8C8.69036 13.25 9.25 12.6904 9.25 12V10.75ZM6.75 4C6.75 3.30964 7.30964 2.75 8 2.75L12 2.75C12.6904 2.75 13.25 3.30964 13.25 4V8C13.25 8.69036 12.6904 9.25 12 9.25H8C7.30964 9.25 6.75 8.69036 6.75 8L6.75 4Z"
+                            fill="#6C86AD"
+                          />
                         </svg>
                       </div>
                     </div>
@@ -54,11 +123,11 @@
                 </div>
                 <div class="social-link-wrapper">
                   <div
-                  class="icon"
-                  *ngIf="this.collectionDetails[0]?.externalUrl"
-                  (click)="
-                    goToExternalPage(this.collectionDetails[0]?.externalUrl)
-                  "
+                    class="icon"
+                    *ngIf="this.collectionDetails[0]?.externalUrl"
+                    (click)="
+                      goToExternalPage(this.collectionDetails[0]?.externalUrl)
+                    "
                   >
                     <app-svg-icons
                       iconName="doodlesIcon"
@@ -67,9 +136,12 @@
                   </div>
                   <div
                     class="icon"
-                    *ngIf="this.collectionDetails[0]?.twitterUrl"
+                    *ngIf="this.collectionDetails[0]?.twitterUsername"
                     (click)="
-                      goToExternalPage(this.collectionDetails[0]?.twitterUrl)
+                      goToExternalPage(
+                        this.collectionDetails[0]?.twitterUsername,
+                        'twitter'
+                      )
                     "
                   >
                     <app-svg-icons
@@ -133,13 +205,17 @@
             </div>
             <div class="line"></div>
             <div class="collection-stats-info-wrapper">
-              <div class="overflow-wrapper {{ !is_analytics ? 'is-expand' : '' }}">
+              <div
+                class="overflow-wrapper {{ !is_analytics ? 'is-expand' : '' }}"
+              >
                 <div class="collection-nft-stats-wrapper">
                   <div class="nft-stats">
                     <p class="stats-name">Items</p>
                     <div class="stats-price-wrapper">
                       <div class="price">
-                        <p>{{ collectionDetails[0]?.tokenCount | numberShorten }}</p>
+                        <p>
+                          {{ collectionDetails[0]?.tokenCount | numberShorten }}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -147,8 +223,15 @@
                     <p class="stats-name">1D Vol.</p>
                     <div class="stats-price-wrapper">
                       <div class="price">
-                        <p>{{ collectionDetails[0]?.volume["1day"] | numberShorten }}</p>
-                        <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                        <p>
+                          {{
+                            collectionDetails[0]?.volume["1day"] | numberShorten
+                          }}
+                        </p>
+                        <app-svg-icons
+                          iconName="ethIcon"
+                          class="icon"
+                        ></app-svg-icons>
                       </div>
                       <span class="percentage text-green">+25.23%</span>
                     </div>
@@ -157,8 +240,16 @@
                     <p class="stats-name">Floor</p>
                     <div class="stats-price-wrapper">
                       <div class="price">
-                        <p>{{ collectionDetails[0]?.floorSale["1day"] | numberShorten }}</p>
-                        <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                        <p>
+                          {{
+                            collectionDetails[0]?.floorAsk?.price?.amount
+                              ?.decimal | numberShorten
+                          }}
+                        </p>
+                        <app-svg-icons
+                          iconName="ethIcon"
+                          class="icon"
+                        ></app-svg-icons>
                       </div>
                       <span class="percentage text-red">+25.23%</span>
                     </div>
@@ -167,8 +258,16 @@
                     <p class="stats-name">Total Vol.</p>
                     <div class="stats-price-wrapper">
                       <div class="price">
-                        <p>{{ collectionDetails[0]?.volume?.allTime | numberShorten }}</p>
-                        <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                        <p>
+                          {{
+                            collectionDetails[0]?.volume?.allTime
+                              | numberShorten
+                          }}
+                        </p>
+                        <app-svg-icons
+                          iconName="ethIcon"
+                          class="icon"
+                        ></app-svg-icons>
                       </div>
                     </div>
                   </div>
@@ -176,8 +275,13 @@
                     <p class="stats-name">Holders</p>
                     <div class="stats-price-wrapper">
                       <div class="price">
-                        <p>{{ collectionDetails[0]?.ownerCount | numberShorten }}</p>
-                        <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                        <p>
+                          {{ collectionDetails[0]?.ownerCount | numberShorten }}
+                        </p>
+                        <app-svg-icons
+                          iconName="ethIcon"
+                          class="icon"
+                        ></app-svg-icons>
                       </div>
                     </div>
                   </div>
@@ -186,7 +290,10 @@
                     <div class="stats-price-wrapper">
                       <div class="price">
                         <p>{{ this.uniqueHolders }} %</p>
-                        <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                        <app-svg-icons
+                          iconName="ethIcon"
+                          class="icon"
+                        ></app-svg-icons>
                       </div>
                     </div>
                   </div>
@@ -200,16 +307,25 @@
             <div class="nfts-header">
               <div class="nfts-sh-inner-section nfts-sh-search-wrapper">
                 <button class="single-icon__btn" (click)="openFilterTab()">
-                    <div class="filter-icon-wrapper">
-                      <div  *ngIf="this.apiValues?.length > 0" class="is-filter-active"></div>
-                      <app-svg-icons
-                        iconName="filterBarIcon"
-                        className="{{ is_filter || this.apiValues?.length > 0 ? 'active' : '' }}" class="icon"
-                      ></app-svg-icons>
-                    </div>
+                  <div class="filter-icon-wrapper">
+                    <div
+                      *ngIf="this.apiValues?.length > 0"
+                      class="is-filter-active"
+                    ></div>
+                    <app-svg-icons
+                      iconName="filterBarIcon"
+                      className="{{
+                        is_filter || this.apiValues?.length > 0 ? 'active' : ''
+                      }}"
+                      class="icon"
+                    ></app-svg-icons>
+                  </div>
                 </button>
                 <div class="c-search__wrapper">
-                  <app-svg-icons iconName="cSearchIcon" class="searchIcon"></app-svg-icons>
+                  <app-svg-icons
+                    iconName="cSearchIcon"
+                    class="searchIcon"
+                  ></app-svg-icons>
                   <input
                     type="text"
                     numbersOnly
@@ -224,15 +340,25 @@
                     autocomplete="off"
                   />
                 </div>
-                <span class="result_span d-none d-md-flex" *ngIf="this.inputValue">{{ this.searchResult }} results</span>
+                <span
+                  class="result_span d-none d-md-flex"
+                  *ngIf="this.inputValue"
+                  >{{ this.searchResult }} results</span
+                >
               </div>
-              <div class="nfts-sh-inner-section nfts-sh-button-wrapper justify-content-end">
+              <div
+                class="nfts-sh-inner-section nfts-sh-button-wrapper justify-content-end"
+              >
                 <button
                   id="sweep-btn"
                   (click)="opensweep()"
                   class="single-icon__btn d-none d-lg-flex"
                 >
-                  <app-svg-icons class="icon" className="{{ is_sweep ? 'active' : '' }}" iconName="sweepIcon"></app-svg-icons>
+                  <app-svg-icons
+                    class="icon"
+                    className="{{ is_sweep ? 'active' : '' }}"
+                    iconName="sweepIcon"
+                  ></app-svg-icons>
                 </button>
                 <div class="btn-groups">
                   <button
@@ -242,7 +368,21 @@
                     aria-expanded="false"
                   >
                     <span>{{ this.category }}</span>
-                    <app-svg-icons iconName="downIcon"></app-svg-icons>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M8 10L12 14L16 10"
+                        stroke="#6C86AC"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li *ngFor="let key of objectKeys(categories)">
@@ -256,49 +396,90 @@
                     </li>
                   </ul>
                 </div>
-                <button class="btn-analytics d-none d-lg-flex" *ngIf="!is_analytics"
-                (click)="openAnalyticsTab()">
-                  <app-svg-icons iconName="chartIcon" class="icon" className="icon"></app-svg-icons>
+                <button
+                  class="btn-analytics d-none d-lg-flex"
+                  *ngIf="!is_analytics"
+                  (click)="openAnalyticsTab()"
+                >
+                  <app-svg-icons
+                    iconName="chartIcon"
+                    class="icon"
+                    className="icon"
+                  ></app-svg-icons>
                   <span>Analytics</span>
                 </button>
                 <div class="sort-icon-wrapper">
-                  <app-svg-icons iconName="gridViewIcon" (click)="this.sortByDay(this.layoutactive['4layout'])" className="sort_icon {{this.active === this.layoutactive['4layout'] ? 'active' : ''}}" class="sort_icon cursor-pointer"></app-svg-icons>
-                  <app-svg-icons iconName="listViewIcon" (click)="this.sortByDay(this.layoutactive['listlogout'])" className="sort_icon {{this.active === this.layoutactive['listlogout'] ? 'active' : ''}}" class="sort_icon cursor-pointer"></app-svg-icons>
+                  <app-svg-icons
+                    iconName="gridViewIcon"
+                    (click)="this.sortByDay(this.layoutactive['4layout'])"
+                    className="sort_icon {{
+                      this.active === this.layoutactive['4layout']
+                        ? 'active'
+                        : ''
+                    }}"
+                    class="sort_icon cursor-pointer"
+                  ></app-svg-icons>
+                  <app-svg-icons
+                    iconName="listViewIcon"
+                    (click)="this.sortByDay(this.layoutactive['listlogout'])"
+                    className="sort_icon {{
+                      this.active === this.layoutactive['listlogout']
+                        ? 'active'
+                        : ''
+                    }}"
+                    class="sort_icon cursor-pointer"
+                  ></app-svg-icons>
                 </div>
               </div>
             </div>
-            <span class="result_span d-md-none" *ngIf="this.inputValue">{{ this.searchResult }} results</span>
+            <span class="result_span d-md-none" *ngIf="this.inputValue"
+              >{{ this.searchResult }} results</span
+            >
           </div>
-          <div class="d-flex collections--wrapper__containter" id="collections--wrapper__containter">
+          <div
+            class="d-flex collections--wrapper__containter"
+            id="collections--wrapper__containter"
+          >
             <app-collection-filter
               *ngIf="is_filter"
               (close_filter)="closeFilterFunc($event)"
             ></app-collection-filter>
-            <div class="collection-grid-open {{is_filter ? 'open-filter' : ''}}" id="collection-grid-open">
-              <div
-                class="seggestion_filer"
-                *ngIf="this.apiValues?.length > 0"
-              >
+            <div
+              class="collection-grid-open {{ is_filter ? 'open-filter' : '' }}"
+              id="collection-grid-open"
+            >
+              <div class="seggestion_filer" *ngIf="this.apiValues?.length > 0">
                 <div
                   class="suggestion_result"
                   *ngFor="let list of apiValues"
+                  (click)="removeFilterList(list?.keyData, list?.value)"
                 >
                   <p class="mb-0">
                     {{ list?.keyData }} : <span>{{ list?.value }}</span>
                   </p>
-                  <app-svg-icons iconName="closeIcon" class="cursor-pointer" className="icon"></app-svg-icons>
+                  <app-svg-icons
+                    iconName="closeIcon"
+                    class="cursor-pointer"
+                    className="icon"
+                  ></app-svg-icons>
                 </div>
-                <span class="mb-0 clear_all"  *ngIf="this.apiValues?.length > 1" (click)="removeFilterListAll()">
+                <span
+                  class="mb-0 clear_all"
+                  *ngIf="this.apiValues?.length > 1"
+                  (click)="removeFilterListAll()"
+                >
                   clear all
                 </span>
               </div>
               <app-list-view-collections
                 *ngIf="this.active === this.layoutactive['listlogout']"
+                [externalUrl]="this.discordUrl"
               ></app-list-view-collections>
               <app-grid-view-collection
                 *ngIf="this.active === this.layoutactive['4layout']"
                 className="{{ gridClassName }}"
                 (messageEvent)="receiveMessage($event)"
+                [externalUrl]="this.discordUrl"
               ></app-grid-view-collection>
             </div>
           </div>
@@ -308,15 +489,40 @@
       <!-- ====== Right Side Graph Section ====== -->
       <div class="collection-right-side-wrapper" *ngIf="is_analytics">
         <div class="analytics-container w-100" id="analytics-container">
-
           <div class="collection-header__wrappper">
-            <ul class="nav nav-pills c__header" id="analytics-wrapper-tab" role="tablist">
+            <ul
+              class="nav nav-pills c__header"
+              id="analytics-wrapper-tab"
+              role="tablist"
+            >
               <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="analytics-tab" data-bs-toggle="pill" data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics" aria-selected="true">Analytics</button>
+                <button
+                  class="nav-link active"
+                  id="analytics-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#analytics"
+                  type="button"
+                  role="tab"
+                  aria-controls="analytics"
+                  aria-selected="true"
+                >
+                  Analytics
+                </button>
                 <div class="line"></div>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="activity-tab" data-bs-toggle="pill" data-bs-target="#activity" type="button" role="tab" aria-controls="activity" aria-selected="false">Activity</button>
+                <button
+                  class="nav-link"
+                  id="activity-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#activity"
+                  type="button"
+                  role="tab"
+                  aria-controls="activity"
+                  aria-selected="false"
+                >
+                  Activity
+                </button>
                 <div class="line"></div>
               </li>
             </ul>
@@ -330,11 +536,24 @@
             </div>
           </div>
 
-          <div class="tab-content collection-analytics__content" id="analytics-wrapper-tabContent">
-            <div class="tab-pane fade show active w-100" id="analytics" role="tabpanel" aria-labelledby="analytics-tab">
+          <div
+            class="tab-content collection-analytics__content"
+            id="analytics-wrapper-tabContent"
+          >
+            <div
+              class="tab-pane fade show active w-100"
+              id="analytics"
+              role="tabpanel"
+              aria-labelledby="analytics-tab"
+            >
               <app-analytics-tab></app-analytics-tab>
             </div>
-            <div class="tab-pane fade w-100" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+            <div
+              class="tab-pane fade w-100"
+              id="activity"
+              role="tabpanel"
+              aria-labelledby="activity-tab"
+            >
               <app-activity-tab></app-activity-tab>
             </div>
           </div>
@@ -348,21 +567,80 @@
   <div class="buttons-wrapper">
     <div class="sweep-analytics-btn">
       <div class="btn-sa" (click)="opensweep()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M22.2422 1.99999L13.7422 10.5" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round"/>
-          <path d="M16.7422 18.25C17.8337 18.25 19.2422 17 19.2422 17C19.2422 17 17.9922 18.4085 17.9922 19.5C17.9922 20.5915 19.2422 22 19.2422 22C19.2422 22 17.8337 20.75 16.7422 20.75C15.6506 20.75 14.2422 22 14.2422 22C14.2422 22 15.4922 20.5915 15.4922 19.5C15.4922 18.4085 14.2422 17 14.2422 17C14.2422 17 15.6506 18.25 16.7422 18.25Z" fill="#FBFBFB"/>
-          <path d="M19.2422 11C20.1154 11 21.2422 10 21.2422 10C21.2422 10 20.2422 11.1268 20.2422 12C20.2422 12.8732 21.2422 14 21.2422 14C21.2422 14 20.1154 13 19.2422 13C18.3689 13 17.2422 14 17.2422 14C17.2422 14 18.2422 12.8732 18.2422 12C18.2422 11.1268 17.2422 10 17.2422 10C17.2422 10 18.3689 11 19.2422 11Z" fill="#FBFBFB"/>
-          <path d="M14.6495 12.4073C14.9404 12.6983 14.9389 13.1362 14.6463 13.3147L12.6617 14.5254C13.3736 15.8939 13.2807 17.4645 12.3064 18.4388L9.26095 21.4842C9.05078 21.6944 8.67399 21.6585 8.41932 21.4038L2.88672 15.8712C2.63206 15.6166 2.59617 15.2398 2.80635 15.0296L5.85177 11.9842C6.82606 11.0099 8.39667 10.917 9.76511 11.6289L10.9758 9.64424C11.1543 9.35163 11.5923 9.35013 11.8832 9.64109C13.7286 11.4864 10.1542 7.91201 14.6495 12.4073ZM6.87546 18.3371L8.58843 16.6241C8.79869 16.4139 9.17559 16.4499 9.43026 16.7045C9.68493 16.9592 9.72081 17.336 9.51054 17.5462L7.79757 19.2592L8.71966 20.1813L11.3842 17.5167C12.2252 16.6758 12.0812 15.1684 11.0627 14.1499L10.1407 13.2279C9.12213 12.2094 7.61478 12.0654 6.77382 12.9064L4.10927 15.5709L5.03135 16.493L5.983 15.5413C6.19326 15.3311 6.57005 15.367 6.82472 15.6216C7.07939 15.8763 7.11538 16.2532 6.90511 16.4635L5.95346 17.4151L6.87546 18.3371ZM10.8191 12.3834L11.9072 13.4715L13.3258 12.6062L11.6843 10.9648L10.8191 12.3834Z" fill="#FBFBFB"/>
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0405 10.2225L11.6711 9.85317C11.5782 9.76027 11.4712 9.72348 11.3884 9.72377C11.3084 9.72405 11.259 9.75599 11.232 9.80039L9.87527 12.0243L9.62665 11.895C8.34148 11.2264 6.92187 11.3383 6.0639 12.1962L3.01848 15.2417C2.96165 15.2985 2.92154 15.4817 3.09885 15.659L8.63146 21.1916C8.80877 21.3689 8.99199 21.3288 9.04882 21.272L12.0942 18.2266C12.9522 17.3686 13.0641 15.949 12.3955 14.6638L12.2662 14.4152L14.4901 13.0585C14.5345 13.0315 14.5665 12.9821 14.5667 12.9021C14.567 12.8193 14.5302 12.7123 14.4373 12.6194L12.0405 10.2225ZM12.6745 10.008L14.8616 12.1951C15.0596 12.3932 15.1676 12.6507 15.1667 12.9042C15.1658 13.1605 15.0507 13.4194 14.8025 13.5708L13.0499 14.64C13.6712 16.0346 13.5464 17.6229 12.5185 18.6509L9.47308 21.6963C9.10957 22.0598 8.53922 21.9479 8.20719 21.6159L2.67459 16.0833C2.34257 15.7513 2.23069 15.1809 2.59421 14.8174L5.63964 11.772C6.66752 10.7441 8.25588 10.6193 9.65052 11.2406L10.7197 9.48798C10.8711 9.23979 11.13 9.12466 11.3863 9.12377C11.6398 9.1229 11.8973 9.23085 12.0954 9.4289L12.465 9.79854L12.6735 10.007C12.1805 10.5 12.2495 10.4315 12.2495 10.4315M12.6745 10.008L12.6735 10.007L12.6745 10.008ZM11.6268 10.4829L13.8076 12.6637L11.862 13.8505L10.44 12.4286L11.6268 10.4829ZM11.7419 11.4465L11.1981 12.338L11.9525 13.0925L12.844 12.5487L11.7419 11.4465ZM6.56169 12.6942C7.55602 11.6998 9.25694 11.9198 10.3528 13.0157L11.2748 13.9377C12.3707 15.0336 12.5907 16.7345 11.5963 17.7288L8.71966 20.6055L7.37331 19.2592L9.29841 17.3341C9.35537 17.2771 9.39541 17.0939 9.21813 16.9166C9.04078 16.7393 8.85746 16.7793 8.80056 16.8362L6.87546 18.7613L5.5292 17.415L6.69298 16.2513C6.74988 16.1944 6.78994 16.0111 6.61259 15.8337C6.43531 15.6564 6.25209 15.6965 6.19513 15.7534L5.03136 16.9172L3.68501 15.5709L6.56169 12.6942ZM9.92854 13.44C8.98732 12.4987 7.67354 12.4309 6.98595 13.1184L4.53354 15.5709L5.03136 16.0687L5.77087 15.3292C6.13444 14.9656 6.70479 15.0774 7.03685 15.4094C7.36884 15.7414 7.48089 16.3119 7.11725 16.6755L6.37773 17.415L6.87547 17.9128L8.3763 16.4119C8.73993 16.0483 9.3104 16.1603 9.64239 16.4923C9.97445 16.8244 10.0863 17.3947 9.72267 17.7583L8.22184 19.2592L8.71966 19.757L11.1721 17.3046C11.8597 16.617 11.7918 15.3032 10.8505 14.362L9.92854 13.44Z" fill="#FBFBFB"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M22.2422 1.99999L13.7422 10.5"
+            stroke="#FBFBFB"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M16.7422 18.25C17.8337 18.25 19.2422 17 19.2422 17C19.2422 17 17.9922 18.4085 17.9922 19.5C17.9922 20.5915 19.2422 22 19.2422 22C19.2422 22 17.8337 20.75 16.7422 20.75C15.6506 20.75 14.2422 22 14.2422 22C14.2422 22 15.4922 20.5915 15.4922 19.5C15.4922 18.4085 14.2422 17 14.2422 17C14.2422 17 15.6506 18.25 16.7422 18.25Z"
+            fill="#FBFBFB"
+          />
+          <path
+            d="M19.2422 11C20.1154 11 21.2422 10 21.2422 10C21.2422 10 20.2422 11.1268 20.2422 12C20.2422 12.8732 21.2422 14 21.2422 14C21.2422 14 20.1154 13 19.2422 13C18.3689 13 17.2422 14 17.2422 14C17.2422 14 18.2422 12.8732 18.2422 12C18.2422 11.1268 17.2422 10 17.2422 10C17.2422 10 18.3689 11 19.2422 11Z"
+            fill="#FBFBFB"
+          />
+          <path
+            d="M14.6495 12.4073C14.9404 12.6983 14.9389 13.1362 14.6463 13.3147L12.6617 14.5254C13.3736 15.8939 13.2807 17.4645 12.3064 18.4388L9.26095 21.4842C9.05078 21.6944 8.67399 21.6585 8.41932 21.4038L2.88672 15.8712C2.63206 15.6166 2.59617 15.2398 2.80635 15.0296L5.85177 11.9842C6.82606 11.0099 8.39667 10.917 9.76511 11.6289L10.9758 9.64424C11.1543 9.35163 11.5923 9.35013 11.8832 9.64109C13.7286 11.4864 10.1542 7.91201 14.6495 12.4073ZM6.87546 18.3371L8.58843 16.6241C8.79869 16.4139 9.17559 16.4499 9.43026 16.7045C9.68493 16.9592 9.72081 17.336 9.51054 17.5462L7.79757 19.2592L8.71966 20.1813L11.3842 17.5167C12.2252 16.6758 12.0812 15.1684 11.0627 14.1499L10.1407 13.2279C9.12213 12.2094 7.61478 12.0654 6.77382 12.9064L4.10927 15.5709L5.03135 16.493L5.983 15.5413C6.19326 15.3311 6.57005 15.367 6.82472 15.6216C7.07939 15.8763 7.11538 16.2532 6.90511 16.4635L5.95346 17.4151L6.87546 18.3371ZM10.8191 12.3834L11.9072 13.4715L13.3258 12.6062L11.6843 10.9648L10.8191 12.3834Z"
+            fill="#FBFBFB"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M12.0405 10.2225L11.6711 9.85317C11.5782 9.76027 11.4712 9.72348 11.3884 9.72377C11.3084 9.72405 11.259 9.75599 11.232 9.80039L9.87527 12.0243L9.62665 11.895C8.34148 11.2264 6.92187 11.3383 6.0639 12.1962L3.01848 15.2417C2.96165 15.2985 2.92154 15.4817 3.09885 15.659L8.63146 21.1916C8.80877 21.3689 8.99199 21.3288 9.04882 21.272L12.0942 18.2266C12.9522 17.3686 13.0641 15.949 12.3955 14.6638L12.2662 14.4152L14.4901 13.0585C14.5345 13.0315 14.5665 12.9821 14.5667 12.9021C14.567 12.8193 14.5302 12.7123 14.4373 12.6194L12.0405 10.2225ZM12.6745 10.008L14.8616 12.1951C15.0596 12.3932 15.1676 12.6507 15.1667 12.9042C15.1658 13.1605 15.0507 13.4194 14.8025 13.5708L13.0499 14.64C13.6712 16.0346 13.5464 17.6229 12.5185 18.6509L9.47308 21.6963C9.10957 22.0598 8.53922 21.9479 8.20719 21.6159L2.67459 16.0833C2.34257 15.7513 2.23069 15.1809 2.59421 14.8174L5.63964 11.772C6.66752 10.7441 8.25588 10.6193 9.65052 11.2406L10.7197 9.48798C10.8711 9.23979 11.13 9.12466 11.3863 9.12377C11.6398 9.1229 11.8973 9.23085 12.0954 9.4289L12.465 9.79854L12.6735 10.007C12.1805 10.5 12.2495 10.4315 12.2495 10.4315M12.6745 10.008L12.6735 10.007L12.6745 10.008ZM11.6268 10.4829L13.8076 12.6637L11.862 13.8505L10.44 12.4286L11.6268 10.4829ZM11.7419 11.4465L11.1981 12.338L11.9525 13.0925L12.844 12.5487L11.7419 11.4465ZM6.56169 12.6942C7.55602 11.6998 9.25694 11.9198 10.3528 13.0157L11.2748 13.9377C12.3707 15.0336 12.5907 16.7345 11.5963 17.7288L8.71966 20.6055L7.37331 19.2592L9.29841 17.3341C9.35537 17.2771 9.39541 17.0939 9.21813 16.9166C9.04078 16.7393 8.85746 16.7793 8.80056 16.8362L6.87546 18.7613L5.5292 17.415L6.69298 16.2513C6.74988 16.1944 6.78994 16.0111 6.61259 15.8337C6.43531 15.6564 6.25209 15.6965 6.19513 15.7534L5.03136 16.9172L3.68501 15.5709L6.56169 12.6942ZM9.92854 13.44C8.98732 12.4987 7.67354 12.4309 6.98595 13.1184L4.53354 15.5709L5.03136 16.0687L5.77087 15.3292C6.13444 14.9656 6.70479 15.0774 7.03685 15.4094C7.36884 15.7414 7.48089 16.3119 7.11725 16.6755L6.37773 17.415L6.87547 17.9128L8.3763 16.4119C8.73993 16.0483 9.3104 16.1603 9.64239 16.4923C9.97445 16.8244 10.0863 17.3947 9.72267 17.7583L8.22184 19.2592L8.71966 19.757L11.1721 17.3046C11.8597 16.617 11.7918 15.3032 10.8505 14.362L9.92854 13.44Z"
+            fill="#FBFBFB"
+          />
         </svg>
         <span>Sweep</span>
       </div>
       <div class="btn-sa" (click)="openAnalyticsTab()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <rect x="4" y="4" width="16" height="16" rx="4" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M8 16V14" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M12 16V8" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M16 16V11" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <rect
+            x="4"
+            y="4"
+            width="16"
+            height="16"
+            rx="4"
+            stroke="#FBFBFB"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8 16V14"
+            stroke="#FBFBFB"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12 16V8"
+            stroke="#FBFBFB"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M16 16V11"
+            stroke="#FBFBFB"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
         <span>Analytics</span>
       </div>
@@ -370,8 +648,7 @@
   </div>
 
   <app-sweep-and-analytics-mobile-tab
-  *ngIf="is_sweep"
-  (closeSweep)="closeSweep($event)"
+    *ngIf="is_sweep"
+    (closeSweep)="closeSweep($event)"
   ></app-sweep-and-analytics-mobile-tab>
 </div>
-

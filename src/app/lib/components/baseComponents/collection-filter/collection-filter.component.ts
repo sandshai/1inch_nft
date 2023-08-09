@@ -16,7 +16,8 @@ export class CollectionFilterComponent {
   collectionsAttributes: any;
   collectionList: any = [];
   collectionName: any;
-
+  buyNowTextClr: any;
+  buyBidNowTextClr: any;
   search: boolean = false;
 
   @Output() close_filter = new EventEmitter<boolean>();
@@ -46,5 +47,13 @@ export class CollectionFilterComponent {
 
   closeFilter() {
     this.close_filter.emit(false);
+  }
+
+  buyCheckBoxFun(value: any) {
+    this.buyNowTextClr = value;
+  }
+
+  bidCheckBoxFun(value: any) {
+    this.buyBidNowTextClr = value;
   }
 }

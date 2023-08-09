@@ -26,7 +26,7 @@
           }}
           <td>
             <div class="profile-item">
-              <img src="{{ itemDetail?.token?.image }}" alt="profile">
+              <img src="{{ itemDetail?.token?.image }}" alt="profile" />
               <p>{{ itemDetail?.token?.name }}</p>
             </div>
           </td>
@@ -40,7 +40,10 @@
             <p class="common-text">{{ this.formatChainAddress }}</p>
           </td>
           <td>
-            <div class="on-icon">
+            <div
+              class="on-icon"
+              *ngIf="itemDetail?.market?.floorAsk?.source?.icon"
+            >
               <img
                 src="{{ itemDetail?.market?.floorAsk?.source?.icon }}"
                 class="on_image"
@@ -50,10 +53,13 @@
           </td>
           <td>
             <div class="price-buy-wrapper">
-              <div class="price">
-                <p>{{
-                  itemDetail?.market?.floorAsk?.price?.amount?.decimal
-                }}</p>
+              <div
+                class="price"
+                *ngIf="itemDetail?.market?.floorAsk?.price?.amount?.decimal"
+              >
+                <p>
+                  {{ itemDetail?.market?.floorAsk?.price?.amount?.decimal }}
+                </p>
                 <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
               </div>
               <div class="line"></div>
@@ -61,7 +67,12 @@
             </div>
           </td>
           <td>
-            <div class="add-to-cart ms-auto" appTooltip data-bs-placement="top" title="Add to bag">
+            <div
+              class="add-to-cart ms-auto"
+              appTooltip
+              data-bs-placement="top"
+              title="Add to bag"
+            >
               <app-svg-icons iconName="cartIcon"></app-svg-icons>
             </div>
           </td>
@@ -85,5 +96,7 @@
   class="d-flex justify-content-center mt-3"
   *ngIf="this.pagination && itemCollections?.length !== 0"
 >
-  <button class="btn btn-viewmore" (click)="loadMore(true)">View More</button>
+  <button class="btn-viewmore" (click)="loadMore(true)">
+    <span>View More</span>
+  </button>
 </div>

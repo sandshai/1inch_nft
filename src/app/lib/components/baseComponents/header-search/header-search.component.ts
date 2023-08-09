@@ -8,10 +8,12 @@ import {
   HostListener,
   Output,
   EventEmitter,
+  Input,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { CrudService } from 'src/app/lib/services/crud.service';
 import { SettingsService } from 'src/app/lib/services/settings.service';
+import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 // import { isAddress as isViemAddress } from 'viem';
 
 interface ApiPayloadValues {
@@ -72,9 +74,11 @@ export class HeaderSearchComponent {
     private router: Router,
     private http: HttpClient,
     private cdr: ChangeDetectorRef,
-    private eRef: ElementRef
+    private eRef: ElementRef,
+    private shared: SharedDataService
   ) {}
 
+  @Input() focusInput: any;
   @Output() closeDialog = new EventEmitter<boolean>();
 
   @HostListener('document:click', ['$event.target'])
@@ -100,12 +104,14 @@ export class HeaderSearchComponent {
   }
 
   ngOnInit() {
-    let value = 'recent';
-    const list = this.retrieveValue(value);
-    if (list) {
-      this.recentCollectionList = [...this.recentCollectionList, list];
-    }
+    this.recentCollectionList = this.shared.getSearchHistory();
+    this.recentCollectionList = this.recentCollectionList.slice(0, 5);
+
     this.cdr.detectChanges();
+    if (this.focusInput) {
+      document.getElementById('head-search')?.focus();
+      this.isOpen = true;
+    }
   }
 
   getValue(val: string) {
@@ -242,11 +248,7 @@ export class HeaderSearchComponent {
     let key = 'recent';
 
     if (list) {
-      this.storeValue(key, list);
-
-      let recentValues = this.retrieveValue(key);
-      this.hideContent = true;
-      this.recentCollectionList.push(recentValues);
+      this.shared.addToSearchHistory(list);
       this.removesearchhistory();
     }
 
@@ -291,14 +293,5 @@ export class HeaderSearchComponent {
   checkStrings(value: string) {
     const regex = /^[A-Za-z]+$/;
     return regex.test(value);
-  }
-
-  storeValue(key: string, value: any): void {
-    localStorage.setItem(key, JSON.stringify(value));
-  }
-
-  retrieveValue(key: string): any {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : null;
   }
 }

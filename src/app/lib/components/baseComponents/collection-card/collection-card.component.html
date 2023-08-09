@@ -8,17 +8,35 @@
       />
     </div>
     <div class="icon-wrapper">
-      <div class="cus-marketplace-icon">
+      <div class="marketplace-icon">
         <img
-        src="{{ item?.market?.floorAsk?.source?.icon }}"
-        alt="tick"
+          *ngIf="selectedIcon?.iconStatus == 'image'"
+          src="/assets/images/market-place-icons/{{ selectedIcon?.iconLink }}"
+          alt="tick"
         />
+        <!-- <img
+          *ngIf="selectedIcon?.iconStatus == 'cdn'"
+          src="{{ item?.market?.floorAsk?.source?.icon }}"
+          class="round"
+          alt="tick"
+        /> -->
       </div>
       <div class="custom-checkbox">
-        <input class="d-none" type="checkbox" value="" id="card-checkbox_{{index}}">
-        <label class="form-check-label" for="card-checkbox_{{index}}">
-          <app-svg-icons iconName="rounded_is_not_checked" class="rounded_is_not_checked"></app-svg-icons>
-          <app-svg-icons iconName="rounded_is_checked" class="rounded_is_checked"></app-svg-icons>
+        <input
+          class="d-none"
+          type="checkbox"
+          value=""
+          id="card-checkbox_{{ index }}"
+        />
+        <label class="form-check-label" for="card-checkbox_{{ index }}">
+          <app-svg-icons
+            iconName="rounded_is_not_checked"
+            class="rounded_is_not_checked"
+          ></app-svg-icons>
+          <app-svg-icons
+            iconName="rounded_is_checked"
+            class="rounded_is_checked"
+          ></app-svg-icons>
         </label>
       </div>
     </div>
@@ -30,19 +48,25 @@
   </div>
   <div class="card-body">
     <div class="collection-nft-title-wrapper">
-      <p appTooltip data-bs-placement="top" title='{{ item?.token?.name ? item?.token?.name : "#" + item?.token?.tokenId}}'>{{
-        item?.token?.name ? item?.token?.name : "#" + item?.token?.tokenId
-      }}</p>
+      <p
+        appTooltip
+        data-bs-placement="top"
+        title="{{
+          item?.token?.name ? item?.token?.name : '#' + item?.token?.tokenId
+        }}"
+      >
+        {{ item?.token?.name ? item?.token?.name : "#" + item?.token?.tokenId }}
+      </p>
       <div class="badge">
         <span>#</span>
         <span>{{ item?.token?.rarityRank }}</span>
       </div>
     </div>
     <div class="collection-nft-price-buy-wrapper">
-      <div class="price-wrapper">
-        <p>{{
-          item?.market?.floorAsk?.price?.amount?.decimal | numberShorten
-        }}</p>
+      <div class="price-wrapper" *ngIf="item?.market?.floorAsk?.source?.icon">
+        <p>
+          {{ item?.market?.floorAsk?.price?.amount?.decimal | numberShorten }}
+        </p>
         <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
       </div>
       <div class="action-btn-wrapper">

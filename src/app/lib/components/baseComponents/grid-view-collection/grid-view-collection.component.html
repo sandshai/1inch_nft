@@ -5,6 +5,7 @@
     [index]="i"
     [collection]="this.selectedChain"
     [selected]="this.selectedList"
+    [externalUrl]="this.externalUrl"
   ></app-collection-card>
 </div>
 
@@ -13,5 +14,7 @@
   class="d-flex justify-content-center mt-3"
   *ngIf="this.pagination && itemCollections?.length !== 0"
 >
-  <button class="btn btn-viewmore" (click)="loadMore(true)">View More</button>
+  <button class="btn-viewmore" (click)="loadMore(true)">
+    <span>View More</span>
+  </button>
 </div>

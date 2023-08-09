@@ -1,18 +1,24 @@
 .profile-filter {
-  display: flex;
-  width: 20rem;
-  flex-direction: column;
-  align-items: flex-start;
-  @include media-max-alt(991px) {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 2000;
-    width: 100%;
-    height: 100%;
-    background-color: var(--1inch-cbc-03);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2000;
+  width: 100%;
+  height: 100%;
+  background-color: var(--1inch-cbc-03);
+  @include media-min-lg {
+    position: sticky;
+    top: 6rem;
+    z-index: 9;
+    display: flex;
+    width: 20rem;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 1.5rem;
+    height: fit-content;
+    overflow: hidden;
   }
   .profile-filter-header {
     display: flex;
@@ -51,17 +57,12 @@
     align-items: flex-start;
     gap: 0.5rem;
     align-self: stretch;
-    border-radius: 1.5rem;
     background-color: var(--1inch-cbc-03);
-    @include media-max-alt(991px) {
-      border-radius: 0;
-      width: 100%;
-      height: calc(100% - 4.625rem);
-      overflow: auto;
-      @include scroll-bar(0.15rem,0.15rem);
-      .Nft-collections {
-        height: 100%;
-      }
+    height: calc(100vh - 9rem);
+    overflow: auto;
+    @include scroll-bar(0.15rem,0.15rem);
+    @include media-min-lg {
+      border-radius: 1.5rem;
     }
     .accordion {
       width: 100%;
@@ -139,7 +140,9 @@
               border-radius: 0.75rem;
               background-color: var(--1inch-cbc-05);
               &:hover {
-                background-color: #1e2633;
+                @include media-min-lg {
+                  background-color: #1e2633;
+                }
               }
               span {
                 color: var(--1inch-tc-02);
@@ -183,9 +186,9 @@
         padding: 0rem 1rem;
 
         @include media-min-lg {
-          max-height: 26.625rem;
-          overflow: auto;
-          @include scroll-bar(0.15rem,0.15rem);
+          // height: 26.625rem;
+          // overflow: auto;
+          // @include scroll-bar(0.15rem,0.15rem);
         }
         .nft-card {
           display: flex;
@@ -198,7 +201,9 @@
           background-color: transparent;
           border-radius: 0.5rem;
           &:hover {
-            background-color: var(--inch-cbc-09);
+            @include media-min-lg {
+              background-color: var(--inch-cbc-09);
+            }
           }
           .nft-img {
             width: 2.875rem;

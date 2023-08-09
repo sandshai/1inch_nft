@@ -31,6 +31,7 @@
   margin-top: 2rem;
   @include media-min-md {
     margin-top: 1rem;
+    gap: 2rem;
   }
   svg {
     width: 1.5rem;

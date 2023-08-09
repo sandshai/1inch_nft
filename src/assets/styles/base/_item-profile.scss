@@ -2,13 +2,13 @@
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 4.25rem;
     z-index: 99;
 
     @include media-min-md {
         height: fit-content;
         position: sticky;
-        top: 6rem;
+        top: 6.5rem;
         border-radius: 1.5rem;
         display: flex;
         flex-direction: column;

@@ -18,12 +18,10 @@
       }
       .table-heading {
         display: flex;
-        padding: 0rem 0.75rem 0.5rem 0rem;
+        padding: 0.5rem 0.75rem 0.75rem 0rem;
         align-items: center;
         gap: 0.25rem;
-        @include media-min-lg {
-          padding: 0rem 0.75rem 0.75rem 0rem;
-        }
+
         span {
           color: var(--1inch-tc-02);
           font-size: 0.8125rem;
@@ -195,6 +193,9 @@
         vertical-align: middle;
         white-space: nowrap;
         border-bottom: 1px solid var(--1inch-bc-11);
+        &:first-child {
+          width: 1rem;
+        }
       }
       .table-heading {
         display: flex;
@@ -224,7 +225,7 @@
         vertical-align: middle;
         white-space: nowrap;
         &:first-child {
-          max-width: 3rem;
+          width: 1rem;
         }
         @include media-min-lg {
           border-bottom: 1px solid transparent;

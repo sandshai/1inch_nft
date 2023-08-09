@@ -11,9 +11,9 @@
   gap: 2rem;
   overflow-y: auto;
   scrollbar-width: thin;
-  transition: all 0.4s ease-in-out;
+  transition: all 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
   transform: translate3d(100%,0,0);
-  @extend %scroll-bar;
+  @include scroll-bar(0.125rem,0.125rem);
   &.open-mobile-menu {
     transform: translate3d(0,0,0) !important;
   }

@@ -2,8 +2,6 @@
     .table-responsive {
       @include scroll-bar(0.2rem, 0.2rem);
       table {
-        border-collapse: inherit;
-        border-spacing: 0 1rem;
         td {
           white-space: nowrap;
           vertical-align: middle;
@@ -12,7 +10,7 @@
         thead {
           tr {
             th {
-              padding: 0.5rem;
+              padding: 0 0.75rem 0.75rem 0.75rem;
               color: var(--1inch-tc-02);
               font-size: 0.8125rem;
               font-weight: 300;
@@ -25,27 +23,27 @@
           tr {
             background-color: transparent;
             &:hover {
-              background-color: var(--inch-cbc-09) !important;
-
-              td {
-                &:first-child {
-                  border-radius: 0.75rem 0 0 0.75rem;
-                }
-                &:last-child {
-                  border-radius: 0 0.75rem 0.75rem 0;
-                }
-                .price-buy-wrapper {
-                  background-color: var(--1inch-bc-08) !important;
-                  border: 1px solid #202835 !important;
-                  .line,.buy-text {
-                    visibility: visible !important;
+              @include media-min-lg {
+                background-color: var(--inch-cbc-09) !important;
+                td {
+                  &:first-child {
+                    border-radius: 0.75rem 0 0 0.75rem;
+                  }
+                  &:last-child {
+                    border-radius: 0 0.75rem 0.75rem 0;
+                  }
+                  .price-buy-wrapper {
+                    background-color: var(--1inch-bc-08) !important;
+                    border: 1px solid #202835 !important;
+                    .line,.buy-text {
+                      visibility: visible !important;
+                    }
                   }
                 }
               }
             }
             td {
-              padding: 0.5rem;
-
+              padding: 0.75rem;
               .profile-item {
                 display: flex;
                 align-items: center;

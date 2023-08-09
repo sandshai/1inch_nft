@@ -102,13 +102,7 @@
                 }}
                 <td>
                   <div class="evnt_detail">
-                    <div class="icon">
-                      <img
-                        src="../../../../../assets/images/graph-icon/not_open_sales.svg"
-                        class="img-fluid"
-                        alt="icon"
-                      />
-                    </div>
+                    <app-svg-icons iconName="{{setIcon}}" class="icon"></app-svg-icons>
                     <p class="mb-0 {{ setClassName }}">
                       {{ activityDetails?.type }}
                     </p>
@@ -116,14 +110,10 @@
                 </td>
                 <td>
                   <div class="price">
-                    <p class="mb-0 text-litewhite">
+                    <p>
                       {{ activityDetails?.price?.amount?.decimal }}
                     </p>
-                    <img
-                      src="../../../../../assets/images/icons/diamond.svg"
-                      class="img-fluid"
-                      alt="icon"
-                    />
+                    <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
                   </div>
                 </td>
                 <td>
@@ -133,7 +123,7 @@
                       class="img-fluid"
                       alt="icon"
                     />
-                    <p class="mb-0">
+                    <p>
                       {{ this.formatChainAddress }}
                     </p>
                   </div>
@@ -145,25 +135,25 @@
                       class="img-fluid"
                       alt="icon"
                     />
-                    <p class="mb-0">{{ this.formatToAddress }}</p>
+                    <p>{{ this.formatToAddress }}</p>
                   </div>
                 </td>
                 <td>
                   <div class="time">
-                    <p class="mb-0 text-gray" *ngIf="this.timeInterval === 'h'">
+                    <p *ngIf="this.timeInterval === 'h'">
                       {{ this.daysAgo }} hours ago
                     </p>
-                    <p class="mb-0 text-gray" *ngIf="this.timeInterval === 'd'">
+                    <p *ngIf="this.timeInterval === 'd'">
                       {{ this.daysAgo }} days ago
                     </p>
-                    <p class="mb-0 text-gray" *ngIf="this.timeInterval === 'm'">
+                    <p *ngIf="this.timeInterval === 'm'">
                       {{ this.daysAgo }} mins ago
                     </p>
-                    <img
-                      src="../../../../../assets/images/icons/copy.svg"
-                      class="img-fluid"
-                      alt="icon"
-                    />
+                    <div class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.53955 6.28906C4.53955 5.59871 5.0992 5.03906 5.78955 5.03906H5.89481C6.30903 5.03906 6.64481 4.70328 6.64481 4.28906C6.64481 3.87485 6.30903 3.53906 5.89481 3.53906H5.78955C4.27077 3.53906 3.03955 4.77028 3.03955 6.28906V10.7101C3.03955 12.2289 4.27077 13.4601 5.78955 13.4601H10.2106C11.7294 13.4601 12.9606 12.2289 12.9606 10.7101V10.6049C12.9606 10.1906 12.6248 9.85485 12.2106 9.85485C11.7964 9.85485 11.4606 10.1906 11.4606 10.6049V10.7101C11.4606 11.4005 10.901 11.9601 10.2106 11.9601H5.78955C5.0992 11.9601 4.53955 11.4005 4.53955 10.7101V6.28906ZM8.30271 4.28906C8.30271 3.87485 8.63849 3.53906 9.05271 3.53906H12.2106C12.6248 3.53906 12.9606 3.87485 12.9606 4.28906V7.44696C12.9606 7.86117 12.6248 8.19696 12.2106 8.19696C11.7964 8.19696 11.4606 7.86117 11.4606 7.44696V6.09957L7.53033 10.0298C7.23744 10.3227 6.76256 10.3227 6.46967 10.0298C6.17678 9.73695 6.17678 9.26207 6.46967 8.96918L10.3998 5.03906H9.05271C8.63849 5.03906 8.30271 4.70328 8.30271 4.28906Z" fill="#6C86AD"/>
+                      </svg>
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -171,10 +161,10 @@
           </table>
 
           <div
-            class="d-flex justify-content-center"
+            class="readmore-wrapper"
             *ngIf="this.pagination && activity?.length !== 0"
           >
-            <button class="btn btn-viewmore my-2" (click)="loadMore(true)">
+            <button class="my-2" (click)="loadMore(true)">
               View More
             </button>
           </div>
@@ -191,48 +181,38 @@
             {{ formatFromAddress(activityDetails?.fromAddress) }}
             {{ formatToChainAddress(activityDetails?.toAddress) }}
             {{ getDaysAgo(activityDetails?.createdAt) }}
-            <div class="icon">
-              <img
-                src="../../../../../assets/images/graph-icon/not_open_sales.svg"
-                class="img-fluid"
-                alt="icon"
-              />
-            </div>
-            <div class="detail">
-              <div class="title-wrapper">
-                <p class="mb-0 {{ setClassName }}">
-                  {{ activityDetails?.type }}
-                </p>
-                <div class="value">
-                  <p class="mb-0">
-                    {{ activityDetails?.price?.amount?.decimal }}
+            <app-svg-icons iconName="{{setIcon}}" class="icon"></app-svg-icons>
+            <div class="activity-content">
+              <div class="title-time-wrapper">
+                <div class="title-wrapper">
+                  <p class="{{setClassName}}">
+                    {{ activityDetails?.type }}
                   </p>
-                  <img
-                    src="../../../../../assets/images/icons/activity_diamond.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
+                  <div class="price">
+                    <p class="text-static-white">{{ activityDetails?.price?.amount?.decimal }}</p>
+                    <app-svg-icons iconName="ethIcon" class="priceIcon"></app-svg-icons>
+                  </div>
+                </div>
+                <div class="time-wrapper">
+                  <p class="text-gray" *ngIf="this.timeInterval === 'h'">{{ this.daysAgo }} hours ago</p>
+                  <p class="text-gray" *ngIf="this.timeInterval === 'd'">{{ this.daysAgo }} days ago</p>
+                  <p class="text-gray" *ngIf="this.timeInterval === 'm'">{{ this.daysAgo }} mins ago</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.48301 4.11536C3.48301 3.76558 3.76656 3.48203 4.11634 3.48203H4.4998C4.8864 3.48203 5.1998 3.16863 5.1998 2.78203C5.1998 2.39543 4.8864 2.08203 4.4998 2.08203H4.11634C2.99336 2.08203 2.08301 2.99239 2.08301 4.11536V11.8835C2.08301 13.0065 2.99336 13.9168 4.11634 13.9168H11.8845C13.0074 13.9168 13.9178 13.0065 13.9178 11.8835V11.4996C13.9178 11.113 13.6044 10.7996 13.2178 10.7996C12.8312 10.7996 12.5178 11.113 12.5178 11.4996V11.8835C12.5178 12.2333 12.2342 12.5168 11.8845 12.5168H4.11634C3.76656 12.5168 3.48301 12.2333 3.48301 11.8835V4.11536ZM7.2998 2.78203C7.2998 2.39543 7.6132 2.08203 7.9998 2.08203H13.2172C13.6038 2.08203 13.9172 2.39543 13.9172 2.78203V7.99942C13.9172 8.38602 13.6038 8.69942 13.2172 8.69942C12.8306 8.69942 12.5172 8.38602 12.5172 7.99942V4.47207L7.00406 9.98521C6.73069 10.2586 6.28747 10.2586 6.01411 9.98521C5.74074 9.71185 5.74074 9.26863 6.01411 8.99526L11.5273 3.48203H7.9998C7.6132 3.48203 7.2998 3.16863 7.2998 2.78203Z" fill="#6C86AC"/>
+                  </svg>
                 </div>
               </div>
-              <div class="other-details">
-                <div class="time">
-                  <p class="mb-0">{{ this.daysAgo }} min ago</p>
-                  <img
-                    src="../../../../../assets/images/icons/copy.svg"
-                    class="img-fluid"
-                    alt="icon"
-                  />
-                </div>
-                <p class="mb-0">From {{ this.formatChainAddress }}</p>
-                <p class="mb-0">To {{ this.formatToAddress }}</p>
+              <div class="transfer-account-details">
+                <p class="text-gray">From {{ this.formatChainAddress }}</p>
+                <p class="text-gray">To {{ this.formatToAddress }}</p>
               </div>
             </div>
           </div>
           <div
-            class="d-flex justify-content-center"
+            class="readmore-wrapper"
             *ngIf="this.pagination && activity?.length !== 0"
           >
-            <button class="btn btn-viewmore my-2" (click)="loadMore(true)">
+            <button class="my-2" (click)="loadMore(true)">
               View More
             </button>
           </div>

@@ -39,7 +39,6 @@ html { // ===== reset font size depends on screen size =====
    }
 }
 
-
 // custom margin
 
 .section-top {
@@ -64,15 +63,6 @@ html { // ===== reset font size depends on screen size =====
         padding-right: 5.75rem !important;
     }
 }
-
-$colors: ("static-white": #fbfbfb, "gray": #6C86AD, "red": #E3402A,"green" : #21C187,"brand-blue" : #2F8AF5);
-
-@each $name, $color in $colors {
-    .text-#{$name} {
-        color: $color;
-    }
-}
-
 
 $weights : 100, 200, 300, 400, 500, 600, 700, 800, 900;
 

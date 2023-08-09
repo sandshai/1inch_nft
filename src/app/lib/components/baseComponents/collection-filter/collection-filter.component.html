@@ -10,12 +10,12 @@
   <div class="filter-body-wrapper">
     <div class="filter-body-header">
       <div class="toggle-wrapper">
-        <p>Buy now</p>
-        <app-taggle-switch t_id="buy_now"></app-taggle-switch>
+        <p class="{{buyNowTextClr ? 'active' : ''}}">Buy now</p>
+        <app-taggle-switch t_id="buy_now" (checkedEvent)="buyCheckBoxFun($event)"></app-taggle-switch>
       </div>
       <div class="toggle-wrapper">
-        <p>Buy Bit</p>
-        <app-taggle-switch t_id="bit_now"></app-taggle-switch>
+        <p class="{{buyBidNowTextClr ? 'active' : ''}}">Buy Bit</p>
+        <app-taggle-switch t_id="bit_now" (checkedEvent)="bidCheckBoxFun($event)"></app-taggle-switch>
       </div>
       <div class="accordion" id="filterAccordion">
         <div class="accordion-item">

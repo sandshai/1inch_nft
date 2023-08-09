@@ -14,6 +14,7 @@
     <input
       type="text"
       name="search"
+      id="head-search"
       class="{{isOpen ? 'is-open' : ''}}"
       (focus)="
         this.recentCollectionList?.length > 0 && opensearchhistory($event)
@@ -35,7 +36,7 @@
         </div>
         <div class="search-result-items" *ngFor="let recent of recentCollectionList" (click)="pageReload(recent?.chain, recent?.collectionId)">
           <div class="search-result-image">
-            <img  src="{{ recent?.image }}" alt="nft">
+            <img src="{{ recent?.image ? recent?.image : '/assets/images/search-placeholder.svg' }}" class="{{recent?.image ? 'bordered' : ''}}" alt="nft">
           </div>
           <div class="search-result-content">
             <div class="content">
@@ -64,7 +65,7 @@
         </div>
         <div class="search-result-items"  *ngFor="let list of searchResults" (click)="pageReload(list?.chain, list?.collectionId, list)">
           <div class="search-result-image">
-            <img  src="{{ list?.image }}" alt="nft">
+            <img src="{{ list?.image ? list?.image : '../../../../../assets/images/search-placeholder.svg' }}" class="{{list?.image ? 'bordered' : ''}}" alt="nft">
           </div>
           <div class="search-result-content">
             <div class="content">

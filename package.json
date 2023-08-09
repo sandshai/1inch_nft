@@ -19,7 +19,7 @@
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
     "@netbasal/ngx-content-loader": "^3.0.0",
-    "@walletconnect/qrcode-modal": "^1.8.0",
+    "@walletconnect/modal": "^2.6.1",
     "@walletconnect/sign-client": "^2.9.0",
     "bootstrap": "^5.0.2",
     "loadash": "^1.0.0",

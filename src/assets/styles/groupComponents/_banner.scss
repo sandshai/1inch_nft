@@ -99,8 +99,10 @@
           width: calc(50% - 1rem);
         }
         &:hover {
-          .add-to-bag,.three-dot {
-            display: flex !important;
+          @include media-min-lg {
+            .add-to-bag,.three-dot {
+              display: flex !important;
+            }
           }
         }
         .nft-image {

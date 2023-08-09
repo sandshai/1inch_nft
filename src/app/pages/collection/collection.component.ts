@@ -62,6 +62,9 @@ export class CollectionComponent implements OnInit {
   defaultRouteList: any = {};
   data: DefaultRouteObject[] = [];
   is_sweep: boolean = false;
+  externalUrl: any;
+  discordUrl: any;
+  twitterUrl: any;
 
   categories: Categories = {
     'Price low to high': { sortBy: 'floorAskPrice', sortDirection: 'asc' },
@@ -93,12 +96,6 @@ export class CollectionComponent implements OnInit {
 
     this.collectionId = this.activatedRoute.snapshot.paramMap.get('{id}');
 
-    // if (this.activatedRoute.snapshot.paramMap.get('{id}')) {
-    //   this.getCollectionDetails(
-    //     this.activatedRoute.snapshot.paramMap.get('{id}')
-    //   );
-    // }
-
     this.getCollectionDetails();
 
     this.collectionName =
@@ -113,6 +110,7 @@ export class CollectionComponent implements OnInit {
 
     this.activatedRoute.queryParams.subscribe((params) => {
       this.paramValues = params;
+
       if (this.paramValues?.sortBy) {
         const matchedKeys = Object.keys(this.categories).filter((key) => {
           const value = this.categories[key];
@@ -125,6 +123,31 @@ export class CollectionComponent implements OnInit {
       }
     });
 
+    this.activatedRoute.queryParams.subscribe((params) => {
+      const resultArray = Object.entries(params).flatMap(([keyData, value]) => {
+        if (typeof value === 'string') {
+          const values = value?.split(',');
+          return values.map((v: any) => ({
+            value: v.trim(),
+            keyData: keyData,
+            checked: true,
+          }));
+        } else {
+          return [];
+        }
+      });
+
+      const result = resultArray.reduce((acc: any, obj: any) => {
+        if (!acc[obj.keyData]) {
+          acc[obj.keyData] = [];
+        }
+        acc[obj.keyData].push(obj.value);
+
+        return acc;
+      }, {});
+    });
+
+    document.querySelector('main')?.classList.remove('overflow-x-hidden');
     this.gridChangeFunc();
 
     if (window.innerWidth > 1199) {
@@ -151,12 +174,6 @@ export class CollectionComponent implements OnInit {
           return acc;
         }, {});
 
-        this.routeDataList = result;
-
-        this.keys = Object.keys(this.routeDataList);
-
-        this.values = Object.values(this.routeDataList);
-
         this.appendValuesToRoutePath(result);
       } else {
         this.paramValue = this.paramValue.filter(
@@ -168,30 +185,28 @@ export class CollectionComponent implements OnInit {
 
         this.routeDataList[data?.payLoad?.keyData] = this.routeDataList[
           data?.payLoad?.keyData
-        ].filter((e: any) => e !== data?.payLoad?.value);
+        ]?.filter((e: any) => e !== data?.payLoad?.value);
 
-        if (this.routeDataList[data?.payLoad?.keyData].length == 0) {
+        this.appendValuesToRoutePath(this.routeDataList);
+
+        if (
+          this.routeDataList[data?.payLoad?.keyData]?.length == 0 ||
+          typeof this.routeDataList[data?.payLoad?.keyData] === 'undefined'
+        ) {
           delete this.routeDataList[data?.payLoad.keyData];
-
-          this.keys = Object.keys(this.routeDataList);
-
-          this.values = Object.values(this.routeDataList);
 
           this.appendValuesToRoutePath(this.routeDataList);
         }
-
-        this.appendValuesToRoutePath(this.routeDataList);
       }
     });
     this.activatedRoute.queryParams.subscribe((params) => {
-      this.defaultRouteList = params;
+      this.defaultRouteList = params; // Output: Pink
     });
 
     Object.entries(this.defaultRouteList).forEach(([key, value]) => {
       if (typeof value === 'string') {
-        const valuesArray = value.split(',');
+        let valuesArray = value.split(',');
 
-        console.log(valuesArray, 'valuesArray');
         this.defaultRouteList[key] = valuesArray;
       }
     });
@@ -220,7 +235,7 @@ export class CollectionComponent implements OnInit {
   }
 
   opensweep() {
-    this.is_sweep ? this.is_sweep = false : this.is_sweep = true;
+    this.is_sweep ? (this.is_sweep = false) : (this.is_sweep = true);
     let array: any = [];
     this.passedArrayList(array);
     this.shared.setSliderInput.emit(0);
@@ -235,6 +250,7 @@ export class CollectionComponent implements OnInit {
       .getAll(`collections/v5?id=${this.collectionId}`, this.header)
       .subscribe((response) => {
         this.collectionDetails = response.collections;
+        this.discordUrl = response.collections[0]?.externalUrl;
         this.setBannerImage(this.collectionDetails[0]);
         this.formatAddress(this.collectionDetails[0]?.id);
         this.calculateUniqueHolders();
@@ -246,8 +262,13 @@ export class CollectionComponent implements OnInit {
     value && window.open(value);
   }
 
-  goToExternalPage(value?: string) {
-    value && window.open(value);
+  goToExternalPage(value?: string, type?: string) {
+    if (type === 'twitter') {
+      let link = 'https://twitter.com/';
+      window.open(`${link}${value}`);
+    } else {
+      value && window.open(value);
+    }
   }
 
   goToAddressPage(value: string) {
@@ -326,7 +347,9 @@ export class CollectionComponent implements OnInit {
   }
 
   openFilterTab() {
-    this.is_filter === true ? this.is_filter = false : this.is_filter = true;
+    this.is_filter === true
+      ? (this.is_filter = false)
+      : (this.is_filter = true);
     this.gridChangeFunc();
   }
   receiveMessage(value: string) {
@@ -346,32 +369,40 @@ export class CollectionComponent implements OnInit {
     this.isExpanded = !this.isExpanded;
   }
 
-  removeFilterList(value?: string) {
-    this.apiValues = this.apiValues.filter(
-      (list: any) => list?.value !== value
-    );
-    this.appendValuesToRoutePath(this.apiValues);
+  removeFilterList(value?: string, key?: string) {
+    const findList = this.apiValues.find((list: any) => list?.value === key);
+
+    this.apiValues = this.apiValues.filter((list: any) => list !== findList);
+    const filteredData = this.apiValues.filter((obj: any) => obj?.checked);
+    const result = filteredData.reduce((acc: any, obj: any) => {
+      if (!acc[obj.keyData]) {
+        acc[obj.keyData] = [];
+      }
+      acc[obj.keyData].push(obj.value);
+
+      return acc;
+    }, {});
+
+    this.appendValuesToRoutePath(result);
   }
 
   removeFilterListAll() {
     this.apiValues = [];
+    const filteredData = this.apiValues.filter((obj: any) => obj?.checked);
+    const result = filteredData.reduce((acc: any, obj: any) => {
+      if (!acc[obj.keyData]) {
+        acc[obj.keyData] = [];
+      }
+      acc[obj.keyData].push(obj.value);
+
+      return acc;
+    }, {});
+    this.appendValuesToRoutePath(result);
   }
 
   appendValuesToRoutePath(result: any) {
-    const currentUrlTree = this.router.parseUrl(this.router.url);
-    let currentParams = { ...currentUrlTree.queryParams }; // Preserve the existing query parameters
-
-    if (Object.keys(result).length !== 0)
-      for (const key in result) {
-        if (result.hasOwnProperty(key)) {
-          const values = result[key];
-          currentParams[key] = values.join(','); // Join the values array with a delimiter if needed
-        }
-      }
-    else currentParams = {};
-
     const navigationExtras: NavigationExtras = {
-      queryParams: currentParams,
+      queryParams: result,
     };
 
     this.router.navigate([], navigationExtras);

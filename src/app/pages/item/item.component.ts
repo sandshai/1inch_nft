@@ -1,7 +1,8 @@
-import { Component, HostListener } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/app/lib/services/crud.service';
 import { SettingsService } from 'src/app/lib/services/settings.service';
+import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 
 @Component({
   selector: 'app-item',
@@ -12,7 +13,9 @@ export class ItemComponent {
     private _crudService: CrudService,
     public _settings: SettingsService,
     public activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private shared: SharedDataService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   itemDetails: any = [];
@@ -27,6 +30,9 @@ export class ItemComponent {
   loadMoreStatus: any;
   pagination: string = '';
   dateFormat: Date = new Date();
+  creatorEarnings: any;
+  ownerAddress: any;
+  externalUrl: string = '';
 
   public collectionId: any;
   public collectionName: any;
@@ -51,6 +57,18 @@ export class ItemComponent {
     this.getTokenActivity(this.activityType);
     this.formatAddress(this.collectionId);
     this.setProfileImageBasedOnImage();
+  }
+
+  ngOnChanges() {
+    this.shared.externalUrl.subscribe((data) => {
+      console.log(
+        '🚀 ~ file: item.component.ts:46 ~ ItemComponent ~ ngOnInit ~ data:',
+        data
+      );
+      this.externalUrl = data;
+    });
+
+    this.cdr.detectChanges();
   }
 
   ngOnDestroy() {
@@ -83,6 +101,13 @@ export class ItemComponent {
       )
       .subscribe((response) => {
         this.itemDetails = response?.tokens;
+
+        this.formatAddress(response?.tokens[0]?.token?.owner, 'owner');
+        if (response?.tokens[0]?.market?.topBid?.feeBreakdown) {
+          this.creatorEarnings =
+            response?.tokens[0]?.market?.topBid?.feeBreakdown[0]?.bps / 100;
+        }
+
         this.dateFormat = new Date(
           this.itemDetails[0]?.token?.lastSale?.timestamp * 1000
         );
@@ -130,8 +155,11 @@ export class ItemComponent {
     }
   }
 
-  formatAddress(address: string) {
+  formatAddress(address: string, type?: string) {
     this.formatChainAddress = `${address.slice(0, 4)}...${address.slice(-4)}`;
+    if (type === 'owner') {
+      this.ownerAddress = `${address.slice(0, 4)}...${address.slice(-4)}`;
+    }
   }
 
   goToPreviousPage(collection: string, id: string) {
@@ -160,5 +188,20 @@ export class ItemComponent {
         link.click();
         URL.revokeObjectURL(blobUrl);
       });
+  }
+
+  handleAddressNavigation() {
+    if (this.selectedChain === 'ethereum') {
+      let link = 'https://etherscan.io/token/';
+      window.open(`${link}/${this.collectionId}?a=${this.tokenId}`);
+    }
+    if (this.selectedChain === 'polygon') {
+      let link = 'https://polygonscan.com/token/';
+      window.open(`${link}/${this.collectionId}?a=${this.tokenId}`);
+    }
+  }
+
+  goToExternalPage(): void {
+    window.open(this.externalUrl, '_blank');
   }
 }

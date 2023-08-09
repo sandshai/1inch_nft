@@ -1,9 +1,12 @@
 .footer-fixed_sweep {
     position: fixed;
     z-index: 99;
-    bottom: 0;
+    bottom: 4.25rem;
     left: 0;
     right: 0;
+    @include media-min-md {
+        bottom: 0;
+    }
     @include  media-min-lg {
         left: 1rem;
     }
@@ -123,15 +126,48 @@
                     .slider-control {
                         display: none;
                         @include media-min-md {
-                            display: block;
+                            display: flex;
+                            align-items: center;
                             flex: 1 0 0;
                         }
                         @include media-min-lg {
                             flex: unset;
                             width: 12.375rem;
                         }
-                        input {
+                        input[type="range"] {
+                            /* removing default appearance */
+                            -webkit-appearance: none;
+                            appearance: none;
+                            /* creating a custom design */
                             width: 100%;
+                            cursor: pointer;
+                            outline: none;
+                            border-radius: 0.125rem;
+                            /*  overflow: hidden;  remove this line*/
+                            /* New additions */
+                            height: 0.125rem;
+                            background: var(--1inch-cbc-18);
+                        }
+                        /* Thumb: webkit */
+                        input[type="range"]::-webkit-slider-thumb {
+                            /* removing default appearance */
+                            -webkit-appearance: none;
+                            appearance: none;
+                            /* creating a custom design */
+                            height: 1rem;
+                            width: 1rem;
+                            background-color: var(--1inch-bc-08);
+                            border-radius: 50%;
+                            border: none;
+                        }
+
+                        /* Thumb: Firefox */
+                        input[type="range"]::-moz-range-thumb {
+                            height: 1rem;
+                            width: 1rem;
+                            background-color: var(--1inch-bc-08);
+                            border-radius: 50%;
+                            border: none;
                         }
                     }
                     .sweep-settings-btn {
@@ -282,7 +318,7 @@
 }
 
 .sweep-body-padding {
-    padding-bottom: 4.75rem;
+    padding-bottom: 9rem;
     @include media-min-lg {
         padding-bottom: 0;
     }

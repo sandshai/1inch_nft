@@ -1,30 +1,61 @@
-<div class="profolio-grid-layout-wrapper {{setClass}}">
-  <div class="portfolio-card" *ngFor="let d of data; let i = index;">
+<div
+  class="profolio-grid-layout-wrapper {{setClass}}"
+>
+  <div class="portfolio-card" *ngFor="let item of userItems; let i = index">
     <div class="portfolio-card-image">
       <div class="check-box">
-        <input class="form-check-input d-none" type="checkbox" value="" id="flexCheckDefault{{i}}">
-        <label class="form-check-label" for="flexCheckDefault{{i}}">
+        <input
+          class="form-check-input d-none"
+          type="checkbox"
+          value=""
+          id="flexCheckDefault{{ i }}"
+        />
+        <label class="form-check-label" for="flexCheckDefault{{ i }}">
           <div class="c-check-box">
-            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
-              <path d="M9.47366 16.106L5.40518 12.0375C5.03605 11.6683 5.03605 11.0699 5.40518 10.7008V10.7008C5.77394 10.332 6.37169 10.3316 6.74097 10.6998L9.47366 13.4249L15.9916 6.90701C16.3627 6.53591 16.9647 6.53697 17.3344 6.90938V6.90938C17.7024 7.27994 17.7013 7.87829 17.3321 8.24754L9.47366 16.106Z" fill="#FBFBFB"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="23"
+              height="23"
+              viewBox="0 0 23 23"
+              fill="none"
+            >
+              <path
+                d="M9.47366 16.106L5.40518 12.0375C5.03605 11.6683 5.03605 11.0699 5.40518 10.7008V10.7008C5.77394 10.332 6.37169 10.3316 6.74097 10.6998L9.47366 13.4249L15.9916 6.90701C16.3627 6.53591 16.9647 6.53697 17.3344 6.90938V6.90938C17.7024 7.27994 17.7013 7.87829 17.3321 8.24754L9.47366 16.106Z"
+                fill="#FBFBFB"
+              />
             </svg>
           </div>
         </label>
       </div>
-      <img src="../../../../../assets/images/collection-image-1.png" class="img-fluid" alt="image">
+      <img src="{{ item?.token?.image }}" class="img-fluid" alt="image" />
       <div class="list-item-wrapper">
-        <button class="btn-list-item" (click)="openListItemCard()">List item</button>
+        <button class="btn-list-item" (click)="openListItemCard()">
+          List item
+        </button>
       </div>
     </div>
     <div class="portfolio-card-body">
-      <p>Psychosis Ape#1</p>
+      <p>{{ item?.token?.collection?.name }}</p>
       <div class="nft-details-wrapper">
         <div class="price-wrapper">
-          <p>224</p>
-          <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+          <p>{{ item?.ownership?.floorAsk?.price?.amount?.decimal }}</p>
+          <app-svg-icons
+            iconName="ethIcon"
+            class="icon"
+            *ngIf="item?.ownership?.floorAsk?.price?.amount?.decimal"
+          ></app-svg-icons>
         </div>
         <span class="percentage text-green">+25.23%</span>
       </div>
     </div>
   </div>
+  <!-- <div class="portfolio-card" *ngIf="userItems?.length <= 0"> -->
+
+  <!-- </div> -->
+  <!-- <div *ngIf="this.continuation">
+    <button (click)="handleViewMore(true)">View More</button>
+  </div> -->
 </div>
+
+<app-nodata-found *ngIf="userItems?.length <= 0" message="No items in your portfolio" buttonText="Explore collections"></app-nodata-found>
+

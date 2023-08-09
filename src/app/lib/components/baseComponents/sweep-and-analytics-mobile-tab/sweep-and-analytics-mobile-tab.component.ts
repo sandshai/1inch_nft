@@ -31,6 +31,7 @@ export class SweepAndAnalyticsMobileTabComponent {
 
   onRangeChange(event: any) {
     let initialValue = event?.target?.value ? event?.target?.value : 0;
+    this.handleInputChange(event)
     this.selectedItems = this.receivedList.slice(0, initialValue);
     this.passArrayList(this.selectedItems);
 
@@ -59,5 +60,17 @@ export class SweepAndAnalyticsMobileTabComponent {
 
   passArrayList(value: any): void {
     this.shared.setSliderList(value);
+  }
+
+  handleInputChange(e:any) {
+    let target = e.target
+    if (e.target.type !== 'range') {
+      target = document.getElementById('range')
+    }
+    const min = target.min
+    const max = target.max
+    const val = target.value
+    let percentage = (val - min) * 100 / (max - min)
+    target.style.background = `linear-gradient(to right, #2F8AF5 ${percentage}%, #37445A ${percentage}%)`
   }
 }

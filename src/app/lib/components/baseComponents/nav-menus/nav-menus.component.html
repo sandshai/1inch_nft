@@ -14,35 +14,42 @@
       />
     </a>
     <div class="header--icon-wrapper">
-      <div class="menu-icon">
-        <app-svg-icons iconName="settingsIcon" class="icon-width" className="icon-width"></app-svg-icons>
-      </div>
       <div class="menu-icon" (click)="closemenu()">
-        <app-svg-icons iconName="closeIcon" class="icon-width" className="icon-width"></app-svg-icons>
+        <app-svg-icons
+          iconName="closeIcon"
+          class="icon-width"
+          className="icon-width"
+        ></app-svg-icons>
       </div>
     </div>
   </div>
   <ul class="navbarNav" id="navbarNav">
     <li class="nav-item">
-      <a class="nav-link" href="https://1inchlaunchpad.netlify.app/">Launchpad</a>
+      <a class="nav-link" href="https://1inchlaunchpad.netlify.app"
+        >Launchpad</a
+      >
     </li>
     <li class="nav-item">
       <a
         class="nav-link"
-        (click)="onItemClick('collections/ethereum')" [ngClass]="{ 'active': isActive('collections/ethereum') }"
+        (click)="onItemClick('collections/ethereum')"
+        [ngClass]="{ active: isActive('collections/ethereum') }"
         >Collections</a
       >
     </li>
     <li class="nav-item">
-      <a class="nav-link" (click)="onItemClick('watchlist')" [ngClass]="{ 'active': isActive('watchlist') }">My watchlist</a>
+      <a
+        class="nav-link"
+        (click)="onItemClick('watchlist')"
+        [ngClass]="{ active: isActive('watchlist') }"
+        >My watchlist</a
+      >
     </li>
   </ul>
 
-  <div class="common-menu-wrapper-mobile d-md-none">
-    <app-wallet-button class="w-100"></app-wallet-button>
-  </div>
-
-  <div class="common-menu-wrapper-mobile nav-social-icons justify-content-between align-items-center">
+  <div
+    class="common-menu-wrapper-mobile d-md-none nav-social-icons justify-content-between align-items-center"
+  >
     <div class="social_icon">
       <img
         src="../../../../assets/images/icons/icon_m.svg"

@@ -1,17 +1,35 @@
 <div class="accordion-item">
   <h2 class="accordion-header" id="nft-g-item-details">
-    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_nft-g-item-details" aria-expanded="true" aria-controls="collapse_nft-g-item-details">
+    <button
+      class="accordion-button"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapse_nft-g-item-details"
+      aria-expanded="true"
+      aria-controls="collapse_nft-g-item-details"
+    >
       <div class="accordion-graph-header">
-        <app-svg-icons iconName="warningIcon" class="acc-icon" className="acc-icon f-active"></app-svg-icons>
+        <app-svg-icons
+          iconName="warningIcon"
+          class="acc-icon"
+          className="acc-icon f-active"
+        ></app-svg-icons>
         <p>Details</p>
       </div>
       <div class="icon-wrapper">
-        <app-svg-icons class="downArrowIcon" iconName="downIcon"></app-svg-icons>
+        <app-svg-icons
+          class="downArrowIcon"
+          iconName="downIcon"
+        ></app-svg-icons>
         <app-svg-icons class="upArrowIcon" iconName="upIcon"></app-svg-icons>
       </div>
     </button>
   </h2>
-  <div id="collapse_nft-g-item-details" class="accordion-collapse collapse show" aria-labelledby="nft-g-item-details">
+  <div
+    id="collapse_nft-g-item-details"
+    class="accordion-collapse collapse show"
+    aria-labelledby="nft-g-item-details"
+  >
     <div class="accordion-body">
       <div class="nft-details-wrapper">
         <div class="nft-detail">
@@ -49,14 +67,25 @@
         <div class="nft-detail">
           <div class="detail start">
             <div class="icon-wrapper">
-              <p class="text-gray cfw-300">Token standard</p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M8.6665 5.33366C8.6665 5.70185 8.36803 6.00032 7.99984 6.00032C7.63165 6.00032 7.33317 5.70185 7.33317 5.33366C7.33317 4.96547 7.63165 4.66699 7.99984 4.66699C8.36803 4.66699 8.6665 4.96547 8.6665 5.33366ZM8.6665 10.667C8.6665 11.0352 8.36803 11.3337 7.99984 11.3337C7.63165 11.3337 7.33317 11.0352 7.33317 10.667L7.33317 8.00033C7.33317 7.63213 7.63165 7.33366 7.99984 7.33366C8.36803 7.33366 8.6665 7.63213 8.6665 8.00032L8.6665 10.667ZM8.0065 14.667C11.6865 14.667 14.6665 11.6803 14.6665 8.00033C14.6665 4.32032 11.6865 1.33366 8.00651 1.33366C4.31984 1.33366 1.33317 4.32032 1.33317 8.00032C1.33317 11.6803 4.31984 14.667 8.0065 14.667ZM7.99984 2.66699C10.9465 2.66699 13.3332 5.05366 13.3332 8.00033C13.3332 10.947 10.9465 13.3337 7.99984 13.3337C5.05317 13.3337 2.6665 10.947 2.6665 8.00032C2.6665 5.05366 5.05317 2.66699 7.99984 2.66699Z" fill="#6C86AD"/>
+              <p class="text-gray cfw-300">Creator earnings</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  d="M8.6665 5.33366C8.6665 5.70185 8.36803 6.00032 7.99984 6.00032C7.63165 6.00032 7.33317 5.70185 7.33317 5.33366C7.33317 4.96547 7.63165 4.66699 7.99984 4.66699C8.36803 4.66699 8.6665 4.96547 8.6665 5.33366ZM8.6665 10.667C8.6665 11.0352 8.36803 11.3337 7.99984 11.3337C7.63165 11.3337 7.33317 11.0352 7.33317 10.667L7.33317 8.00033C7.33317 7.63213 7.63165 7.33366 7.99984 7.33366C8.36803 7.33366 8.6665 7.63213 8.6665 8.00032L8.6665 10.667ZM8.0065 14.667C11.6865 14.667 14.6665 11.6803 14.6665 8.00033C14.6665 4.32032 11.6865 1.33366 8.00651 1.33366C4.31984 1.33366 1.33317 4.32032 1.33317 8.00032C1.33317 11.6803 4.31984 14.667 8.0065 14.667ZM7.99984 2.66699C10.9465 2.66699 13.3332 5.05366 13.3332 8.00033C13.3332 10.947 10.9465 13.3337 7.99984 13.3337C5.05317 13.3337 2.6665 10.947 2.6665 8.00032C2.6665 5.05366 5.05317 2.66699 7.99984 2.66699Z"
+                  fill="#6C86AD"
+                />
               </svg>
             </div>
           </div>
           <div class="detail end">
-            <p class="text-static-white cfw-400">10%</p>
+            <p class="text-static-white cfw-400">
+              {{ this.earnings ? this.earnings : "0" }}%
+            </p>
           </div>
         </div>
       </div>

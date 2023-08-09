@@ -6,7 +6,13 @@
   transition: all 0.4s ease-in-out;
   cursor: pointer;
   &:hover {
-    .icon-wrapper,.add-to-cart-wrapper {
+   @include media-min-md {
+    .icon-wrapper {
+      .cus-marketplace-icon {
+        display: flex !important;
+      }
+    }
+    .add-to-cart-wrapper {
       display: flex !important;
     }
     .nft-image {
@@ -14,6 +20,7 @@
         transform: scale(1.1);
       }
     }
+   }
   }
   .nft-card-image {
     position: relative;
@@ -40,42 +47,22 @@
       left: 0;
       right: 0;
       padding: 0 0.75rem;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: space-between;
+
       .marketplace-icon {
-        width: 2rem;
-        height: 2rem;
-      }
-      .cus-marketplace-icon {
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        z-index: 1;
-        overflow: hidden;
-        padding: 0.2rem;
-        &::before {
-          position: absolute;
-          z-index: -1;
-          content: "";
-          background-color: #06070a;
-          opacity: 0.4;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-        }
         img {
-          border-radius: 12px;
-          width: 1.45rem !important;
-          height: 1.45rem !important;
+          width: 2rem;
+          height: 2rem;
+          &.round {
+            border-radius: 50%;
+          }
         }
       }
+
       .custom-checkbox {
+        display: none;
         svg {
           cursor: pointer;
           width: 2rem;
@@ -118,16 +105,16 @@
           background-color: var(--1inch-bc-13) !important;
         }
         @include media-min-md {
-          border-radius: 0.75rem;
-          height: 2.73438rem;
-          padding: 0.6875rem 1.125rem;
+          border-radius: 12px;
+          // height: 43.75px;
+          padding: 11px 18px
         }
         span {
-          color: var(--1inch-tc-01);
+          color: #fff;
           text-align: center;
           font-size: 1rem;
           font-weight: 500;
-          line-height: 1.625rem; /* 162.5% */
+          line-height: normal; /* 162.5% */
         }
       }
     }

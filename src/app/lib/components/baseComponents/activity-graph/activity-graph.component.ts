@@ -24,7 +24,8 @@ export class ActivityGraphComponent {
   formatChainAddress: any;
   formatToAddress: any;
   daysAgo: any;
-  setClassName = '';
+  setClassName:any = '';
+  setIcon: any = '';
   timeInterval: string = '';
   saleInterval: string = '';
 
@@ -118,22 +119,28 @@ export class ActivityGraphComponent {
   getCurrentType(val: any) {
     switch (val) {
       case 'sale':
-        this.setClassName = 'text-sold';
+        this.setClassName = 'text-green-2';
+        this.setIcon = 'saleIcon';
         break;
       case 'transfer':
-        this.setClassName = 'text-transfer';
+        this.setClassName = 'text-gray-2';
+        this.setIcon = 'transferIcon';
         break;
       case 'bid_cancel':
-        this.setClassName = 'text-cancel';
+        this.setClassName = 'text-red';
+        this.setIcon = `cancelIcon`;
         break;
       case 'listed':
-        this.setClassName = 'text-listed';
+        this.setClassName = 'text-yellow';
+        this.setIcon = 'listedIcon';
         break;
       case 'ask_cancel':
-        this.setClassName = 'text-cancel';
+        this.setClassName = 'text-red';
+        this.setIcon = `cancelIcon`;
         break;
       default:
-        this.setClassName = 'text-transfer';
+        this.setClassName = 'text-gray-2';
+        this.setIcon = 'transferIcon';
         break;
     }
   }

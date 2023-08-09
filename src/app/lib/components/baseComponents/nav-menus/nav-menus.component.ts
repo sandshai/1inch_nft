@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,13 @@ import { Router } from '@angular/router';
 export class NavMenusComponent {
 
   closemenu() {
+    document.querySelector('body')?.classList.remove('overflow-hidden');
     document.getElementById('mobile-nav')?.classList.remove('open-mobile-menu');
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.closemenu();
   }
 
   // Inject the router service
@@ -18,6 +24,7 @@ export class NavMenusComponent {
   onItemClick(route: string) {
     // Close the mobile menu
     document.getElementById('mobile-nav')?.classList.remove('open-mobile-menu');
+    document.querySelector('body')?.classList.remove('overflow-hidden');
     // Add code to close the mobile menu here (e.g., using a flag or other mechanism)
     // Redirect to the selected route
     this.router.navigateByUrl(route);

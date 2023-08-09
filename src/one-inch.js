@@ -1,5 +1,5 @@
 window["__1inch_connect_init_rpc__"] = {
-  1: "https://mainnet.infura.io/v3/<infura key> or custom node address",
+  1: "https://mainnet.infura.io/v3/45f2c83c6fff49ddbab7eeb388963f51",
 };
 const scriptNode = document.createElement("script");
 scriptNode.setAttribute(

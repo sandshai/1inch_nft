@@ -29,7 +29,6 @@ import { ButtonComponent } from './lib/components/baseComponents/button/button.c
 import { TaggleSwitchComponent } from './lib/components/baseComponents/taggle-switch/taggle-switch.component';
 import { CheckboxComponent } from './lib/components/baseComponents/checkbox/checkbox.component';
 import { InputComponent } from './lib/components/baseComponents/input/input.component';
-import { SelectComponent } from './lib/components/baseComponents/select/select.component';
 import { CollectionFilterComponent } from './lib/components/baseComponents/collection-filter/collection-filter.component';
 import { GridViewCollectionComponent } from './lib/components/baseComponents/grid-view-collection/grid-view-collection.component';
 import { AnalyticsTabComponent } from './lib/components/baseComponents/analytics-tab/analytics-tab.component';
@@ -73,6 +72,7 @@ import { UserProfileOfferTabComponent } from './lib/components/baseComponents/us
 import { UserProfileActivityTabComponent } from './lib/components/baseComponents/user-profile-activity-tab/user-profile-activity-tab.component';
 import { ContentLoaderModule } from '@netbasal/ngx-content-loader';
 import { WalletImagesComponent } from './lib/components/baseComponents/wallet-images/wallet-images.component';
+import { BottomSheetComponent } from './lib/components/baseComponents/bottom-sheet/bottom-sheet.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +101,6 @@ import { WalletImagesComponent } from './lib/components/baseComponents/wallet-im
     TaggleSwitchComponent,
     CheckboxComponent,
     InputComponent,
-    SelectComponent,
     CollectionFilterComponent,
     GridViewCollectionComponent,
     AnalyticsTabComponent,
@@ -142,6 +141,7 @@ import { WalletImagesComponent } from './lib/components/baseComponents/wallet-im
     UserProfileOfferTabComponent,
     UserProfileActivityTabComponent,
     WalletImagesComponent,
+    BottomSheetComponent,
   ],
   imports: [
     BrowserModule,

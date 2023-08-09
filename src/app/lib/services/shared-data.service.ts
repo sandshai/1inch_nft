@@ -17,6 +17,14 @@ export class SharedDataService {
 
   filterPriceEvent: EventEmitter<any> = new EventEmitter<any>();
 
+  selectedChain: EventEmitter<any> = new EventEmitter<any>();
+
+  discordUrl: EventEmitter<any> = new EventEmitter<any>();
+
+  twitterUrl: EventEmitter<any> = new EventEmitter<any>();
+
+  externalUrl: EventEmitter<any> = new EventEmitter<any>();
+
   private arrayList: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   private sliderArrayList: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(
@@ -55,6 +63,21 @@ export class SharedDataService {
 
   getSliderArrayList(): BehaviorSubject<any[]> {
     return this.sliderArrayList;
+  }
+
+  private storageKey = 'searchHistory';
+
+  getSearchHistory(): string[] {
+    const historyStr = localStorage.getItem(this.storageKey);
+    return historyStr ? JSON.parse(historyStr) : [];
+  }
+
+  addToSearchHistory(query: string): void {
+    const history = this.getSearchHistory();
+    if (!history.includes(query)) {
+      history.unshift(query);
+      localStorage.setItem(this.storageKey, JSON.stringify(history));
+    }
   }
 
   constructor() {}

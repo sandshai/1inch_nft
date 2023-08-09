@@ -1,0 +1,396 @@
+<div class="bottom-sheet-wrapper" *ngIf="bottomSheetName == 'notConnect'" (click)="onBackdropClick($event)">
+  <div class="bottom-sheet-content" (click)="$event.stopPropagation()">
+    <!-- ==== Global settings Popup ==== -->
+    <div class="bottom-sheet" *ngIf="activePopup == 'globalSettings'">
+      <div class="sheet-header justify-content-between">
+        <p class="header-title">Global settings</p>
+        <div class="icon cursor-pointer" (click)="closeBottomSheet()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929Z"
+              fill="#FBFBFB"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="sheet-body">
+        <div class="menu-item" (click)="setActivePopup('theme')">
+          <div class="icon close-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M13.1029 7.74566C13.1908 7.74566 13.2468 7.68401 13.2627 7.59923C13.5105 6.31985 13.5025 6.28902 14.8931 6.03468C14.981 6.01156 15.045 5.96532 15.045 5.87283C15.045 5.77264 14.981 5.7264 14.8931 5.71098C13.5025 5.44123 13.5425 5.4104 13.2627 4.13873C13.2468 4.05395 13.1908 4 13.1029 4C13.007 4 12.951 4.05395 12.9351 4.13873C12.6553 5.4104 12.7033 5.44123 11.3047 5.71098C11.2168 5.7264 11.1608 5.77264 11.1608 5.87283C11.1608 5.96532 11.2168 6.01156 11.3047 6.03468C12.7033 6.30443 12.6793 6.31985 12.9351 7.59923C12.951 7.68401 13.007 7.74566 13.1029 7.74566ZM16.9231 12.9557C17.0669 12.9557 17.1708 12.8555 17.1948 12.7091C17.4505 10.6435 17.5624 10.5973 19.7283 10.2582C19.8961 10.2351 20 10.1503 20 9.99615C20 9.84971 19.8961 9.76493 19.7602 9.7341C17.5784 9.33333 17.4505 9.34875 17.1948 7.28324C17.1708 7.1368 17.0669 7.03661 16.9231 7.03661C16.7792 7.03661 16.6673 7.1368 16.6513 7.27553C16.3796 9.36416 16.2997 9.43353 14.0859 9.7341C13.95 9.75723 13.8462 9.84971 13.8462 9.99615C13.8462 10.1426 13.95 10.2351 14.0859 10.2582C16.2997 10.6667 16.3716 10.6667 16.6513 12.7245C16.6673 12.8555 16.7792 12.9557 16.9231 12.9557ZM10.9051 20C13.7902 20 16.1319 18.6127 17.2028 16.2158C17.3227 15.9383 17.3067 15.7071 17.1628 15.5607C17.043 15.4528 16.8272 15.4297 16.5794 15.5222C15.9241 15.7765 15.1648 15.8921 14.2937 15.8921C10.6813 15.8921 8.33966 13.711 8.33966 10.2813C8.33966 9.41041 8.50749 8.43931 8.77922 7.90751C8.92308 7.63006 8.91508 7.39884 8.7952 7.25241C8.65934 7.09827 8.41159 7.07514 8.09191 7.19846C5.63836 8.13873 4 10.6127 4 13.4412C4 17.1869 6.86114 20 10.9051 20Z"
+                fill="#6C86AD"
+              />
+            </svg>
+          </div>
+          <div class="label-wrapper">
+            <p>Dark</p>
+            <span>Theme for the web</span>
+          </div>
+          <div class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M9 18L15 12L9 6"
+                stroke="#6C86AD"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="menu-item" (click)="setActivePopup('language')">
+          <div class="icon">
+            <img
+              src="../../../../assets/images/flag/flag-1.svg"
+              alt="flag"
+            />
+          </div>
+          <div class="label-wrapper">
+            <p>English</p>
+            <span>Choose language</span>
+          </div>
+          <div class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M9 18L15 12L9 6"
+                stroke="#6C86AD"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ==== Language Popup ==== -->
+
+    <div class="bottom-sheet" *ngIf="activePopup == 'language'">
+      <div class="sheet-header">
+        <div
+          class="icon back-btn"
+          (click)="setActivePopup('globalSettings')"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M15 6L9 12L15 18"
+              stroke="#FBFBFB"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <p class="header-title text-center">Language</p>
+      </div>
+      <div class="sheet-body">
+        <div
+          class="menu-item {{
+            language.lan == currentLanguage
+              ? 'notDisabled'
+              : 'isDisabled'
+          }}"
+          (click)="chooseLanguage(language.lan)"
+          *ngFor="let language of languages; let i = index"
+        >
+          <div class="icon">
+            <img
+              src="../../../../assets/images/flag/{{
+                language.flag
+              }}.svg"
+              alt="flag"
+            />
+          </div>
+          <div class="label-wrapper">
+            <p class="disabled-text">{{ language.name }}</p>
+          </div>
+
+          <!-- ==== checkbox ==== -->
+
+          <div class="icon">
+            <input
+              class="d-none"
+              type="radio"
+              name="flexRadioDefault"
+              id="language_checkbox_{{ i }}"
+            />
+            <label
+              for="language_checkbox_{{ i }}"
+              class="cursor-pointer"
+            >
+              <div class="is_notChecked">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                    fill="#37445A"
+                  />
+                </svg>
+              </div>
+              <div class="is_checked">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <circle cx="12" cy="12" r="10" fill="#2F8AF5" />
+                  <path
+                    d="M10.2857 17L6.5367 12.8024C6.23099 12.4602 6.23099 11.9429 6.5367 11.6006C6.89503 11.1994 7.5226 11.199 7.88148 11.5997L10.2857 14.2841L16.1144 7.75806C16.4749 7.35443 17.1067 7.35554 17.4658 7.76043C17.7704 8.10383 17.7695 8.62089 17.4637 8.96322L10.2857 17Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ==== Theme Popup ==== -->
+    <div class="bottom-sheet" *ngIf="activePopup == 'theme'">
+      <div class="sheet-header">
+        <div
+          class="icon back-btn"
+          (click)="setActivePopup('globalSettings')"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M15 6L9 12L15 18"
+              stroke="#FBFBFB"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <p class="header-title text-center">Mode</p>
+      </div>
+      <div class="sheet-body">
+        <div
+          class="menu-item {{
+            mode.mode == currentMode ? 'notDisabled' : 'isDisabled'
+          }}"
+          (click)="chooseMode(mode.mode)"
+          *ngFor="let mode of modes; let i = index"
+        >
+          <div class="icon">
+            <app-svg-icons
+              iconName="{{ mode.icon }}"
+            ></app-svg-icons>
+          </div>
+
+          <div class="label-wrapper">
+            <p class="disabled-text">{{ mode.name }}</p>
+          </div>
+
+          <!-- ==== checkbox ==== -->
+          <div class="icon">
+
+            <input
+              class="d-none"
+              type="radio"
+              name="flexRadioDefault"
+              id="mode_checkbox_{{ i }}"
+            />
+
+            <label
+              for="mode_checkbox_{{ i }}"
+              class="cursor-pointer"
+            >
+
+              <div class="is_notChecked">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                    fill="#37445A"
+                  />
+                </svg>
+              </div>
+
+              <div class="is_checked">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <circle cx="12" cy="12" r="10" fill="#2F8AF5" />
+                  <path
+                    d="M10.2857 17L6.5367 12.8024C6.23099 12.4602 6.23099 11.9429 6.5367 11.6006C6.89503 11.1994 7.5226 11.199 7.88148 11.5997L10.2857 14.2841L16.1144 7.75806C16.4749 7.35443 17.1067 7.35554 17.4658 7.76043C17.7704 8.10383 17.7695 8.62089 17.4637 8.96322L10.2857 17Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{bottomSheetName}}
+<div class="bottom-sheet-wrapper" *ngIf="bottomSheetName == 'connected'" (click)="onBackdropClick($event)">
+  <div class="bottom-sheet-content" (click)="$event.stopPropagation()">
+    <div class="bottom-sheet">
+      <div class="connect-wallet-dropdown">
+        <div class="profile-popup-header">
+          <div class="account-number">
+            <div class="acc-details">
+              <div class="profile-img">
+                <img
+                  src="../../../../../assets/images/graph-icon/profile-1.png"
+                  alt="image"
+                />
+              </div>
+              <p>5254..4352</p>
+            </div>
+            <div class="icon-wrapper">
+              <div class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <rect
+                    x="10"
+                    y="4"
+                    width="10"
+                    height="10"
+                    rx="2"
+                    stroke="#6C86AD"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10 10H6C4.89543 10 4 10.8954 4 12V18C4 19.1046 4.89543 20 6 20H12C13.1046 20 14 19.1046 14 18V14"
+                    stroke="#6C86AD"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_5053_101987)">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M3.37624 7.35788C3.34197 7.4404 3.32434 7.52888 3.32435 7.61824H3.32463V11.8585C3.32449 11.9974 3.2733 12.1313 3.18081 12.2349C3.08831 12.3384 2.96098 12.4043 2.82306 12.42C2.50618 12.4572 2.23963 12.4839 2.02553 12.5027C1.8339 12.5199 1.64136 12.4819 1.47053 12.3934C1.2997 12.3049 1.15767 12.1694 1.06112 12.0029C0.361076 10.7858 -0.00529336 9.40525 -0.000938182 8.001C-0.0013739 3.56324 3.66438 -0.0588815 8.09993 0.000725298C9.74482 0.0234005 11.3426 0.553778 12.6747 1.51934C14.0068 2.4849 15.0083 3.83851 15.5422 5.39508C15.6034 5.57305 15.6195 5.7634 15.5893 5.94914C15.559 6.13488 15.4832 6.31023 15.3687 6.45956C14.5797 7.48829 13.5853 8.34387 12.6042 9.05518V4.22643C12.6042 4.04627 12.5326 3.8735 12.4053 3.74611C12.2779 3.61873 12.1052 3.54716 11.9251 3.54716H10.7934C10.7042 3.54717 10.6159 3.56475 10.5336 3.59889C10.4512 3.63303 10.3763 3.68306 10.3133 3.74614C10.2503 3.80921 10.2003 3.88409 10.1661 3.9665C10.132 4.04891 10.1145 4.13723 10.1145 4.22643V10.0905C10.1144 10.2019 10.0815 10.3107 10.02 10.4035C9.95846 10.4963 9.87098 10.5689 9.76846 10.6123C9.49238 10.7289 9.20916 10.8436 9.20916 10.8436V5.9249C9.20916 5.74473 9.13763 5.57194 9.01029 5.44452C8.88296 5.31711 8.71025 5.24551 8.53015 5.24547H7.39843C7.21832 5.2455 7.04561 5.31709 6.91827 5.44451C6.79093 5.57192 6.7194 5.74472 6.71942 5.9249V11.2244C6.71938 11.352 6.67628 11.4758 6.59711 11.5758C6.51793 11.6758 6.40732 11.7461 6.28321 11.7753C6.10445 11.8172 5.94128 11.8575 5.81405 11.8952V7.62276C5.81405 7.44261 5.74251 7.26984 5.61517 7.14245C5.48783 7.01506 5.31512 6.9435 5.13504 6.9435L4.0056 6.93979C3.91628 6.93938 3.82775 6.95662 3.74511 6.99053C3.66247 7.02444 3.58734 7.07435 3.52404 7.13739C3.46074 7.20043 3.41051 7.27537 3.37624 7.35788ZM3.29995 14.4703C3.29989 14.4703 3.29983 14.4702 3.29977 14.4702L3.29971 14.4704C3.29979 14.4703 3.29987 14.4703 3.29995 14.4703ZM3.29995 14.4703C4.49279 15.3384 5.90241 15.8594 7.37288 15.9758C8.84342 16.0922 10.3175 15.7994 11.632 15.1297C12.9465 14.4601 14.0502 13.4397 14.821 12.1815C15.5918 10.9233 15.9996 9.47627 15.9994 8.00058C15.9994 7.81637 15.9909 7.63423 15.9786 7.45306C13.057 11.8118 7.66275 13.8498 3.29995 14.4703Z"
+                      fill="#6C86AD"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_5053_101987">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="account-bl-wrapper">
+            <div class="price-wrapper">
+              <p>0.0452</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+            <span>$15.89</span>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="profile-popup-body">
+          <div class="menu-item" routerLink="profile">
+            <app-svg-icons iconName="portfolioIcon"></app-svg-icons>
+
+            <p>portfolio</p>
+          </div>
+          <div class="menu-item">
+            <app-svg-icons iconName="offerProfileIcon"></app-svg-icons>
+            <p>Offers</p>
+          </div>
+          <div class="menu-item">
+            <app-svg-icons iconName="listingsProfileIcon"></app-svg-icons>
+            <p>Listings</p>
+          </div>
+          <div class="menu-item">
+            <app-svg-icons iconName="activityProfileIcon"></app-svg-icons>
+            <p>Activity</p>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="profile-popup-footer">
+          <div class="menu-item">
+            <app-svg-icons iconName="disconnectIcon"></app-svg-icons>
+            <p>Disconnect</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

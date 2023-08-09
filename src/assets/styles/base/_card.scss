@@ -35,7 +35,7 @@
         left: 0;
         z-index: -1;
         border-radius: 1.5rem;
-        background: $card-overlay-black;
+        background: #06070a;
     }
     .card-img {
         // &::before {
@@ -45,11 +45,11 @@
         //     right: 0px;
         //     bottom: 0px;
         //     left: 0px;
-        //     background: radial-gradient(40.06% 37.39% at 43.48% 26.48%, rgba(75, 52, 221, 0.4) 0%, rgba(89, 36, 121, 0) 100%)    
+        //     background: radial-gradient(40.06% 37.39% at 43.48% 26.48%, rgba(75, 52, 221, 0.4) 0%, rgba(89, 36, 121, 0) 100%)
         // }
         // img {
         //     width: 5.313rem;
         // }
     }
-  
+
 }

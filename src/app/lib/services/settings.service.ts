@@ -26,10 +26,10 @@ interface ChainHeader {
   providedIn: 'root',
 })
 export class SettingsService {
-  private isDarkTheme = false;
+  private isDarkTheme = true;
   private settings: Settings = {
     maxResults: 20,
-    theme: 'light-theme',
+    theme: '',
   };
 
   private chainURL: ChainURL = {
@@ -64,11 +64,11 @@ export class SettingsService {
   }
 
   getThemeClass() {
-    return this.isDarkTheme ? 'dark-theme' : 'light-theme';
+    return !this.isDarkTheme ? 'light-theme' : '';
   }
 
-  toggleTheme() {
-    this.isDarkTheme = !this.isDarkTheme;
+  toggleTheme(value: any) {
+    this.isDarkTheme = value == 'light' ? false : true;
     this.setSetting('theme', this.getThemeClass());
     document.body.className = this.getThemeClass();
   }
