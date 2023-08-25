@@ -29,7 +29,6 @@ ul {
   cursor: pointer;
 }
 
-
 .border-rounded-12 {
   border-radius: 0.75rem !important;
 }
@@ -72,10 +71,10 @@ ul {
       line-height: 0.938rem;
       text-transform: uppercase;
       border-radius: 0.5rem;
-      color: $theme-clr-litewhite;
+      color: var(--1inch-tc-01);
       &.active,&:active {
         background: #2B374A;
-        color: $theme-clr-litewhite;
+        color: var(--1inch-tc-01);
       }
     }
   }
@@ -124,32 +123,6 @@ ul {
         }
       }
     }
-  }
-}
-
-.filter-dropdown {
-  background-color: $theme-clr-mirage !important;
-  border-radius: 0.75rem !important;
-  border: none;
-  padding: 0;
-  @include media-min-alt(1024px) {
-    position: absolute;
-    padding: 0.5rem;
-  }
-
-  .dropdown-item {
-      color: $theme-clr-grayblue !important;
-      font-weight: 400;
-      font-size: 1rem;
-      line-height: 1.5rem;
-      transition: all 0.5s ease-in-out;
-      padding: 0.5rem 1rem;
-      color: var(---1inch-theme-text-color) !important;
-
-      &:hover {
-        background-color: #060A1080;
-        color: var(---1inch-theme-text-color) !important;
-      }
   }
 }
 

@@ -1,12 +1,52 @@
 <div class="tabs-wrapper">
-  <app-section-filter-wrapper class="w-100" [filterActive]="filterIsOpen" (profileFilterEvent) = "filterEvent($event)" pageLayOut="userProfile" profileFilterLayOut="layOutOne" [searchBarWidth]="is_listItemOpen" (viewLayout)="setLayOut($event)" [activeLayout] = "layOut"></app-section-filter-wrapper>
+  <app-section-filter-wrapper
+    class="w-100"
+    [filterActive]="filterIsOpen"
+    (profileFilterEvent)="filterEvent($event)"
+    pageLayOut="userProfile"
+    profileFilterLayOut="layOutOne"
+    [searchBarWidth]="is_listItemOpen"
+    (viewLayout)="setLayOut($event)"
+    [activeLayout]="layOut"
+  ></app-section-filter-wrapper>
 
   <div class="user-profile-stats-wrapper">
-    <app-user-profile-filter-tab *ngIf="filterIsOpen" (ItemEvent)="closePopup($event)" [demoData]="dummyData"></app-user-profile-filter-tab>
+    <app-user-profile-filter-tab
+      *ngIf="filterIsOpen"
+      (ItemEvent)="closePopup($event)"
+      (checkBoxStatusEvent)="getCheckBoxEvent($event)"
+      (statusEvent)="getStatusEvent($event)"
+      [Data]="filterData"
+    ></app-user-profile-filter-tab>
 
-    <div class="profile-stats {{!filterIsOpen ? 'w-100' : ''}}">
-      <app-portfolio-grid-layout *ngIf="layOut == 'card'" [data]="dummyNftCollections" (newItemEvent)="listItemEvent($event)" [is_open]="is_listItemOpen" [is_filter_open]="filterIsOpen"></app-portfolio-grid-layout>
-      <app-user-profile-table-layout *ngIf="layOut == 'table'" layOutTable = "portfolio" [data]="dummyNftCollections"></app-user-profile-table-layout>
+    <div class="profile-stats {{ !filterIsOpen ? 'w-100' : '' }}">
+      <app-portfolio-grid-layout
+        *ngIf="layOut == 'card' && this.userItems?.length > 0"
+        (newItemEvent)="listItemEvent($event)"
+        [is_open]="is_listItemOpen"
+        [is_filter_open]="filterIsOpen"
+        [data]="this.userItems"
+        [statusType]="this.statusMethod"
+      ></app-portfolio-grid-layout>
+      <app-user-profile-table-layout
+        *ngIf="layOut == 'table' && this.userItems?.length > 0"
+        layOutTable="portfolio"
+        [data]="this.userItems"
+        [statusType]="this.statusMethod"
+      ></app-user-profile-table-layout>
+      <div
+        class="d-flex justify-content-center w-100"
+        *ngIf="this.continuation"
+      >
+        <button class="btn-viewmore" (click)="loadMore(true)">
+          <span>View More</span>
+        </button>
+      </div>
+      <app-nodata-found
+        *ngIf="this.userItems?.length === 0"
+        message="No items in your portfolio"
+        buttonText="Explore collections"
+      ></app-nodata-found>
     </div>
   </div>
 </div>

@@ -1,11 +1,38 @@
 <div class="tabs-wrapper">
-  <app-section-filter-wrapper class="w-100" [filterActive]="filterIsOpen" (profileFilterEvent) = "filterEvent($event)" pageLayOut="userProfile" profileFilterLayOut="layOutThree" (viewLayout)="setLayOut($event)" [activeLayout] = "layOut"></app-section-filter-wrapper>
+  <app-section-filter-wrapper
+    class="w-100"
+    [filterActive]="filterIsOpen"
+    (profileFilterEvent)="filterEvent($event)"
+    pageLayOut="userProfile"
+    profileFilterLayOut="layOutThree"
+  ></app-section-filter-wrapper>
 
   <div class="user-profile-stats-wrapper">
-    <app-user-profile-filter-tab [demoData]="dummyData" (ItemEvent)="closePopup($event)" *ngIf="filterIsOpen"></app-user-profile-filter-tab>
+    <app-user-profile-filter-tab
+      (checkBoxStatusEvent)="getCheckBoxEvent($event)"
+      [Data]="filterData"
+      (ItemEvent)="closePopup($event)"
+      *ngIf="filterIsOpen"
+    ></app-user-profile-filter-tab>
 
-    <div class="profile-stats {{!filterIsOpen ? 'w-100' : ''}}">
-      <app-user-profile-table-layout *ngIf="layOut == 'table'" layOutTable = "offer" [data] = "dummyNftCollections"></app-user-profile-table-layout>
+    <div class="profile-stats {{ !filterIsOpen ? 'w-100' : '' }}">
+      <app-user-profile-table-layout
+        *ngIf="this.userOfferDetails?.length > 0"
+        layOutTable="offer"
+        [data]="this.userOfferDetails"
+      ></app-user-profile-table-layout>
+      <div
+        class="d-flex justify-content-center"
+        *ngIf="this.userOfferContinuation"
+      >
+        <button class="btn-viewmore" (click)="handleLoadMore(true)">
+          <span>View More</span>
+        </button>
+      </div>
+      <app-nodata-found
+        *ngIf="this.userOfferDetails?.length === 0"
+        message="No offers made"
+      ></app-nodata-found>
     </div>
   </div>
 </div>

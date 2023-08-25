@@ -24,7 +24,7 @@ export class ActivityGraphComponent {
   formatChainAddress: any;
   formatToAddress: any;
   daysAgo: any;
-  setClassName:any = '';
+  setClassName: any = '';
   setIcon: any = '';
   timeInterval: string = '';
   saleInterval: string = '';

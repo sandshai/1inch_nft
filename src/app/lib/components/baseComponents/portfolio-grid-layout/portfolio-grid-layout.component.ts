@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   HostListener,
@@ -8,6 +9,8 @@ import {
 import { ProfileLayoutService } from '../../../services/profile-layout.service';
 import { CrudService } from '../../../services/crud.service';
 import { SharedDataService } from 'src/app/lib/services/shared-data.service';
+import { SettingsService } from 'src/app/lib/services/settings.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-portfolio-grid-layout',
   templateUrl: './portfolio-grid-layout.component.html',
@@ -17,27 +20,40 @@ export class PortfolioGridLayoutComponent {
   setClass: any;
   @Input() is_open: boolean | undefined;
   @Input() is_filter_open: boolean | undefined;
+  @Input() statusType: any;
   @Output() newItemEvent = new EventEmitter<boolean>();
+
   @Input() data: any;
+
   search: boolean = true;
-  userItems: any = [];
+  userItems: any[] = [];
   userAddress: any;
-  continuation: any;
+  selectedChain: any;
+
+  checkedItems: any = [];
 
   constructor(
     private profileLayoutService: ProfileLayoutService,
     private _crudService: CrudService,
     private shared: SharedDataService,
+    private _settings: SettingsService,
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.isOpenListItem();
-    this.userAddress = this.shared.getValue();
 
-    if (this.userAddress) {
-      this.getUserItems(this.userAddress);
-    }
+    this.cdr.detectChanges();
     this.setLayoutClass();
+
+    let chain = this.shared.getChain();
+
+    if (chain?.name === 'Polygon') {
+      this.selectedChain = 'polygon';
+    } else if (chain?.name === 'Ethereum') {
+      this.selectedChain = 'ethereum';
+    }
   }
 
   ngOnChanges() {
@@ -51,9 +67,10 @@ export class PortfolioGridLayoutComponent {
     }
   }
 
-  openListItemCard() {
+  openListItemCard(token: any) {
     this.profileLayoutService.setProfileLayout(true);
     this.isOpenListItem();
+    this.shared.addListItems(token);
   }
   isOpenListItem() {
     this.profileLayout = this.profileLayoutService.getProfileLayout();
@@ -68,36 +85,6 @@ export class PortfolioGridLayoutComponent {
         : '';
   }
 
-  getUserItems(value?: any, load?: any) {
-    let url;
-    if (this.continuation) {
-      url = `users/${value}/tokens/v7?includeTopBid=${true}&includeRawData=${true}&includeAttribute=${true}&normalizeRoyalties=${false}&continuation=${
-        this.continuation
-      }`;
-    } else {
-      url = `users/${value}/tokens/v7?includeTopBid=${true}&includeRawData=${true}&includeAttribute=${true}&normalizeRoyalties=${false}`;
-    }
-    this._crudService.getAll(url, this.search).subscribe((response) => {
-      if (load) {
-        this.userItems = [...this.userItems, ...response?.tokens];
-      } else {
-        this.userItems = response?.tokens;
-      }
-
-      if (response?.continuation) {
-        this.continuation = response?.continuation;
-      } else {
-        this.continuation = '';
-      }
-    });
-  }
-
-  handleViewMore(load = false) {
-    if (load) {
-      this.getUserItems(this.userAddress, load);
-    }
-  }
-
   setLayoutClass() {
     this.setClass =
       this.is_open && this.is_filter_open
@@ -107,5 +94,24 @@ export class PortfolioGridLayoutComponent {
         : !this.is_open && this.is_filter_open
         ? 'filter-openListItemCard'
         : '';
+  }
+
+  handleCheckedItems(event: any, value: any) {
+    let checked = event.target.checked;
+    if (checked) {
+      this.checkedItems?.push(value);
+    } else {
+      let removeIndex = this.checkedItems.findIndex(
+        (item: any) => item === value
+      );
+      if (removeIndex !== -1) {
+        this.checkedItems.splice(removeIndex, 1);
+      }
+    }
+  }
+
+  goToNftBuyPage(id: any, address: any) {
+    if (id && address)
+      this.router.navigate([`/item`, this.selectedChain, address, id]);
   }
 }

@@ -58,7 +58,7 @@ html { // ===== reset font size depends on screen size =====
 // custom padding
 
 .cp-5 {
-    @include media-min-xl {
+    @include media-min-xxl {
         padding-left: 5.75rem !important;
         padding-right: 5.75rem !important;
     }

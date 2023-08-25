@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ProfileLayoutService } from '../../lib/services/profile-layout.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { SharedDataService } from 'src/app/lib/services/shared-data.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { log } from '@reservoir0x/reservoir-sdk';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -12,33 +13,24 @@ export class UserProfileComponent {
     private profileLayoutService: ProfileLayoutService,
     private cdr: ChangeDetectorRef,
     private shared: SharedDataService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
-  is_listItemCard: boolean = false;
 
-  @Input() dummyNftCollections: any = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-    '13',
-    '14',
-    '15',
-  ];
+  is_listItemCard: boolean = false;
+  activeTab: string = 'portfolio';
+
+  // TODO: Unused, can be removed
+  @Input() dummyNftCollections: any = ['1'];
 
   ngOnInit() {
     this.isOpenListItem();
-    if (this.shared.getValue()) {
-      this.router.navigate(['/profile']);
-    } else {
+    this.activeTab = localStorage.getItem('profileCurrentTab') || "portfolio";
+    this.shared.profileCurrentTab.subscribe(data => {
+      this.activeTab = data ? data : localStorage.getItem('profileCurrentTab') || "portfolio";
+    })
+
+    if (!this.shared.getValue()) {
       this.router.navigate(['/']);
     }
   }
@@ -62,7 +54,8 @@ export class UserProfileComponent {
         : '';
   }
 
-  listItemClose() {
+  listItemClose(value: string) {
+    this.shared.setProfileCurrentTab(value);
     this.is_listItemCard
       ? this.profileLayoutService.setProfileLayout(false)
       : '';

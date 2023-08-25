@@ -37,19 +37,16 @@
         border-radius: 1.5rem;
         background: #06070a;
     }
-    .card-img {
-        // &::before {
-        //     position: absolute;
-        //     content: '';
-        //     top: 0px;
-        //     right: 0px;
-        //     bottom: 0px;
-        //     left: 0px;
-        //     background: radial-gradient(40.06% 37.39% at 43.48% 26.48%, rgba(75, 52, 221, 0.4) 0%, rgba(89, 36, 121, 0) 100%)
-        // }
-        // img {
-        //     width: 5.313rem;
-        // }
+    p {
+        margin: 0;
+        text-align: center;
+        color: #FBFBFB;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5rem; /* 120% */
+        margin-bottom: 1rem;
+        @include media-min-sm {
+            font-size: 1.25rem;
+        }
     }
-
 }

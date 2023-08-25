@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
 import { SettingsService } from 'src/app/lib/services/settings.service';
+import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 
 interface Chains {
   [key: string]: any;
@@ -36,14 +37,37 @@ export class TrendingCollectionsComponent {
   objectKeys = Object.keys;
   isLoading = false;
   search = false;
+  chain: any;
 
   constructor(
     private _crudService: CrudService,
-    private _settings: SettingsService
+    private _settings: SettingsService,
+    private shared: SharedDataService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
     this.sortedDay = '7day';
+
+    this.shared.walletEvent.subscribe((data) => {
+      this.chain = data?.wallet?.chain?.name;
+      this.shared.selectedChain.emit(this.chain);
+    });
+    this.shared.selectedChain.subscribe((data) => {
+      if (data === 'Ethereum') {
+        this.selectedChain = data?.toString().toLowerCase();
+        this._settings.changeChainURL(this.selectedChain);
+        this.getTrendingCollections(this.sortBy);
+      } else if (data === 'Polygon') {
+        this.selectedChain = data?.toString().toLowerCase();
+        this._settings.changeChainURL(this.selectedChain);
+        this.getTrendingCollections(this.sortBy);
+      } else {
+        this.getTrendingCollections(this.sortBy);
+      }
+
+      this.cdr.detectChanges();
+    });
     this.getTrendingCollections(this.sortBy);
     this.selectIcon();
   }
@@ -78,11 +102,11 @@ export class TrendingCollectionsComponent {
   selectIcon() {
     switch (this.selectedChain) {
       case 'ethereum':
-        return this.selectedIcon = 'ethIcon';
+        return (this.selectedIcon = 'ethIcon');
       case 'polygon':
-        return this.selectedIcon = 'polygonIcon';
+        return (this.selectedIcon = 'polygonIcon');
       default:
-        return this.selectedIcon = 'ethIcon';
+        return (this.selectedIcon = 'ethIcon');
     }
   }
 }

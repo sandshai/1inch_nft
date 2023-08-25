@@ -451,7 +451,10 @@
                     line-height: 1.625rem;
                     color: var(--1inch-tc-02);
                     &:hover {
-                      background-color: rgba(6, 10, 16, 0.5) !important;
+                      @include media-min-lg {
+                        background-color: var(--1inch-cbc-17) !important;
+                        color: var(--1inch-tc-01) !important;
+                      }
                     }
                   }
                 }

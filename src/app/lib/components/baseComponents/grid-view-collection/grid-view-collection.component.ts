@@ -68,26 +68,30 @@ export class GridViewCollectionComponent {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.routeParams = this.convertToValueArray(params);
 
-      const result = [];
+      if (
+        params.hasOwnProperty('sortBy') &&
+        params.hasOwnProperty('sortDirection')
+      ) {
+        this.getItemCollections(undefined, undefined, params);
+      } else {
+        const result = [];
 
-      for (const [key, values] of Object.entries(this.routeParams)) {
-        for (const value of values) {
-          result.push({
-            value,
-            keyData: key,
-            checked: true,
-          });
+        for (const [key, values] of Object.entries(this.routeParams)) {
+          for (const value of values) {
+            result.push({
+              value,
+              keyData: key,
+              checked: true,
+            });
+          }
         }
-      }
 
-      this.routeDataList = result;
-      console.log(
-        '🚀 ~ file: grid-view-collection.component.ts:83 ~ GridViewCollectionComponent ~ this.activatedRoute.queryParams.subscribe ~ this.routeDataList:',
-        this.routeDataList
-      );
-      this.getItemCollections(undefined, undefined, undefined, undefined, {
-        attributes: this.routeDataList,
-      });
+        this.routeDataList = result;
+
+        this.getItemCollections(undefined, undefined, undefined, undefined, {
+          attributes: this.routeDataList,
+        });
+      }
     });
 
     this.collectionName =

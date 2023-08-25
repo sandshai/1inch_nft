@@ -1,24 +1,61 @@
-<div class="buy-details__wrapper">
+<div class="buy-details__wrapper" *ngIf="price">
   <div class="i-wrapper">
-    <p class="mb-0 title">Psychosis Ape Club #1234</p>
+    <p class="mb-0 title">{{ this.name }}</p>
     <div class="nft-buy-details">
       <div class="nft-price-wrapper">
-        <div class="nft-price">
+        <div class="nft-price" *ngIf="price">
           <h6>
             {{ price | numberShorten }}
           </h6>
           <app-svg-icons iconName="largeETHIcon" class="p-icon"></app-svg-icons>
         </div>
-        <span>${{ usdPrice | numberShorten }}</span>
+        <span *ngIf="usdPrice">${{ usdPrice | numberShorten }}</span>
       </div>
-      <div class="marketPlaceIcon">
-        <app-svg-icons iconName="openseaIcon"></app-svg-icons>
+      <div class="marketPlaceIcon" *ngIf="marketPlaceIcon?.iconLink">
+        <img
+          *ngIf="marketPlaceIcon?.iconStatus == 'image'"
+          src="/assets/images/market-place-icons/{{
+            marketPlaceIcon?.iconLink
+          }}"
+          alt="tick"
+        />
+        <img
+          *ngIf="marketPlaceIcon?.iconStatus == 'cdn'"
+          src="{{ marketPlaceIcon?.iconLink }}"
+          class="round"
+          alt="tick"
+        />
       </div>
     </div>
   </div>
-  <div class="buy-detail-button">
-    <button class="btn-buynow">Buy now</button>
-    <button class="btn-offer">
+  <div class="buy-detail-button" *ngIf="price">
+    <button
+      class="btn-buynow"
+      (click)="
+        openMakeOffer(
+          this.token.contract,
+          this.token.tokenId,
+          this.name,
+          this.image,
+          'buy',
+          this.price
+        )
+      "
+    >
+      Buy now
+    </button>
+    <button
+      class="btn-offer"
+      (click)="
+        openMakeOffer(
+          this.token.contract,
+          this.token.tokenId,
+          this.name,
+          this.image,
+          'bid'
+        )
+      "
+    >
       <app-svg-icons
         iconName="offerIcon"
         class="off-icon"

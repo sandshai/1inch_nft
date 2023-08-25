@@ -9,6 +9,7 @@
     (click)="goPage(itemDetail?.token?.tokenId)"
   >
     <!-- {{itemDetail | json}} -->
+    {{ setMarketPlaceIcon(itemDetail) }}
     <div class="card-header">
       <div class="card-image">
         <img
@@ -47,12 +48,19 @@
           </div>
         </div>
         <div class="nft_detail">
-          <p class="mb-0 title">On</p>
+          <p class="mb-0 title ps-1">On</p>
           <div class="value">
             <img
-              src="{{ itemDetail?.market?.floorAsk?.source?.icon }}"
-              class="img-fluid on_img"
-              alt="icon"
+            *ngIf="selectedIcon?.iconStatus == 'image'"
+            class="on_img"
+            src="/assets/images/market-place-icons/{{ selectedIcon?.iconLink }}"
+            alt="tick"
+            />
+            <img
+              *ngIf="selectedIcon?.iconStatus == 'cdn'"
+              src="{{ selectedIcon?.iconLink }}"
+              class="on_img round"
+              alt="tick"
             />
           </div>
         </div>

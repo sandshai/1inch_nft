@@ -24,78 +24,81 @@
   <div *ngIf="this.walletAddress" class="btn-group">
     <button
       type="button"
+      id="wallet-connected-btn"
       class="btn waller-state"
       data-bs-toggle="dropdown"
       aria-expanded="false"
     >
-      <div class="wallet-icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="25"
-          viewBox="0 0 24 25"
-          fill="none"
-        >
-          <g clip-path="url(#clip0_5815_45350)">
-            <rect
-              y="0.595703"
-              width="24"
-              height="24"
-              rx="12"
-              fill="url(#paint0_linear_5815_45350)"
-            />
-            <rect
-              x="5.25"
-              y="5.8457"
-              width="13.5"
-              height="13.5"
-              rx="6.75"
-              fill="white"
-            />
-            <rect
-              x="9.75"
-              y="10.3457"
-              width="4.5"
-              height="4.5"
-              rx="1"
-              fill="url(#paint1_linear_5815_45350)"
-            />
-          </g>
-          <defs>
-            <linearGradient
-              id="paint0_linear_5815_45350"
-              x1="12"
-              y1="0.595703"
-              x2="12"
-              y2="24.5957"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stop-color="#2D66F5" />
-              <stop offset="1" stop-color="#144ADF" />
-            </linearGradient>
-            <linearGradient
-              id="paint1_linear_5815_45350"
-              x1="12"
-              y1="10.3457"
-              x2="12"
-              y2="14.8457"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stop-color="#2D66F5" />
-              <stop offset="1" stop-color="#144ADF" />
-            </linearGradient>
-            <clipPath id="clip0_5815_45350">
+      <div class="wallet-balance">
+        <div class="wallet-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="25"
+            viewBox="0 0 24 25"
+            fill="none"
+          >
+            <g clip-path="url(#clip0_5815_45350)">
               <rect
+                y="0.595703"
                 width="24"
                 height="24"
-                fill="white"
-                transform="translate(0 0.595703)"
+                rx="12"
+                fill="url(#paint0_linear_5815_45350)"
               />
-            </clipPath>
-          </defs>
-        </svg>
+              <rect
+                x="5.25"
+                y="5.8457"
+                width="13.5"
+                height="13.5"
+                rx="6.75"
+                fill="white"
+              />
+              <rect
+                x="9.75"
+                y="10.3457"
+                width="4.5"
+                height="4.5"
+                rx="1"
+                fill="url(#paint1_linear_5815_45350)"
+              />
+            </g>
+            <defs>
+              <linearGradient
+                id="paint0_linear_5815_45350"
+                x1="12"
+                y1="0.595703"
+                x2="12"
+                y2="24.5957"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#2D66F5" />
+                <stop offset="1" stop-color="#144ADF" />
+              </linearGradient>
+              <linearGradient
+                id="paint1_linear_5815_45350"
+                x1="12"
+                y1="10.3457"
+                x2="12"
+                y2="14.8457"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#2D66F5" />
+                <stop offset="1" stop-color="#144ADF" />
+              </linearGradient>
+              <clipPath id="clip0_5815_45350">
+                <rect
+                  width="24"
+                  height="24"
+                  fill="white"
+                  transform="translate(0 0.595703)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+        <p class="eth_value">{{ this.walletBalance }}</p>
       </div>
-      <p class="eth_value">0.9876 ETH</p>
       <div class="acc_eth_id_wrapper">
         <p>{{ this.formatAddress }}</p>
       </div>
@@ -115,12 +118,18 @@
                     alt="image"
                   />
                 </div>
+
                 <p id="a-id">{{ this.formatAddress }}</p>
               </div>
               <div class="icon-wrapper">
-                <div class="icon" *ngIf="isCopied" (click)="copyToClipboard()" appTooltip
-                data-bs-placement="top"
-                title="Copied">
+                <div
+                  class="icon"
+                  *ngIf="isCopied"
+                  (click)="copyToClipboard()"
+                  appTooltip
+                  data-bs-placement="top"
+                  title="Copied"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -148,9 +157,14 @@
                     />
                   </svg>
                 </div>
-                <div class="icon" *ngIf="!isCopied" (click)="copyToClipboard()" appTooltip
-                data-bs-placement="top"
-                title="Copy">
+                <div
+                  class="icon"
+                  *ngIf="!isCopied"
+                  (click)="copyToClipboard()"
+                  appTooltip
+                  data-bs-placement="top"
+                  title="Copy"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -178,9 +192,13 @@
                     />
                   </svg>
                 </div>
-                <div class="icon" appTooltip
-                data-bs-placement="top"
-                title="Show on Etherscan">
+                <div
+                  class="icon"
+                  appTooltip
+                  data-bs-placement="top"
+                  title="Show on Etherscan"
+                  (click)="openExplorer()"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -208,18 +226,27 @@
             <div class="line"></div>
             <div class="account-bl-wrapper">
               <div class="price-wrapper">
-                <p>0.0452</p>
-                <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+                <p>{{ this.walletBalance }}</p>
+                <app-svg-icons
+                  *ngIf="this.chain === 'Ethereum'"
+                  iconName="ethIcon"
+                  class="icon"
+                ></app-svg-icons>
+                <app-svg-icons
+                  *ngIf="this.chain === 'Polygon'"
+                  iconName="polygonIcon"
+                  class="icon"
+                ></app-svg-icons>
               </div>
-              <span>$15.89</span>
+              <span>$0.00</span>
             </div>
           </div>
           <div class="line"></div>
           <div class="profile-popup-body">
-            <div class="menu-item" routerLink="profile">
+            <div class="menu-item">
               <app-svg-icons iconName="portfolioIcon"></app-svg-icons>
 
-              <p (click)="handleNavigate('portfolio')">portfolio</p>
+              <p (click)="handleNavigate('portfolio')">Portfolio</p>
             </div>
             <div class="menu-item">
               <app-svg-icons iconName="offerProfileIcon"></app-svg-icons>

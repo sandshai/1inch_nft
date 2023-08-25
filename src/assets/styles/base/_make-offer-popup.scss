@@ -1,0 +1,387 @@
+.make-offer-popup-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--1inch-cbc-13) !important;
+  backdrop-filter: blur(3px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  &.offer-popup-open {
+    display: flex !important;
+  }
+  .make-an-offer-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 2rem);
+    max-height: calc(100% - 2rem);
+    background-color: var(--1inch-cbc-03);
+    border-radius: 1.5rem;
+    overflow-y: auto;
+    @include scroll-bar(0, 0);
+
+    @include media-min-sm {
+      width: 31.25rem;
+    }
+    .make-offer-popup-header {
+      display: flex;
+      padding: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      background-color: var(--1inch-cbc-03);
+      position: sticky;
+      top: 0;
+      @include media-min-sm {
+        padding: 1.75rem 1.25rem 1rem 2rem;
+      }
+      h6 {
+        margin: 0;
+        color: var(--1inch-tc-01);
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.5rem; /* 120% */
+        flex: 1 0 0;
+      }
+      .close-icon {
+        display: flex;
+        padding: 0.25rem;
+        align-items: flex-start;
+        gap: 0.625rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        background-color: transparent;
+        &:hover {
+          background-color: var(--1inch-cbc-08) !important;
+        }
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+          path {
+            fill: var(--1inch-tc-01);
+          }
+        }
+      }
+    }
+    .make-offer-popup-body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      width: 100%;
+      padding: 1rem;
+      @include media-min-sm {
+        padding: 0.5rem 2rem 2rem 2rem;
+      }
+      .nft-detail-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        border-radius: 0;
+        background-color: transparent;
+        width: 100%;
+        border-bottom: 1px solid var(--1inch-bc-11);
+        padding: 0 0 1rem 0;
+
+        &.active {
+          background-color: var(--1inch-bc-12) !important;
+          border-bottom: 1px solid transparent !important;
+          border-radius: 1rem !important;
+          padding: 0.75rem 1rem !important;
+        }
+        .nft-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          width: 100%;
+          .nft-image {
+            width: 2.875rem;
+            height: 2.875rem;
+            border-radius: 0.875rem;
+            background-color: var(--1inch-bc-05);
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .nft-detail {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0.25rem;
+            width: calc(100% - 3.875rem);
+            .name {
+              margin: 0;
+              color: var(--1inch-tc-01);
+              font-size: 1rem;
+              font-weight: 400;
+              line-height: 1.625rem; /* 162.5% */
+              max-width: 100%;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+            .collection-name-wrapper {
+              display: flex;
+              align-items: center;
+              gap: 0.25rem;
+              width: 100%;
+              p {
+                margin: 0;
+                color: var(--1inch-tc-02);
+                font-size: 0.8125rem;
+                font-weight: 400;
+                line-height: 1rem; /* 123.077% */
+                max-width: calc(100% - 1.25rem);
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+              }
+              svg {
+                width: 1rem;
+                height: 1rem;
+              }
+            }
+          }
+        }
+      }
+      .offer-input-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .offer-input-group {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+          width: 100%;
+          .input-field {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            width: 100%;
+            label {
+              margin: 0;
+              color: var(--1inch-tc-01);
+              font-size: 0.8125rem;
+              font-weight: 400;
+              line-height: 1rem; /* 123.077% */
+              width: 100%;
+            }
+            .from-input {
+              width: 100%;
+              .input-control {
+                position: relative;
+                input {
+                  display: flex;
+                  padding: 0.5rem 0.75rem 0.5rem 1rem;
+                  align-items: center;
+                  gap: 0.5rem;
+                  border-radius: 0.75rem;
+                  background-color: var(--1inch-bc-01);
+                  border: 1px solid transparent;
+                  width: 100%;
+                  height: 2.625rem;
+
+                  color: var(--1inch-tc-01);
+                  font-size: 1rem;
+                  font-weight: 400;
+                  line-height: 1.625rem; /* 162.5% */
+
+                  &:focus,
+                  &:focus-visible {
+                    border: 1px solid transparent;
+                    outline: none;
+                    box-shadow: none;
+                  }
+                  &.is_error {
+                    border: 1px solid #f04832 !important;
+                  }
+
+                  &::placeholder {
+                    color: var(--1inch-tc-02);
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.625rem; /* 162.5% */
+                  }
+                }
+                input::-webkit-outer-spin-button,
+                input::-webkit-inner-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
+                }
+                /* Firefox */
+                input[type="number"] {
+                  -moz-appearance: textfield;
+                }
+                .icon {
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                  bottom: 0;
+                  display: flex;
+                  width: 2rem;
+                  height: 100%;
+                  padding: 0.125rem;
+                  justify-content: center;
+                  align-items: center;
+                  svg {
+                    width: 0.75rem;
+                    height: 0.75rem;
+                  }
+                }
+                .expiration-dropdown {
+                  width: 100%;
+                  .set-expiration {
+                    display: flex;
+                    padding: 0.5rem 0.75rem 0.5rem 1rem;
+                    align-items: center;
+                    gap: 0.5rem;
+                    border-radius: 0.75rem;
+                    background-color: var(--1inch-bc-01);
+                    border: 1px solid transparent;
+                    width: 100%;
+                    height: 2.625rem;
+                    span {
+                      color: var(--1inch-tc-01);
+                      font-size: 1rem;
+                      font-weight: 400;
+                      line-height: 1.625rem; /* 162.5% */
+                      .icon {
+                        display: flex;
+                        align-items: center;
+                        width: 1rem;
+                        height: 1rem;
+                        padding: 0.125rem;
+                        svg {
+                          width: 0.75rem;
+                          height: 0.75rem;
+                        }
+                      }
+                    }
+                  }
+                  ul {
+                    width: 100%;
+                    margin-top: 0.5rem;
+                    padding: 1rem 0px;
+                    background-color: var(--1inch-cbc-03);
+                    border-radius: 1rem;
+                    li {
+                      width: 100%;
+                      button {
+                        font-size: 1rem;
+                        font-weight: 400;
+                        line-height: 1.625rem;
+                        color: var(--1inch-tc-01);
+                        padding: 0.5rem 1rem;
+                        transition: all 0.4s ease-in-out;
+                        &:hover {
+                          background-color: var(--1inch-cbc-14);
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              span {
+                color: #f04832;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 16px; /* 123.077% */
+              }
+            }
+            p {
+              margin: 0;
+              color: var(--1inch-tc-02);
+              font-size: 0.8125rem;
+              font-weight: 400;
+              line-height: 1rem; /* 123.077% */
+            }
+          }
+        }
+      }
+      .price-details-wrapper {
+        display: flex;
+        padding: 0.75rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        border-radius: 1rem;
+        background-color: var(--1inch-bc-12);
+        width: 100%;
+        .price-detail {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          h6 {
+            margin: 0;
+            color: var(--1inch-tc-01);
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.75rem; /* 116.667% */
+          }
+          .price {
+            display: flex;
+            align-items: center;
+            gap: 0.125rem;
+            .icon {
+              display: flex;
+              width: 1.5rem;
+              height: 1.5rem;
+              padding: 0.1875rem;
+              justify-content: center;
+              align-items: center;
+              svg {
+                width: 1.125rem;
+                height: 1.125rem;
+              }
+            }
+          }
+          p {
+            margin: 0;
+            color: var(--1inch-tc-02);
+            font-size: 0.8125rem;
+            font-weight: 400;
+            line-height: 1rem; /* 123.077% */
+          }
+          .estimated-price-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.25rem;
+            svg {
+              width: 1rem;
+              height: 1rem;
+            }
+          }
+        }
+      }
+      .nft-buy-button-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        .error-mge {
+          color: #f04832;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 16px; /* 123.077% */
+        }
+      }
+    }
+  }
+}

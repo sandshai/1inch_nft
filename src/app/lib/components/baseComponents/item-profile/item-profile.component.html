@@ -37,5 +37,9 @@
   <app-item-buy-details
     [price]="itemDetail[0]?.market?.floorAsk?.price?.amount?.decimal"
     [usdPrice]="itemDetail[0]?.market?.floorAsk?.price?.amount?.usd"
+    [token]="itemDetail[0]?.token"
+    [marketPlaceIcon]="selectedMarketplaceIcon"
+    [name]="itemDetail[0]?.token?.name"
+    [image]="itemDetail[0]?.token?.image"
   ></app-item-buy-details>
 </div>

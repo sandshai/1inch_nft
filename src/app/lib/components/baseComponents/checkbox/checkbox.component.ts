@@ -11,6 +11,7 @@ export class CheckboxComponent {
   @Input() label: any;
   @Input() currentKey: any;
   @Input() datas: any;
+  @Input() trackComponent: any;
 
   checked: any;
   data: any;

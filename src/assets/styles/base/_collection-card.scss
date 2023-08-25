@@ -6,21 +6,23 @@
   transition: all 0.4s ease-in-out;
   cursor: pointer;
   &:hover {
-   @include media-min-md {
-    .icon-wrapper {
-      .cus-marketplace-icon {
+    @include media-min-md {
+      .add-to-cart-wrapper {
         display: flex !important;
       }
-    }
-    .add-to-cart-wrapper {
-      display: flex !important;
-    }
-    .nft-image {
-      img {
-        transform: scale(1.1);
+      .nft-image {
+        img {
+          transform: scale(1.1);
+        }
       }
     }
-   }
+    @include media-min-lg {
+      .icon-wrapper {
+        .marketplace-icon {
+          display: flex !important;
+        }
+      }
+    }
   }
   .nft-card-image {
     position: relative;
@@ -52,6 +54,9 @@
       justify-content: space-between;
 
       .marketplace-icon {
+        @include media-min-lg {
+          display: none;
+        }
         img {
           width: 2rem;
           height: 2rem;
@@ -86,7 +91,7 @@
     }
     .add-to-cart-wrapper {
       position: absolute;
-      bottom: 0.5rem;
+      bottom: 12px;
       left: 0;
       right: 0;
       display: none;
@@ -94,27 +99,25 @@
       justify-content: center;
       .add-to-cart {
         display: inline-flex;
-        padding: 0.5rem 1rem;
+        height: 43.714px;
+        padding: 11px 18px;
         justify-content: center;
         align-items: center;
-        gap: 0.5rem;
-        border-radius: 0.5rem;
+        gap: 8px;
+        border-radius: 12px;
         background-color: var(--1inch-bc-08);
         cursor: pointer;
+
         &:hover {
           background-color: var(--1inch-bc-13) !important;
         }
-        @include media-min-md {
-          border-radius: 12px;
-          // height: 43.75px;
-          padding: 11px 18px
-        }
+
         span {
-          color: #fff;
+          color: var(--night-static-white, #FFF);
           text-align: center;
-          font-size: 1rem;
-          font-weight: 500;
-          line-height: normal; /* 162.5% */
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 26px; /* 162.5% */
         }
       }
     }

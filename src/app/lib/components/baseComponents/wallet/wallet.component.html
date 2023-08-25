@@ -1,4 +1,8 @@
-<div class="connect-wallet__wrapper" id="connect-wallet__wrapper" (click)="onBackdropClick($event)">
+<div
+  class="connect-wallet__wrapper"
+  id="connect-wallet__wrapper"
+  (click)="onBackdropClick($event)"
+>
   <div class="wallet-wrapper">
     <div class="wallet-header">
       <p>Connect Wallet</p>
@@ -89,10 +93,14 @@
           !checkBox ? 'is-not-checked' : ''
         }}"
       >
-        <div class="network-item {{activeNetwork == value?.key ? 'active':''}}" *ngFor="let value of selectedNetwork" (click)="selectNetwork(value?.key)">
+        <div
+          class="network-item {{ activeNetwork == value?.key ? 'active' : '' }}"
+          *ngFor="let value of selectedNetwork"
+          (click)="selectNetwork(value?.key)"
+        >
           <div class="network-icon">
             <app-wallet-images
-              walletIcon="{{value?.icon}}"
+              walletIcon="{{ value?.icon }}"
               class="icon"
             ></app-wallet-images>
             <app-wallet-images
@@ -101,7 +109,7 @@
               class="active_icon"
             ></app-wallet-images>
           </div>
-          <p class="{{ !checkBox ? 'disabled' : '' }}">{{value?.name}}</p>
+          <p class="{{ !checkBox ? 'disabled' : '' }}">{{ value?.name }}</p>
         </div>
       </div>
       <div class="step-wrapper">
@@ -128,15 +136,30 @@
               class="active_icon"
             ></app-wallet-images>
           </div>
-          <p class="{{ !checkBox ? 'disabled' : '' }}">1inch Wallet</p>
-        </div>
-        <!-- <div class="network-item">
-          <div class="network-icon">
-            <app-wallet-images walletIcon="{{walletStatus.metaMask}}" class="icon"></app-wallet-images>
-            <app-wallet-images walletIcon="{{walletStatus.actionIcon}}" class="active_icon"></app-wallet-images>
-          </div>
-          <p class="{{!checkBox ? 'disabled' : ''}}">Metamask</p>
+          <p class="{{!checkBox ? 'disabled' : ''}}">1inch Wallet</p>
         </div> -->
+        <div class="network-item" (click)="invokeWallet()">
+          <div class="network-icon">
+            <app-wallet-images
+              walletIcon="{{ walletStatus.oneinchWallet }}"
+              class="icon"
+            ></app-wallet-images>
+          </div>
+          <p class="{{ !checkBox ? 'disabled' : '' }}">OneInchWalletConnect</p>
+        </div>
+        <div class="network-item" (click)="invokeInjectedWallet()">
+          <div class="network-icon">
+            <app-wallet-images
+              walletIcon="{{ walletStatus.metaMask }}"
+              class="icon"
+            ></app-wallet-images>
+            <app-wallet-images
+              walletIcon="{{ walletStatus.actionIcon }}"
+              class="active_icon"
+            ></app-wallet-images>
+          </div>
+          <p class="{{ !checkBox ? 'disabled' : '' }}">Metamask</p>
+        </div>
         <!-- <div class="network-item">
           <div class="network-icon">
             <app-wallet-images walletIcon="{{walletStatus.trustWallet}}" class="icon"></app-wallet-images>
@@ -144,15 +167,7 @@
           </div>
           <p class="{{!checkBox ? 'disabled' : ''}}">Trust Wallet</p>
         </div> -->
-        <div class="network-item" (click)="invokeWallet()">
-          <div class="network-icon">
-            <app-wallet-images
-              walletIcon="{{ walletStatus.walletConnect }}"
-              class="icon"
-            ></app-wallet-images>
-          </div>
-          <p class="{{ !checkBox ? 'disabled' : '' }}">WalletConnect</p>
-        </div>
+
         <!-- <div class="network-item" (click)="oneInchWallet()">
           <div class="network-icon">
             <app-wallet-images walletIcon="{{walletStatus.coinbaseWallet}}" class="icon"></app-wallet-images>

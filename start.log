@@ -1,0 +1,25 @@
+yarn run v1.22.18
+$ ng serve
+
+Initial Chunk Files                                              | Names                           |  Raw Size
+vendor.js                                                        | vendor                          |   5.31 MB |
+main.js                                                          | main                            |   1.33 MB |
+styles.css, styles.js                                            | styles                          | 819.24 kB |
+polyfills.js                                                     | polyfills                       | 314.86 kB |
+scripts.js                                                       | scripts                         | 202.89 kB |
+runtime.js                                                       | runtime                         |  12.94 kB |
+
+| Initial Total                   |   7.96 MB
+
+Lazy Chunk Files                                                 | Names                           |  Raw Size
+node_modules_walletconnect_modal-ui_dist_index_js.js             | walletconnect-modal-ui          | 429.78 kB |
+node_modules_walletconnect_ethereum-provider_dist_index_es_js.js | walletconnect-ethereum-provider | 200.03 kB |
+node_modules_viem_dist_esm_utils_ccip_js.js                      | utils-ccip-js                   |  10.51 kB |
+node_modules_isomorphic-ws_browser_js.js                         | isomorphic-ws                   |   1.23 kB |
+
+Build at: 2023-08-22T14:54:13.005Z - Hash: 06d1007578e70b18 - Time: 5273ms
+
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+
+✖ Failed to compile.

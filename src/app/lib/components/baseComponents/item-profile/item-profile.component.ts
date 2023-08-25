@@ -10,6 +10,8 @@ export class ItemProfileComponent {
   @Input() nftName: string | undefined;
   @Output() img_url = new EventEmitter<string>();
   @Output() downloadImageLink = new EventEmitter<string>();
+  @Input() selectedMarketplaceIcon: any;
+
   priviewImage(url: string) {
     this.img_url.emit(url);
   }

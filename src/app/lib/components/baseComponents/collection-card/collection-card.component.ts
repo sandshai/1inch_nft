@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { _Data1 } from '@reservoir0x/reservoir-sdk';
 import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class CollectionCardComponent {
   @Input() index: any;
   @Input() collection: any;
   @Input() selected: any;
-  @Input() externalUrl: any;
+  @Input() externalLink: any;
   selectedIcon: any;
   checkedValue: any;
 
@@ -32,7 +33,7 @@ export class CollectionCardComponent {
       this.item.token.contract,
       this.item.token.tokenId,
     ]);
-    this.shared.externalUrl.emit(this.externalUrl);
+    this.shared.externalUrl.emit(this.externalLink);
   }
 
   setMarketPlaceIcon(item: any) {
@@ -76,5 +77,18 @@ export class CollectionCardComponent {
         };
         break;
     }
+  }
+
+  openMakeOffer(
+    address: string,
+    id: string,
+    name: string,
+    image: any,
+    method: any,
+    amount?: any
+  ) {
+    document.querySelector('body')?.classList.add('overflow-hidden');
+    this.shared.openMakeOfferPopup.emit(true);
+    this.shared.nftDetails.emit({ address, id, name, image, method, amount });
   }
 }

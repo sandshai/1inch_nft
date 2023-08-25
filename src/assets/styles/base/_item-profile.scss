@@ -12,8 +12,8 @@
         border-radius: 1.5rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         gap: 1rem;
+        height: calc(100vh - 9.438rem);
     }
 
     &:hover {
@@ -96,9 +96,12 @@
                     }
                 }
                 .marketPlaceIcon {
-                    svg {
+                    img {
                         width: 2rem;
                         height: 2rem;
+                        &.round {
+                            border-radius: 50px;
+                        }
                     }
                 }
             }
@@ -192,8 +195,9 @@
 }
 
 .i-profle {
+    height: calc(100% - 11.375rem);
     img {
-        object-fit: contain;
+        object-fit: cover;
         height: 100%;
         display: table;
         margin: auto;

@@ -59,7 +59,7 @@
     align-self: stretch;
     background-color: var(--1inch-cbc-03);
     height: calc(100vh - 9rem);
-    overflow: auto;
+    overflow-y: scroll;
     @include scroll-bar(0.15rem,0.15rem);
     @include media-min-lg {
       border-radius: 1.5rem;
@@ -73,7 +73,8 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.5rem;
+        transition: all 0.5s ease-in-out;
+
         .accordion-header {
           width: 100%;
           .accordion-button {
@@ -123,6 +124,7 @@
         }
         .accordion-collapse {
           width: 100%;
+          padding-top: 0.5rem;
           .accordion-body {
             display: flex;
             padding: 0rem 1rem;

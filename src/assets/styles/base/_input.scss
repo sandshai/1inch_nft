@@ -40,7 +40,7 @@
     }
   }
 
-  input[type="checkbox"]:checked + label{
+  input[type="checkbox"]:checked + label {
     span {
       color: var(--1inch-tc-01) !important;
     }
@@ -56,28 +56,28 @@
 .filter-input {
   width: 100%;
   input {
-      width: 100%;
-      display: flex;
-      padding: 0.8125rem 0.5rem;
-      align-items: center;
-      gap: 0.5rem;
-      align-self: stretch;
-      border-radius: 0.75rem;
-      background-color: var(--1inch-cbc-02);
-      border: none;
+    width: 100%;
+    display: flex;
+    padding: 0.8125rem 0.5rem;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: stretch;
+    border-radius: 0.75rem;
+    background-color: var(--1inch-cbc-02);
+    border: none;
+    color: var(--1inch-tc-02);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1rem; /* 100% */
+    @include media-min-lg {
+      padding: 0.55rem 0.5rem;
+    }
+    &:focus {
       color: var(--1inch-tc-02);
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1rem; /* 100% */
-      @include media-min-lg {
-          padding: 0.55rem 0.5rem;
-      }
-      &:focus {
-        color: var(--1inch-tc-02);
-        background-color: var(--1inch-cbc-02);
-      }
-      &::placeholder {
-        color: var(--1inch-tc-02);
-      }
+      background-color: var(--1inch-cbc-02);
+    }
+    &::placeholder {
+      color: var(--1inch-tc-02);
+    }
   }
 }

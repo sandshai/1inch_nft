@@ -6,6 +6,7 @@
   .user-account-details {
     display: flex;
     align-items: center;
+    // gap: 4px;
     .profile-id {
       display: flex;
       align-items: center;
@@ -34,15 +35,24 @@
 
       }
     }
-    .copyText {
-      cursor: pointer;
-      display: flex;
-      padding: 0.5625rem;
-      align-items: flex-start;
-      gap: 0.5rem;
-      svg {
-        width: 1.5rem;
-        height: 1.5rem;
+    .icon-wrapper {
+      .icon {
+        cursor: pointer;
+        display: flex;
+        padding: 0.5625rem;
+        align-items: flex-start;
+        background-color: transparent;
+        gap: 0.5rem;
+        border-radius: 12px;
+        // &:hover {
+        //   @include media-min-lg {
+        //     background-color: var(--1inch-cbc-02) !important;
+        //   }
+        // }
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
       }
     }
   }

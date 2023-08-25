@@ -114,7 +114,7 @@
       @include media-min-lg {
         left: -40rem;
         width: 76.75rem;
-        height: 76.75rem;
+        height: 100%;
       }
     }
     &::after {
@@ -125,7 +125,7 @@
         top: 1%;
         right: -45rem;
         width: 76.75rem;
-        height: 76.75rem;
+        height: 100%;
         background: radial-gradient(
           50% 50% at 50% 50%,
           rgba(124, 40, 176, 0.41) 0%,

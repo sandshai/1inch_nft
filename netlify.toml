@@ -1,3 +1,13 @@
+[build]
+  command = "yarn install && yarn build"
+
+[build.environment]
+  NODE_VERSION = "18.16.0"
+  YARN_VERSION = "1.22.19"
+
+[build.processing]
+  command = "yarn install && yarn build"
+  
 [[redirects]]
   from = "/*"
   to = "/index.html"

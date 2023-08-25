@@ -268,10 +268,18 @@
             cursor: pointer;
             &:hover,&:active {
                 background-color: var(--1inch-cbc-05);
-                opacity: 0.8;
+                .wallet-balance {
+                    opacity: 0.8;
+                }
                 .eth_value {
                     color: var(--1inch-tc-02) !important;
                 }
+            }
+            .wallet-balance {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.5rem;
             }
             .wallet-icon {
                 svg {

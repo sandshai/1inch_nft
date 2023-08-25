@@ -1,4 +1,4 @@
-$text-colors: "themewhite" var(---1inch-theme-text-color),"grayblue" $theme-clr-grayblue;
+$text-colors: "themewhite" var(--1inch-tc-01),"grayblue" var(--1inch-tc-02);
 
 @each $color in $text-colors {
   .text-#{nth($color,1)} {

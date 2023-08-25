@@ -48,6 +48,45 @@
         </ul>
       </div>
       <div class="header--icon-wrapper">
+        <div class="dropdown notification-dropdown-wrapper d-none d-xl-block">
+          <button class="btn-notification" type="button" id="notification-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.59619C11.4477 2.59619 11 3.04391 11 3.59619V4.67915C8.16224 5.15523 5.99995 7.6232 5.99995 10.5962V14.3536C5.99995 14.884 5.78924 15.3927 5.41417 15.7678L4.99995 16.182C3.74002 17.4419 4.63235 19.5962 6.41417 19.5962H17.5857C19.3676 19.5962 20.2599 17.4419 19 16.182L18.5857 15.7678C18.2107 15.3927 18 14.884 18 14.3536V10.5962C18 7.6232 15.8377 5.15523 13 4.67915V3.59619C13 3.04391 12.5522 2.59619 12 2.59619ZM12 6.59619C9.79081 6.59619 7.99995 8.38705 7.99995 10.5962V14.3536C7.99995 15.4144 7.57852 16.4318 6.82838 17.182L6.41417 17.5962L17.5857 17.5962L17.1715 17.182C16.4214 16.4318 16 15.4144 16 14.3536V10.5962C16 8.38705 14.2091 6.59619 12 6.59619ZM12 22.5962C13.1 22.5962 14 21.6962 14 20.5962H9.99995C9.99995 21.6962 10.9 22.5962 12 22.5962Z" fill="#6C86AD"/>
+            </svg>
+          </button>
+          <ul class="dropdown-menu mt-2" aria-labelledby="notification-dropdown">
+            <li>
+              <div class="notification-menu-item">
+                <h6>You received a new offer</h6>
+                <div class="notification-details">
+                  <p>Psychosis Ape#1231</p>
+                  <p>34 min ago</p>
+                </div>
+              </div>
+              <div class="notification-menu-item">
+                <h6>You received a new offer</h6>
+                <div class="notification-details">
+                  <p>Psychosis Ape#1231</p>
+                  <p>34 min ago</p>
+                </div>
+              </div>
+              <div class="notification-menu-item">
+                <h6>You received a new offer</h6>
+                <div class="notification-details">
+                  <p>Psychosis Ape#1231</p>
+                  <p>34 min ago</p>
+                </div>
+              </div>
+              <div class="notification-menu-item">
+                <h6>You received a new offer</h6>
+                <div class="notification-details">
+                  <p>Psychosis Ape#1231</p>
+                  <p>34 min ago</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
         <app-wallet-button class="d-none d-md-block"></app-wallet-button>
         <div class="menu-icon d-lg-none" (click)="opensearch($event)">
           <app-svg-icons
@@ -69,7 +108,7 @@
             ></app-svg-icons>
 
             <ul
-              class="dropdown-menu dropdown-menu-end mt-4 settings-cus-dropdown"
+              class="dropdown-menu dropdown-menu-end mt-2 settings-cus-dropdown"
               aria-labelledby="dropdownMenuButton1"
               (click)="$event.stopPropagation()"
             >

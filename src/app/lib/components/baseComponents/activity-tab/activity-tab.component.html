@@ -1,69 +1,126 @@
-<div class="activity-tab__wrapper">
-    <div class="activity-filter_container d-flex justify-content-between align-items-center">
-        <div class="btn-group">
-            <button type="button" class="btn-all-events" data-bs-toggle="dropdown" aria-expanded="false">
-                <span>All events</span>
-                <app-svg-icons iconName="downIcon"></app-svg-icons>
-            </button>
-            <ul class="dropdown-menu filter-dropdown dropdown-menu-end">
-              <li><button class="dropdown-item" type="button">All events</button></li>
-              <li><button class="dropdown-item" type="button">Sales</button></li>
-              <li><button class="dropdown-item" type="button">Listings</button></li>
-              <li><button class="dropdown-item" type="button">Transferes</button></li>
-            </ul>
-        </div>
-        <div class="button-filter-wrapper">
-            <div class="f-button-wrapper">
-              <div class="f-btn active">1H</div>
-              <div class="f-btn">1D</div>
-              <div class="f-btn">1W</div>
-              <div class="f-btn">1M</div>
-              <div class="f-btn">All</div>
-            </div>
-            <div class="dropdown">
-              <button type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span>1H</span>
-                  <app-svg-icons iconName="downIcon"></app-svg-icons>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">1H</a></li>
-                <li><a class="dropdown-item" href="#">1D</a></li>
-                <li><a class="dropdown-item" href="#">1W</a></li>
-                <li><a class="dropdown-item" href="#">1M</a></li>
-                <li><a class="dropdown-item" href="#">All</a></li>
-              </ul>
-            </div>
-        </div>
+<div class="activity-tab-wrapper">
+  <div class="activity-tab__header">
+    <div class="btn-group event-dropdown">
+      <button type="button" class="btn-all-events" data-bs-toggle="dropdown" aria-expanded="false">
+        <span>{{ this.currentType ? this.currentType : "All events" }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="#6C86AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <ul class="dropdown-menu">
+        <li *ngFor="let type of objectKeys(types)"><button class="dropdown-item" type="button" (click)="sendTypes(type)">
+          <span>
+          {{ type }}
+          </span>
+        </button></li>
+      </ul>
     </div>
-
-    <div class="user__activities mt-4">
-        <div class="activity-card d-flex align-items-center justify-content-between">
-            <div class="card-img">
-                <img src="../../../../../assets/images/c__image.png" class="img-fluid" alt="card image">
-            </div>
-            <div class="card-details">
-                <div class="d-flex justify-content-between align-items-center collection__id">
-                    <h6 class="mb-0">#1234</h6>
-                    <h6 class="mb-0 d-flex align-items-center">
-                        244
-                        <img src="../../../../../assets/images/icons/activity_diamond.svg" class="ms-1 img-fluid" alt="diamond">
-                    </h6>
-                </div>
-                <div class="d-flex justify-content-between align-items-center status my-2">
-                    <div class="d-flex align-items-center">
-                        <small class="mb-0 sold me-2">Sold</small> <img src="../../../../../assets/images/icons/copy.svg" class="img-fluid" alt="link">
-                    </div>
-                    <small class="mb-0 text-gray">34 min ago</small>
-                </div>
-                <div class="d-sm-flex justify-content-between align-items-center from_to">
-                    <div class="d-flex align-items-center">
-                        <small class="mb-0 text-gray">From</small> <small class="ms-2 mb-0 text-gray">0x08d83848aedd</small>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <small class="mb-0 text-gray">To</small> <small class="ms-2 mb-0 text-gray">0x08d83848aedd</small>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="day-vc-filter-btn-wrapper">
+      <div class="df-btn active">
+        <span>1H</span>
+      </div>
+      <div class="df-btn">
+        <span>1D</span>
+      </div>
+      <div class="df-btn">
+        <span>1W</span>
+      </div>
+      <div class="df-btn">
+        <span>1M</span>
+      </div>
+      <div class="df-btn">
+        <span>All</span>
+      </div>
     </div>
+    <div class="btn-group event-dropdown day-filter-dropdown">
+      <button type="button" class="btn-all-events" data-bs-toggle="dropdown" aria-expanded="false">
+        <span>All</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4 6L8 10L12 6" stroke="#6C86AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <ul class="dropdown-menu day-filter">
+        <li>
+          <button class="dropdown-item" type="button">
+            <span>1H</span>
+          </button>
+        </li>
+        <li>
+          <button class="dropdown-item" type="button">
+            <span>1D</span>
+          </button>
+        </li>
+        <li>
+          <button class="dropdown-item" type="button">
+            <span>1W</span>
+          </button>
+        </li>
+        <li>
+          <button class="dropdown-item" type="button">
+            <span>1M</span>
+          </button>
+        </li>
+        <li>
+          <button class="dropdown-item" type="button">
+            <span>All</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="activity-tab__body">
+    <div class="activity-card" *ngFor="let activity of activityDetails">
+      {{ handleTimeCalculation(activity?.createdAt) }}
+      {{
+        getCurrentType(activity?.type)
+      }}
+      <div class="activity-img">
+        <img src="{{ activity?.token?.tokenImage }}" alt="image">
+      </div>
+      <div class="activity-content">
+        <div class="content-left__side">
+          <p class="primary-text">#{{ activity?.token?.tokenId }}</p>
+          <div class="activity-status">
+            <p class="secondary-text {{setClassName}}">
+              {{ activity?.type }}
+            </p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M3.48398 4.11585C3.48398 3.76607 3.76754 3.48252 4.11732 3.48252H4.50078C4.88738 3.48252 5.20078 3.16912 5.20078 2.78252C5.20078 2.39592 4.88738 2.08252 4.50078 2.08252H4.11732C2.99434 2.08252 2.08398 2.99287 2.08398 4.11585V11.884C2.08398 13.0069 2.99434 13.9173 4.11732 13.9173H11.8854C13.0084 13.9173 13.9188 13.0069 13.9188 11.884V11.5C13.9188 11.1134 13.6054 10.8 13.2188 10.8C12.8322 10.8 12.5188 11.1134 12.5188 11.5V11.884C12.5188 12.2337 12.2352 12.5173 11.8854 12.5173H4.11732C3.76754 12.5173 3.48398 12.2337 3.48398 11.884V4.11585ZM7.30078 2.78252C7.30078 2.39592 7.61418 2.08252 8.00078 2.08252H13.2182C13.6048 2.08252 13.9182 2.39592 13.9182 2.78252V7.99991C13.9182 8.38651 13.6048 8.69991 13.2182 8.69991C12.8316 8.69991 12.5182 8.38651 12.5182 7.99991V4.47256L7.00503 9.9857C6.73167 10.2591 6.28845 10.2591 6.01508 9.9857C5.74172 9.71233 5.74172 9.26912 6.01508 8.99575L11.5283 3.48252H8.00078C7.61418 3.48252 7.30078 3.16912 7.30078 2.78252Z" fill="#6C86AC"/>
+            </svg>
+          </div>
+          <p class="secondary-text text-gray" *ngIf="activity?.fromAddress">
+            From {{
+              formatAddress(activity?.fromAddress)
+            }}
+          </p>
+        </div>
+        <div class="content-right__side">
+          <div class="right-side__details">
+            <div class="price justify-content-end">
+              <p class="primary-text">{{ activity?.price?.amount?.decimal }}</p>
+              <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+            </div>
+            <p class="secondary-text text-gray text-end">
+              {{ this.daysAgo }}
+            </p>
+            <p class="secondary-text text-gray text-end" *ngIf="activity?.toAddress">
+              To  {{ formatAddress(activity?.toAddress) }}
+            </p>
+          </div>
+          <div class="add-to-bag">
+            <span>Add to bag</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <button
+        (click)="loadMoreActivity(true)"
+        class="btn-viewmore"
+        *ngIf="this.loadMore"
+      >
+        <span>View More</span>
+      </button>
+    </div>
+  </div>
 </div>

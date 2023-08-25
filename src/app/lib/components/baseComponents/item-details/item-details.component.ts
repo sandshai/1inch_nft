@@ -9,4 +9,5 @@ export class ItemDetailsComponent {
   @Input() token_id: string | undefined;
   @Input() chain: string | undefined;
   @Input() earnings: string | undefined;
+  @Input() kind: string | undefined;
 }

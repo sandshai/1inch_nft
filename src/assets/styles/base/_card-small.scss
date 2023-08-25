@@ -60,7 +60,9 @@
       z-index: 1;
       border-radius: 50px;
       overflow: hidden;
-      display: none;
+      @include media-min-lg {
+        display: none;
+      }
       &::before {
         position: absolute;
         z-index: -1;
@@ -138,9 +140,11 @@
         }
       }
       .three-dot {
-        display: none;
         width: 1.25rem;
         height: 0.25rem;
+        @include media-min-lg {
+          display: none;
+        }
       }
     }
     .nft-stats-wrapper{

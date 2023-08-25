@@ -27,6 +27,7 @@ export class ListViewCollectionsComponent {
   filteredData: any;
   loadMoreStatus: boolean = false;
   pagination: string = '';
+  selectedIcon: any;
 
   constructor(
     private _crudService: CrudService,
@@ -177,5 +178,64 @@ export class ListViewCollectionsComponent {
   loadMore(load = false) {
     this.loadMoreStatus = load;
     this.getItemCollections();
+  }
+
+  setMarketPlaceIcon(item: any) {
+    let name = item?.market?.floorAsk?.source?.name;
+
+    switch (name) {
+      case 'OpenSea':
+        this.selectedIcon = {
+          iconStatus: 'image',
+          iconLink: 'opensea.svg',
+        };
+        break;
+      case 'blur.io':
+        this.selectedIcon = {
+          iconStatus: 'image',
+          iconLink: 'blur.svg',
+        };
+        break;
+      case 'LooksRare':
+        this.selectedIcon = {
+          iconStatus: 'image',
+          iconLink: 'looksrare.svg',
+        };
+        break;
+      case 'X2Y2':
+        this.selectedIcon = {
+          iconStatus: 'image',
+          iconLink: 'x2y2.svg',
+        };
+        break;
+      case 'rarible':
+        this.selectedIcon = {
+          iconStatus: 'image',
+          iconLink: 'rarible.svg',
+        };
+        break;
+      default:
+        this.selectedIcon = {
+          iconStatus: 'cdn',
+          iconLink: item?.market?.floorAsk?.source?.icon,
+        };
+        break;
+    }
+  }
+
+  openMakeOffer(
+    event: Event,
+    address: string,
+    id: string,
+    name: string,
+    image: any,
+    method: any,
+    amount?: any
+  ) {
+    event.stopPropagation();
+
+    document.querySelector('body')?.classList.add('overflow-hidden');
+    this.shared.openMakeOfferPopup.emit(true);
+    this.shared.nftDetails.emit({ address, id, name, image, method, amount });
   }
 }

@@ -8,18 +8,18 @@
       />
     </div>
     <div class="icon-wrapper">
-      <div class="marketplace-icon">
+      <div class="marketplace-icon" *ngIf="selectedIcon?.iconLink">
         <img
           *ngIf="selectedIcon?.iconStatus == 'image'"
           src="/assets/images/market-place-icons/{{ selectedIcon?.iconLink }}"
           alt="tick"
         />
-        <!-- <img
+        <img
           *ngIf="selectedIcon?.iconStatus == 'cdn'"
-          src="{{ item?.market?.floorAsk?.source?.icon }}"
+          src="{{ selectedIcon?.iconLink }}"
           class="round"
           alt="tick"
-        /> -->
+        />
       </div>
       <div class="custom-checkbox">
         <input
@@ -40,7 +40,10 @@
         </label>
       </div>
     </div>
-    <div class="add-to-cart-wrapper">
+    <div
+      class="add-to-cart-wrapper"
+      *ngIf="item?.market?.floorAsk?.price?.amount?.decimal"
+    >
       <div class="add-to-cart">
         <span>Add to bag</span>
       </div>
@@ -63,14 +66,33 @@
       </div>
     </div>
     <div class="collection-nft-price-buy-wrapper">
-      <div class="price-wrapper" *ngIf="item?.market?.floorAsk?.source?.icon">
-        <p>
+      <div class="price-wrapper">
+        <p *ngIf="item?.market?.floorAsk?.source?.icon">
           {{ item?.market?.floorAsk?.price?.amount?.decimal | numberShorten }}
         </p>
-        <app-svg-icons iconName="ethIcon" class="icon"></app-svg-icons>
+        <app-svg-icons
+          *ngIf="item?.market?.floorAsk?.source?.icon"
+          iconName="ethIcon"
+          class="icon"
+        ></app-svg-icons>
       </div>
-      <div class="action-btn-wrapper">
-        <div class="btn-wrapper bg-blue">
+      <div
+        class="action-btn-wrapper"
+        *ngIf="item?.market?.floorAsk?.price?.amount?.decimal"
+      >
+        <div
+          class="btn-wrapper bg-blue"
+          (click)="
+            openMakeOffer(
+              this.item.token.contract,
+              this.item.token.tokenId,
+              item?.token?.name,
+              item?.token?.image,
+              'buy',
+              item?.market?.floorAsk?.price?.amount?.decimal
+            )
+          "
+        >
           <span>Buy now</span>
         </div>
         <div class="btn-cart">

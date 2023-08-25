@@ -70,7 +70,6 @@ import { UserProfileListItemsComponent } from './lib/components/baseComponents/u
 import { UserProfileTableLayoutComponent } from './lib/components/baseComponents/user-profile-table-layout/user-profile-table-layout.component';
 import { UserProfileOfferTabComponent } from './lib/components/baseComponents/user-profile-offer-tab/user-profile-offer-tab.component';
 import { UserProfileActivityTabComponent } from './lib/components/baseComponents/user-profile-activity-tab/user-profile-activity-tab.component';
-import { ContentLoaderModule } from '@netbasal/ngx-content-loader';
 import { WalletImagesComponent } from './lib/components/baseComponents/wallet-images/wallet-images.component';
 import { BottomSheetComponent } from './lib/components/baseComponents/bottom-sheet/bottom-sheet.component';
 
@@ -149,7 +148,6 @@ import { BottomSheetComponent } from './lib/components/baseComponents/bottom-she
     HttpClientModule,
     SwiperModule,
     FormsModule,
-    ContentLoaderModule,
   ],
   providers: [SharedDataService],
   bootstrap: [AppComponent],

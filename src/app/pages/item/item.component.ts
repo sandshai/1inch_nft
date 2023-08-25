@@ -3,7 +3,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/app/lib/services/crud.service';
 import { SettingsService } from 'src/app/lib/services/settings.service';
 import { SharedDataService } from 'src/app/lib/services/shared-data.service';
+import { _Data1, _Data4 } from '@reservoir0x/reservoir-sdk';
+import { TradeSdk } from 'src/app/lib/components/baseComponents/trade/trade-sdk.component';
 
+interface Types {
+  [key: string]: any;
+  '1 day': number;
+  '3 days': number;
+  '7 days': number;
+  '1 month': number;
+}
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
@@ -33,6 +42,29 @@ export class ItemComponent {
   creatorEarnings: any;
   ownerAddress: any;
   externalUrl: string = '';
+  makeOfferPopup: boolean = false;
+  externalUrlLink: any;
+  selectedIcon: any;
+  address: any;
+  id: any;
+  nftName: any;
+  nftImage: any;
+  inputValue: any = null;
+  type: any;
+  nftAmount: any;
+  objectKeys = Object.keys;
+  nftExpiryTime: any;
+  bidErrorMessage: any;
+  buyErrorMessage: any = '';
+  kindOfNft: any;
+
+  types: Types = {
+    '1 day': 1,
+    '3 days': 3,
+    '7 days': 7,
+    '1 month': 30,
+  };
+  selectedItem: any = '1 day';
 
   public collectionId: any;
   public collectionName: any;
@@ -42,6 +74,29 @@ export class ItemComponent {
 
   ngOnInit() {
     document.querySelector('body')?.classList.add('nft-page-bottom-padding');
+    if (this.selectedItem === '1 day') {
+      let date = new Date();
+      date.setDate(date.getDate() + 1);
+      this.nftExpiryTime = new Date(date).getTime() / 1000;
+      this.handleExpireTime(this.nftExpiryTime);
+    }
+
+    this.shared.nftDetails.subscribe((data) => {
+      this.address = data?.address;
+      this.id = data?.id;
+      this.nftName = data?.name;
+      this.nftImage = data?.image;
+      this.type = data?.method;
+      this.nftAmount = data?.amount;
+    });
+
+    this.shared.externalUrl.subscribe((data) => {
+      this.externalUrlLink = data;
+    });
+
+    this.shared.getChain();
+
+    this.cdr.detectChanges();
 
     this.collectionId =
       this.activatedRoute.snapshot.paramMap.get('{collectionId}');
@@ -57,18 +112,10 @@ export class ItemComponent {
     this.getTokenActivity(this.activityType);
     this.formatAddress(this.collectionId);
     this.setProfileImageBasedOnImage();
-  }
 
-  ngOnChanges() {
-    this.shared.externalUrl.subscribe((data) => {
-      console.log(
-        '🚀 ~ file: item.component.ts:46 ~ ItemComponent ~ ngOnInit ~ data:',
-        data
-      );
-      this.externalUrl = data;
+    this.shared.openMakeOfferPopup.subscribe((data) => {
+      this.makeOfferPopup = data;
     });
-
-    this.cdr.detectChanges();
   }
 
   ngOnDestroy() {
@@ -101,6 +148,9 @@ export class ItemComponent {
       )
       .subscribe((response) => {
         this.itemDetails = response?.tokens;
+
+        this.setMarketPlaceIcon(this.itemDetails[0]);
+        this.kindOfNft = response?.tokens[0]?.token?.kind;
 
         this.formatAddress(response?.tokens[0]?.token?.owner, 'owner');
         if (response?.tokens[0]?.market?.topBid?.feeBreakdown) {
@@ -167,7 +217,6 @@ export class ItemComponent {
   }
 
   previewFun(url: string) {
-    console.log('parent url', url);
     this.is_preview = true;
     this.imageUrl = url;
   }
@@ -202,6 +251,138 @@ export class ItemComponent {
   }
 
   goToExternalPage(): void {
-    window.open(this.externalUrl, '_blank');
+    window.open(this.externalUrlLink, '_blank');
+  }
+  closeMakeOfferPopup() {
+    document.querySelector('body')?.classList.remove('overflow-hidden');
+    this.shared.openMakeOfferPopup.emit(false);
+    this.buyErrorMessage = '';
+  }
+
+  setMarketPlaceIcon(item: any) {
+    let name = item?.market?.floorAsk?.source?.name;
+
+    switch (name) {
+      case 'OpenSea':
+        this.selectedIcon = {
+          iconStatus: 'image',
+          iconLink: 'opensea.svg',
+        };
+        break;
+      case 'blur.io':
+        this.selectedIcon = {
+          iconStatus: 'image',
+          iconLink: 'blur.svg',
+        };
+        break;
+      case 'LooksRare':
+        this.selectedIcon = {
+          iconStatus: 'image',
+          iconLink: 'looksrare.svg',
+        };
+        break;
+      case 'X2Y2':
+        this.selectedIcon = {
+          iconStatus: 'image',
+          iconLink: 'x2y2.svg',
+        };
+        break;
+      case 'rarible':
+        this.selectedIcon = {
+          iconStatus: 'image',
+          iconLink: 'rarible.svg',
+        };
+        break;
+      default:
+        this.selectedIcon = {
+          iconStatus: 'cdn',
+          iconLink: item?.market?.floorAsk?.source?.icon,
+        };
+        break;
+    }
+  }
+  async placeBid(amount?: any) {
+    const tradeClient: TradeSdk = this.shared.getTradeClient();
+    const chain = this.shared.getChain();
+
+    if (tradeClient) {
+      let data = {
+        bids: [
+          {
+            token: `${this.address}:${this.id}`,
+            weiPrice: `${amount * 10 ** chain?.nativeCurrency.decimals}`,
+            expirationTime: `${Math.round(this.nftExpiryTime)}`,
+          },
+        ],
+      } as _Data4;
+
+      let response = await tradeClient?.placeBid(data);
+      if (response) {
+        this.shared.openMakeOfferPopup.emit(false);
+      } else {
+        this.bidErrorMessage = 'Unable to proceed the Transaction';
+      }
+    }
+  }
+
+  async buyToken() {
+    let tradeClient = this.shared.getTradeClient();
+    if (tradeClient) {
+      let data = {
+        items: [
+          {
+            token: `${this.address}:${this.id}`,
+            quantity: 1,
+            fillType: 'trade',
+          },
+        ],
+      } as _Data1;
+      let response = await tradeClient?.buyNft(data);
+      if (response) {
+        this.shared.openMakeOfferPopup.emit(false);
+      } else {
+        this.buyErrorMessage = 'Unable to proceed the Transaction';
+      }
+    }
+  }
+
+  onInputChange(event: any): void {
+    const value = event.target.value;
+    this.inputValue = value;
+  }
+
+  sendDates(value: any) {
+    this.selectedItem = value;
+
+    let expiryTime;
+    if (value === '1 day') {
+      let date = new Date();
+      date.setDate(date.getDate() + 1);
+      expiryTime = new Date(date).getTime() / 1000;
+    } else if (value === '3 days') {
+      let date = new Date();
+      date.setDate(date.getDate() + 3);
+      expiryTime = new Date(date).getTime() / 1000;
+    } else if (value === '7 days') {
+      let date = new Date();
+      date.setDate(date.getDate() + 7);
+      expiryTime = new Date(date).getTime() / 1000;
+    } else if (value === '1 month') {
+      let date = new Date();
+      date.setDate(date.getDate() + 30);
+      expiryTime = new Date(date).getTime() / 1000;
+    }
+
+    this.nftExpiryTime = expiryTime;
+
+    // this.handleExpireTime(expiryTime);
+  }
+
+  handleExpireTime(value: any) {
+    let finalDate;
+    finalDate = value * 1000;
+    const finalResult = new Date(finalDate);
+
+    return finalResult;
   }
 }

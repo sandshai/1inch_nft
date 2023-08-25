@@ -24,6 +24,9 @@
           {{
             formatAddress(itemDetail?.token?.owner)
           }}
+          {{
+            setMarketPlaceIcon(itemDetail)
+          }}
           <td>
             <div class="profile-item">
               <img src="{{ itemDetail?.token?.image }}" alt="profile" />
@@ -45,14 +48,36 @@
               *ngIf="itemDetail?.market?.floorAsk?.source?.icon"
             >
               <img
-                src="{{ itemDetail?.market?.floorAsk?.source?.icon }}"
+                *ngIf="selectedIcon?.iconStatus == 'image'"
                 class="on_image"
-                alt="on image"
+                src="/assets/images/market-place-icons/{{
+                  selectedIcon?.iconLink
+                }}"
+                alt="tick"
+              />
+              <img
+                *ngIf="selectedIcon?.iconStatus == 'cdn'"
+                src="{{ selectedIcon?.iconLink }}"
+                class="on_image round"
+                alt="tick"
               />
             </div>
           </td>
           <td>
-            <div class="price-buy-wrapper">
+            <div
+              class="price-buy-wrapper"
+              (click)="
+                openMakeOffer(
+                  $event,
+                  this.itemDetail.token.contract,
+                  this.itemDetail.token.tokenId,
+                  itemDetail?.token?.name,
+                  itemDetail?.token?.image,
+                  'buy',
+                  itemDetail?.market?.floorAsk?.price?.amount?.decimal
+                )
+              "
+            >
               <div
                 class="price"
                 *ngIf="itemDetail?.market?.floorAsk?.price?.amount?.decimal"

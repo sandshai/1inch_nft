@@ -35,38 +35,13 @@ $screen-alt-1600: 1600px;
 
 $font-family: "Roboto", sans-serif;
 
-/*------ theme colors --------
-==================================================*/
-
-$clr-dark: #000;
-$theme-clr-grayblue: #6c86ad;
-$theme-clr-litewhite: #fbfbfb;
-$theme-clr-mirage: #141822;
-$theme-clr-brightgray: #354052;
-
-/*------ dark theme colors --------
-==================================================*/
-
-$dark-theme-text-color: #fbfbfb;
-
-/*------ lite theme colors --------
-==================================================*/
-
-$lite-theme-text-color: #000;
-
 :root {
+  --w3m-z-index: 999999 !important;
   --wcm-z-index: 999999 !important;
-  ---inch-text-color-01: #{$theme-clr-litewhite} !important;
-  ---1inch-theme-text-color: #{$dark-theme-text-color} !important;
-  ---inch-theme-text-color-02: #{$theme-clr-grayblue} !important;
 
   // ==== common background color ====
   ---1inch-theme-background: #06070a;
-  ---1inch-th-bc-01: #141924;
-  ---1inch-th-bc-02: #2f8af529 !important;
-  ---1inch-th-bc-03: #060a1080 !important;
   // ===== text color =====
-
   ---1inch-cstc-01: #fbfbfb !important;
 
   // ==== dark theme text colors for collection ====
@@ -87,11 +62,13 @@ $lite-theme-text-color: #000;
   --1inch-bc-12: #0d1119;
   --1inch-bc-13: #4399ff;
   --1inch-bc-14: rgba(255, 255, 255, 0.25);
-  --1inch-bc-15: rgba(255, 255, 255, 0.10);
-  --1inch-bc-16: rgba(6, 7, 10, 0.90);
+  --1inch-bc-15: rgba(255, 255, 255, 0.1);
+  --1inch-bc-16: rgba(6, 7, 10, 0.9);
   --1inch-bc-17: #324054;
-  --1inch-bc-18: #2F3B4D;
-  --1inch-bc-19: rgba(6, 7, 10, .72);
+  --1inch-bc-18: #2f3b4d;
+  --1inch-bc-19: rgba(6, 7, 10, 0.72);
+  --1inch-bc-20: #263042;
+  --1inch-bc-21: #10141c;
 
   // ====  change varibale ====
   --1inch-cbc-01: #0d1119;
@@ -138,16 +115,11 @@ $lite-theme-text-color: #000;
 }
 
 .light-theme {
-  ---1inch-theme-text-color: #{$lite-theme-text-color} !important;
-  ---inch-text-color-01: #{$clr-dark} !important;
-  ---inch-theme-text-color-02: #{$theme-clr-grayblue} !important;
+  --w3m-z-index: 999999 !important;
+  --wcm-z-index: 999999 !important;
 
   // ==== common background color ====
   ---1inch-theme-background: #f7f9ff;
-  ---1inch-th-bc-01: #edeef182;
-  ---1inch-th-bc-02: #2f8af529 !important;
-  ---1inch-th-bc-03: #060a1080 !important;
-
   ---1inch-cstc-01: #06070a !important;
 
   // ==== light theme text colors for collection ====
@@ -159,7 +131,7 @@ $lite-theme-text-color: #000;
   --1inch-bc-03: #2b374a;
   --1inch-bc-04: #ffffff1a;
   --1inch-bc-05: #fff;
-  --1inch-bc-06: #060a1080;
+  --1inch-bc-06: #f7f9ff;
   --1inch-bc-07: #06070a;
   --1inch-bc-08: #2f8af5;
   --1inch-bc-09: #e3e7ee;
@@ -167,12 +139,14 @@ $lite-theme-text-color: #000;
   --1inch-bc-11: #212936;
   --1inch-bc-12: #0d1119;
   --1inch-bc-13: #4399ff;
-  --1inch-bc-14: #E3E7EE;
-  --1inch-bc-15: #F4F6FF;
-  --1inch-bc-16: #F7F9FF;
+  --1inch-bc-14: #e3e7ee;
+  --1inch-bc-15: #f4f6ff;
+  --1inch-bc-16: #f7f9ff;
   --1inch-bc-17: #fff;
-  --1inch-bc-18: #E3E7EE;
-  --1inch-bc-19: rgba(108, 134, 173, .6);
+  --1inch-bc-18: #e3e7ee;
+  --1inch-bc-19: rgba(108, 134, 173, 0.6);
+  --1inch-bc-20: #263042;
+  --1inch-bc-21: #f7f9ff;
 
   // ====  change varibale ====
   --1inch-cbc-01: #ffffff;
@@ -183,8 +157,8 @@ $lite-theme-text-color: #000;
   --1inch-cbc-06: #fbfbfb;
   --1inch-cbc-07: rgba(255, 255, 255, 0.3);
   --1inch-cbc-08: rgba(6, 10, 16, 0.5);
-  --inch-cbc-09 : #ffffff;
-  --1inch-cbc-10: #ECF0F9;
+  --inch-cbc-09: #ffffff;
+  --1inch-cbc-10: #ecf0f9;
   --1inch-cbc-11: #f4f6ff;
   --1inch-cbc-12: #fbfbfb;
   --1inch-cbc-13: rgba(108, 134, 173, 0.6);
@@ -200,7 +174,7 @@ $lite-theme-text-color: #000;
   --1inch-cbc-18: #37445a;
   --1inch-cbc-19: #bac7da;
   --1inch-cbc-20: rgba(255, 255, 255, 0.2);
-  --1inch-cbc-21: #F4F6FF;
+  --1inch-cbc-21: #f4f6ff;
 
   --1inch-tc-01: #222;
   --1inch-tc-02: #6c86ad;

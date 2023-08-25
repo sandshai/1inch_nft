@@ -5,7 +5,7 @@ import { SettingsService } from 'src/app/lib/services/settings.service';
 import { ClipboardService } from 'ngx-clipboard';
 import { SharedDataService } from 'src/app/lib/services/shared-data.service';
 import { ChangeDetectorRef } from '@angular/core';
-declare var bootstrap: any;
+import { _Data1 } from '@reservoir0x/reservoir-sdk';
 
 interface Categories {
   [key: string]: any;
@@ -65,6 +65,19 @@ export class CollectionComponent implements OnInit {
   externalUrl: any;
   discordUrl: any;
   twitterUrl: any;
+  currentType: string = 'All Events';
+  activityDetails: any = [];
+  activityLoading: boolean = false;
+  continuation: any;
+  makeOfferPopup: boolean = false;
+  address: any;
+  id: any;
+  nftName: any;
+  nftImage: any;
+  type: any;
+  nftAmount: any;
+  buyErrorMessage: any = "";
+
 
   categories: Categories = {
     'Price low to high': { sortBy: 'floorAskPrice', sortDirection: 'asc' },
@@ -91,18 +104,35 @@ export class CollectionComponent implements OnInit {
     document.querySelector('body')?.classList.add('sweep-body-padding');
     this.sortByDay(this.active);
 
+    this.shared.openMakeOfferPopup.subscribe((data) => {
+      this.makeOfferPopup = data;
+    });
+
+    this.shared.nftDetails.subscribe((data) => {
+      console.log(
+        '🚀 ~ file: item.component.ts:50 ~ ItemComponent ~ this.shared.nftDetails.subscribe ~ data:',
+        data
+      );
+      this.address = data?.address;
+      this.id = data?.id;
+      this.nftName = data?.name;
+      this.nftImage = data?.image;
+      this.type = data?.method;
+      this.nftAmount = data?.amount;
+    });
+
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;
 
     this.collectionId = this.activatedRoute.snapshot.paramMap.get('{id}');
-
-    this.getCollectionDetails();
 
     this.collectionName =
       this.activatedRoute.snapshot.paramMap.get(`{{collection}}`);
 
     this.selectedChain = this.collectionName;
     this._settings.changeChainURL(this.selectedChain);
+    this.getCollectionDetails();
+    this.getCollectionActivityDetail(undefined,true);
 
     if (this.categoryValue) {
       this.shared.filterPriceEvent.emit(this.categoryValue);
@@ -147,7 +177,6 @@ export class CollectionComponent implements OnInit {
       }, {});
     });
 
-    document.querySelector('main')?.classList.remove('overflow-x-hidden');
     this.gridChangeFunc();
 
     if (window.innerWidth > 1199) {
@@ -244,6 +273,7 @@ export class CollectionComponent implements OnInit {
   closeSweep(val: boolean) {
     this.is_sweep = val;
   }
+
   getCollectionDetails(value?: any) {
     this.isLoading = true;
     this._crudService
@@ -414,5 +444,75 @@ export class CollectionComponent implements OnInit {
 
   passedArrayList(value: any) {
     this.shared.setSliderList(value);
+  }
+
+  getCollectionActivityDetail(load?: boolean,all?:boolean) {
+    if (!load) this.activityLoading = true;
+    let url = `collections/activity/v6?collection=${this.collectionId}&limit=20&types=${this.currentType}`;
+    if (all) {
+      url=`collections/activity/v6?collection=${this.collectionId}&limit=20`
+    }
+    if (this.continuation) {
+      if (this.currentType === "All Events") {
+        url = `collections/activity/v6?collection=${this.collectionId}&limit=20&continuation=${this.continuation}`;
+      } else {
+        url = `collections/activity/v6?collection=${this.collectionId}&limit=20&types=${this.currentType}&continuation=${this.continuation}`;
+      }
+
+    }
+    this._crudService.getAll(`${url}`, this.header).subscribe((response) => {
+      if (load) {
+        this.activityDetails = [
+          ...this.activityDetails,
+          ...response?.activities,
+        ];
+      } else {
+        this.activityDetails = response?.activities;
+      }
+
+      if (response?.continuation) {
+        this.continuation = response.continuation;
+      } else {
+        this.continuation = '';
+      }
+      if (!load) this.activityLoading = false;
+    });
+  }
+
+  receiveMessageEvent(value: string) {
+    this.currentType = value;
+    this.continuation = '';
+    if (this.currentType === "All Events") {
+      this.getCollectionActivityDetail(undefined,true);
+    } else {
+      this.getCollectionActivityDetail();
+    }
+
+  }
+
+  receiveLoadMore(value: boolean) {
+    this.getCollectionActivityDetail(value);
+  }
+
+  closeMakeOfferPopup() {
+    document.querySelector('body')?.classList.remove('overflow-hidden');
+    this.shared.openMakeOfferPopup.emit(false);
+    this.buyErrorMessage = '';
+  }
+
+  async buyToken() {
+    let token = `${this.address}:${this.id}`;
+    let tradeClient = this.shared.getTradeClient();
+    if (tradeClient) {
+      let data = {
+        items: [{ token, quantity: 1 }],
+      } as _Data1;
+      let response = await tradeClient?.buyNft(data);
+      if (response) {
+        this.shared.openMakeOfferPopup.emit(false);
+      } else {
+        this.buyErrorMessage = 'Unable to proceed the Transaction';
+      }
+    }
   }
 }

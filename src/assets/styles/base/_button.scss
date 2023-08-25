@@ -28,7 +28,7 @@ button {
   align-items: center;
   padding: 0.688rem 1.125rem !important;
   gap: 0.5rem !important;
-  border: 0.0613rem solid rgba(47, 138, 245, 0.16) !important;
+  border: 1px solid rgba(47, 138, 245, 0.16) !important;
   border-radius: 0.75rem !important;
   color: var(---1inch-cstc-01) !important;
   width: 100%;
@@ -72,4 +72,32 @@ button {
   border: 1px solid #202835;
   border-radius: 0.75rem;
   background-color: transparent;
+}
+
+.btn-night-static-brand {
+  display: flex;
+  padding: 0.5rem 1.125rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--1inch-bc-08);
+  width: 100%;
+  border: none;
+  &:hover {
+    background-color: var(--1inch-bc-13);
+  }
+  &.is-in_active {
+    background-color: var(--1inch-bc-20) !important;
+    span {
+      color: var(--1inch-tc-02) !important;
+    }
+  }
+  span {
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.625rem; /* 162.5% */
+  }
 }
